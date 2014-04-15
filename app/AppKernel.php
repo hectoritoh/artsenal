@@ -38,7 +38,7 @@ class AppKernel extends Kernel
         // Then add SonataAdminBundle
         new Sonata\AdminBundle\SonataAdminBundle(),
 
-        new Setnet\ArtsenalBundle\SetnetArtsenalBundle(),
+        // new Setnet\ArtsenalBundle\SetnetArtsenalBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

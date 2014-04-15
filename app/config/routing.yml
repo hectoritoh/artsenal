@@ -1,6 +1,6 @@
-setnet_artsenal:
-    resource: "@SetnetArtsenalBundle/Resources/config/routing.yml"
-    prefix:   /
+# setnet_artsenal:
+    # resource: "@SetnetArtsenalBundle/Resources/config/routing.yml"
+    # prefix:   /
 
 selnet_tienda_online:
     resource: "@SelnetTiendaOnlineBundle/Resources/config/routing.yml"
