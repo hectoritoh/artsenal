@@ -1,0 +1,72 @@
+<div id="submenu" class="navbar navbar-default" role="navigation">
+	<div class="container-fluid">
+		<!-- Brand and toggle get grouped for better mobile display -->
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+
+			{% image '@SelnetTiendaOnlineBundle/Resources/public/images/logo.png' %}
+			<img  id="logo" src="{{ asset_url }}"  alt="Artsenal" onclick="window.location='{{ path('artsenal_index') }}'" />
+			{% endimage %}
+
+		</div>
+
+		<!-- Collect the nav links, forms, and other content for toggling -->
+		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+			<ul class="nav navbar-nav">
+
+			</ul>
+			<ul class="nav navbar-nav navbar-right">
+				<li>
+
+					<form class="navbar-form navbar-left" role="search">
+						<div class="form-group">
+							<input id="search_input" type="text" class="form-control" placeholder="Escriba el nombre del producto que buscas">
+						</div>
+					</form>
+				</li>
+
+
+				{% if app.user %}
+
+				<li>
+					<a class="submenu-element" href="#">
+					{% image '@SelnetTiendaOnlineBundle/Resources/public/images/mensaje.png' %}
+						<img   class="logged_icons" src="{{ asset_url }}"  alt="Artsenal" onclick="window.location='{{ path('artsenal_index') }}'" />
+					{% endimage %}
+					</a>
+				</li>
+				<li>
+					<a class="submenu-element" href="#">{% image '@SelnetTiendaOnlineBundle/Resources/public/images/corazon.png' %}
+						<img  class="logged_icons" src="{{ asset_url }}"  alt="Artsenal" onclick="window.location='{{ path('artsenal_index') }}'" />
+						{% endimage %}
+					</a>
+				</li>
+				<li>
+					<a class="submenu-element" href="#">{% image '@SelnetTiendaOnlineBundle/Resources/public/images/tienda.png' %}
+						<img   class="logged_icons" src="{{ asset_url }}"  alt="Artsenal" onclick="window.location='{{ path('preview_tienda') }}'" />
+						{% endimage %}
+					</a>
+				</li>
+
+				{% else %}
+					<li><a class="submenu-element" href="{{  path('usuario_ingresa') }}">Ingresa</a></li>
+					<li><a class="submenu-element" href="{{  path('registrar_usuario_artsenal') }}">Registrate</a></li>
+
+
+				{% endif %}
+
+
+
+				<li><a  class="submenu-element-rosa" href="{{  path('ver_mi_cesta') }}">Mi cesta</a></li>
+
+
+
+			</ul>
+		</div><!-- /.navbar-collapse -->
+	</div><!-- /.container-fluid -->
+</div>

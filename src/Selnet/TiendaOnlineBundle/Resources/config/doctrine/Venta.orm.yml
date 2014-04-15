@@ -1,0 +1,52 @@
+Selnet\TiendaOnlineBundle\Entity\Venta:
+    type: entity
+    table: venta
+    fields:
+        id:
+            id: true
+            type: integer
+            unsigned: false
+            nullable: false
+            generator:
+                strategy: IDENTITY
+        total:
+            type: string
+            length: 45
+            fixed: false
+            nullable: false
+        verificada:
+            type: integer
+            length: 1
+            fixed: false
+            nullable: true
+        estado:
+            type: integer
+            length: 1
+            fixed: true
+            nullable: true
+        created_at:
+            type: datetime
+            nullable: false
+        updated_at:
+            type: datetime
+            nullable: false
+    manyToOne:
+      usuario:
+        targetEntity: Usuario
+        joinColumn:
+          name: usuario_id
+          referencedColumnName: id
+      tienda:
+        targetEntity: Tienda
+        joinColumn:
+          name: tienda_id
+          referencedColumnName: id
+    oneToMany:
+        detalles:
+          targetEntity: DetalleVenta
+          mappedBy: venta
+          cascade: [ "persist" ]
+
+    lifecycleCallbacks:
+        prePersist: [preInsert]
+        preUpdate: [preUpdate]

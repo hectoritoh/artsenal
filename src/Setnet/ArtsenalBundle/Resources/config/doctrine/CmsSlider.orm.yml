@@ -1,0 +1,37 @@
+Setnet\ArtsenalBundle\Entity\CmsSlider:
+    type: entity
+    table: cms_slider
+    fields:
+        id:
+            id: true
+            type: integer
+            unsigned: false
+            nullable: false
+            generator:
+                strategy: IDENTITY
+        imagenUrl:
+            type: string
+            length: 250
+            fixed: false
+            nullable: false
+            column: imagen_url
+        link:
+            type: string
+            length: 250
+            fixed: false
+            nullable: false
+        descripcion:
+            type: string
+            length: 250
+            fixed: false
+            nullable: false
+        estado:
+            type: string
+            length: 1
+            fixed: true
+            nullable: false
+        fechaCreacion:
+            type: datetime
+            nullable: false
+            column: fecha_creacion
+    lifecycleCallbacks: {  }

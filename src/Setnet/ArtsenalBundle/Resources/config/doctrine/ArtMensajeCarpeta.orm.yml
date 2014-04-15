@@ -1,0 +1,32 @@
+Setnet\ArtsenalBundle\Entity\ArtMensajeCarpeta:
+    type: entity
+    table: art_mensaje_carpeta
+    fields:
+        id:
+            id: true
+            type: integer
+            unsigned: false
+            nullable: false
+            generator:
+                strategy: IDENTITY
+        nombre:
+            type: string
+            length: 45
+            fixed: false
+            nullable: true
+        fechaCreacion:
+            type: datetime
+            nullable: true
+            column: fecha_creacion
+        borrado:
+            type: string
+            length: 1
+            fixed: true
+            nullable: true
+        artMensajeCarpetacol:
+            type: string
+            length: 45
+            fixed: false
+            nullable: true
+            column: art_mensaje_carpetacol
+    lifecycleCallbacks: {  }

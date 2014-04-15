@@ -1,0 +1,21 @@
+<div id="productosSlider" class="carousel slide"   >
+    <!-- Carousel items -->
+    <div class="carousel-inner">
+
+        {% for item in productos %}
+
+        {% if loop.index0 is divisibleby(4)   %}
+        {% if  not loop.first %}
+    </div>
+    {% endif %}
+    <div  class="item {% if loop.first %}active{% endif %}"  >                            
+        {% endif %}
+        {% include 'SetnetArtsenalBundle:Block:producto.html.twig' with {   'prod' : item } %}
+        {% if loop.last %}
+    </div>
+    {% endif %}
+    {% endfor %}
+
+    <a class="carousel-control left" href="#productosSlider" data-slide="prev">&lsaquo;</a>
+    <a class="carousel-control right" href="#productosSlider" data-slide="next">&rsaquo;</a>
+</div>

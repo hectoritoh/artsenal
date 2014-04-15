@@ -1,0 +1,13 @@
+parameters:
+#    setnet_artsenal.example.class: Setnet\ArtsenalBundle\Example
+
+services:
+#    setnet_artsenal.example:
+#        class: %setnet_artsenal.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]
+
+    
+#    app.cart_item_resolver:
+#        class: Setnet\ArtsenalBundle\Cart\ItemResolver
+#        arguments: [@doctrine.orm.entity_manager]
+#

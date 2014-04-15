@@ -1,0 +1,54 @@
+{% extends "SetnetArtsenalBundle:Templates:template.html.twig" %}
+
+
+{% block contenido %}
+
+
+
+
+
+<div class="container-fluid art-center-form"  >
+
+    <p class="lead"  style="font-family: lato_light;" >Bienvenido a nuestra comunidad de vendedores!</p>
+    <div class="row-fluid">
+
+        <div  class="span12" >
+            <div id="breadCrumb" class="breadCrumb " style="width: 920px;height: 55px;">
+                <ul>                    
+                    <li>
+                        <a id="tiendaForm" href="#"  class="showForm" >Nombre de tienda</a>
+                    </li>  
+                    <li>
+                        <a id="articulosForm" href="#"  class="showForm" >Articulos</a>
+                    </li>  
+                    <li>
+                        <a id="facturacionForm" href="#"  class="showForm" >Facturacion</a>
+                    </li>  
+                    <li>
+                        <a id="endForm" href="#"  class="showForm"  >Abre tu tienda</a>
+                    </li>                                              
+                </ul>
+            </div>
+        </div>        
+        <div>
+            <div class="row-fluid">
+                <div id="tiendaFormDiv" class="tabForm span12"  >
+                    <div class="art-form-holder" style="height: 150px;" >
+                        <p>El nombre de tu tienda aparece junto con tus artículos en el mercado de Artsenal.</p>
+                        <p>Elige un nombre que tenga un significado personal o ayude a identificar lo que hay en tu tienda</p>
+
+                        <form  id="formTienda" action="{{ path('setnet_artsenal_nueva_tienda') }}" method="post" {{ form_enctype(formTienda) }}>
+                                        {{ form_widget(formTienda) }}
+
+                                <p  class="art-inline-p" >Puedes cambiar el nombre de tu tienda mas tarde</p>
+                                <input class="art-submit" type="submit" value="Guardar" />
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+            </div> 
+        </div>
+    </div>
+
+{% endblock contenido %}

@@ -1,0 +1,14 @@
+<div  class="left-contenido-wrapper" >
+    <div class="sidebar-nav">
+        <ul class="nav nav-list">
+            <li class="nav-header  jm-categoria_titulo ">Categorias</li>
+           
+            {% for item in categorias %}
+            <li  class="jm-categoria-item"  >
+                <a onclick="getCategorias(  '{{  path("getProductosPorCategoria"  , {  id_categoria: item.id }) }}' )"  href="#" >{{  item.nombre   }}</a>
+            </li>
+            {% endfor %}
+
+        </ul>
+    </div> 
+</div> 

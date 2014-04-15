@@ -1,0 +1,101 @@
+{% extends "SelnetTiendaOnlineBundle::template.html.twig" %}
+
+
+
+
+
+{% block contenido %}
+
+<div class="container">
+	<div class="row">
+		<div  id="left_content" class="col-md-2">
+			<div class="barra_spacer_2"></div>
+			<div class="barra_spacer_2"></div>
+			<div class="page-header pagina_header">
+				<h2>Categorias</h2>
+			</div>
+			<div class="barra_border"></div>
+			<ul  class="lista_secciones" >
+				
+				{% for categoria in categorias %}
+				<li  class="texto_aquamarina" > 
+					<a class="texto_aquamarina" href="{{  path('artsenal_mostrar_categorias' , {id_categoria: categoria.id}) }}">
+						{{  categoria.nombre }}
+					</a> 
+				</li>
+				{% endfor %}
+			</ul>
+		</div>
+
+
+
+		<div id="content" class="col-md-10">
+
+			<div class="row">				
+				<div class="col-md-9 col-md-offset-1">					
+					
+					<div class="barra_spacer_2"></div>
+
+
+
+					<div class="barra_spacer_2"></div>
+					
+
+					<div class="row">
+
+						<div class="col-md-4">
+							<div class="page-header pagina_header">
+								<h2  >{{  selected_categoria.nombre}}</h2>
+							</div>		
+						</div>
+
+						<div class="col-md-3 col-md-offset-5 ">
+
+							<select class="pull-right" style="margin-top: 5px;" onchange="loadSubcategorias( '{{  path('artsenal_subcategorias') }}' , this )" name="subcategoria" >
+								{% for subcat in selected_categoria.subcategorias %}
+								<option  
+								onchange="loadRequestInto( '{{  path('artsenal_mostrar_subcategorias' , {id_subcategoria: subcat.id}) }}' , '#productos' )" value="{{  subcat.id }}">{{  subcat.nombre }}</option>						
+								{% endfor %}
+							</select>	
+						</div>
+					</div>
+
+
+					<div id="productos" class="productos">
+
+						{% for row in productos| batch(4) %}
+						<div class="row producto_row" style="padding-top:20px;">
+							{% for producto in row %}
+							<div class="col-md-3"   style="padding-left: 5px; padding-right: 5px;" >
+								{% include 'SelnetTiendaOnlineBundle:Blocks:producto.preview.html.twig' with {'producto':  producto  } %}
+							</div>
+
+							{% endfor %}
+						</div>
+						{% endfor %}
+
+
+					</div>
+
+
+
+
+
+
+
+				</div>
+
+
+
+
+			</div>
+		</div>
+
+
+
+	</div>
+</div>
+
+
+
+{% endblock %}

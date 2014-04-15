@@ -1,0 +1,20 @@
+	
+
+<div class="col-md-4">
+	<div  class="producto_imagen"  style="background-image:url({{ asset( 'uploads/imagenes/' ~ producto.imagenes[0].url  ) }})" >				
+	</div>
+	
+</div>
+<div class="col-md-3">
+	<p  class="texto_aquamarina"  style=" font-weight: bold;"  >{{  detalle.producto.nombre }}</p>
+	<p  class="texto_gris_oscuro" >{{  detalle.producto.tienda.nombre }}</p>
+	<p  class="texto_gris_oscuro" ><a href="{{  path('remove_producto_cart', {'id_producto': detalle.producto.id}) }}">Eliminar</a></p>
+</div>
+<div class="col-md-1 col-md-offset-1 ">
+	<p  style="color:black; font-weight: bold;" >Cantidad</p>
+	<p>{{  detalle.cantidad }}</p>
+</div>
+<div class="col-md-1 col-md-offset-1">
+	<p style="color:black; font-weight: bold;" >Precio</p>
+	<p  class="texto_rosa"  style=" font-weight: bold;" >${{ detalle.producto.precio}}</p>
+</div>

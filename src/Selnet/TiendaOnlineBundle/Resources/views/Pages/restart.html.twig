@@ -1,0 +1,109 @@
+{% extends "SelnetTiendaOnlineBundle::template.html.twig" %}
+
+
+
+
+
+{% block contenido %}
+
+
+
+<div class="barra_spacer_3"></div>
+
+<div class="row">
+	<div class="col-md-10 col-md-offset-1">
+		<div class="page-header pagina_header">
+			<h2>Accede a tu cuenta !</h2>
+		</div>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-md-10 col-md-offset-1">
+		<div class="panel panel-default artsenal-panel ">
+			<div class="panel-body">
+
+				<div class="container">
+					
+					<div class="page-header pagina_header">
+						<h2>Ingresar!</h2>
+					</div>
+					<div class="barra_border"></div>
+
+
+
+					<div class="row">
+
+						<div  class="col-md-5 " >
+							<form class="form-horizontal" role="form">
+								{% if error %}
+								<div> <p style="font-family:lato_light ; color:red;font-size:18px;"  >Usuario o Contraseña incorrectos</p></div>
+								{% endif %}
+							</form>
+						</div>
+					</div>
+
+
+
+					<div class="row">
+
+						<div  class="col-md-6 " >
+
+
+							<form  action="{{ path('usuario_check') }}"  method="post" role="form" >
+
+
+								<div class="barra_spacer_2"></div>
+
+								<div class="form-group">
+									<label for="inputPassword3" class="control-label label_gris">Nombre de Usuario</label>
+									<div class="">
+										<input type="text" placeholder="Nombre de Usuario" class="form-control" style="width:70%;" required="required" name="_username" id="form_username">
+									</div>
+								</div>
+
+								<div class="form-group">
+									<label for="inputEmail3" class="control-label label_gris">Contraseña</label>
+									<div >
+										<input type="password" class="form-control" style="width:70%;" required="required" name="_password" id="form_password">
+									</div>
+								</div>
+
+
+
+								<div class="form-group">
+									<div >
+										<button type="submit" class="btn btn-default btn_aquamarino  ">Ingresar</button>
+									</div>
+								</div>
+
+							</form>
+
+							<div class="barra_spacer_2"></div>
+
+							<p   style="font-weight:bold;" >
+								<a class="texto_aquamarina" href="{{ path('fos_user_resetting_request') }}" >
+									Olvidaste tu contraseña?
+								</a>
+							</p>
+							<p  style="font-weight:bold;" >
+								<a class="texto_aquamarina" href="">
+									Olvidaste tu nombre de usuario o correo electronico?
+								</a>
+							</p>
+
+
+
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</div>
+
+	</div>
+</div>
+
+
+
+{% endblock %}

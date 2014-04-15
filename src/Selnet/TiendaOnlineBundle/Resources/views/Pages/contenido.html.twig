@@ -1,0 +1,147 @@
+{% extends "SelnetTiendaOnlineBundle::template.html.twig" %}
+
+
+
+
+
+{% block contenido %}
+
+
+
+
+
+
+<div class="container">
+	<div class="row">
+		<div  id="left_content" class="col-md-2 same-col-1 ">
+			<div class="barra_spacer_2"></div>
+			<div class="barra_spacer_2"></div>
+			<div class="page-header pagina_header">
+				<h2>Submenu</h2>
+			</div>
+			<div class="barra_border"></div>
+			<ul  class="lista_secciones" >
+				
+
+				<li style="margin-left:40px;font-weigth:bold;" class="texto_aquamarina" > 
+					<a class=" texto_aquamarina" href="{{  path('contenido_pagina',{tipo_contenido:'quienes_somos'}) }}">Quienes Somos</a>
+				</li>
+
+				<li style="margin-left:40px;font-weigth:bold;" class="texto_aquamarina" > 
+					<a class=" texto_aquamarina" href="{{  path('contenido_pagina',{tipo_contenido:'preguntas'}) }}">Preguntas</a>
+				</li>
+
+				<li style="margin-left:40px;font-weigth:bold;" class="texto_aquamarina" > 
+					<a class=" texto_aquamarina" href="{{  path('contenido_pagina',{tipo_contenido:'politicas'}) }}" >politicas</a>
+				</li>
+
+				<li style="margin-left:40px;font-weigth:bold;" class="texto_aquamarina" > 
+					<a class=" texto_aquamarina" href="{{  path('contenido_pagina',{tipo_contenido:'comprar'}) }}" >Comprar</a>
+
+				</li>
+
+				<li style="margin-left:40px;font-weigth:bold;" class="texto_aquamarina" > 
+					<a class=" texto_aquamarina" href="{{  path('contenido_pagina',{tipo_contenido:'vender'}) }}" >Vender</a>	 
+				</li>
+
+
+
+			</ul>
+		</div>
+
+
+
+		<div id="content" class="col-md-10  same-col-1 ">
+
+
+
+
+			<div class="barra_spacer_3"></div>
+
+			<div class="row">
+				<div class="col-md-10 col-md-offset-1">
+					<div class="page-header pagina_header">
+						<h2>{{  titulo }}</h2>
+					</div>
+				</div>
+			</div>
+
+
+
+
+
+
+			<div class="row">
+				<div class="col-md-10 col-md-offset-1">
+					<div class="panel panel-default artsenal-panel "  >
+						<div class="panel-body">
+
+							<div class="container-fluid">
+
+
+								<div class="col-md-12">
+
+									<div class="row">
+
+										<div  class="col-md-12" >
+
+
+											<div id="contenido1" class="row contenido_tabs" >
+
+
+												{% for item in contenido %}
+
+												<div class="barra_spacer_3"></div>
+												<div class="page-header pagina_header">
+													<h2>{{  item.titulo }}</h2>
+												</div>
+												<div class="barra_border"></div>
+												<div class="barra_spacer_1"></div>
+
+												<p  class="form_parrafo" >{{  item.contenido }}</p>
+
+												{% endfor %}
+
+
+											</div>
+
+										</div>
+									</div>
+
+
+								</div>
+
+
+							</div>
+						</div>
+
+						
+						<div class="barra_spacer_3"></div>
+						<div class="barra_spacer_3"></div>
+
+					</div>
+				</div>
+
+			</div>
+
+		</div>
+
+
+
+	</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% endblock %}

@@ -1,0 +1,17 @@
+     {% if  habilitado %}
+     <input type="submit" value="" onclick="quitarfavorito('{{ path("quitar_favorito" , { id_producto : producto.id }) }}'  )" 
+     class="art-submit_fav" style="width:91px;"  />
+     {% else %}
+     <input type="submit" value="" onclick="addfavorito('{{ path("agregar_favorito" , { id_producto : producto.id }) }}'  )" 
+     class="art-submit_fav_off" style="width:91px;"  />
+     {% endif %}
+
+     {% if error %}
+
+     <script  type="text/javascript" >
+     alert(  "{{  errorMsj }}" );
+     </script>
+
+     {% endif %}
+
+

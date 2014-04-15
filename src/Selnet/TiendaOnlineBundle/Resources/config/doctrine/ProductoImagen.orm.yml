@@ -1,0 +1,38 @@
+Selnet\TiendaOnlineBundle\Entity\ProductoImagen:
+    type: entity
+    table: producto_imagen
+    fields:
+        id:
+            id: true
+            type: integer
+            unsigned: false
+            nullable: false
+            generator:
+                strategy: IDENTITY
+        url:
+            type: string
+            length: 45
+            fixed: false
+            nullable: false
+        borrado:
+            type: integer
+            length: 1
+            fixed: true
+            nullable: true
+        created_at:
+            type: datetime
+            nullable: false
+        updated_at:
+            type: datetime
+            nullable: false
+    manyToOne:
+      producto:
+        targetEntity: Producto
+        inversedBy: imagenes
+        joinColumn:
+          name: producto_id
+          referencedColumnName: id
+
+    lifecycleCallbacks:
+        prePersist: [preInsert]
+        preUpdate: [preUpdate]

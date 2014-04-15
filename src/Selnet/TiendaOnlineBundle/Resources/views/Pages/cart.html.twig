@@ -1,0 +1,100 @@
+{% extends "SelnetTiendaOnlineBundle::template.html.twig" %}
+
+
+
+{% block contenido %}
+
+<div class="barra_spacer_3"></div>
+
+<div class="row">
+	<div class="col-md-10 col-md-offset-1">
+		<div class="page-header pagina_header">
+			<h2>Mi Cesta!</h2>
+		</div>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-md-10 col-md-offset-1">
+		<div class="panel panel-default artsenal-panel "style="border-top-width: 0px;" >
+			<div class="panel-body"  id="contenido_cart" >
+				<div class="container-fluid">
+					
+					
+
+					<div  class="col-md-8" >	
+
+						<div class="page-header pagina_header">
+							<h2>{{ venta.detalles | length }}  Producto(s)</h2>
+						</div>
+						<div class="barra_border"></div>	
+
+						<div  class="row " >
+							<div class="barra_spacer_2"></div>
+							{% for detalle in venta.detalles %}
+							<div class="row">
+								{% include 'SelnetTiendaOnlineBundle:Blocks:cart.producto.html.twig' with {'producto': detalle.producto} %}
+							</div>
+							<hr/>
+							{% endfor %}
+							<div class="barra_spacer_3"></div>						
+						</div>
+
+					</div>
+					<div  class="col-md-4 " >						
+						<div class="panel panel-producto-modal">
+							<div class="panel-body">
+
+								<div class="row">
+									<dic class="col-md-4">
+										<p  class="texto_gris_oscuro">Precio</p>
+										<p  class="texto_gris_oscuro">Envio</p>
+
+									</dic>	
+									<dic class="col-md-2 col-md-offset-4">
+										<p class="texto_gris_oscuro" style="text-align:right;" >${{ venta.total }}</p>
+										<p class="texto_gris_oscuro" style="text-align:right;" >$5</p>
+									</dic>	
+
+								</div>
+								<hr>
+
+								<div class="row">
+									<dic class="col-md-4">
+										<p style="color:black;font-weight:bold;" >Total</p>
+
+									</dic>	
+									<dic class="col-md-2 col-md-offset-4">
+										<p  style="color:black;font-weight:bold;" style="text-align:right;" >${{ venta.total + 5 }}</p>								
+									</dic>	
+
+								</div>
+								
+
+								<div class="row">
+									<div class="col-sm-offset-1 col-sm-10">
+										<button onclick="window.location='{{  path('terminar_compra') }}'" class="btn btn-default pull-right btn_aquamarino"  style="width:100%;" type="submit">Continuar la compra</button>
+									</div>	
+								</div>
+
+							</div>
+						</div>
+
+					</div>
+
+
+
+				</div>
+
+			</div>
+		</div>
+	</div>
+
+</div>
+
+<div class="barra_spacer_3"></div>	
+<div class="barra_spacer_3"></div>	
+
+
+
+{% endblock %}

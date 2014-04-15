@@ -1,0 +1,57 @@
+Setnet\ArtsenalBundle\Entity\ArtSuscripciones:
+    type: entity
+    table: art_suscripciones
+    fields:
+        id:
+            id: true
+            type: integer
+            unsigned: false
+            nullable: false
+            generator:
+                strategy: IDENTITY
+        nombre:
+            type: string
+            length: 45
+            fixed: false
+            nullable: true
+        cantidadProductos:
+            type: integer            
+            nullable: false
+        cantidadProductos:
+            type: integer            
+            nullable: false
+        descuentoFeria:
+            type: integer            
+            nullable: false
+        destacarEnPgina:
+            type: integer            
+            nullable: false
+        beneficioPartners:
+            type: integer            
+            nullable: false
+        postBlogs:
+            type: integer            
+            nullable: false
+        codigoHtml:
+            type: text            
+            nullable: false
+        descripcion:
+            type: text            
+            nullable: false
+        costo:
+            type: string 
+            nullable: false
+        estado:
+            type: integer 
+            nullable: false    
+
+
+    oneToMany:
+      usuarios:
+        targetEntity: ArtUsuario
+        mappedBy: suscripcion
+
+
+
+
+    lifecycleCallbacks: {  }

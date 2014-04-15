@@ -1,0 +1,35 @@
+Setnet\ArtsenalBundle\Entity\ArtTiendaLike:
+    type: entity
+    table: art_tienda_like
+    fields:
+        id:
+            id: true
+            type: integer
+            unsigned: false
+            nullable: false
+            generator:
+                strategy: IDENTITY
+        fechaCreacion:
+            type: datetime
+            nullable: true
+            column: fecha_creacion
+    manyToOne:
+        idTienda:
+            targetEntity: ArtTienda
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_tienda:
+                    referencedColumnName: id
+            orphanRemoval: false
+        idUsuario:
+            targetEntity: ArtPerfil
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_usuario:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

@@ -1,0 +1,35 @@
+Setnet\ArtsenalBundle\Entity\ArtUsuarioRol:
+    type: entity
+    table: art_usuario_rol
+    fields:
+        id:
+            id: true
+            type: integer
+            unsigned: false
+            nullable: false
+            generator:
+                strategy: IDENTITY
+        fechaCreacion:
+            type: datetime
+            nullable: true
+            column: fecha_creacion
+    manyToOne:
+        idRol:
+            targetEntity: ArtRol
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_rol:
+                    referencedColumnName: id
+            orphanRemoval: false
+        idUsuario:
+            targetEntity: ArtUsuario
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_usuario:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

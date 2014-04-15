@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>{% block title %}Artsenal{% endblock %}</title>
+
+        <link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/bootstrap-responsive.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/BreadCrumb.css') }}">
+
+    </head>
+    <body>
+        <div>
+
+            <div class="navbar navbar-inverse">
+                <div class="navbar-inner">
+                    <div class="container-fluid">
+                        <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="brand hidden-desktop" href="#">Artsenal</a>
+                        <div class="nav-collapse collapse">
+                            <ul class="nav">
+                                <li ><a href="#">Comprar</a></li>
+                                <li><a href="#about">Vender</a></li>
+                                <li><a href="#contact">Blog</a></li>
+                            </ul>
+                        </div><!--/.nav-collapse -->
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+
+            <div class="container-fluid">
+                <div class="row-fluid">
+
+                    <div  class="span12" >
+
+                        <div id="breadCrumb" class="breadCrumb ">
+                            <ul>                    
+                                <li>
+                                    <a id="tiendaLink" href="#tiendaForm"  class="showForm" >Nombre de tienda</a>
+                                </li>  
+                                <li>
+                                    <a id="articulosLink" href="#articulosForm"  class="showForm" >Articulos</a>
+                                </li>  
+                                <li>
+                                    <a id="facturacionLink" href="#facturacionForm"  class="showForm" >Facturacion</a>
+                                </li>  
+                                <li>
+                                    <a id="endLink" href="#endForm"  class="showForm"  >Abre tu tienda</a>
+                                </li>                                              
+                            </ul>
+                        </div>
+                    </div>        
+                    <div>
+                        <div class="row-fluid">
+                            <div id="tiendaForm" class="tabForm span12"  >
+
+
+                                <p>El nombre de tu tienda aparece junto con tus artículos en el mercado de Artsenal.</p>
+                                <p>Elige un nombre que tenga un significado personal o ayude a identificar lo que hay en tu tienda</p>
+
+
+                                <form  id="formTienda" action="{{ path('setnet_artsenal_nueva_tienda') }}" method="post" {{ form_enctype(formTienda) }}>
+                                        {{ form_widget(formTienda) }}
+                                        <input type="submit" />
+                                    </form>
+
+
+                                </div>
+                            </div>
+
+
+                            <div class="row-fluid">
+                                <div id="articulosForm" class="tabForm span12"  style="display:none;"  >
+
+
+                                    <fieldset>
+                                        <legend></legend>
+                                        <form  id="formProducto" action="{{ path('setnet_artsenal_nuevo_imagen') }}" method="post" {{ form_enctype(formProductoImagen1) }}>
+                                                {{ form_widget(formProductoImagen1) }}
+                                                <input type="submit" />
+                                            </form>
+                                        <form  id="formProducto" action="{{ path('setnet_artsenal_nuevo_imagen') }}" method="post" {{ form_enctype(formProductoImagen1) }}>
+                                                {{ form_widget(formProductoImagen2) }}
+                                                <input type="submit" />
+                                            </form>
+                                        <form  id="formProducto" action="{{ path('setnet_artsenal_nuevo_imagen') }}" method="post" {{ form_enctype(formProductoImagen1) }}>
+                                                {{ form_widget(formProductoImagen3) }}
+                                                <input type="submit" />
+                                            </form>
+                                        <form  id="formProducto" action="{{ path('setnet_artsenal_nuevo_imagen') }}" method="post" {{ form_enctype(formProductoImagen1) }}>
+                                                {{ form_widget(formProductoImagen4) }}
+                                                <input type="submit" />
+                                            </form>
+                                        <form  id="formProducto" action="{{ path('setnet_artsenal_nuevo_imagen') }}" method="post" {{ form_enctype(formProductoImagen1) }}>
+                                                {{ form_widget(formProductoImagen5) }}
+                                                <input type="submit" />
+                                            </form>
+                                        </fieldset>
+
+                                    <fieldset>
+                                        <legend></legend>
+                                        <form  id="formProducto" action="{{ path('setnet_artsenal_nuevo_producto') }}" method="post" {{ form_enctype(formProducto) }}>
+                                                {{ form_widget(formProducto) }}
+                                                <input type="submit" />
+                                            </form>
+                                        </fieldset>
+                                    </div>
+                                </div>
+
+
+                                <div class="row-fluid">
+                                    <div id="facturacionForm" class="tabForm span12"  style="display:none;"  >
+                                        contenido 3
+                                    </div>
+                                </div>
+                                <div class="row-fluid">
+                                    <div id="endForm" class="tabForm span12"  style="display:none;"  >
+                                        contenido 4
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+
+
+
+                        </div>
+
+
+                        <script src="{{ asset('js/jquery.js') }}"></script>
+                        <script src="{{ asset('js/jquery.jBreadCrumb.js') }}"></script>              
+                        <script src="{{ asset('js/jquery.form.js') }}"></script>                                                      
+                        <script src="{{ asset('js/bootstrap.js') }}"></script>
+
+                        <script type="text/javascript" >
+
+
+                            // pre-submit callback 
+                            function showRequest(formData, jqForm, options) {
+
+                                return true;
+                            }
+
+                            // post-submit callback 
+                            function showResponse(responseText, statusText, xhr, $form) {
+
+
+                                if (responseText)
+                                    $("#articulosLink").trigger("click");
+
+
+                            }
+
+
+
+                            $(document).ready(
+                                    function() {
+
+
+                                        jQuery("#breadCrumb").jBreadCrumb();
+
+
+                                        ///// paneles dinamicos por clic en breadcumb
+                                        $(".showForm").each(function() {
+
+                                            $(this).click(function() {
+
+                                                $(".tabForm").each(function() {
+                                                    $(this).hide()
+                                                });
+
+                                                $($(this).attr('href')).show();
+
+                                            });
+
+                                        });
+
+
+
+                                        var options = {
+                                            beforeSubmit: showRequest, // pre-submit callback 
+                                            success: showResponse  // post-submit callback 
+
+                                        };
+
+
+                                        $('#formTienda').ajaxForm(options);
+
+
+                                    });
+
+
+
+                            </script>
+
+
+                            </body>
+                            </html>
+
+
+

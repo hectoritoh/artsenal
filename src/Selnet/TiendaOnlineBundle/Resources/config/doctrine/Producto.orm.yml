@@ -1,0 +1,68 @@
+Selnet\TiendaOnlineBundle\Entity\Producto:
+    type: entity
+    table: producto
+    fields:
+        id:
+            id: true
+            type: integer
+            unsigned: false
+            nullable: false
+            generator:
+                strategy: IDENTITY
+        nombre:
+            type: string
+            length: 45
+            fixed: false
+            nullable: false
+        cantidad:
+            type: integer
+            nullable: false
+        precio:
+            type: float
+            nullable: false
+        descripcion:
+            type: text
+            fixed: false
+            nullable: true
+        borrado:
+            type: integer
+            length: 1
+            fixed: true
+            nullable: true
+        created_at:
+            type: datetime
+            nullable: false
+        updated_at:
+            type: datetime
+            nullable: false
+    manyToOne:
+      ocasion:
+        targetEntity: ProductoOcasion
+        joinColumn:
+          name: ocasion_id
+          referencedColumnName: id
+      destinatario:
+        targetEntity: ProductoDestinatario
+        joinColumn:
+          name: destinatario_id
+          referencedColumnName: id
+      subcategoria:
+        targetEntity: Subcategoria
+        joinColumn:
+          name: subcategoria_id
+          referencedColumnName: id
+      tienda:
+        targetEntity: Tienda
+        joinColumn:
+          name: tienda_id
+          referencedColumnName: id
+
+    oneToMany:
+        imagenes:
+          targetEntity: ProductoImagen
+          mappedBy: producto
+          cascade: [ "persist" ]
+
+    lifecycleCallbacks:
+        prePersist: [preInsert]
+        preUpdate: [preUpdate]

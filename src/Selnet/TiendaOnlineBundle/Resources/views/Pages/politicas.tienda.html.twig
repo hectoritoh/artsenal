@@ -1,0 +1,110 @@
+{% extends "SelnetTiendaOnlineBundle::template.html.twig" %}
+
+
+
+{% block contenido %}
+
+<div class="barra_spacer_3"></div>
+
+<div class="row">
+	<div class="col-md-10 col-md-offset-1">
+		<div class="page-header pagina_header">
+			<h2>Politicas de tienda.</h2>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+<div class="row">
+	<div class="col-md-10 col-md-offset-1">
+		<div class="panel panel-default artsenal-panel "style="border-top-width: 0px;" >
+			<div class="panel-body">
+
+				<div class="container-fluid">
+
+					<div id="contenido1" class="row contenido_tabs" >
+
+						<div class="page-header pagina_header">
+							<h2>Escribe las politicas con las que realizas tus ventas </h2>
+						</div>
+						<div class="barra_border"></div>
+						<div class="barra_spacer_2"></div>
+
+						<div class="barra_spacer_3"></div>
+					</div>
+
+
+
+					<div  class="col-md-9" >
+						
+
+						<div id="contenido1" class="row contenido_tabs" >
+
+
+
+
+
+
+							{% form_theme form 'SelnetTiendaOnlineBundle:FormTemplate:Artsenal.fields.html.twig' %}
+
+							<form  action="{{ path('politicas_tienda') }}"  class="form-horizontal" method="post" role="form"  {{ form_enctype(form) }} >
+								
+
+							{{  form_row(  form.mensajeBienvenida , {'help_bot':'Mensaje de bienvenida , filosofia , etc'} ) }}
+								<hr/>
+								{{  form_row(  form.politicaPagos, {'help_bot':'Fechas de pago , condiciones , fechas limite , impuestos, politica de cancelacion'} ) }}
+
+								<hr/>
+								{{  form_row(  form.politicaReembolso , {'help_bot':'condiciones articulos adminisibles , danios , etc '} ) }}
+								
+								<hr/>
+								{{  form_row(  form.informacionAdicional, {'help_bot':'Politicas adicionales, pregunts frecuentes , pedidos, ventas al por mayor, consignaciones , garantias , etc '} ) }}
+
+								<hr/>
+								{{  form_row(  form.informacionVendedor, {'help_bot':'Algunos paises requieren informacion adicional del vendedor , tales como son nombre, direccion fisica , etc'} ) }}
+
+								<hr/>
+
+								<div class="form-group">
+
+									<div class="col-sm-9 col-sm-offset-1 "  >
+
+
+
+										<button type="submit" class="btn btn-default pull-right btn_aquamarino">Guardar</button>
+
+
+									</div>	
+								</div>
+								<div class="form-group">
+									<div class="col-sm-offset-2 col-sm-6">
+										
+									</div>
+								</div>
+								{{ form_row(form._token) }} 
+							</form>
+							<div class="barra_spacer_3"></div>
+							<div class="barra_spacer_3"></div>
+
+
+						</div>
+
+
+					</div>
+				</div>
+
+
+
+			</div>
+		</div>
+	</div>
+
+</div>
+</div>
+
+
+
+{% endblock %}

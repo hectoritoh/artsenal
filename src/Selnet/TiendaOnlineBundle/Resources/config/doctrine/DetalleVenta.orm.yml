@@ -1,0 +1,47 @@
+Selnet\TiendaOnlineBundle\Entity\DetalleVenta:
+    type: entity
+    table: detalle_venta
+    fields:
+        id:
+            id: true
+            type: integer
+            unsigned: false
+            nullable: false
+            generator:
+                strategy: IDENTITY
+        cantidad:
+            type: integer
+            fixed: false
+            nullable: false
+        precio:
+            type: float
+            fixed: false
+            nullable: false
+        borrado:
+            type: integer
+            length: 1
+            fixed: true
+            nullable: true
+        created_at:
+            type: datetime
+            nullable: false
+        updated_at:
+            type: datetime
+            nullable: false
+    manyToOne:
+      producto:
+        targetEntity: Producto
+        joinColumn:
+          name: producto_id
+          referencedColumnName: id
+      venta:
+        targetEntity: Venta
+        inversedBy: detalles
+        joinColumn:
+          name: venta_id
+          referencedColumnName: id
+
+
+    lifecycleCallbacks:
+        prePersist: [preInsert]
+        preUpdate: [preUpdate]

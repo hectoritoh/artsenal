@@ -1,0 +1,96 @@
+{% extends "SetnetArtsenalBundle:Default:cart.template.twig" %}
+
+
+{% block contenido %}
+
+<style type="text/css" >
+
+    </style>
+
+
+
+    <div class="container-fluid art-center-form"  >
+
+        <p class="lead"  style="font-family: lato_light;" >Mi Cesta</p>
+        <div class="row-fluid">
+
+            <div  class="span12" >
+                <div  class="cart-holder " style="width: 920px;">
+                    <div class="row-fluid" >
+
+                        <div  class="span8" >
+                            <h4 class="jm-categoria_titulo ">Mis productos</h4>
+                            {% include 'SetnetArtsenalBundle:Producto:producto.cart.html.twig' %}
+                        </div>
+
+
+                        <div  class="span4" >
+                            <div  class="jm-pago-holder" >
+                                <div class="jm_pago_element" >
+                                    <label for="pais_envio" >Enviar a</label>
+                                    <select  name="pais_envio" class="jm_select" id="pais_envio"  >
+                                        <option>Ecuador</option>
+                                        <option>Ecuador</option>
+                                        <option>Ecuador</option>
+                                        <option>Ecuador</option>
+                                        <option>Ecuador</option>
+                                        <option>Ecuador</option>
+                                        <option>Ecuador</option>
+                                        <option>Ecuador</option>
+                                        <option>Ecuador</option>
+                                    </select>
+                                </div>
+                                <div  class="jm_pago_element" >
+                                    <label for="modo_pago" >Forma de pago</label>
+
+                                    <select  name="modo_pago" class="jm_select" id="modo_pago"  >
+                                        <option id="visa" >Visa</option>
+                                        <option id="master" >MasterCard</option>
+                                        <option id="paypal" >PayPal</option>
+                                        <option id="amex"  >AmericanExpress</option>
+                                    </select>
+                                </div>
+                                <div  class="jm_pago_element"  >    
+                                    <div  style="width: 206px;text-align: center;margin: 0 auto;" >
+
+                                        <p  class="left" >Precio</p>
+                                        <p  class="right" >$25.00</p>              
+                                        <div style="clear: both;" ></div>
+                                        <p  class="left" >Envio</p>
+                                        <p  class="right" >$5.00</p>              
+                                        <div style="clear: both;" ></div>
+
+                                        <div  style="position: relative; border-bottom: 1px solid black; width: 100%;" ></div> 
+
+                                        <p  class="left" style="font-weight: bold; " >Total</p>
+                                        <p  class="right" style="font-weight: bold; " >$30.00</p>              
+
+                                        <div style="clear: both;" ></div>
+
+                                        <input type="submit" value="Continuar" style="width: 91px;" class="art-submit">
+
+                                        <br/>
+                                        <br/>
+                                        <br/>
+                                        <br/>
+                                        <br/>
+                                        <br/>
+                                        <br/>
+                                        <br/>
+                                        <br/>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                    </div>
+                </div>
+            </div>        
+
+        </div>
+    </div>
+
+{% endblock contenido %}

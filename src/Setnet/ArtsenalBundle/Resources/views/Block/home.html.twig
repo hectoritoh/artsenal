@@ -1,0 +1,44 @@
+
+<div  class="contenido-wrapper " >
+
+    <div  class="row-fluid" >
+
+        <div class="span10" >
+
+
+
+        <div id="banners">
+            {% render( controller('SetnetArtsenalBundle:Default:getBanners' ) ) %}                        
+        </div>
+
+
+        <h2 class="jm_lastest_titulo" style="margin-bottom: 5px;" >Ultimas Artesanias</h2>
+
+
+        <div id="prodSlider">
+            {% render( controller('SetnetArtsenalBundle:Default:getProductosSlider' ) ) %}                        
+        </div>
+
+
+
+        <h2 class="jm_lastest_titulo" style="margin-bottom: 5px;" >Ultimas Tiendas</h2>
+
+
+        <div id="tiendaSlider">
+            {% render( controller('SetnetArtsenalBundle:Default:getTiendasSlider' ) ) %}                        
+        </div>
+
+
+        <h2 class="jm_lastest_titulo" style="margin-bottom: 5px;" >Productos mas visitados</h2>
+
+
+        <div id="prodVisitadosSlider">
+            {% render( controller('SetnetArtsenalBundle:Default:getProductosMasVisitadosSlider' ) ) %}                        
+        </div>
+
+
+        
+    </div>
+</div>
+
+</div>

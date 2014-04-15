@@ -1,0 +1,7 @@
+Setnet\ArtsenalBundle\Entity\ArtProducto:
+    properties:
+        imagenes:
+            - Count:
+                min: 1
+                minMessage: "Debe de ingresar minimo una imagen"
+                

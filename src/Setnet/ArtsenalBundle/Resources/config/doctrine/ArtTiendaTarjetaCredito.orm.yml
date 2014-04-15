@@ -1,0 +1,90 @@
+Setnet\ArtsenalBundle\Entity\ArtTiendaTarjetaCredito:
+    type: entity
+    table: art_tienda_tarjeta_credito
+    fields:
+        id:
+            id: true
+            type: integer
+            unsigned: false
+            nullable: false
+            generator:
+                strategy: IDENTITY
+        tarjeta:
+            type: string
+            length: 20
+            fixed: false
+            nullable: false
+        numeroTarjeta:
+            type: string
+            length: 30
+            fixed: false
+            nullable: false
+            column: numero_tarjeta
+        mesExpira:
+            type: string
+            length: 10
+            fixed: false
+            nullable: false
+            column: mes_expira
+        anioExpira:
+            type: string
+            length: 10
+            fixed: false
+            nullable: false
+            column: anio_expira
+        ccv:
+            type: string
+            length: 20
+            fixed: false
+            nullable: false
+        titular:
+            type: string
+            length: 40
+            fixed: false
+            nullable: false
+        telefono:
+            type: string
+            length: 30
+            fixed: false
+            nullable: false
+        pais:
+            type: string
+            length: 30
+            fixed: false
+            nullable: false
+        calle:
+            type: string
+            length: 100
+            fixed: false
+            nullable: false
+        direccionInfo:
+            type: string
+            length: 100
+            fixed: false
+            nullable: false
+            column: direccion_info
+        ciudad:
+            type: string
+            length: 30
+            fixed: false
+            nullable: false
+        estado:
+            type: string
+            length: 30
+            fixed: false
+            nullable: false
+        zip:
+            type: string
+            length: 10
+            fixed: false
+            nullable: false
+            
+            
+        idTienda:
+            type: integer
+            unsigned: false
+            nullable: false
+            column: id_tienda
+            
+         
+    lifecycleCallbacks: {  }

@@ -1,0 +1,75 @@
+Setnet\ArtsenalBundle\Entity\ArtMensaje:
+    type: entity
+    table: art_mensaje
+    fields:
+        id:
+            id: true
+            type: integer
+            unsigned: false
+            nullable: false
+            generator:
+                strategy: IDENTITY
+        contenido:
+            type: string
+            length: 300
+            fixed: false
+            nullable: true
+        titulo:
+            type: string
+            length: 45
+            fixed: false
+            nullable: true
+        leido:
+            type: string
+            length: 1
+            fixed: true
+            nullable: true
+        fechaLeido:
+            type: datetime
+            nullable: true
+            column: fecha_leido
+        created:
+          type: datetime
+          gedmo:
+            timestampable:
+              on: create
+        updated:
+          type: datetime
+          gedmo:
+            timestampable:
+              on: update                
+        borrado:
+            type: string
+            length: 1
+            fixed: true
+            nullable: true
+    manyToOne:
+        carpeta:
+            targetEntity: ArtMensajeCarpeta
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_carpeta:
+                    referencedColumnName: id
+            orphanRemoval: false
+        destinatario:
+            targetEntity: ArtUsuario
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                destinatario:
+                    referencedColumnName: id
+            orphanRemoval: false
+        remitente:
+            targetEntity: ArtUsuario
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                remitente:
+                    referencedColumnName: id
+            orphanRemoval: false
+
+    lifecycleCallbacks: {  }

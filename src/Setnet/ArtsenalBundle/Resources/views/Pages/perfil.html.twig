@@ -1,0 +1,66 @@
+{% extends 'SetnetArtsenalBundle::layout.sidebar.html.twig' %}
+
+
+
+{% block left_contenido %} 
+
+
+<div  class="left-contenido-wrapper" >
+    <div class="sidebar-nav">
+        <ul class="nav nav-list">
+           
+            <li  class="jm-categoria-item"  >
+                <img src="{{  asset('uploads/perfiles/'  ~ perfil.imagenPerfil ) }}" alt="" />
+                
+            </li>            
+            
+            <li  class="jm-categoria-item"  >
+                <a href="#" >{{perfil.nombre}}</a>
+            </li>            
+
+            <li  class="jm-categoria-item"  >
+                <a href="#"  style="color: gray; font-weight: normal;"     >{{perfil.ciudad}}</a>
+            </li>            
+            <li  class="jm-categoria-item"  >
+                <a href="#" ></a>
+            </li>            
+            <li  class="jm-categoria-item"  >
+                <a href="#" ></a>
+            </li>            
+
+        </ul>
+    </div> 
+</div> 
+
+<div  class="left-contenido-wrapper" >
+    <div class="sidebar-nav">
+        <ul class="nav nav-list">
+           
+            <li  class="jm-categoria-item"  >
+                <a href="#" >Perfil</a>
+            </li>            
+            <li  class="jm-categoria-item"  >
+                <a href="#" >Favoritos</a>
+            </li>            
+            <li  class="jm-categoria-item"  >
+                <a href="#" >Seguidores</a>
+            </li>            
+            <li  class="jm-categoria-item"  >
+                <a href="#" >Contactar</a>
+            </li>        
+
+        </ul>
+    </div> 
+</div> 
+
+{% endblock %}
+
+
+
+{% block contenido %} 
+
+
+    {{  render( controller("SetnetArtsenalBundle:Perfil:index")) }}
+
+
+{% endblock %}

@@ -1,0 +1,324 @@
+{% extends "SelnetTiendaOnlineBundle::template.html.twig" %}
+
+
+
+{% block contenido %}
+
+<div class="barra_spacer_3"></div>
+
+<div class="row">
+	<div class="col-md-10 col-md-offset-1">
+		<div class="page-header pagina_header">
+			<h2>Bienvenidos a nuestra comunidad de vendedores!</h2>
+		</div>
+	</div>
+</div>
+
+
+
+<div class="row">
+	<div class="col-md-10 col-md-offset-1">
+		<div class="panel panel-default artsenal-panel "  style="margin-bottom: 0px; border-bottom-width: 0px;" >
+			<div class="panel-body"></div>
+			<div class="container-fluid">
+				<div class="row">
+
+					<div  class="col-md-12" >
+						<div class="row  tab-holder">
+							<div  class="col-md-3  " >
+								<a href="#" class="tabs_tienda tabs_tienda_selected" onclick="mostrar_contenido(1)"  >Nombre de la tienda</a>
+							</div>
+							<div  class="col-md-2  " >
+								<a href="#" class="tabs_tienda" onclick="mostrar_contenido(2)"  >Articulos</a>
+							</div>
+							<div  class="col-md-2  " >
+								<a href="#" class="tabs_tienda" onclick="mostrar_contenido(3)"  >Membresias</a>
+							</div>
+							<div  class="col-md-2  " >
+								<a href="#" class="tabs_tienda" onclick="mostrar_contenido(4)"  >Abre tu tienda</a>
+							</div>
+
+					{# 		<div  class="col-md-3  " >
+								<a href="#" class="tabs_tienda" onclick="mostrar_contenido(5)"  >Vista previa</a>
+							</div>
+							#}
+						</div>
+					</div>
+				</div>
+			</div>
+
+
+		</div>
+	</div>
+</div>
+
+
+<div class="row">
+	<div class="col-md-10 col-md-offset-1">
+		<div class="panel panel-default artsenal-panel "style="border-top-width: 0px;" >
+			<div class="panel-body">
+
+				<div class="container-fluid">
+
+
+					<div  class="col-md-11" >
+						
+
+						<div id="contenido1" class="row contenido_tabs" >
+
+							<div class="page-header pagina_header">
+								<h2>Nombre de tienda</h2>
+							</div>
+							<div class="barra_border"></div>
+							<div class="barra_spacer_2"></div>
+							
+
+							<p  class="form_parrafo" >El nombre de tu tienda aparece junto con tus articulos en el mercado de Artsenal.</p>
+							<p class="form_parrafo" >Elije un nombre que tenga significado personal o ayude a identificar lo que hay en tu tienda.</p>
+							<div class="barra_spacer_3"></div>
+							
+
+							{% form_theme form_tienda 'SelnetTiendaOnlineBundle:FormTemplate:Artsenal.fields.html.twig' %}
+
+							<form  action="{{ path('creacion_de_tienda') }}"  class="form-horizontal" method="post" role="form"  {{ form_enctype(form_tienda) }} >
+								
+
+
+								<div class="form-group">
+									{{ form_label(   form_tienda.nombre ,null ,  {'label_attr': {'class': ' col-sm-2 control-label label_gris ' , 'style':'width:80px;'}}  ) }}
+									
+									<div class="col-sm-7">
+										{{ form_widget(form_tienda.nombre, {'attr': {'class': 'form-control input_mediano'}}) }}
+									</div>
+								</div>
+
+								<div class="form-group">
+									<div class="col-sm-offset-2 col-sm-6">
+										<button type="submit" class="btn btn-default pull-right btn_aquamarino">Guardar</button>
+									</div>
+								</div>
+								{{ form_row(form_tienda._token) }} 
+							</form>
+
+						</div>
+
+
+						<div id="contenido2" class="row contenido_tabs"   style="display:none;"  >
+
+							{{ render(controller('SelnetTiendaOnlineBundle:Tienda:productosTienda')) }}
+
+						</div>
+
+
+						<div id="contenido3" class="row contenido_tabs" style="display:none;" >
+
+							<p style="margin:10px;" class="form_parrafo" >Selecciona un tipo de Membresia para tu cuenta. verifica los beneficios que te brinda cada una de ellas </p>
+
+							<div class="row">
+
+								<div class="col-md-5">
+									<table class="table">
+										<thead>
+											<tr>
+												<th>Beneficios</th>
+											</tr>
+										</thead>
+										<tbody>
+
+											<tr>
+												<td>Descuento en feria</td>
+											</tr>
+											<tr>
+												<td>Destacar en pagina principal</td>
+											</tr>
+											<tr>
+												<td>Post/reportaje en blog y redes sociales</td>
+											</tr>
+											<tr>
+												<td>Beneficios con Partners</td>
+											</tr>
+											<tr>
+												<td>Numero de Productos a postear  </td>
+											</tr>
+											<tr>
+												<td>Inversion en Membresia</td>
+											</tr>
+
+										</tbody>
+									</table>
+
+								</div>
+								<div class="col-md-7">
+									<table class="table tabla-centrada">
+										<thead>
+											<tr>
+												<th  style="text-align: center;" >Bronce</th>
+												<th  style="text-align: center;" >Plata</th>
+												<th  style="text-align: center;" >Oro</th>
+												<th  style="text-align: center;" >Platino</th>
+											</tr>
+										</thead>
+										<tbody>
+
+											<tr>
+												<td>0%</td>
+												<td>0%</td>
+												<td>5%</td>
+												<td>10%</td>
+												
+											</tr>
+
+											<tr>
+												<td><span style="color:red;" class="glyphicon  glyphicon-remove"></span></td>
+												<td><span style="color:red;" class="glyphicon  glyphicon-remove"></span></td>										 
+												<td><span style="color:green;" class="glyphicon  glyphicon-ok"></span></td>
+												<td><span style="color:green;" class="glyphicon  glyphicon-ok"></span></td>
+												
+											</tr>
+
+											<tr>
+												<td><span style="color:red;" class="glyphicon  glyphicon-remove"></span></td>
+												<td><span style="color:red;" class="glyphicon  glyphicon-remove"></span></td>
+												
+												<td><span style="color:green;" class="glyphicon  glyphicon-ok"></span></td>
+												<td><span style="color:green;" class="glyphicon  glyphicon-ok"></span></td>
+												
+											</tr>
+
+											<tr>
+												<td><span style="color:red;" class="glyphicon  glyphicon-remove"></span></td>
+												<td><span style="color:red;" class="glyphicon  glyphicon-remove"></span></td>
+												
+												<td><span style="color:red;" class="glyphicon  glyphicon-remove"></span></td>
+												<td><span style="color:green;" class="glyphicon  glyphicon-ok"></span></td>
+												
+											</tr>
+
+											<tr>
+												<td>3</td>
+												<td>5</td>
+												<td>10</td>
+												<td>Ilimitado</td>												
+											</tr>
+											
+											<tr>
+												<td><button type="button" class="btn btn-success" data-toggle="button" onclick="$('.cuentas').hide()" >Gratis</button></td>
+												<td><button type="button" class="btn btn-success" data-toggle="button"  onclick="mostrarCuentas('plata')">$25</button></td>
+												<td><button type="button" class="btn btn-success" data-toggle="button" onclick="mostrarCuentas('oro')" >$50</button></td>
+												<td><button type="button" class="btn btn-success" data-toggle="button" onclick="mostrarCuentas('platino')" >$75</button></td>
+
+											</tr>
+
+
+
+										</tbody>
+									</table>
+
+								</div>	
+
+							</div>
+						</div>
+
+
+						<div id="contenido4" class="row contenido_tabs" style="display:none;" >
+
+							<div class="barra_spacer_10"></div>
+							<div class="page-header pagina_header">
+								<h3  style="text-align: center;" >Felicidades, ya eres parte de la comunidad de vendedores Artsenal</h3>
+							</div>
+
+
+
+
+							<div id="platino" class="platino cuentas"  style="display:none;" >
+
+								<div class="barra_spacer_3"></div>
+								<div class="page-header pagina_header">
+									<h3  style="text-align: center;" >Tu tienda esta en proceso de verificacion una vez recibido el pago mediante paypal podras recibir los beneficios contratados</h3>
+								</div>
+								<div class="barra_spacer_3"></div>
+
+
+
+
+								<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+									<input type="hidden" name="cmd" value="_s-xclick">
+									<input type="hidden" name="encrypted" value="-----BEGIN PKCS7-----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-----END PKCS7-----
+									">
+									<input type="image" src="https://www.paypalobjects.com/es_XC/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal, la forma más segura y rápida de pagar en línea.">
+									<img alt="" border="0" src="https://www.paypalobjects.com/es_XC/i/scr/pixel.gif" width="1" height="1">
+								</form>
+
+							</div>
+
+
+							<div id="oro" class="cuentas oro"    style="display:none;" >	
+								
+
+								<div class="barra_spacer_3"></div>
+								<div class="page-header pagina_header">
+									<h3  style="text-align: center;" >Tu tienda esta en proceso de verificacion una vez recibido el pago mediante paypal podras recibir los beneficios contratados</h3>
+								</div>
+								<div class="barra_spacer_3"></div>
+
+
+								<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+									<input type="hidden" name="cmd" value="_s-xclick">
+									<input type="hidden" name="encrypted" value="-----BEGIN PKCS7-----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-----END PKCS7-----
+									">
+									<input type="image" src="https://www.paypalobjects.com/es_XC/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal, la forma más segura y rápida de pagar en línea.">
+									<img alt="" border="0" src="https://www.paypalobjects.com/es_XC/i/scr/pixel.gif" width="1" height="1">
+								</form>
+
+
+							</div>
+							<div  id="plata" class="cuentas plata"  style="display:none;" >	
+								
+
+								<div class="barra_spacer_3"></div>
+								<div class="page-header pagina_header">
+									<h3  style="text-align: center;" >Tu tienda esta en proceso de verificacion una vez recibido el pago mediante paypal podras recibir los beneficios contratados</h3>
+								</div>
+								<div class="barra_spacer_3"></div>
+
+
+								<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+									<input type="hidden" name="cmd" value="_s-xclick">
+									<input type="hidden" name="encrypted" value="-----BEGIN PKCS7-----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-----END PKCS7-----
+									">
+									<input type="image" src="https://www.paypalobjects.com/es_XC/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal, la forma más segura y rápida de pagar en línea.">
+									<img alt="" border="0" src="https://www.paypalobjects.com/es_XC/i/scr/pixel.gif" width="1" height="1">
+								</form>
+
+
+
+							</div>
+
+
+
+
+
+
+
+							<div class="barra_spacer_10"></div>
+						</div>
+
+
+
+
+
+
+					</div>
+				</div>
+
+
+
+			</div>
+		</div>
+	</div>
+
+</div>
+
+
+
+{% endblock %}

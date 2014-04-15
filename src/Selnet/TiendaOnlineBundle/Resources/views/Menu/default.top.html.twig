@@ -1,0 +1,73 @@
+	<!-- Fixed navbar -->
+	<div id="top_menu" class="navbar navbar-default " role="navigation">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>			
+			</div>
+			<div class="navbar-collapse collapse">
+				<ul class="nav navbar-nav">
+					<li  class="top_menu_item" ><a href="#">Comprar</a></li>
+					<li  class="top_menu_item" ><a href="#about">Vender</a></li>
+					<li  class="top_menu_item" ><a href="#contact">Blog</a></li>			
+				</ul>
+
+
+				{% if app.user %}
+				<!-- Collect the nav links, forms, and other content for toggling -->
+				<div class="collapse navbar-collapse"  style="padding-right: 0px;" >
+					<ul class="nav navbar-nav">
+
+					</ul>
+					<ul class="nav navbar-nav navbar-right">			
+
+						<li>
+							<a class="topmenu-element" href="#">
+								Hola {{ app.user.username }}
+							</a>
+						</li>			
+						<li>
+							<a class="topmenu-element dropdown-toggle" data-toggle="dropdown">
+								Mi tienda
+							</a>
+							<ul class="dropdown-menu" role="menu">
+								<li><a class="texto_rosa" href="{{  path('creacion_de_tienda') }}">Tienda</a></li>
+								<li class="divider"></li>
+								<li><a class="texto_rosa" href="{{  path('politicas_tienda') }}">Politicas</a></li>
+								<li class="divider"></li>
+								<li><a class="texto_rosa" href="{{  path('personalizar_tienda') }}">Personalizacion</a></li>							
+							</ul>
+						</li>			
+						<li>						 							 
+							<a class="topmenu-element dropdown-toggle" data-toggle="dropdown">
+								Mi cuenta
+							</a>
+							<ul class="dropdown-menu" role="menu">
+								<li><a class="texto_rosa" href="#">Compras</a></li>
+								<li class="divider"></li>
+								<li><a class="texto_rosa" href="#">Perfil Publico</a></li>
+								<li class="divider"></li>
+								<li><a class="texto_rosa" href="#">Configuracion</a></li>
+								<li class="divider"></li>
+								<li><a class="texto_rosa" href="{{ path('salir') }}">Salir</a></li>
+							</ul>
+
+						</li>			
+
+					</ul>
+				</div><!-- /.navbar-collapse -->
+				{% endif %}
+
+
+				
+			</div><!--/.nav-collapse -->
+
+
+
+
+		</div>
+	</div>

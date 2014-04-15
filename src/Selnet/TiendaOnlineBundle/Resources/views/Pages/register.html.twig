@@ -1,0 +1,130 @@
+{% extends "SelnetTiendaOnlineBundle::template.html.twig" %}
+
+
+
+
+
+{% block contenido %}
+
+
+
+<div class="barra_spacer_3"></div>
+
+<div class="row">
+	<div class="col-md-10 col-md-offset-1">
+		<div class="page-header pagina_header">
+			<h2>Registrate!</h2>
+		</div>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-md-10 col-md-offset-1">
+		<div class="panel panel-default artsenal-panel ">
+			<div class="panel-body">
+
+				<div class="container">
+					
+					<div class="page-header pagina_header">
+						<h2>Crea una cuenta para empezar a instalar tu tienda!</h2>
+					</div>
+					<div class="barra_border"></div>
+
+
+
+					<div class="row">
+
+						<div  class="col-md-5 " >
+							<form class="form-horizontal" role="form">
+								{{ form_errors(form) }}
+
+							</form>
+						</div>
+					</div>
+
+
+
+					<div class="row">
+
+						<div  class="col-md-5 " >
+
+							<p style="color:black;font-weight:bold;margin-top:15px;margin-bottom:15px;" >registrate usando tu correo electronico</p>
+							
+						<form  action="{{ path('registrar_usuario_artsenal') }}"  class="form-horizontal" method="post" role="form"  {{ form_enctype(form) }} >
+								<div class="form-group">
+									<label for="inputEmail3" class="col-sm-2 control-label label_gris">Nombres</label>
+									<div class="col-sm-8 col-sm-offset-2">
+										{{  form_widget(  form.nombres , {attr:{  'class':'form-control' , 'placeholder':'nombres completos' }} ) }}
+										
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="inputPassword3" class="col-sm-2 control-label label_gris">Apellido</label>
+									<div class="col-sm-8 col-sm-offset-2">
+										{{  form_widget(  form.apellidos , {attr:{  'class':'form-control' , 'placeholder':'Apellidos completos' }} ) }}
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="inputPassword3" class="col-sm-2 control-label label_gris">Genero</label>
+									<div class="col-sm-8 col-sm-offset-2" style="padding-left: 0px;" >
+										
+
+										{{  form_widget(  form.sexo , {attr:{  'class':'form-control reset-radio' }} ) }}
+
+
+									</div>
+								</div>
+
+								<hr/>
+
+								<div class="form-group">
+									<label for="inputEmail3" class="col-sm-2 control-label label_gris">Correo</label>
+									<div class="col-sm-8 col-sm-offset-2">
+										{{  form_widget(  form.email , {attr:{  'class':'form-control' , 'placeholder':'micorreo@ejemplo.com' }} ) }}
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="inputPassword3" class="col-sm-2 control-label label_gris">Usuario</label>
+									<div class="col-sm-8 col-sm-offset-2">
+										{{  form_widget(  form.username , {attr:{  'class':'form-control' , 'placeholder':'Nombre de Usuario' }} ) }}
+									</div>
+								</div>
+
+								<div class="form-group">
+									<label for="inputEmail3" class="col-sm-2 control-label label_gris">Password</label>
+									<div class="col-sm-8 col-sm-offset-2">
+										{{  form_widget(  form.password.first , {attr:{  'class':'form-control'  }} ) }}
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="inputPassword3" class="col-sm-2 control-label label_gris">Repetir</label>
+									<div class="col-sm-8 col-sm-offset-2">
+										{{  form_widget(  form.password.second , {attr:{  'class':'form-control'  }} ) }}
+									</div>
+								</div>
+
+								<p>Al registrarse, confirma que usted acepta nuestros</p>
+								<p>Terminos de Uso y Politicas de Privacidad</p>
+
+
+								<div class="form-group">
+									<div class="col-sm-offset-2 col-sm-10">
+										<button type="submit" class="btn btn-default btn_aquamarino pull-right ">Registrarse</button>
+									</div>
+								</div>
+								 {{ form_row(form._token) }} 
+							</form>
+
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</div>
+
+	</div>
+</div>
+
+
+
+{% endblock %}

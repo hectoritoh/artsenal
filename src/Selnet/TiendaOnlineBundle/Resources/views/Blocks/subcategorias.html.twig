@@ -1,0 +1,10 @@
+	{% for row in productos| batch(4) %}
+	<div class="row producto_row" style="padding-top:20px;">
+		{% for producto in row %}
+		<div class="col-md-3"   style="padding-left: 5px; padding-right: 5px;" >
+			{% include 'SelnetTiendaOnlineBundle:Blocks:producto.preview.html.twig' with {'producto':  producto  } %}
+		</div>
+
+		{% endfor %}
+	</div>
+	{% endfor %}

@@ -1,0 +1,43 @@
+Setnet\ArtsenalBundle\Entity\ArtCartItem:
+    type: entity
+    table: art_cart_item
+    fields:
+        id:
+            id: true
+            type: integer
+            generator:
+                strategy: AUTO
+        precio:
+            type: float
+
+        cantidad:
+            type: integer
+        
+        descripcion:
+            type: string
+        
+        total:
+            type: float
+    manyToOne:
+        producto:
+          targetEntity: Setnet\ArtsenalBundle\Entity\ArtProducto
+          joinColumn:      
+            name: producto_id
+            referencedColumnName: id
+    manyToOne:
+        cart:
+          targetEntity: Setnet\ArtsenalBundle\Entity\ArtCart
+          inversedBy: items
+          joinColumn:
+            name: cart_id
+            referencedColumnName: id
+        producto:
+          targetEntity: Setnet\ArtsenalBundle\Entity\ArtProducto
+          inversedBy: null
+          joinColumn:
+            name: producto_id
+            referencedColumnName: id
+
+
+    lifecycleCallbacks: {  }
+

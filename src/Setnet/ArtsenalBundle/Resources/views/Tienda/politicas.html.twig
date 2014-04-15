@@ -1,0 +1,98 @@
+{% extends "SetnetArtsenalBundle:Templates:template.html.twig" %}
+
+
+{% block contenido %}
+ 
+
+
+    <div class="container-fluid art-center-form"  >
+
+        <p class="lead"  style="font-family: lato_light;" >Politicas de la tienda</p>
+        <div class="row-fluid">
+
+
+
+            <div>
+                <div class="row-fluid">
+                    <div  class="tabForm span12"  >
+
+                        <div class="art-form-holder2"  >
+
+                            <p class="lead"  style="font-family: lato_light;" >Escribe las politicas para ayudar a los clientes a realizar sus comprar informados.</p>
+                            <p class="lead"  style="font-family: lato_light;color: red;" >{{  form_errors(  form ) }}</p>
+
+
+
+                            <form action="{{ path('politicas') }}" method="post" {{ form_enctype(form) }}>
+
+                                 <div  class="form_row" >
+                                    {{ form_label(form.mensaje_bienvenidad) }}
+                                    {{ form_errors(form.mensaje_bienvenidad) }}
+                                    {{ form_widget(form.mensaje_bienvenidad) }}
+                                          <p  class="art-form-info" >Informacion general, filosofia , etc</p>
+                                        <div style="clear: both;" ></div> 
+                                </div>
+                                <div  class="art-separador" ></div>
+                                <div  class="form_row" >
+                                    {{ form_label(form.pagos) }}
+                                    {{ form_errors(form.pagos) }}
+                                    {{ form_widget(form.pagos) }}
+                                        <p  class="art-form-info" >Formas de pago , condiciones , fechas limites , impuestos , politicas de cancelacion, etc</p>
+                                        <div style="clear: both;" ></div> 
+                                </div>
+                                
+                                <div  class="art-separador" ></div>
+                                <div  class="form_row" >
+                                    {{ form_label(form.envio) }}
+                                    {{ form_errors(form.envio) }}
+                                    {{ form_widget(form.envio) }}
+                                        <p  class="art-form-info" >Formas de envio, actualizaciones , fechas limites, seguros , confirmaciones , aduanas , internacionales, etc</p>
+                                        
+                                        <div style="clear: both;" ></div> 
+                                </div>
+                                <div  class="art-separador" ></div>
+                                <div  class="form_row" >
+                                    {{ form_label(form.reembolso) }}
+                                    {{ form_errors(form.reembolso) }}
+                                    {{ form_widget(form.reembolso) }}
+                                        <p  class="art-form-info" >Condiciones, articulos admisibles, daños, perdidas, etc </p>
+
+                                        <div style="clear: both;" ></div> 
+                                </div>
+                                <div  class="art-separador" ></div>
+                                
+                                 <div  class="form_row" >
+                                    {{ form_label(form.informacion_adicional) }}
+                                    {{ form_errors(form.informacion_adicional) }}
+                                    {{ form_widget(form.informacion_adicional) }}
+                                        <p  class="art-form-info" >Politicas adicionales, preguntas frecuentes, pedidos , ventas al por mayor, consignaciones , garantias , etc.</p>
+                                        
+                                        <div style="clear: both;" ></div> 
+                                </div>
+                                <div  class="art-separador" ></div>
+                                
+                                
+                                <div  class="form_row" >
+                                    {{ form_label(form.vendedor) }}
+                                    {{ form_errors(form.vendedor) }}
+                                    {{ form_widget(form.vendedor) }}
+                                        <p  class="art-form-info" >Algunos paises requieren informacion del vendedor tales como el nombre la dirección fisica, la direccion de correo electrónico y si es aplicable el codigo de identificacion tributaria. Ver estas preguntas frecuentes para mayor información.</p>
+                                        
+                                        <div style="clear: both;" ></div> 
+                                </div>
+                               
+                                <div  class="art-separador" ></div>
+                                   {{ form_row(form._token) }} 
+
+
+                                <input class="art-submit"  type="submit" value="Guardar" />
+                                </form>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div> 
+        </div>
+    </div>
+
+{% endblock contenido %}

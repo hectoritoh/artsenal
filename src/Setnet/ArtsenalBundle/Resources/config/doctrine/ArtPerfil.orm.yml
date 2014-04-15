@@ -1,0 +1,59 @@
+Setnet\ArtsenalBundle\Entity\ArtPerfil:
+    type: entity
+    table: art_perfil
+    fields:
+        id:
+            id: true
+            type: integer
+            unsigned: false
+            nullable: false
+            generator:
+                strategy: IDENTITY
+        nombre:
+            type: string
+            length: 200
+            fixed: false
+            nullable: true
+        imagenPerfil:
+            type: string
+            length: 200
+            fixed: false
+            nullable: true
+            column: imagen_perfil
+        ciudad:
+            type: string
+            length: 200
+            nullable: true
+        about:
+            type: string
+            length: 400
+            fixed: false
+            nullable: true
+        fechaCreacion:
+            type: datetime
+            nullable: true
+            column: fecha_creacion
+        nacimiento:
+            type: datetime
+            nullable: true
+        borrado:
+            type: string
+            length: 1
+            fixed: true
+            nullable: true
+        sexo:
+            type: string
+            length: 1
+            fixed: true
+            nullable: true
+        id_usuario:
+            type: integer
+            unsigned: false
+            nullable: false        
+    oneToOne:
+    usuario:
+      targetEntity: ArtUsuario
+      joinColumn:      
+        name: id_usuario
+        referencedColumnName: id
+    lifecycleCallbacks: {  }

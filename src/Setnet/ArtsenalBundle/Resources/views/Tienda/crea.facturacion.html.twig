@@ -1,0 +1,187 @@
+{% extends "SetnetArtsenalBundle:Templates:template.html.twig" %}
+
+
+{% block contenido %}
+
+
+    <div class="container-fluid art-center-form"  >
+
+        <p class="lead"  style="font-family: lato_light;" >Bienvenido a nuestra comunidad de vendedores!</p>
+        <div class="row-fluid">
+
+            <div  class="span12" >
+                <div id="breadCrumb" class="breadCrumb " style="width: 920px;height: 55px;">
+                    <ul>                    
+                        <li>
+                            <a id="tiendaForm" href="{{  path('crear_tienda') }}"  class="showForm  " >Nombre de tienda</a>
+                        </li>  
+                        <li>
+                            <a id="articulosForm" href="{{  path('listar_articulos') }}"  class="showForm" >Articulos</a>
+                        </li>  
+                        <li>
+                            <a id="facturacionForm" href="{{  path('crear_facturacion') }}" class="showForm art-selected-item" >Facturacion</a>
+                        </li>  
+                        <li>
+                            <a id="endForm" href="{{  path('crear_finalizar') }}" class="showForm"  >Abre tu tienda</a>
+                        </li>                                              
+                        </ul>
+                </div>
+            </div>        
+            <div>
+                 
+                     
+                    <div class="row-fluid">
+                        <div id="facturacionFormDiv" class="tabForm span12"     >
+                            <div class="art-form-holder2" >
+                                <p   style="font-size: 22px; font-family: lato_light;; margin-top: -10px; margin-bottom: 20px;"   >Introduce la tarjeta de credito que quieras usar para pagar tu factura.</p>
+                                <p  style="font-weight: bold;color: black;" >Informacion de tarjeta de credito.</p>
+                                <p  style="font-weight: bold;color: black;" >{{  form_errors( formInformacionTarjeta ) }}</p>
+
+                                <form    class="form-horizontal" id="formTiendaTarjeta" action="{{ path('crear_facturacion') }}" method="post" {{ form_enctype(formInformacionTarjeta) }}>
+                                
+
+                                    <div class="control-group">
+                                            {{ form_label(formInformacionTarjeta.tarjeta  , null , { 'label_attr': {'class': 'control-label'} }) }}                            
+                                                <div class="controls">
+                                                    
+                                                    {%  for tarjeta in  formInformacionTarjeta.tarjeta %}
+                                                    
+
+                                                        {{ form_widget(tarjeta ,  {'attr': {'class': 'tarjetas_input'}}  ) }}
+                                                        {% if  loop.index == 1 %}
+                                                        <img   src="{{ asset('css/img/visa.png') }}"  class="tarjetas_img" />
+                                                       {% elseif  loop.index == 2 %}
+                                                       <img   src="{{ asset('css/img/master.png') }}"  class="tarjetas_img" />
+                                                       {% elseif  loop.index == 3 %}
+                                                       <img   src="{{ asset('css/img/amex.png') }}"  class="tarjetas_img" />
+                                                       {% elseif  loop.index == 4 %}
+                                                       <img   src="{{ asset('css/img/amex.png') }}"   class="tarjetas_img" />
+                                                       {% endif %}
+                  
+                                                    {%  endfor %}
+                                                </div>
+                                              {{ form_errors(formInformacionTarjeta.tarjeta)}}
+                                            </div>
+
+                                            <div class="control-group">
+                                            {{ form_label(formInformacionTarjeta.numero_tarjeta  , null , { 'label_attr': {'class': 'control-label'} }) }}                            
+                                                    <div class="controls">
+                                            {{ form_widget(formInformacionTarjeta.numero_tarjeta  ) }}
+                                                        </div>
+                                                       {{ form_errors(formInformacionTarjeta.numero_tarjeta)}}
+                                           
+                                             </div>
+
+
+                                                    <div class="control-group">
+                                            {{ form_label(formInformacionTarjeta.mes_expira  , null , { 'label_attr': {'class': 'control-label'} }) }}                            
+                                                            <div class="controls">
+                                            {{ form_widget(formInformacionTarjeta.mes_expira ,{'attr': {'class': 'input_half jm_select'}}   ) }}
+                                             {{ form_widget(formInformacionTarjeta.anio_expira ,{'attr': {'class': 'input_half jm_select'}}  ) }}
+                                                                </div>
+                                                           
+                                                            </div>
+
+
+                                                                    <div class="control-group">
+                                            {{ form_label(formInformacionTarjeta.ccv  , null , { 'label_attr': {'class': 'control-label'} }) }}                            
+                                                                            <div class="controls">
+                                            {{ form_widget(formInformacionTarjeta.ccv  ) }}
+                                                                                </div>
+                                                                             {{ form_errors(formInformacionTarjeta.ccv)}}
+                                                                            </div>
+
+
+                                                                            <div class="control-group">
+                                            {{ form_label(formInformacionTarjeta.titular  , null , { 'label_attr': {'class': 'control-label'} }) }}                            
+                                                                                    <div class="controls">
+                                            {{ form_widget(formInformacionTarjeta.titular  ) }}
+                                                                                        </div>
+                                                                                     {{ form_errors(formInformacionTarjeta.titular)}}
+                                                                                    </div>
+
+
+                                                                                    <div class="control-group">
+                                            {{ form_label(formInformacionTarjeta.telefono  , null , { 'label_attr': {'class': 'control-label'} }) }}                            
+                                                                                            <div class="controls">
+                                            {{ form_widget(formInformacionTarjeta.telefono  ) }}
+                                                                                                </div>
+                                                                                             {{ form_errors(formInformacionTarjeta.telefono)}}
+                                                                                            </div>
+ 
+ 
+
+                                                                                        <p  style="font-weight: bold;color: black;"  >Dirección de facturación.</p>
+                                                                                       
+                                    
+
+                                                                                                 
+                                                                        <div class="control-group">
+                                    {{ form_label(formInformacionTarjeta.pais  , null , { 'label_attr': {'class': 'control-label'} }) }}                            
+                                                                                    <div class="controls">
+                                    {{ form_widget(formInformacionTarjeta.pais  ) }}
+                                                                                        </div>
+                                                                                 {{ form_errors(formInformacionTarjeta.pais)}}
+                                                                                    </div>   
+                                                                                                
+                                                                                                 
+                                                                        <div class="control-group">
+                                    {{ form_label(formInformacionTarjeta.calle  , null , { 'label_attr': {'class': 'control-label'} }) }}                            
+                                                                                    <div class="controls">
+                                    {{ form_widget(formInformacionTarjeta.calle  ) }}
+                                                                                        </div>
+                                                                                 {{ form_errors(formInformacionTarjeta.calle)}}
+                                                                                    </div>   
+                                                                                                
+                                                                        
+                                                                                                
+                                                                                                 
+                                                                        <div class="control-group">
+                                    {{ form_label(formInformacionTarjeta.direccionInfo  , null , { 'label_attr': {'class': 'control-label'} }) }}                            
+                                                                                    <div class="controls">
+                                    {{ form_widget(formInformacionTarjeta.direccionInfo  ) }}
+                                                                                        </div>
+                                                                                 {{ form_errors(formInformacionTarjeta.direccionInfo)}}
+                                                                                    </div>   
+                                                                                                
+                                                                                                
+                                                                                                 
+                                                                        <div class="control-group">
+                                    {{ form_label(formInformacionTarjeta.ciudad  , null , { 'label_attr': {'class': 'control-label'} }) }}                            
+                                                                                    <div class="controls">
+                                    {{ form_widget(formInformacionTarjeta.ciudad  ) }}
+                                                                                        </div>
+                                                                                 {{ form_errors(formInformacionTarjeta.ciudad)}}
+                                                                                    </div>   
+                                                                                                
+                                                                                                 
+                                                                        <div class="control-group">
+                                    {{ form_label(formInformacionTarjeta.estado  , null , { 'label_attr': {'class': 'control-label'} }) }}                            
+                                                                                    <div class="controls">
+                                    {{ form_widget(formInformacionTarjeta.estado  ) }}
+                                                                                        </div>
+                                                                                 {{ form_errors(formInformacionTarjeta.estado)}}
+                                                                                    </div>   
+                                                                                                
+                                                                                                 
+                                                                        <div class="control-group">
+                                    {{ form_label(formInformacionTarjeta.zip  , null , { 'label_attr': {'class': 'control-label required'} }) }}                            
+                                                                                    <div class="controls">
+                                    {{ form_widget(formInformacionTarjeta.zip ) }}
+                                                                                        </div>
+                                                                                 {{ form_errors(formInformacionTarjeta.zip)}}
+                                                                                    </div>   
+                                                                                                
+                                                                                            {{ form_row(formInformacionTarjeta._token) }} 
+                                                                                               <input class="art-submit" type="submit" value="Guardar" />
+                                                                                            </form>
+
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                            
+                        </div> 
+                    </div>
+                </div>
+
+{% endblock contenido %}

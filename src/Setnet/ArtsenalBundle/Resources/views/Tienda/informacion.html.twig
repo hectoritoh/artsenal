@@ -1,0 +1,80 @@
+{% extends "SetnetArtsenalBundle:Templates:template.html.twig" %}
+
+
+{% block contenido %}
+
+
+
+
+    <div class="container-fluid art-center-form"  >
+
+        <p class="lead"  style="font-family: lato_light;" >Información e imagen</p>
+        <div class="row-fluid">
+
+
+
+            <div>
+                <div class="row-fluid">
+                    <div  class="tabForm span12"  >
+
+                        <div class="art-form-holder2"  >
+
+                            <p class="lead"  style="font-family: lato_light;" >Da forma a tu tienda con la siguiente información</p>
+                            <p class="lead"  style="font-family: lato_light;color: red;" > {{ form_errors(formTienda) }}</p>
+
+
+
+                            <form action="{{ path('informacion') }}" method="post" {{ form_enctype(formTienda) }}>
+
+                                 <div  class="form_row" >
+                                    {{ form_label(formTienda.imagen_cabecera) }}
+                                      
+                                         
+                                         <div  style="float: right;" >
+                                             <img  style="width: 460px;" src="{{ asset('uploads/tiendas/' ~ formTienda.vars.value.imagenCabecera|default('default.png') )}}" />
+                                         </div>
+                                    {{ form_errors(formTienda.imagen_cabecera) }}
+                                    {{ form_widget(formTienda.file) }}
+                                          <p  class="art-form-info" >Cargar una imagen .jpg .gif o .png de 760px por 110px que no supere los 2MB</p>
+                                        <div style="clear: both;" ></div> 
+                                </div>
+                                <div  class="art-separador" ></div>
+                                <div  class="form_row" >
+                                    {{ form_label(formTienda.titulo) }}
+                                    {{ form_errors(formTienda.titulo) }}
+                                    {{ form_widget(formTienda.titulo) }}
+                                        <div style="clear: both;" ></div> 
+                                </div>
+                                <div  class="art-separador" ></div>
+                            
+                                <div  class="form_row" >
+                                    {{ form_label(formTienda.mensaje_cliente) }}
+                                    {{ form_errors(formTienda.mensaje_cliente) }}
+                                    {{ form_widget(formTienda.mensaje_cliente) }}
+                                        <p  class="art-form-info" >Incluiremos este mensaje en las paginas de recibo y en el correo electornico que tus clientes reciban cuando compren en tu tienda</p>
+                                        <div style="clear: both;" ></div> 
+                                </div>
+                                <div  class="art-separador" ></div>
+                                <div  class="form_row" >
+                                    {{ form_label(formTienda.anuncio) }}
+                                    {{ form_errors(formTienda.anuncio) }}
+                                    {{ form_widget(formTienda.anuncio) }}
+                                        <p  class="art-form-info" >Vista previa de como tus istas apareceran en los resultados de la busqueda de Google</p>
+                                        <p  class="art-form-info" >Ver como tu pagina de inicio tienda apareceran en los resultados de la busqueda de Google</p>
+                                        <div style="clear: both;" ></div> 
+                                </div>
+                                <div  class="art-separador" ></div>
+
+                                 {{ form_row(formTienda._token) }} 
+
+                                <input class="art-submit"  type="submit" value="Guardar" />
+                                </form>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div> 
+        </div>
+    </div>
+
+{% endblock contenido %}

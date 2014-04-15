@@ -1,0 +1,118 @@
+{% extends "SetnetArtsenalBundle::layout.html.twig" %}
+
+
+{% block contenido %}
+ 
+
+
+
+    <div class="container-fluid art-center-form"  >
+
+        <p class="lead"  style="font-family: lato_light;" >Crea tu perfil publico</p>
+        <div class="row-fluid">
+
+
+
+            <div>
+                <div class="row-fluid">
+                    <div  class="tabForm span12"  >
+
+                        <div class="art-form-holder2"  >
+
+                            <p class="lead"  style="font-family: lato_light;" >La informacion ingresada sera visible para todos</p>
+
+
+
+                            <form action="{{ path('perfil') }}" method="post" {{ form_enctype(form) }}>
+
+                                 <div  class="form_row art_foto_row" >
+                                     {% if perfil.imagenPerfil is null %}
+                                     <img class="art_perfil_form" style="height: 80px; width: 80px;" src="{{ asset('img/generic_perfil.jpg' ) }}" />
+                                    {% else %}
+                                     <img class="art_perfil_form" style="height: 80px; width: 80px;" src="{{ asset('uploads/perfiles/'  ~ perfil.imagenPerfil ) }}" />    
+                                    {% endif %}
+                                                                          
+                                    {{ form_errors(form.imagen_perfil) }}
+                                    {{ form_widget(form.file) }}
+                                 <div style="clear: both;" ></div> 
+                                </div>
+                                <div  class="art-separador" ></div>
+                                 <div  class="form_row" >
+                                    {{ form_label(form.nombre) }}
+                                    {{ form_errors(form.nombre) }}
+                                    {{ form_widget(form.nombre) }}
+                                 <div style="clear: both;" ></div> 
+                                </div>
+                               
+                                <div  class="art-separador" ></div>
+                                 <div  class="form_row" >
+                                    {{ form_label(form.sexo) }}
+                                    {{ form_errors(form.sexo) }}
+                                         
+                                         <div  style=" position: relative;  float: right;    width: 450px;" >                                         
+                                    {%  for input in form.sexo %}     
+                                         
+                                                 <div  style="float: left;" >
+                                             
+                                             {{ form_widget(input  , { 'attr' : {'class':'radio-input-custom'} } ) }}
+                                             {{ form_label(input    ,null ,   { 'label_attr' : {'class':'label-radio-input'}} )   }}
+                                             </div>
+                                    {%  endfor  %}     
+                                         </div>
+                                    
+                                 <div style="clear: both;" ></div> 
+                                </div>
+                               
+                                <div  class="art-separador" ></div>
+                                 <div  class="form_row" >
+                                    {{ form_label(form.nacimiento) }}
+                                    {{ form_errors(form.nacimiento) }}
+                                         
+                                         
+                                         <div  style=" position: relative;  float: right;    width: 450px;" >                                         
+                                    {%  for input in form.nacimiento %}     
+
+                                                 <div  style="float: left;" >
+
+                                             {{ form_widget(input  , { 'attr' : {'class':'birth-input-custom'} } ) }} 
+                                                 </div>
+                                    {%  endfor  %}     
+                                             </div>
+                                         
+                                          
+                                 <div style="clear: both;" ></div> 
+                                </div>
+                                
+                                <div  class="art-separador" ></div>
+                                <div  class="form_row" >
+                                    {{ form_label(form.ciudad) }}
+                                    {{ form_errors(form.ciudad) }}
+                                        <p  class="art-form-info" >Debes elejir una ciudad del menú desplegable para que tu tienda aparezca en los resultados de la busqueda por localidad.</p>
+                                    {{ form_widget(form.ciudad) }} 
+                                        <div style="clear: both;" ></div> 
+                                </div>
+                                <div  class="art-separador" ></div>
+                            
+                                <div  class="form_row" >
+                                    {{ form_label(form.about) }}
+                                    {{ form_errors(form.about) }}
+                                    {{ form_widget(form.about) }}
+                                        <p  class="art-form-info" >Incluiremos este mensaje en las paginas de recibo y en el correo electornico que tus clientes reciban cuando compren en tu tienda</p>
+                                        <div style="clear: both;" ></div> 
+                                </div>
+                               
+                                <div  class="art-separador" ></div>
+
+
+                                    {{ form_row (form._token) }}
+                                <input class="art-submit"  type="submit" value="Guardar" />
+                                </form>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div> 
+        </div>
+    </div>
+
+{% endblock contenido %}

@@ -1,0 +1,40 @@
+<div class="row-fluid show-grid art-submenu">
+
+    <div  class="span2" >
+        <a   href="{{  path('setnet_artsenal_homepage') }}" >
+        <img style="width: 180px; height: 55px;"  class="art-logo" alt="Logo Artsenal"  src="{{ asset('img/logo.png') }}" />
+        </a>
+    </div>
+
+    <div  class="span7" >
+        <input style="width:85%; " type="text" class="art-input-buscar" placeholder="escribe el nombre de lo que deseas buscar" />
+    </div>
+
+    <div  class="span2 art-submenu-iconset" >
+        <div  class="row-fluid" >
+            <div class="span6 art-icon-set " style="padding-top: 25px;"  >
+                <a class="art-cart-link" style="color: black;"  href="{{  path('usuario_login') }}" >Ingresar</a>
+            </div>
+            <div class="span6 art-icon-set-last"  style="padding-top: 25px;" >
+                
+
+                <div class="dropdown">
+                    <a class="dropdown-toggle art-cart-link" style="color: black; " data-toggle="dropdown" href="#">Registrarse</a>
+                    <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel"  style="top: 43px;border-radius: 0px 0px 0px 0px;" >
+                        <li role="presentation" ><a tabindex="-1" role="menuitem" >Comprador</a></li>
+                        <li class="divider" role="presentation"></li>
+                        <li role="presentation"   ><a tabindex="-1" role="menuitem"  href="{{ path("registrar_vendedor")  }}" >Vendedor</a></li>        
+                    </ul>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+    <div  class="span1 art-cart-icon " >
+        <a class="art-cart-link" href="{{ path('art_mostrar_carrito') }}" >Mi Cesta</a>
+        <img  src="{{ asset('img/icon_cesta.png') }}" />
+    </div>
+
+</div>

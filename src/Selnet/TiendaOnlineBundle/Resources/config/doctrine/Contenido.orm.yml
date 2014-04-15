@@ -1,0 +1,37 @@
+Selnet\TiendaOnlineBundle\Entity\Contenido:
+    type: entity
+    table: contenido_artsenal
+    fields:
+        id:
+            id: true
+            type: integer
+            unsigned: false
+            nullable: false
+            generator:
+                strategy: IDENTITY
+
+        categoria:
+            type: integer
+            nullable: false
+        titulo:
+            type: string
+            length: 150
+            fixed: false
+            nullable: true
+        contenido:
+            type: text
+            nullable: false
+        publicado:
+            type: integer
+            length: 1
+            fixed: true
+            nullable: true
+        created_at:
+            type: datetime
+            nullable: false
+        updated_at:
+            type: datetime
+            nullable: false
+    lifecycleCallbacks:
+        prePersist: [preInsert]
+        preUpdate: [preUpdate]

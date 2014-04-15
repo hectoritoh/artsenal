@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>{% block title %}Artsenal{% endblock %}</title>
+        <link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/bootstrap-responsive.css') }}">       
+        <link rel="stylesheet" href="{{ asset('css/BreadCrumb.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/art-style.css') }}">
+
+    </head>
+
+    <body  class="art-fondo-trama" >
+
+     {% block scriptfb %} 
+
+     {% endblock %}
+
+     {% block navigation %} 
+        {% render( controller('SetnetArtsenalBundle:Usuario:menu' ) ) %}
+        {% endblock %}
+
+    
+
+
+
+{% block contenido %}
+
+
+
+
+
+        {% endblock  %}
+
+
+
+        {% block footer %}
+        <br/>
+        <br/>
+        <br/>
+        {% include 'SetnetArtsenalBundle:Templates:template.footer.html.twig' %}
+        {% endblock %}
+
+
+
+        <script src="{{ asset('js/jquery.js') }}"></script>
+        <script src="{{ asset('js/jquery.jBreadCrumb.js') }}"></script>              
+        <script src="{{ asset('js/jquery.form.js') }}"></script>                                                      
+        <script src="{{ asset('js/bootstrap.js') }}"></script>
+        <script src="{{ asset('js/art_vendedor_script.js') }}"></script>
+
+    </body>
+</html>
+
+
+

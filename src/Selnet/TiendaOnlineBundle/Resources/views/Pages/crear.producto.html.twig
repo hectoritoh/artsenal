@@ -1,0 +1,139 @@
+
+
+
+{% form_theme form 'SelnetTiendaOnlineBundle:FormTemplate:Artsenal.fields.html.twig' %}
+
+
+<div class="page-header pagina_header">
+	<h2>Publica un articulo</h2>
+</div>
+<div class="barra_border"></div>
+<div class="barra_spacer"></div>
+
+
+
+<form   id="productoForm" action="{{  path('producto_tienda') }}"  class="form-horizontal" method="post" role="form"  {{ form_enctype(form) }} >
+
+
+
+
+	
+	<div class="row">
+		<div class="col-md-10">
+
+			<div class="barra_spacer"></div>
+
+
+			<div class="form-group">
+				{{ form_label(form.imagenes , null , { 'label_attr': {'class': 'col-sm-1 control-label label_gris','style' : 'text-align:left'} }) }}
+				<div  class="col-sm-9 col-sm-offset-2 " style="padding-left: 0px;"   >
+
+					<ul class="coleccion_uploads_images" >
+						
+						{% for imagen in form.imagenes %}
+						<li>{{ form_widget(imagen.file) }}</li>
+						{% endfor %}
+					</ul>
+
+					<span class="help_text">Transmite la forma, el tamaño, el color y la textura. 
+						Intenta usar luz natural e incluye un hermoso primer plano.</span>
+					</div>
+				</div>
+
+
+
+				<div class="barra_spacer"></div>
+			</div>
+		</div>
+
+		<hr/>
+		<div class="row">
+
+
+			<div class="col-md-9">
+
+
+
+				<div class="barra_spacer"></div>
+
+				<div class="form-group">
+					{{ form_label(form.nombre , null , { 'label_attr': {'class': 'col-sm-2 control-label label_gris','style' : 'text-align:left'} }) }}
+					<div  class="col-sm-9 col-sm-offset-1 "   >
+						<span class="help_text">Los títulos descriptivos son mejores. 
+							Intenta describir tu artículo como lo haría un cliente.</span>
+
+							{{ form_widget(form.nombre , { 'attr': {'class': 'form-control input_mediano'} }) }}
+						</div>
+					</div>
+					<div>
+						{{ form_errors(form.nombre) }}
+					</div>
+
+
+					<div class="barra_spacer"></div>
+					{{ form_row(form.descripcion , {'help':'Trata de responder a las preguntas que los clientes harían. 
+					Cuenta una historia y explica por qué es especial.'}) }}
+
+
+
+					<div class="barra_spacer"></div>
+					{{ form_row(form.subcategoria) }}
+
+
+				</div>
+			</div>
+
+			<hr/>
+			<div class="row">
+				<div class="col-md-9">
+
+
+					<div class="barra_spacer"></div>
+					{{ form_row(form.cantidad   ) }}
+
+
+					<div class="barra_spacer"></div>
+					{{ form_row(form.precio ) }}
+
+
+
+
+					<div class="barra_spacer"></div>
+				</div>
+			</div>
+			<hr/>
+			<div class="row">
+				<div class="col-md-9">
+
+
+					<div class="barra_spacer"></div>
+					{{ form_row(form.destinatario , {'help_bold':'¿Para quien es?.'} ) }}
+
+
+					<div class="barra_spacer"></div>
+					{{ form_row(form.ocasion , {'help_bold':'¿Es para un evento particular ?.'}) }}
+
+
+					{{ form_row(form._token ) }}
+
+					<div class="barra_spacer"></div>
+				</div>
+			</div>
+
+
+			<hr/>
+			<div class="row">
+				<div class="col-md-9">
+
+					<div class="form-group">
+						<div class="col-sm-offset-2 col-sm-10">
+							<button type="submit" class="btn btn-default pull-right ">Guardar</button>
+						</div>
+					</div>
+
+
+
+				</div>
+			</div>
+
+		</form>		

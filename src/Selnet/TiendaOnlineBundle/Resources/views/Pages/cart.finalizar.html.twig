@@ -1,0 +1,141 @@
+{% extends "SelnetTiendaOnlineBundle::template.html.twig" %}
+
+
+
+{% block contenido %}
+
+<div class="barra_spacer_3"></div>
+
+<div class="row">
+	<div class="col-md-10 col-md-offset-1">
+		<div class="page-header pagina_header">
+			<h2>Checkout!</h2>
+		</div>
+	</div>
+</div>
+
+
+
+
+<div class="row">
+	<div class="col-md-10 col-md-offset-1">
+		<div class="panel panel-default artsenal-panel "  style="margin-bottom: 0px; border-bottom-width: 0px;" >
+			<div class="panel-body"></div>
+			<div class="container-fluid">
+				<div class="row">
+
+					<div  class="col-md-12" >
+						<div class="row  tab-holder">
+							<div  class="col-md-6  "  style="text-align:center;" >
+								<a href="#" class="tabs_tienda tabs_tienda_selected" onclick="mostrar_contenido(1)"  >Realizar Pago</a>
+							</div>
+							<div  class="col-md-6  "   style="text-align:center;" >
+								<a href="#" class="tabs_tienda" onclick="mostrar_contenido(2)"  >Finalizacion</a>
+							</div>							
+						</div>
+					</div>
+				</div>
+			</div>
+
+
+		</div>
+	</div>
+</div>
+<div class="row">
+	<div class="col-md-10 col-md-offset-1">
+		<div class="panel panel-default artsenal-panel" >
+			<div class="panel-body"  id="contenido_cart" >
+				<div class="container-fluid">
+					
+
+
+					<div id="contenido1" class="row contenido_tabs" >	
+						<div  class="col-md-8  col-md-offset-2" >	
+							<div class="barra_spacer_3"></div>	
+							<div class="barra_spacer_3"></div>	
+							<div class="page-header pagina_header">
+								<h2  style="text-align:center;" >Solo un paso mas !</h2>
+							</div>
+
+							<p  class="form_parrafo" >En este momento su pedido esta en estado pendiente, una vez que realize el pago mediante PayPal, se le enviara un correo con los detalles de la entrega del producto solicitado.</p>
+							
+							<div class="barra_border"></div>	
+
+							<div class="barra_spacer_3"></div>	
+
+
+
+							<div class="row">
+								<div class="col-sm-offset-3 col-sm-6">
+
+
+
+									<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+										<input type="hidden" name="cmd" value="_xclick">
+										<input type="hidden" name="amount" value="12.99">
+										<input type="hidden" name="item_name" value="Compra en arsenal">
+										<input type="hidden" name="currency_code" value="USD">
+										<input type="hidden" name="encrypted" value="-----BEGIN PKCS7-----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-----END PKCS7-----
+										">
+										<input type="image" src="https://www.paypalobjects.com/es_XC/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal, la forma más segura y rápida de pagar en línea.">
+										<img alt="" border="0" src="https://www.paypalobjects.com/es_XC/i/scr/pixel.gif" width="1" height="1">
+									</form>
+
+
+
+								</div>	
+							</div>
+							<div class="barra_spacer_3"></div>	
+							<div class="barra_spacer_3"></div>
+							<div class="barra_spacer_3"></div>
+							<div class="barra_spacer_3"></div>
+
+						</div>
+					</div>
+
+
+
+
+					
+					<div id="contenido2" class="row contenido_tabs" style="display:none;"   >	
+						<div  class="col-md-8  col-md-offset-2" >	
+							<div class="barra_spacer_3"></div>	
+							<div class="barra_spacer_3"></div>	
+							<div class="page-header pagina_header">
+								<h2  style="text-align:center;" >Gracias por tu compra !</h2>
+							</div>
+
+							<div class="barra_border"></div>	
+
+							<div class="barra_spacer_3"></div>	
+
+							<div class="row">
+								<div class="col-sm-offset-3 col-sm-6">
+									<button onclick="window.location='{{  path('artsenal_index') }}'" class="btn btn-default pull-right btn_aquamarino"  style="width:100%;height:40px;" type="submit">Regresar al inicio</button>
+								</div>	
+							</div>
+							<div class="barra_spacer_3"></div>	
+							<div class="barra_spacer_3"></div>
+							<div class="barra_spacer_3"></div>
+							<div class="barra_spacer_3"></div>
+
+						</div>
+					</div>
+
+
+
+
+				</div>
+
+			</div>
+		</div>
+	</div>
+
+</div>
+
+<div class="barra_spacer_3"></div>	
+<div class="barra_spacer_3"></div>	
+
+
+
+{% endblock %}

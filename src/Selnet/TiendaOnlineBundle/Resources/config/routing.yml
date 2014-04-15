@@ -1,0 +1,141 @@
+
+
+registrar_usuario_artsenal:
+    path:      /register.do
+    defaults:  { _controller: SelnetTiendaOnlineBundle:Default:registerUsuario}
+
+salir_artsenal:
+    path:      /usuario.salir
+    defaults:  { _controller: SelnetTiendaOnlineBundle:Default:salir }
+
+salir:
+    path:   /salir
+
+
+
+
+usuario_ingresa:
+    path:      /usuario.ingreso
+    defaults:  { _controller: SelnetTiendaOnlineBundle:Default:secureLogin }
+
+
+usuario_check:
+    path:      /usuario.check
+
+
+
+crear_tienda_artsenal:
+    path:      /creacion.do
+    defaults:  { _controller: SelnetTiendaOnlineBundle:Tienda:crearTienda }
+
+
+
+
+artsenal_index:
+    path:      /index.do
+    defaults:  { _controller: SelnetTiendaOnlineBundle:Default:index }
+
+
+artsenal_index_tienda:
+    path:      /index.tienda.do
+    defaults:  { _controller: SelnetTiendaOnlineBundle:Default:indexTienda }
+
+
+artsenal2_home:
+    path:      /
+    defaults:  { _controller: SelnetTiendaOnlineBundle:Default:index }
+
+
+
+
+
+artsenal_mostrar_categorias:
+    path:      /categorias.mostrar/{id_categoria}
+    defaults:  { _controller: SelnetTiendaOnlineBundle:Default:categorias }
+
+
+artsenal_subcategorias:
+    path:      /subcategorias.mostrar/
+    defaults:  { _controller: SelnetTiendaOnlineBundle:Default:subcategorias }
+
+
+artsenal_mostrar_subcategorias:
+    path:      /subcategorias.mostrar/{id_subcategoria}
+    defaults:  { _controller: SelnetTiendaOnlineBundle:Default:subcategorias }
+
+
+artsenal_producto_modal:
+    path:      /producto.modal/{id_producto}
+    defaults:  { _controller: SelnetTiendaOnlineBundle:Default:productoModal }
+
+
+
+creacion_de_tienda:
+    path:      /tienda.creacion
+    defaults:  { _controller: SelnetTiendaOnlineBundle:Tienda:nombreTienda }
+    
+
+producto_tienda:
+    path:      /tienda.productos
+    defaults:  { _controller: SelnetTiendaOnlineBundle:Tienda:productosTienda }
+
+personalizar_tienda:
+    path:      /tienda.personalizar
+    defaults:  { _controller: SelnetTiendaOnlineBundle:Tienda:personalizarTienda }
+
+politicas_tienda:
+    path:      /tienda.politicas
+    defaults:  { _controller: SelnetTiendaOnlineBundle:Tienda:politicas }
+
+
+preview_tienda:
+    path:      /tienda.preview
+    defaults:  { _controller: SelnetTiendaOnlineBundle:Tienda:preview }
+
+
+ver_tienda_artsenal:
+    path:      /tienda.ver/{id_tienda}
+    defaults:  { _controller: SelnetTiendaOnlineBundle:Tienda:ver }
+
+
+
+
+ver_mi_cesta:
+    path:      /cart.show
+    defaults:  { _controller: SelnetTiendaOnlineBundle:Cart:show }
+
+
+terminar_compra:
+    path:      /cart.finalizar
+    defaults:  { _controller: SelnetTiendaOnlineBundle:Cart:finalizar }
+
+
+
+agregar_producto_cart:
+    path:      /cart.add/{id_producto}/{cantidad}/{precio}
+    defaults:  { _controller: SelnetTiendaOnlineBundle:Cart:agregarProducto }
+
+remove_producto_cart:
+    path:      /cart.remove/{id_producto}
+    defaults:  { _controller: SelnetTiendaOnlineBundle:Cart:removeProducto }
+
+update_producto_cart:
+    path:      /cart.update/{id_producto}/{cantidad}/{precio}
+    defaults:  { _controller: SelnetTiendaOnlineBundle:Cart:updateProducto }
+
+
+show_cart_test:
+    path:      /showTest
+    defaults:  { _controller: SelnetTiendaOnlineBundle:Cart:showTest }
+
+
+
+show_cart:
+    path:      /cart.show
+    defaults:  { _controller: SelnetTiendaOnlineBundle:Cart:show}
+
+
+
+contenido_pagina:
+    path:      /contenido/{tipo_contenido}
+    defaults:  { _controller: SelnetTiendaOnlineBundle:Default:contenido }

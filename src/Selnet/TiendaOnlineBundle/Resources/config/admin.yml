@@ -1,0 +1,35 @@
+services:
+    sonata.admin.categoria:
+        class: Selnet\TiendaOnlineBundle\Admin\CategoriaAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Configuracion", label: "Categorias" }
+        arguments:
+            - ~
+            - Selnet\TiendaOnlineBundle\Entity\Categoria
+            - ~
+        calls:
+            - [ setTranslationDomain, [TiendaOnlineBundle]]
+
+    sonata.admin.subcategoria:
+        class: Selnet\TiendaOnlineBundle\Admin\SubcategoriaAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Configuracion", label: "Subcategoria" }
+        arguments:
+            - ~
+            - Selnet\TiendaOnlineBundle\Entity\Subcategoria
+            - ~
+        calls:
+            - [ setTranslationDomain, [TiendaOnlineBundle]]
+
+
+    sonata.admin.contenido:
+        class: Selnet\TiendaOnlineBundle\Admin\ContenidoAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Configuracion", label: "Contenido Pagina" }
+        arguments:
+            - ~
+            - Selnet\TiendaOnlineBundle\Entity\Contenido
+            - ~
+        calls:
+            - [ setTranslationDomain, [TiendaOnlineBundle]]
+

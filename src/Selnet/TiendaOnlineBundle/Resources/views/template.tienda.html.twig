@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>  {% block titulo %} Artsenal {% endblock %} </title>
+
+	{% block stylesheets %}
+	{% stylesheets 
+	'@SelnetTiendaOnlineBundle/Resources/public/css/bootstrap.min.css' 
+	'@SelnetTiendaOnlineBundle/Resources/public/css/style.css' 
+	filter='cssrewrite' %}
+	<link rel="stylesheet" href="{{ asset_url }}" />
+	{% endstylesheets %}
+	{% endblock %}
+</head>
+<body>
+	<div id="main"  class="container" >
+		
+
+
+		{% block topbar %}
+		{{ include 'SelnetTiendaOnlineBundle:Menu:default.top.html.twig' }}
+		{% endblock %}
+
+
+		{% block submenu %}
+		{{ include 'SelnetTiendaOnlineBundle:Menu:default.submenu.html.twig' }}
+		{% endblock %}
+
+
+
+		{% block contenido %}
+		{% endblock %}
+
+
+		{% block anuncios %}		
+		{% include 'SelnetTiendaOnlineBundle:Blocks:anuncios.html.twig' %}
+		{%  endblock %}
+
+
+
+
+
+		{% block footer %}
+		{% include 'SelnetTiendaOnlineBundle:Blocks:footer.html.twig' %}
+		{% endblock %}
+
+
+
+		{% block javascripts %}
+		{% javascripts 
+		'@SelnetTiendaOnlineBundle/Resources/public/js/jquery.js' 
+		'@SelnetTiendaOnlineBundle/Resources/public/js/bootstrap.js' 
+		'@SelnetTiendaOnlineBundle/Resources/public/js/jquery.form.js' 
+		'@SelnetTiendaOnlineBundle/Resources/public/js/script.js' 
+		%}
+		<script type="text/javascript" src="{{ asset_url }}"></script>
+		{% endjavascripts %}
+		{%  endblock %}
+
+
+	</div>
+</body>
+</html>

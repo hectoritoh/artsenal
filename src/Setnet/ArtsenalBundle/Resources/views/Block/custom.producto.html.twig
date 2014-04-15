@@ -1,0 +1,23 @@
+  
+{%  if prod is not  null  %}
+<div class="span{{  span }}" >
+    <div class="jm-producto-holder">
+        <a  href="{{  path('detalle_producto' , {'id_producto':  prod.id }) }}" class="art-mostrar" >
+            {% if mostrar_imagen %}
+            <p>
+                <img  class="jm-producto-image"   src="{{ asset('uploads/productos/'  ~ prod.imagen ) }}" />
+            </p>
+            {% endif %}
+            <div  class="jm-producto-info"  >
+                <p class="jm-producto-titulo" >{{  prod.titulo }}</p>
+                <div>
+
+                    <p class="jm-tienda_artista" >{{ prod.tienda }}/{{  prod.usuario }}</p>       
+                    <p class="jm-producto-precio" >${{  prod.precio }}</p>
+                </div>
+            </div>
+        </a>
+    </div>
+</div>
+
+{%  endif  %}

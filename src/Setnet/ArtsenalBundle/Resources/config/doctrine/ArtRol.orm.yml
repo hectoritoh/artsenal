@@ -1,0 +1,17 @@
+Setnet\ArtsenalBundle\Entity\ArtRol:
+    type: entity
+    table: art_rol
+    fields:
+        id:
+            id: true
+            type: integer
+            unsigned: false
+            nullable: false
+            generator:
+                strategy: IDENTITY
+        nombre:
+            type: string
+            length: 45
+            fixed: false
+            nullable: true
+    lifecycleCallbacks: {  }

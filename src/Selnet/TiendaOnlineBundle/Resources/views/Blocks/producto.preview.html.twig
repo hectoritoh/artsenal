@@ -1,0 +1,19 @@
+
+{% if producto is not null  %}
+<div class="producto"  onclick="mostrar_producto(  '{{  path('artsenal_producto_modal' ,{id_producto: producto.id}) }}' )" >	
+	<div  class="producto_imagen"  style="background-image:url({{ asset( 'uploads/imagenes/' ~ producto.imagenes[0].url  ) }})" >				
+	</div>
+	<div class="producto_descripcion">		
+		<p class="texto_aquamarina titulo_producto"   >			
+			{{  producto.nombre }}
+		</p>
+		<p class="texto_rosa titulo_precio"  style="font-weight:bold;" >			
+			${{  producto.precio }}
+		</p>
+	</div>
+</div>
+
+{% else %}
+    
+
+{% endif %}

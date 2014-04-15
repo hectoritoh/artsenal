@@ -1,0 +1,89 @@
+{% extends 'SetnetArtsenalBundle:Templates:template.html.twig' %}
+
+
+
+
+     {% block navigation %} 
+        {% endblock %}
+
+        {% block submenu %}
+        {% endblock %}
+
+
+
+
+
+{% block contenido %}
+
+
+<div class="container-fluid art-center-form"  >
+
+
+    <div class="row">
+
+
+
+        <div class="span2" >
+            <img src="{{  asset( 'uploads/perfiles/' ~  perfil.imagenPerfil) }}" /> 
+
+        </div>
+
+
+        <div class="span5" >
+ 
+                  <div class="art-form-holder2" >
+                        
+                        
+                        
+                        <form    class="form-horizontal" id="formTiendaTarjeta" action="{{ path('tienda_mensajes_nuevo') }}" method="post" {{ form_enctype(form) }}>
+                            
+                            
+                            
+                          
+
+                               
+
+                            
+                            <div  class="form_row" >
+                                {{ form_widget(form.titulo) }}                                          
+                                {{ form_errors(form.titulo) }}                                          
+                             
+                                    <div style="clear: both;" ></div> 
+                            </div>
+                                <br/>
+                              
+                            <div  class="form_row" >
+                                {{ form_widget(form.contenido) }}                                          
+                                {{ form_errors(form.contenido) }}                                          
+                             
+                                    <div style="clear: both;" ></div> 
+                            </div>
+                              
+                                
+                                   
+                              
+                             <input class="art-submit" type="submit" value="Guardar" />
+                            
+                            {{ form_row(form._token) }} 
+                            
+                            </form>  
+
+ 
+
+
+                </div>
+             
+ 
+    </div>
+</div>
+
+
+{% endblock contenido %}
+
+
+
+
+
+        {% block footer %}
+
+        {% endblock %}

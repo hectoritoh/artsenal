@@ -1,0 +1,83 @@
+Setnet\ArtsenalBundle\Entity\ArtProducto:
+    type: entity
+    table: art_producto
+    fields:
+        id:
+            id: true
+            type: integer
+            unsigned: false
+            nullable: false
+            generator:
+                strategy: IDENTITY
+        titulo:
+            type: string
+            length: 90
+            fixed: false
+            nullable: true
+        descripcion:
+            type: string
+            length: 300
+            fixed: false
+            nullable: true
+
+        cantidad:
+            type: float
+            nullable: true
+        precio:
+            type: float
+            nullable: true
+        tipoElaboracion:
+            type: datetime
+            nullable: true
+            column: tipo_elaboracion
+        paisOrigen:
+            type: integer
+            unsigned: false
+            nullable: true
+            column: pais_origen
+        estado:
+            type: string
+            length: 1
+            fixed: false
+            nullable: false
+        visitas:
+            type: integer
+            unsigned: false
+        favorito:
+            type: integer
+            unsigned: false
+        created:
+          type: datetime
+          gedmo:
+            timestampable:
+              on: create
+        updated:
+          type: datetime
+          gedmo:
+            timestampable:
+              on: update
+    oneToMany:
+        imagenes:
+          targetEntity: ArtProductoFoto
+          mappedBy: idProducto
+          cascade: [ "persist" ]
+    manyToOne:
+        idTienda:
+            targetEntity: ArtTienda
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_tienda:
+                    referencedColumnName: id
+            orphanRemoval: false
+        idSubcategoria:
+            targetEntity: ArtSubcategoria
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_subcategoria:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

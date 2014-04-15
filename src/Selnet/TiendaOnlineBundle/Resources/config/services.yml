@@ -1,0 +1,11 @@
+parameters:
+#    selnet_tienda_online.example.class: Selnet\TiendaOnlineBundle\Example
+
+ 
+
+services:
+    tienda_user.registration.form.type:
+        class: Selnet\TiendaOnlineBundle\Form\UsuarioType
+        arguments: [%fos_user.model.user.class%]
+        tags:
+            - { name: form.type, alias: selnet_tiendaonlinebundle_usuariotype }

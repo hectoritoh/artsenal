@@ -1,0 +1,36 @@
+Selnet\TiendaOnlineBundle\Entity\ProductoDestinatario:
+    type: entity
+    table: producto_destinatario
+    fields:
+        id:
+            id: true
+            type: integer
+            unsigned: false
+            nullable: false
+            generator:
+                strategy: IDENTITY
+        nombre:
+            type: string
+            length: 45
+            fixed: false
+            nullable: false
+        descripcion:
+            type: string
+            length: 150
+            fixed: false
+            nullable: true
+        borrado:
+            type: integer
+            length: 1
+            fixed: true
+            nullable: true
+        created_at:
+            type: datetime
+            nullable: false
+        updated_at:
+            type: datetime
+            nullable: false
+
+    lifecycleCallbacks:
+        prePersist: [preInsert]
+        preUpdate: [preUpdate]

@@ -1,0 +1,87 @@
+Selnet\TiendaOnlineBundle\Entity\Tienda:
+    type: entity
+    table: tienda
+    fields:
+        id:
+            id: true
+            type: integer
+            unsigned: false
+            nullable: false
+            generator:
+                strategy: IDENTITY
+        nombre:
+            type: string
+            length: 45
+            fixed: false
+            nullable: false
+        descripcion:
+            type: string
+            length: 150
+            fixed: false
+            nullable: true
+
+        titulo:
+            type: string
+            length: 150
+            fixed: false
+            nullable: true
+        mensaje:
+            type: text
+            fixed: false
+            nullable: true
+        
+        anuncio:
+            type: text
+            fixed: false
+            nullable: true
+        mensajeBienvenida:
+            type: text
+            fixed: false
+            nullable: true
+        politicaPagos:
+            type: text
+            fixed: false
+            nullable: true
+        politicaReembolso:
+            type: text
+            fixed: false
+            nullable: true
+        informacionAdicional:
+            type: text
+            fixed: false
+            nullable: true
+        informacionVendedor:
+            type: text
+            fixed: false
+            nullable: true
+
+        imagenCabecera:
+            type: text
+            fixed: false
+            nullable: true
+        borrado:
+            type: integer
+            length: 1
+            fixed: true
+            nullable: true
+        estado:
+            type: string
+            length: 10
+            nullable: false
+        created_at:
+            type: datetime
+            nullable: false
+        updated_at:
+            type: datetime
+            nullable: false
+
+    oneToOne:
+      usuario:
+        targetEntity: Usuario
+        joinColumn:
+          name: usuario_id
+          referencedColumnName: id
+
+    lifecycleCallbacks:
+        prePersist: [preInsert]
+        preUpdate: [preUpdate]

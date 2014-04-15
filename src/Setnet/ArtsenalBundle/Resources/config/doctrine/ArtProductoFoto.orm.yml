@@ -1,0 +1,37 @@
+Setnet\ArtsenalBundle\Entity\ArtProductoFoto:
+    type: entity
+    table: art_producto_foto
+    fields:
+        id:
+            id: true
+            type: integer
+            unsigned: false
+            nullable: false
+            generator:
+                strategy: IDENTITY
+        url:
+            type: string
+            length: 200
+            fixed: false
+            nullable: true
+        descripcion:
+            type: string
+            length: 200
+            fixed: false
+            nullable: true
+        borrado:
+            type: string
+            length: 1
+            fixed: true
+            nullable: true
+    manyToOne:
+        idProducto:
+            targetEntity: ArtProducto
+            cascade: ["persist"]  
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_producto:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

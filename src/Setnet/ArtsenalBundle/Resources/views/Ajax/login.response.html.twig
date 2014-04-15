@@ -1,0 +1,38 @@
+ 
+  <p style="font-family: lato_light;color:red;" class="lead left"   >{{ mensaje }}</p>
+  <div class="clearfix"></div>
+  <div  style="" >
+
+
+
+    <p style="font-family: lato_light;" class="lead text-left">Ingrese sus credenciales para poder iniciar Sesion!</p>
+<div class="clearfix"></div>
+    <form class="form-horizontal" id="formLogin" action="{{ path('usuario_login') }}" method="post" {{ form_enctype(form_usuario) }} style="width: 400px;"  >
+
+      <div class="control-group">
+       {{ form_label(form_usuario.usuario , null , { 'label_attr': {'class': 'control-label pull-left'} }) }}                            
+       <div class="controls">
+        {{ form_widget(form_usuario.usuario  ) }}
+        {{ form_errors(form_usuario.usuario  ) }}
+      </div>
+    </div>
+
+
+    <div class="control-group">
+     {{ form_label(form_usuario.password , null , { 'label_attr': {'class': 'control-label'} }) }}                            
+     <div class="controls">
+      {{ form_widget(form_usuario.password  ) }}
+    </div>
+  </div>
+
+  {{ form_row (form_usuario._token) }}
+
+  <input class="art-submit pull-right" type="submit" value="Registrarse" />
+
+</form>
+
+
+</div> 
+<script>
+  $('#formLogin').ajaxForm(options); 
+</script>

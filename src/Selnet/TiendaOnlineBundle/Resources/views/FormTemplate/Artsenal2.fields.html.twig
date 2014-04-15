@@ -1,0 +1,58 @@
+
+
+{% block file_widget %}
+{% spaceless %}
+{% set type = type|default('file') %}
+
+<div >
+	<input type="{{ type }}" {{ block('widget_attributes') }}   {% if value is not empty %}value="{{ value }}" {% endif %}/>
+	
+</div>
+
+{% endspaceless %}
+{% endblock file_widget %}
+
+
+
+ 
+
+ 
+
+
+
+{% block form_widget_simple %}
+{% spaceless %}
+{% set type = type|default('text') %}
+<input type="{{ type }}" {{ block('widget_attributes') }} {% if value is not empty %}value="{{ value }}" {% endif %}/>
+{% endspaceless %}
+{% endblock form_widget_simple %}
+
+
+
+{% block form_row %}
+{% spaceless %}
+<div class="form-group">
+	{{ form_label(form , null , { 'label_attr': {'class': 'col-sm-2 control-label label_gris' , 'style' : 'text-align:left'} }) }}
+	<div class="col-sm-9 col-sm-offset-1 "  >
+		
+		{% if help is defined %}
+		<span class="help_text">{{ help }}</span>
+		{% endif %}
+		{% if help_bold is defined %}
+		<span style="font-weight:bold;color:black;" class="help_text">{{ help_bold }}</span>
+		{% endif %}
+
+		{{ form_widget(form , { 'attr': {'class': 'form-control input_mediano'} }) }}
+
+		{% if help_bot is defined %}
+		<span class="help_text">{{ help_bot }}</span>
+		{% endif %}
+	</div>	
+</div>
+
+<div>
+	{{ form_errors(form) }}
+</div>
+
+{% endspaceless %}
+{% endblock form_row %}

@@ -1,0 +1,24 @@
+Setnet\ArtsenalBundle\Entity\ArtCart:
+    type: entity
+    table: art_cart
+    fields:
+        id:
+            id: true
+            type: integer
+            generator:
+                strategy: AUTO
+
+        total:
+            type: float
+
+        descricion:
+            type: string
+
+        usuario_id:
+            type: integer
+    oneToMany:
+        items:
+          targetEntity: ArtCartItem
+          mappedBy: cart
+          cascade: [ "persist" ]
+    lifecycleCallbacks: {  }

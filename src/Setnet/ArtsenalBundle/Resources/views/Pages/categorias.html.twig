@@ -1,0 +1,96 @@
+{% extends 'SetnetArtsenalBundle::layout.sidebar.html.twig' %}
+
+
+
+{% block contenido %} 
+
+<div id="contenidoCategorias">
+
+
+    <div  class="contenido-wrapper" >
+
+
+        <div  class="row-fluid"  >
+
+            <div  class="span10" >
+
+
+                <div  class="row-fluid"  >
+
+                    <div class="span2">
+                        <h2 class="jm_lastest_titulo"  >{{ selected_categoria.nombre }}</h2>  
+                    </div>
+
+
+                    <div class="span7 offset3 pull-rigth">
+
+
+                        <div  class="jm_select-wrap"  >
+                            <div  class="jm_select"  >
+                                <select id="subcategoria" name="subcategoria" >
+                                    <option  selected="selected">Subcategorias</option>
+                                    {% for subcategoria in subcategorias  %}
+                                    <option>{{ subcategoria.nombre  }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                        </div>
+                        <div  class="jm_select-wrap"  >
+                            <div  class="jm_select"  >
+                                <select id="precios" name="subcategoria" >
+                                    <option  selected="selected">Precios</option>
+                                    {% for subcategoria in subcategorias  %}
+                                    <option>{{ subcategoria.nombre  }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                        </div>
+
+                        <div  class="jm_select-wrap"  style="display:none;" >
+                            <div  class="jm_select"  >
+                                <select name="subcategoria" >
+                                    <option  selected="selected">Categorias</option>
+                                    {% for subcategoria in subcategorias  %}
+                                    <option>{{ subcategoria.nombre  }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="clearfix"></div>
+
+
+                    </div>         
+
+
+
+                </div>
+
+
+
+                <div id="productosCategoria">
+                    
+
+
+                {%  for i in 0 .. productos | length / 4  %}
+
+
+                <div class="row-fluid jm-producto-spacing fill">
+                    {{  include('SetnetArtsenalBundle:Block:productos.html.twig'   , {'productos': productos | slice( i * 4 , 4  )  } ) }}    
+                </div>
+
+                {% endfor %}
+                </div>
+
+
+            </div>
+        </div>
+    </div> 
+</div> 
+
+{% endblock %}
+
+
+
+
+
