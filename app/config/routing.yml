@@ -1,6 +1,10 @@
-# setnet_artsenal:
-    # resource: "@SetnetArtsenalBundle/Resources/config/routing.yml"
-    # prefix:   /
+app_shop_theme:
+    resource: "@AppShopThemeBundle/Resources/config/routing.yml"
+    prefix:   /
+
+_imagine:
+    resource: .
+    type:     imagine
 
 selnet_tienda_online:
     resource: "@SelnetTiendaOnlineBundle/Resources/config/routing.yml"
@@ -16,23 +20,85 @@ _sonata_admin:
     prefix: /admin
 
 
+sonata_user_security:
+    resource: "@SonataUserBundle/Resources/config/routing/sonata_security_1.xml"
 
-
-fos_user_security:
-    resource: "@FOSUserBundle/Resources/config/routing/security.xml"
-
-fos_user_profile:
-    resource: "@FOSUserBundle/Resources/config/routing/profile.xml"
-    prefix: /profile
-
-fos_user_register:
-    resource: "@FOSUserBundle/Resources/config/routing/registration.xml"
-    prefix: /register
-
-fos_user_resetting:
-    resource: "@FOSUserBundle/Resources/config/routing/resetting.xml"
+sonata_user_resetting:
+    resource: "@SonataUserBundle/Resources/config/routing/sonata_resetting_1.xml"
     prefix: /resetting
 
-fos_user_change_password:
-    resource: "@FOSUserBundle/Resources/config/routing/change_password.xml"
+sonata_user_profile:
+    resource: "@SonataUserBundle/Resources/config/routing/sonata_profile_1.xml"
     prefix: /profile
+
+sonata_user_register:
+    resource: "@SonataUserBundle/Resources/config/routing/sonata_registration_1.xml"
+    prefix: /register
+
+sonata_user_change_password:
+    resource: "@SonataUserBundle/Resources/config/routing/sonata_change_password_1.xml"
+    prefix: /profile
+
+sonata_user:
+    resource: '@SonataUserBundle/Resources/config/routing/admin_security.xml'
+    prefix: /admin
+
+
+gallery:
+    resource: '@SonataMediaBundle/Resources/config/routing/gallery.xml'
+    prefix: /media/gallery
+
+media:
+    resource: '@SonataMediaBundle/Resources/config/routing/media.xml'
+    prefix: /media
+
+
+news:
+    resource: '@SonataNewsBundle/Resources/config/routing/news.xml'
+    prefix: /news
+
+# app/config/routing.yml
+
+hwi_oauth_login:
+    resource: "@HWIOAuthBundle/Resources/config/routing/login.xml"
+    prefix:   /login
+
+hwi_oauth_redirect:
+    resource: "@HWIOAuthBundle/Resources/config/routing/redirect.xml"
+    prefix:   /connect
+
+facebook_login:
+    pattern: /secured/login_facebook
+
+
+
+
+# sonata front controller
+# sonata_user:
+#     resource: @SonataUserBundle/Resources/config/routing/user.xml
+#     prefix: /shop/user
+
+sonata_order:
+    resource: @SonataOrderBundle/Resources/config/routing/order.xml
+    prefix: /shop/user/invoice
+
+sonata_product_catalog:
+    resource: @SonataProductBundle/Resources/config/routing/catalog.xml
+    prefix: /shop/catalog
+
+sonata_product:
+    resource: @SonataProductBundle/Resources/config/routing/product.xml
+    prefix: /shop/product
+
+sonata_payment:
+    resource: @SonataPaymentBundle/Resources/config/routing/payment.xml
+    prefix: /shop/payment
+
+sonata_invoice:
+    resource: @SonataInvoiceBundle/Resources/config/routing/invoice.xml
+    prefix: /shop/user/invoice
+
+
+
+fos_js_routing:
+    resource: "@FOSJsRoutingBundle/Resources/config/routing/routing.xml"

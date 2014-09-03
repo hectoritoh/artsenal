@@ -27,7 +27,12 @@ class Contenido
     /**
      * @var string
      */
-    private $contenido;
+    private $rawContent;
+
+    /**
+     * @var string
+     */
+    private $contentFormatter;
 
     /**
      * @var integer
@@ -64,7 +69,7 @@ class Contenido
     public function setCategoria($categoria)
     {
         $this->categoria = $categoria;
-
+    
         return $this;
     }
 
@@ -87,7 +92,7 @@ class Contenido
     public function setTitulo($titulo)
     {
         $this->titulo = $titulo;
-
+    
         return $this;
     }
 
@@ -102,26 +107,49 @@ class Contenido
     }
 
     /**
-     * Set contenido
+     * Set rawContent
      *
-     * @param string $contenido
+     * @param string $rawContent
      * @return Contenido
      */
-    public function setContenido($contenido)
+    public function setRawContent($rawContent)
     {
-        $this->contenido = $contenido;
-
+        $this->rawContent = $rawContent;
+    
         return $this;
     }
 
     /**
-     * Get contenido
+     * Get rawContent
      *
      * @return string 
      */
-    public function getContenido()
+    public function getRawContent()
     {
-        return $this->contenido;
+        return $this->rawContent;
+    }
+
+    /**
+     * Set contentFormatter
+     *
+     * @param string $contentFormatter
+     * @return Contenido
+     */
+    public function setContentFormatter($contentFormatter)
+    {
+        $this->contentFormatter = $contentFormatter;
+    
+        return $this;
+    }
+
+    /**
+     * Get contentFormatter
+     *
+     * @return string 
+     */
+    public function getContentFormatter()
+    {
+        return $this->contentFormatter;
     }
 
     /**
@@ -133,7 +161,7 @@ class Contenido
     public function setPublicado($publicado)
     {
         $this->publicado = $publicado;
-
+    
         return $this;
     }
 
@@ -156,7 +184,7 @@ class Contenido
     public function setCreatedAt($createdAt)
     {
         $this->created_at = $createdAt;
-
+    
         return $this;
     }
 
@@ -179,7 +207,7 @@ class Contenido
     public function setUpdatedAt($updatedAt)
     {
         $this->updated_at = $updatedAt;
-
+    
         return $this;
     }
 
@@ -197,9 +225,7 @@ class Contenido
      */
     public function preInsert()
     {
-          $this->setPublicado(1);
-        $this->setCreatedAt(  new \DateTime() );
-        $this->setUpdatedAt(  new \DateTime() );
+        // Add your code here
     }
 
     /**
@@ -207,10 +233,34 @@ class Contenido
      */
     public function preUpdate()
     {
-        $this->setUpdatedAt(  new \DateTime() );
+        // Add your code here
+    }
+    /**
+     * @var string
+     */
+    private $contenido;
+
+
+    /**
+     * Set contenido
+     *
+     * @param string $contenido
+     * @return Contenido
+     */
+    public function setContenido($contenido)
+    {
+        $this->contenido = $contenido;
+    
+        return $this;
     }
 
-
- 
-
+    /**
+     * Get contenido
+     *
+     * @return string 
+     */
+    public function getContenido()
+    {
+        return $this->contenido;
+    }
 }

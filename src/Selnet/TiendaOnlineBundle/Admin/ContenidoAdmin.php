@@ -22,7 +22,19 @@ class ContenidoAdmin extends Admin
                 )
             ))
         ->add('titulo', 'text')
-        ->add('contenido', 'textarea')
+
+    //  
+         ->add('contenido', 'sonata_formatter_type', array(
+        
+        'format_field'   => 'contentFormatter',
+        'source_field'   => 'rawContent',
+        'source_field_options'      => array(
+            'attr' => array('class' => 'span10', 'rows' => 20)
+        ),
+        'listener'       => false,
+        'target_field'   => 'content'
+    ))
+        
         ->add('publicado', 'choice', array(
             'choices' => array(
                 '1' => 'Si',

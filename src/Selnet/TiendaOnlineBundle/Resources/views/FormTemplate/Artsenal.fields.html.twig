@@ -1,17 +1,5 @@
 
 
-{% block file_widget %}
-{% spaceless %}
-{% set type = type|default('file') %}
-
-<div class="fileUpload  ">
-	<span style="color:black;">  <i class="icon-picture"></i> 	
-	</span>
-	<input type="{{ type }}" {{ block('widget_attributes') }}  class="upload" {% if value is not empty %}value="{{ value }}" {% endif %}/>
-</div>
-
-{% endspaceless %}
-{% endblock file_widget %}
 
 
 

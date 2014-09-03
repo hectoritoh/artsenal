@@ -33,3 +33,32 @@ services:
         calls:
             - [ setTranslationDomain, [TiendaOnlineBundle]]
 
+    selnet_tienda_online.admin.banner:
+        class: Selnet\TiendaOnlineBundle\Admin\BannerAdmin
+        arguments: [~, Selnet\TiendaOnlineBundle\Entity\Banner, SonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: Banner}
+
+    selnet_tienda_online.admin.producto_ocasion:
+        class: Selnet\TiendaOnlineBundle\Admin\ProductoOcasionAdmin
+        arguments: [~, Selnet\TiendaOnlineBundle\Entity\ProductoOcasion, SonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: Ocasion}
+
+    selnet_tienda_online.admin.producto_destinatario:
+        class: Selnet\TiendaOnlineBundle\Admin\ProductoDestinatarioAdmin
+        arguments: [~, Selnet\TiendaOnlineBundle\Entity\ProductoDestinatario, SonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: Destinatario }
+
+    selnet_tienda_online.admin.publicidad:
+        class: Selnet\TiendaOnlineBundle\Admin\PublicidadAdmin
+        arguments: [~, Selnet\TiendaOnlineBundle\Entity\Publicidad, SonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: Publicidad}
+
+    selnet_tienda_online.admin.tienda:
+        class: Selnet\TiendaOnlineBundle\Admin\TiendaAdmin
+        arguments: [~, Selnet\TiendaOnlineBundle\Entity\Tienda, SonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: Tienda}

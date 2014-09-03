@@ -1,9 +1,17 @@
 imports:
     - { resource: parameters.yml }
     - { resource: security.yml }
+    - { resource: media.yml }
+    - { resource: sonata_news.yml }
+    - { resource: sonata_formatter.yml }
+    - { resource: services.yml }
+    - { resource: sonata_user.yml }
+    - { resource: sonata_product.yml }
+    - { resource: imagine.yml }
     - { resource: "@SelnetTiendaOnlineBundle/Resources/config/admin.yml" }
 framework:
     #esi:             ~
+
     translator: ~
     secret:          "%secret%"
     router:
@@ -29,11 +37,24 @@ twig:
     debug:            "%kernel.debug%"
     strict_variables: "%kernel.debug%"
 
+    form:
+        resources:
+            # ...
+            - 'SonataFormatterBundle:Form:formatter.html.twig'
+            # - 'ApplicationSonataMediaBundle:Form:media_widgets.html.twig'
+
+
+    globals:
+        modo_layout: " container-fluid "
+
+
+
+
 # Assetic Configuration
 assetic:
     debug:          "%kernel.debug%"
     use_controller: false
-    bundles:        [ SelnetTiendaOnlineBundle   ]
+    bundles:        [ SelnetTiendaOnlineBundle  , AppShopThemeBundle  ]
     #java: /usr/bin/java
     filters:
         cssrewrite: ~
@@ -55,7 +76,9 @@ doctrine:
         # if using pdo_sqlite as your database driver, add the path in parameters.yml
         # e.g. database_path: "%kernel.root_dir%/data/data.db3"
         # path:     "%database_path%"
-
+        types:
+            json: Sonata\Doctrine\Types\JsonType
+            currency: Sonata\Component\Currency\CurrencyDoctrineType
     orm:
         auto_generate_proxy_classes: "%kernel.debug%"
         auto_mapping: true
@@ -69,6 +92,12 @@ swiftmailer:
     spool:     { type: memory }
 
 
+
+sonata_admin:
+    templates:
+        # default global templates
+        layout:  SonataAdminBundle::layout.html.twig
+
 # app/config/config.yml
 sonata_block:
     default_contexts: [cms]
@@ -76,12 +105,89 @@ sonata_block:
         # Enable the SonataAdminBundle block
         sonata.admin.block.admin_list:
             contexts:   [admin]
-        # Your other blocks
+        sonata.user.block.menu:    # used to display the menu in profile pages
+        sonata.user.block.account: # used to display menu option (login option)
+        sonata.block.service.text: # used to if you plan to use Sonata user routes
+
+
+
+security:
+    access_control:
+        # URL of FOSUserBundle which need to be available to anonymous users
+        - { path: ^/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
+
+        # Admin login page needs to be access without credential
+        - { path: ^/admin/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/admin/logout$, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/admin/login_check$, role: IS_AUTHENTICATED_ANONYMOUSLY }
+
+        # Secured part of the site
+        # This config requires being logged for the whole site and having the admin role for the admin part.
+        # Change these rules to adapt them to your needs
+        - { path: ^/admin/, role: [ROLE_ADMIN, ROLE_SONATA_ADMIN] }
+        - { path: ^/.*, role: IS_AUTHENTICATED_ANONYMOUSLY }
+
+ivory_ck_editor:
+    configs:
+        news:
+            toolbar: standard
+
 
 fos_user:
-    db_driver: orm # other valid values are 'mongodb', 'couchdb' and 'propel'
-    firewall_name: main
-    user_class: Selnet\TiendaOnlineBundle\Entity\Usuario
+    db_driver:      orm # can be orm or odm
+    firewall_name:  main
+    user_class:     Application\Sonata\UserBundle\Entity\User
+
+
+    group:
+        group_class:   Application\Sonata\UserBundle\Entity\Group
+        group_manager: sonata.user.orm.group_manager                    # If you're using doctrine orm (use sonata.user.mongodb.user_manager for mongodb)
+
+    service:
+        user_manager: sonata.user.orm.user_manager   
     registration:
         form:
             type: selnet_tiendaonlinebundle_usuariotype
+
+
+hwi_oauth:
+    firewall_name:         main
+    resource_owners:
+        facebook:
+            type:          facebook
+            client_id:     265342143608130
+            client_secret: 4a2270601370568f746fe8489c7c8e56
+            scope:         "email"
+
+
+    connect:
+        account_connector: my_user_provider
+    # name of the firewall in which this bundle is active, this setting MUST be set
+    fosub:
+        username_iterations: 30
+        properties:
+            # these properties will be used/redefined later in the custom FOSUBUserProvider service.
+            facebook: facebook_uid
+
+
+
+
+services:
+    hwi_oauth.user.provider.entity:
+        class: HWI\Bundle\OAuthBundle\Security\Core\User\OAuthUserProvider
+
+            # client_id:     265342143608130
+            # client_secret: 4a2270601370568f746fe8489c7c8e56 
+
+
+stof_doctrine_extensions:
+    default_locale: en_US
+    orm:
+        default:
+            timestampable: true # not needed: listeners are not enabled by default
+            sluggable: true
+
+
+

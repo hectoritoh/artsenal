@@ -1,19 +1,4 @@
 
-
-{% block file_widget %}
-{% spaceless %}
-{% set type = type|default('file') %}
-
-<div >
-	<input type="{{ type }}" {{ block('widget_attributes') }}   {% if value is not empty %}value="{{ value }}" {% endif %}/>
-	
-</div>
-
-{% endspaceless %}
-{% endblock file_widget %}
-
-
-
  
 
  

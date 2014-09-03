@@ -1,0 +1,181 @@
+{% extends "AppShopThemeBundle::template.artsenal.html.twig" %}
+
+
+{% block login_facebook %}
+       <div id="fb-root"></div>
+    <script>
+        window.fbAsyncInit = function() {
+            // init the FB JS SDK
+            FB.init({
+                appId      : '265342143608130',                        // App ID from the app dashboard
+                channelUrl : '//desa.artsenal.com/channel.html',      // Channel file for x-domain comms
+                status     : true,                                 // Check Facebook Login status
+                xfbml      : true                                  // Look for social plugins on the page
+            });
+        };
+
+        // Load the SDK asynchronously
+        (function(d, s, id){
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) {return;}
+            js = d.createElement(s); js.id = id;
+            js.src = "//connect.facebook.net/en_US/all.js";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+
+        function fb_login() {
+            FB.getLoginStatus(function(response) {
+                if (response.status === 'connected') {
+                    // connected
+                    alert('Already connected, redirect to login page to create token.');
+                    document.location = "{{ url("hwi_oauth_service_redirect", {service: "facebook"}) }}";
+                } else {
+                    // not_authorized
+                    FB.login(function(response) {
+                        if (response.authResponse) {
+                            document.location = "{{ url("hwi_oauth_service_redirect", {service: "facebook"}) }}";
+                        } else {
+                            alert('Cancelled.');
+                        }
+                    }, {scope: 'email'});
+                }
+            });
+        }
+    </script>
+
+    
+
+    
+    <p>
+        <a href="#" onclick="fb_login();">Facebook Connect Button (Dialog)</a>
+    </p>
+
+    {# Bonus: Show all available login link in HWIOAuthBundle #}
+    {% render(controller('HWIOAuthBundle:Connect:connect')) %}
+{% endblock %}
+
+
+{% block contenido %}
+
+
+
+<div class="barra_spacer_3"></div>
+
+<div class="row">
+	<div class="col-md-10 col-md-offset-1">
+		<div class="page-header pagina_header">
+			<h2>Registrate!</h2>
+		</div>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-md-10 col-md-offset-1">
+		<div class="panel panel-default artsenal-panel ">
+			<div class="panel-body">
+
+				<div class="container">
+					
+					<div class="page-header pagina_header">
+						<h2>Crea una cuenta para empezar a instalar tu tienda!</h2>
+					</div>
+					<div class="barra_border"></div>
+
+
+
+					<div class="row">
+
+						<div  class="col-md-5 " >
+							<form class="form-horizontal" role="form">
+								{{ form_errors(form) }}
+
+							</form>
+						</div>
+					</div>
+
+
+
+					<div class="row">
+
+						<div  class="col-md-5 " >
+
+							<p style="color:black;font-weight:bold;margin-top:15px;margin-bottom:15px;" >registrate usando tu correo electronico</p>
+							
+						<form  action="{{ path('registrar_usuario_artsenal') }}"  class="form-horizontal" method="post" role="form"  {{ form_enctype(form) }} >
+								<div class="form-group">
+									<label for="inputEmail3" class="col-sm-2 control-label label_gris">Nombres</label>
+									<div class="col-sm-8 col-sm-offset-2">
+										{{  form_widget(  form.nombres , {attr:{  'class':'form-control' , 'placeholder':'nombres completos' }} ) }}
+										
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="inputPassword3" class="col-sm-2 control-label label_gris">Apellido</label>
+									<div class="col-sm-8 col-sm-offset-2">
+										{{  form_widget(  form.apellidos , {attr:{  'class':'form-control' , 'placeholder':'Apellidos completos' }} ) }}
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="inputPassword3" class="col-sm-2 control-label label_gris">Genero</label>
+									<div class="col-sm-8 col-sm-offset-2" style="padding-left: 0px;" >
+										
+
+										{{  form_widget(  form.sexo , {attr:{  'class':'form-control reset-radio' }} ) }}
+
+
+									</div>
+								</div>
+
+								<hr/>
+
+								<div class="form-group">
+									<label for="inputEmail3" class="col-sm-2 control-label label_gris">Correo</label>
+									<div class="col-sm-8 col-sm-offset-2">
+										{{  form_widget(  form.email , {attr:{  'class':'form-control' , 'placeholder':'micorreo@ejemplo.com' }} ) }}
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="inputPassword3" class="col-sm-2 control-label label_gris">Usuario</label>
+									<div class="col-sm-8 col-sm-offset-2">
+										{{  form_widget(  form.username , {attr:{  'class':'form-control' , 'placeholder':'Nombre de Usuario' }} ) }}
+									</div>
+								</div>
+
+								<div class="form-group">
+									<label for="inputEmail3" class="col-sm-2 control-label label_gris">Password</label>
+									<div class="col-sm-8 col-sm-offset-2">
+										{{  form_widget(  form.password.first , {attr:{  'class':'form-control'  }} ) }}
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="inputPassword3" class="col-sm-2 control-label label_gris">Repetir</label>
+									<div class="col-sm-8 col-sm-offset-2">
+										{{  form_widget(  form.password.second , {attr:{  'class':'form-control'  }} ) }}
+									</div>
+								</div>
+
+								<p>Al registrarse, confirma que usted acepta nuestros</p>
+								<p>Terminos de Uso y Politicas de Privacidad</p>
+
+
+								<div class="form-group">
+									<div class="col-sm-offset-2 col-sm-10">
+										<button type="submit" class="btn btn-default btn_aquamarino pull-right ">Registrarse</button>
+									</div>
+								</div>
+								 {{ form_row(form._token) }} 
+							</form>
+
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</div>
+
+	</div>
+</div>
+
+
+
+{% endblock %}

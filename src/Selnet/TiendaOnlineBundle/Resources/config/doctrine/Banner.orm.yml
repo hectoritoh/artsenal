@@ -14,9 +14,6 @@ Selnet\TiendaOnlineBundle\Entity\Banner:
             length: 45
             fixed: false
             nullable: true
-        url:
-            type: text
-            nullable: true
         descripcion:
             type: string
             length: 150
@@ -33,6 +30,11 @@ Selnet\TiendaOnlineBundle\Entity\Banner:
         updated_at:
             type: datetime
             nullable: false
+    manyToOne:
+        image:
+            targetEntity: Application\Sonata\MediaBundle\Entity\Media
+            cascade: ["persist"]
+
     lifecycleCallbacks:
         prePersist: [preInsert]
         preUpdate: [preUpdate]

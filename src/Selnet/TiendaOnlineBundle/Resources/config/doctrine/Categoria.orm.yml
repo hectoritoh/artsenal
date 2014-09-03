@@ -14,6 +14,16 @@ Selnet\TiendaOnlineBundle\Entity\Categoria:
             length: 45
             fixed: false
             nullable: false
+
+        slug:
+            type: string
+            length: 128
+            gedmo:
+              slug:
+                separator: _
+                style: default
+                fields:
+                  - nombre
         descripcion:
             type: string
             length: 150
@@ -27,9 +37,23 @@ Selnet\TiendaOnlineBundle\Entity\Categoria:
         created_at:
             type: datetime
             nullable: false
+            gedmo:
+              timestampable:
+                on: create
         updated_at:
             type: datetime
             nullable: false
+            gedmo:
+              timestampable:
+                on: update
+
+
+    indexes:
+      search_idx:
+        columns: nombre
+
+
+
     oneToMany:
         subcategorias:
           targetEntity: Subcategoria

@@ -1,0 +1,171 @@
+{% extends "AppShopThemeBundle::template.artsenal.html.twig" %}
+
+
+
+
+{% block contenido %}
+
+
+
+<div class="barra_spacer_3">
+</div>
+
+<div class="row">
+  <div class="col-md-10 col-md-offset-1">
+    <div class="page-header pagina_header">
+      <h2>
+        Mi cesta
+      </h2>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-10 col-md-offset-1">
+    <div class="panel panel-default artsenal-panel ">
+      <div class="panel-body">
+        
+        <div class="container-fluid">
+          
+          
+          <div class="row">
+            
+            <div  class="col-md-9 " >
+              
+              <div class="page-header pagina_header">
+                <h2>
+                  ( {{  detalles | length }}  ) Producto(s)
+                </h2>
+              </div>
+              <div class="barra_border">
+              </div>
+              
+              
+              
+              {% for detalle in venta.detalles %}
+              
+              <div class="row">
+                
+                
+                <div class="col-md-3">
+                  <img  class="img-responsive" src="{{ asset('/uploads/imagenes/productos/'  ~ detalle.producto.imagenes[0].url)   | apply_filter('thumbnail') }}" />
+                </div>
+                <div class="col-md-5">
+                  <p class="detalle_titulo" >
+                    {{ detalle.producto.nombre }}
+                  </p>
+                </div>
+                <div class="col-md-2">
+                  <p  class="detalle_bold" >
+                    Cantidad
+                  </p>
+                  <input type="text" style="width:50px;" value="{{   detalle.cantidad  }}" />
+                </div>
+                
+                <div class="col-md-2">
+                  <p  class="detalle_bold" >
+                    Precio
+                  </p>
+                  <p>
+                    {{  detalle.precio }}
+                  </p>
+                </div>
+                
+                
+              </div>
+              
+              
+              <hr>
+              {% endfor %}
+              
+              
+              <div class="row">
+
+	 			<div class="col-md-3  col-md-offset-8 ">
+                  <a  class="pull-right link_aquamarine" href="{{ path('app_shop_theme_homepage')  }}">  Seguir comprando </a>
+                </div>
+
+              	
+              </div>
+              
+              
+            </div>
+            <div  id="detalle_cesta" class="col-md-3 " >
+            <br>
+              <p>
+                Enviar a
+              </p>
+              
+              <select name="pais_envio" id="pais_envio">
+                <option value="ecuador">
+                  Ecuador
+                </option>                
+              </select>
+
+
+              <p>
+              Forma de pago
+              </p>
+              
+              <select name="pais_envio" id="pais_envio">
+                <option value="ecuador">
+                  Ecuador
+                </option>                
+              </select>
+
+				<br>
+				<br>
+				
+				<div class="row">					
+					<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+						<p  style="font-weight:normal;" >Precio</p>
+					</div>
+					<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+						<p  style="font-weight:normal;"  class="pull-right" >${{  venta.total   }}</p>
+					</div>
+				</div>
+		
+				<div class="row">					
+					<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+						<p  style="font-weight: normal; margin-bottom: 0px;" >Envio</p>
+					</div>
+					<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+						<p  style="font-weight: normal; margin-bottom: 0px;"  class="pull-right" >$5</p>
+					</div>
+				</div>
+				
+				<hr>
+
+				<div class="row">					
+					<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+						<p   >Total</p>
+					</div>
+					<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+						<p  class="pull-right" >$ {{   venta.total + 5 }}</p>
+					</div>
+				</div>
+				<div class="row">					
+					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+						<button class="btn btn-newsletter" style="color:white;font-weight:normal;" >
+		                   Continuar con la compra
+		                 </button>
+					</div>
+					 
+				</div>
+
+
+              
+            </div>
+            
+          </div>
+          
+        </div>
+      </div>
+    </div>
+    
+  </div>
+</div>
+
+
+
+{% endblock %}

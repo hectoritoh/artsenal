@@ -1,0 +1,121 @@
+{% extends "AppShopThemeBundle::template.artsenal.html.twig" %}
+
+
+
+
+
+
+
+
+{% block contenido %}
+
+<div class="barra_spacer_3"></div>
+
+<div class="row">
+	<div class="col-md-10 col-md-offset-1">
+		<div class="page-header pagina_header">
+			<h2>Bienvenidos a nuestra comunidad de vendedores!</h2>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+<div class="row">
+	<div class="col-md-10 col-md-offset-1">
+		<div class="panel panel-default artsenal-panel "  style="margin-bottom: 0px; border-bottom-width: 0px;" >
+			<div class="panel-body"></div>
+			<div class="container-fluid">
+				<div class="row">
+
+					<div  class="col-md-12" >
+						
+					{% include 'AppShopThemeBundle:Tienda:tienda.menu.html.twig' with {  existe: tienda_existe , tiene_productos: numero_productos  } %}
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+<div class="row">
+	<div class="col-md-10 col-md-offset-1">
+		<div class="panel panel-default artsenal-panel "style="border-top-width: 0px;" >
+			<div class="panel-body">
+
+				<div class="container-fluid">
+
+
+					<div  class="col-md-11" >
+						
+
+						<div id="contenido1" class="row contenido_tabs" >
+
+							<div class="page-header pagina_header">
+								<h2>Nombre de tienda</h2>
+							</div>
+							<div class="barra_border"></div>
+							<div class="barra_spacer_2"></div>
+							
+
+							<p  class="form_parrafo" >El nombre de tu tienda aparece junto con tus articulos en el mercado de Artsenal.</p>
+							<p class="form_parrafo" >Elije un nombre que tenga significado personal o ayude a identificar lo que hay en tu tienda.</p>
+							<div class="barra_spacer_3"></div>
+							
+
+							{% form_theme form_tienda 'SelnetTiendaOnlineBundle:FormTemplate:Artsenal.fields.html.twig' %}
+
+							<form  action="{{ path('creacion_de_tienda') }}"  class="form-horizontal" method="post" role="form"  {{ form_enctype(form_tienda) }} >
+								
+
+
+								<div class="form-group">
+									{{ form_label(   form_tienda.nombre ,null ,  {'label_attr': {'class': ' col-sm-2 control-label label_gris ' , 'style':'width:80px;'}}  ) }}
+									
+									<div class="col-sm-7">
+										{{ form_widget(form_tienda.nombre, {'attr': {'class': 'form-control input_mediano'}}) }}
+									</div>
+								</div>
+
+								<div class="form-group">
+									<div class="col-sm-offset-1 col-sm-7">
+										<p class="form_parrafo">Puedes cambiar el nombre de la tienda mas tarde</p> <button type="submit" class="btn btn-default pull-right btn_aquamarino">Guardar</button>
+									</div>
+								</div>
+								{{ form_row(form_tienda._token) }} 
+								<br>
+								<br>
+								<br>
+								<br>
+								<br>
+							</form>
+
+						</div>
+
+
+					   
+
+
+					</div>
+				</div>
+
+
+
+			</div>
+		</div>
+	</div>
+
+</div>
+
+
+
+
+
+{% endblock %}

@@ -1,0 +1,436 @@
+
+@font-face {
+	font-family: lato_light;
+	src: url('../css/fonts/Lato-Light.ttf');
+}
+
+
+.latto{
+	font-family: lato_light;
+}
+
+
+.help_text{
+	font-family: lato_light;
+}
+
+body{
+	padding-top: 40px;
+}
+
+
+#logo{
+	width: 90%;
+	text-align: center;
+}
+
+.vertical-center{	
+	vertical-align: middle;
+	line-height: 70px;
+}
+
+.submenu-item{
+	text-align: center;
+	border-left: 1px solid lightgray
+}
+
+.submenu-item a{
+	color: black;
+}
+
+.submenu-cesta{
+	border-right: 1px solid lightgray
+}
+
+
+.submenu-cesta a{
+	color: rgb(180, 50 , 140 ) ;
+}
+
+
+
+/*menu*/
+
+
+.navbar-artsenal{
+	background-color:  rgb(180, 50 , 140 ) ;	
+	min-height: 40px;	
+}
+
+.subnavbar-artsenal{
+	min-height: 70px;	
+	background-color: white;
+	-webkit-box-shadow: 0px 1px 1px 0px rgba(81, 81, 81, 0.75);
+	-moz-box-shadow:    0px 1px 1px 0px rgba(81, 81, 81, 0.75);
+	box-shadow:         0px 1px 1px 0px rgba(81, 81, 81, 0.75);
+	border-bottom-width: 0px;
+	border-radius: 0px;
+	margin-bottom: 45px;
+}
+
+ul.nav.navbar-nav li a{
+	color: white;
+}
+
+ul.nav.navbar-nav li a:hover{
+	background-color: rgb(  90, 50 , 80 );	
+}
+
+ul.nav.navbar-nav li a{
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+
+
+.navbar-toggle .icon-bar {
+	background-color: white;
+}
+
+
+.search_txt{
+	width: 100%;
+	background-color: rgb(235,235,235);
+	border-width: 1px;
+	border:1px solid lightgray;
+	height: 35px;
+}
+
+/*fin menu*/
+
+
+
+
+/*banner*/
+
+.banner-img{
+	border: 5px solid lightgray; 	
+	border-radius: 0px;
+}
+
+/*fin banner*/
+
+/*categorias*/
+
+#categoria_block a , #categoria_block a:hover {
+	border-width: 0px;
+	color: rgb(19, 140 , 140 );
+	padding-left: 0;
+	background-color: transparent;
+	text-transform: capitalize;
+}
+
+
+
+
+/*fin categorias */
+
+
+
+/*producto*/
+
+.producto{
+	padding-left:5px;
+	
+}
+
+.thumbnail{
+	-webkit-box-shadow: 0px 1px 1px 0px rgba(81, 81, 81, 0.75);
+	-moz-box-shadow:    0px 1px 1px 0px rgba(81, 81, 81, 0.75);
+	box-shadow:         0px 1px 1px 0px rgba(81, 81, 81, 0.75);
+}
+
+.caption {
+	height: 60px;
+	overflow: hidden;
+}
+
+
+
+/*titulo:*/
+.producto div.caption h4 a {
+	color: rgb(19, 140 , 140 );
+}
+
+.producto div.caption h4:first-child {
+	margin-top: 0px;
+	margin-bottom: 0px;
+	font-size: 14px;
+}
+
+
+.producto div.caption h4 {
+	color: rgb(180, 50 , 140 );
+	font-size: 14px;
+}
+
+/*fin producto;*/
+
+
+footer{
+	margin-bottom: 10px;
+}
+
+.footer{
+	background-color: rgb(180, 50, 140);
+	padding-top: 20px;
+	padding-bottom: 20px;
+	padding-left: 50px;
+	padding-right: 50px;
+}
+
+.footer-list{
+	color: white;
+	padding-bottom: 20px;
+}
+
+
+
+.footer-list li:first-child a{
+	color: white;
+	text-transform: uppercase;
+	padding-bottom: 25px;
+	margin-top: 20px;
+}
+
+.footer-list li a{
+	color: white;
+	text-align: left;
+	padding: 0px;
+	font-size: 12px;
+	padding-bottom: 5px;
+}
+
+
+ul.nav.footer-list > li > a:hover, ul.nav.footer-list > li > a:focus {
+	background-color: transparent !important;
+	text-decoration: none;
+}
+
+
+.btn-newsletter{
+	width: 100%;
+	background-color: rgb(28 , 146 , 146);
+	font-weight: bold;
+}
+
+
+.newsletter-footer {
+	border-left: 1px solid white; 
+	padding-left: 25px;
+}
+
+.newsletter-footer li:first-child a{
+	font-size: 20px;
+	font-family: lato_light;
+	padding-bottom: 15px;
+}
+
+
+.fondo_trama{
+	
+	background-image: url(../../../bundles/appshoptheme/images/textura_fondo.jpg);
+}
+
+.col-banner{
+		background-image: url(../../../bundles/appshoptheme/images/textura_fondo.jpg);
+}
+
+.table-container {
+	display: table;
+}
+
+.table-container .table-row {
+	height: 100%;
+	display: table-row;
+}
+
+.table-container .table-row .table-col {
+	display: table-cell;
+	float: none;
+	vertical-align: top;
+	padding-left: 0px;
+	padding-right: 0px;
+}
+
+
+
+
+
+.dropdown-menu {
+	color: rgb(28 , 146 , 146);
+    background-clip: padding-box;
+    background-color: #fff;
+    border: 1px solid gray;
+    box-shadow: none;
+    float: left;
+    font-size: 14px;
+    left: 0;
+    list-style: none outside none;
+    min-width: 160px;
+    padding: 5px 0;
+    position: absolute;
+    text-align: left;
+    top: 100%;
+    z-index: 1000;
+}
+
+.dropdown-menu li a{
+	color: rgb(180, 50, 140) !important;
+	border-bottom: 1px solid lightgray;
+}
+
+.dropdown-menu li a:last-child{
+	color: rgb(180, 50, 140) !important;
+	border-bottom: 0px solid lightgray;
+}
+
+
+.input-help{
+	color: gray;
+}
+
+.label_gris{
+	text-align: left !important;
+}
+
+
+
+
+
+
+
+
+
+
+
+/*modal*/
+
+
+#modalProducto{
+	    -moz-transition: width 1s ease-in-out, left 1.5s ease-in-out;
+    -webkit-transition: width 1s ease-in-out, left 1.5s ease-in-out;
+    -moz-transition: width 1s ease-in-out, left 1.5s ease-in-out;
+    -o-transition: width 1s ease-in-out, left 1.5s ease-in-out;
+    transition: width 1s ease-in-out, left 1.5s ease-in-out;
+}
+
+
+.btn-agregar-cesta{
+	padding-left: 40px; padding-right: 40px;
+	margin-top: -8px;
+}
+
+.modal-header{
+	border-bottom-width: 0px;
+}
+
+#modal_nombre_producto{
+	font-weight: normal;
+}
+
+.modal-content{
+	border-radius: 0px;
+	border-top: 6px solid rgb(180, 50, 140); 
+	border-left-width: 0px;
+	border-right-width: 0px;
+}
+
+.modal-backdrop {background-color: white;}
+
+.modal-footer{
+	text-align: left;
+}
+
+.panel-detalle-producto{
+	background-color: #fffde6;
+    border: 1px solid #f1eec3;
+    border-radius: 0;
+    text-align: left;
+}
+
+.btn_aquamarino{
+	 background-image: url("../images/boton_aquamarina.png");
+    background-size: contain;
+    border: 1px solid #0e6c6c;
+    color: white;
+}
+.texto_aquamarina
+{
+	color: #009999;
+}
+
+.texto_gris_oscuro{
+	color: gray;
+}
+
+
+
+/*filtros */
+.filtro_producto{
+	margin-left: 15px;
+	
+}
+
+
+
+
+/*destalle enviar*/
+#detalle_cesta{
+	background-color: #fffde6; 
+}
+
+#detalle_cesta p{
+	color: black;
+	font-weight: bold;
+}
+
+#detalle_cesta select{
+	width: 100%;
+
+}
+
+.link_aquamarine{
+	color: rgb(19, 140, 140);
+	font-weight: bold;
+}
+
+.detalle_titulo{
+	color: rgb(19, 140, 140);
+	font-weight: bold;
+	margin-top: 20px;
+}
+
+.detalle_bold{
+	font-weight: bold;
+	color: black;
+	margin-top: 20px;
+}
+
+
+.icon-submenu{
+	width: 60%;
+}
+
+.fixed{
+	position: fixed;
+}
+
+
+.left-submenu {
+	list-style: none;
+	margin-top: 20px;
+}
+
+.left-submenu a {
+	font-weight: normal;
+}
+
+.lista_secciones{
+	padding-left: 20px;
+}
+
+a.list-group-item.active{
+	color: rgb(180, 50, 140) !important ;
+}
+
+

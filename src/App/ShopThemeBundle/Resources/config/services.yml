@@ -1,0 +1,7 @@
+parameters:
+#    app_shop_theme.example.class: App\ShopThemeBundle\Example
+
+services:
+#    app_shop_theme.example:
+#        class: %app_shop_theme.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

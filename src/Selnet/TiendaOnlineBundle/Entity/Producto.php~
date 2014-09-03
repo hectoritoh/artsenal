@@ -402,4 +402,60 @@ class Producto
     function __toString(){
         return $this->nombre . "";
     }
+    /**
+     * @var integer
+     */
+    private $visitas;
+
+    /**
+     * @var integer
+     */
+    private $favoritos;
+
+
+    /**
+     * Set visitas
+     *
+     * @param integer $visitas
+     * @return Producto
+     */
+    public function setVisitas($visitas)
+    {
+        $this->visitas = $visitas;
+    
+        return $this;
+    }
+
+    /**
+     * Get visitas
+     *
+     * @return integer 
+     */
+    public function getVisitas()
+    {
+        return $this->visitas;
+    }
+
+    /**
+     * Set favoritos
+     *
+     * @param integer $favoritos
+     * @return Producto
+     */
+    public function setFavoritos($favoritos)
+    {
+        $this->favoritos = $favoritos;
+    
+        return $this;
+    }
+
+    /**
+     * Get favoritos
+     *
+     * @return integer 
+     */
+    public function getFavoritos()
+    {
+        return $this->favoritos;
+    }
 }

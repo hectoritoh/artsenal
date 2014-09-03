@@ -1,0 +1,30 @@
+
+
+{% set currentPath = path(app.request.attributes.get('_route'),
+                           app.request.attributes.get('_route_params')) %}
+
+
+ <p class="lead latto">Submenu</p>
+ <div   id="categoria_block" class="list-group">        
+
+ 	<a href="{{  path('contenido_page' , {  contenido: 'nosotros' }) }}"
+ 	class="list-group-item   {% if   currentPath in   path('contenido_page' , {  contenido: 'nosotros' })   %} active {% endif %} ">Quienes somos
+ </a>    
+
+ <a href="{{  path('contenido_page' , {  contenido: 'preguntas' }) }}" 
+ class="list-group-item  {% if   currentPath in   path('contenido_page' , {  contenido: 'preguntas' })   %} active {% endif %}  " >
+ Preguntas
+</a>    
+
+<a href="{{  path('contenido_page' , {  contenido: 'politicas' }) }}" 
+class="list-group-item  {% if   currentPath in   path('contenido_page' , {  contenido: 'politicas' })   %} active {% endif %}  ">
+Politicas
+</a>    
+
+
+<a href="{{  path('contenido_page' , {  contenido: 'nosotros' }) }}" 
+class="list-group-item {% if   'nosotros' in   path('contenido_page' , {  contenido: 'nosotros' })   %} active {% endif %}   ">
+Blog
+</a>    
+
+</div>

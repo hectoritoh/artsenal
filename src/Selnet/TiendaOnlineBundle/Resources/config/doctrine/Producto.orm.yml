@@ -29,6 +29,18 @@ Selnet\TiendaOnlineBundle\Entity\Producto:
             length: 1
             fixed: true
             nullable: true
+        visitas:
+            type: integer
+            length: 1
+            fixed: true
+            nullable: true
+
+        favoritos:
+            type: integer
+            length: 1
+            fixed: true
+            nullable: true
+
         created_at:
             type: datetime
             nullable: false

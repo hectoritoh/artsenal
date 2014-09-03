@@ -1,0 +1,6 @@
+        <p class="lead latto">Categorias</p>
+        <div   id="categoria_block" class="list-group">
+        	{% for categoria in categorias %}
+        	<a href="{{  path('ver_categoria_artsenal' , { slug : categoria.slug }) }}" class="list-group-item">{{categoria.nombre}}</a>    
+        	{% endfor %}
+        </div>

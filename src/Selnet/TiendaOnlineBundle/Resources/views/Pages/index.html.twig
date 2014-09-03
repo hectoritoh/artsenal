@@ -2,7 +2,7 @@
 
 <div class="container">
     <div class="row">
-        <div id="left_content" class="col-md-2 same-col-1 ">
+        <div id="left_content" class="col-md-2 ">
             <div class="barra_spacer_2"></div>
             <div class="barra_spacer_2"></div>
             <div class="page-header pagina_header">
@@ -19,28 +19,11 @@
                 </li>
                 {% endfor %}
             </ul>
-
-
-            <div class="barra_spacer_2"></div>
-            <div class="page-header pagina_header">
-                <h2 style="cursor:pointer;" onclick="window.location='{{  path('artsenal_index_tienda') }}' ">Tiendas</h2>
-            </div>
-            <div class="barra_border"></div>
-            <ul class="lista_secciones">
-
-                {% for tienda in tiendas %}
-                <li class="texto_aquamarina">
-                    <a class="texto_aquamarina" href="{{  path('ver_tienda_artsenal' , {id_tienda: tienda.id }) }}">
-						{{  tienda.nombre }}
-					</a> 
-                </li>
-                {% endfor %}
-            </ul>
         </div>
 
 
 
-        <div id="content" class="col-md-10  same-col-1 ">
+        <div id="content" class="col-md-10  ">
 
             <div class="row">
 

@@ -27,9 +27,25 @@ Selnet\TiendaOnlineBundle\Entity\Subcategoria:
         created_at:
             type: datetime
             nullable: false
+            gedmo:
+              timestampable:
+                on: create
         updated_at:
             type: datetime
             nullable: false
+            gedmo:
+              timestampable:
+                on: update
+
+        slug:
+            type: string
+            length: 128
+            gedmo:
+              slug:
+                separator: _
+                style: default
+                fields:
+                  - nombre
     manyToOne:
         categoria:
           targetEntity: Categoria

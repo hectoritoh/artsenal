@@ -1,0 +1,132 @@
+{% extends "AppShopThemeBundle::template.artsenal.html.twig" %}
+
+
+
+
+{% block contenido %}
+
+
+
+<div class="barra_spacer_3"></div>
+
+<div class="row">
+	<div class="col-md-8 col-md-offset-2">
+		<div class="page-header pagina_header">
+			<h2>Configuración.</h2>
+		</div>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-md-8 col-md-offset-2">
+		<div class="panel panel-default artsenal-panel ">
+			<div class="panel-body">
+
+				<div class="container">
+					
+					<div class="page-header pagina_header">
+						<h2  style="font-size:20px;" >Todo en esta pagina será visto por todos!</h2>
+					</div>
+					<br>
+
+					
+
+
+
+					<div class="row">
+
+						<div  class="col-md-8 " >
+							<form class="form-horizontal" role="form">
+								{{ form_errors(form) }}
+							</form>
+						</div>
+					</div>
+
+
+
+					<div class="row">
+
+						<div  class="col-md-9 " >
+
+							
+							
+							<form  action="{{ path('perfil_usuario') }}"  class="form-horizontal" method="post" role="form"  {{ form_enctype(form) }} >
+
+
+
+								<div class="form-group">
+									<label for="inputEmail3" class="col-sm-2   control-label label_gris">Tu nombre</label>
+									<div class="col-sm-8 col-sm-offset-1">
+										<p class="input-help" >Este es el nombre de deuño que aparecera junto a los productos que subas</p>
+										{{  form_widget(  form.firstname , {attr:{  'class':'form-control'  }} ) }}
+										
+									</div>
+								</div>
+								<hr>
+
+
+
+								<div class="form-group">
+									<label for="inputPassword3" class="col-sm-2   control-label label_gris">Cumpleaños</label>
+									<div class="col-sm-8 col-sm-offset-1">
+										
+										{{  form_widget(  form.date_of_birth , {attr:{  'class':'form-control form-control-radio'  }} ) }}
+									</div>
+								</div>
+								<hr>
+
+								<div class="form-group">
+									<label for="inputPassword3" class="col-sm-2   control-label label_gris">Genero</label>
+									<div class="col-sm-8 col-sm-offset-1">
+										
+										{{  form_widget(  form.gender , {attr:{  'class':'form-control form-control-radio'  }} ) }}
+									</div>
+								</div>
+								<hr>
+
+								<div class="form-group">
+									<label for="inputPassword3" class="col-sm-2    control-label label_gris">Ciudad</label>
+									<div class="col-sm-8 col-sm-offset-1">
+										<p  class="input-help" >Debes ingresar una ciudad, para que aparezca en tu tienda</p>
+										{{  form_widget(  form.lastname , {attr:{  'class':'form-control'  }} ) }}
+									</div>
+								</div>
+								<hr>
+
+
+								<div class="form-group">
+									<label for="inputPassword3"   class="  col-sm-2 control-label label_gris">Sobre mi</label>
+									<div class="col-md-8 col-sm-offset-1" >										
+										{{  form_widget(  form.biography , {attr:{  'class':'form-control reset-radio' }} ) }}
+										<p  class="input-help" >Cuenta algo sobre ti </p>
+									</div>
+								</div>
+								<hr>
+
+
+ 
+
+
+								<div class="form-group">
+									 
+
+									<div class="col-sm-8 col-sm-offset-1">
+										<button type="submit" class="btn btn-default btn_aquamarino  ">Guardar</button>
+									</div>
+								</div>
+								{{ form_row(form._token) }} 
+							</form>
+
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</div>
+
+	</div>
+</div>
+
+
+
+{% endblock %}

@@ -143,7 +143,7 @@ class CartController extends Controller
 		return $this->redirect($this->generateUrl('ver_mi_cesta'));
 
 
-   //return $this->render('.html.twig');
+   
 	}
 	public function updateProductoAction(  $id_producto  , $cantidad , $precio )
 	{

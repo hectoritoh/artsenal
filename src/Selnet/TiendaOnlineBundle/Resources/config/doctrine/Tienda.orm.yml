@@ -29,7 +29,6 @@ Selnet\TiendaOnlineBundle\Entity\Tienda:
             type: text
             fixed: false
             nullable: true
-        
         anuncio:
             type: text
             fixed: false
@@ -55,15 +54,25 @@ Selnet\TiendaOnlineBundle\Entity\Tienda:
             fixed: false
             nullable: true
 
-        imagenCabecera:
-            type: text
-            fixed: false
-            nullable: true
+
         borrado:
             type: integer
             length: 1
             fixed: true
             nullable: true
+
+        verificado:
+            type: integer
+            length: 1
+            fixed: true
+            nullable: true
+
+        tipo_cuenta:
+            type: integer
+            length: 1
+            fixed: true
+            nullable: true
+
         estado:
             type: string
             length: 10
@@ -71,16 +80,34 @@ Selnet\TiendaOnlineBundle\Entity\Tienda:
         created_at:
             type: datetime
             nullable: false
+            gedmo:
+              timestampable:
+                on: create
         updated_at:
             type: datetime
             nullable: false
+            gedmo:
+              timestampable:
+                on: update
+        usuario:
+            type: string
+            nullable: false
 
-    oneToOne:
-      usuario:
-        targetEntity: Usuario
-        joinColumn:
-          name: usuario_id
-          referencedColumnName: id
+
+    manyToOne:
+        imagenCabecera:
+            targetEntity: Application\Sonata\MediaBundle\Entity\Media
+            cascade: ["persist"]
+
+
+
+
+    # oneToOne:
+    #   usuario:
+    #     targetEntity: Usuario
+    #     joinColumn:
+    #       name: usuario_id
+    #       referencedColumnName: id
 
     lifecycleCallbacks:
         prePersist: [preInsert]

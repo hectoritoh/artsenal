@@ -27,9 +27,15 @@ Selnet\TiendaOnlineBundle\Entity\ProductoDestinatario:
         created_at:
             type: datetime
             nullable: false
+            gedmo:
+              timestampable:
+                on: create
         updated_at:
             type: datetime
             nullable: false
+            gedmo:
+              timestampable:
+                on: update
 
     lifecycleCallbacks:
         prePersist: [preInsert]

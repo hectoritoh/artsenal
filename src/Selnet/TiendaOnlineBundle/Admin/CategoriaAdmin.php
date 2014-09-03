@@ -14,6 +14,7 @@ class CategoriaAdmin extends Admin
     {
         $formMapper->add('nombre')
         ->add('descripcion', 'textarea')
+        // ->add('slug')
         ->add('borrado', 'choice', array(
             'choices' => array(
                 '0' => 'No',

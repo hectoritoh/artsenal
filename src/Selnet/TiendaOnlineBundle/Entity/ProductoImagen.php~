@@ -233,20 +233,27 @@ class ProductoImagen
     {
         // the absolute directory path where uploaded
         // documents should be saved
-        return __DIR__.'/../../../../web/'.$this->getUploadDir();
+        // return __DIR__.'/../../../../web/'.$this->getUploadDir();
+        return $this->get('kernel')->getRootDir().'/../web/' .$this->getUploadDir();
     }
 
     protected function getUploadDir()
     {
         // get rid of the __DIR__ so it doesn't screw up
         // when displaying uploaded doc/image in the view.
-        return 'uploads/imagenes';
+        return 'uploads/imagenes/productos';
     }
 
 
 
-    public function upload()
+    public function upload(   $upload_dir   )
     {
+
+
+        if (!isset($upload_dir)) {
+            $upload_dir = $this->getUploadRootDir(); 
+        }
+
     // the file property can be empty if the field is not required
         if (null === $this->getFile()) {
             return;
@@ -258,7 +265,7 @@ class ProductoImagen
     // move takes the target directory and then the
     // target filename to move to
         $this->getFile()->move(
-            $this->getUploadRootDir(),
+            $upload_dir ,
             $this->getFile()->getClientOriginalName()
             );
 

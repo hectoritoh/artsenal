@@ -9,7 +9,7 @@ salir_artsenal:
     defaults:  { _controller: SelnetTiendaOnlineBundle:Default:salir }
 
 salir:
-    path:   /salir
+    path:   /logout
 
 
 
@@ -68,34 +68,6 @@ artsenal_producto_modal:
     path:      /producto.modal/{id_producto}
     defaults:  { _controller: SelnetTiendaOnlineBundle:Default:productoModal }
 
-
-
-creacion_de_tienda:
-    path:      /tienda.creacion
-    defaults:  { _controller: SelnetTiendaOnlineBundle:Tienda:nombreTienda }
-    
-
-producto_tienda:
-    path:      /tienda.productos
-    defaults:  { _controller: SelnetTiendaOnlineBundle:Tienda:productosTienda }
-
-personalizar_tienda:
-    path:      /tienda.personalizar
-    defaults:  { _controller: SelnetTiendaOnlineBundle:Tienda:personalizarTienda }
-
-politicas_tienda:
-    path:      /tienda.politicas
-    defaults:  { _controller: SelnetTiendaOnlineBundle:Tienda:politicas }
-
-
-preview_tienda:
-    path:      /tienda.preview
-    defaults:  { _controller: SelnetTiendaOnlineBundle:Tienda:preview }
-
-
-ver_tienda_artsenal:
-    path:      /tienda.ver/{id_tienda}
-    defaults:  { _controller: SelnetTiendaOnlineBundle:Tienda:ver }
 
 
 

@@ -1,0 +1,28 @@
+
+services:
+    artesania.producto.service.manager:
+        class: Sonata\ProductBundle\Entity\ProductManager
+        arguments:
+            - Application\Sonata\ProductBundle\Entity\Artesania
+            - @doctrine
+
+    artesania.producto.service.type:
+        class: Application\Sonata\ProductBundle\Provider\ArtesaniaProductProvider
+        arguments:
+            - @serializer
+
+
+sonata_product:
+    products:
+        artesania.producto.service:
+            provider: artesania.producto.service.type
+            manager: artesania.producto.service.manager
+    class:
+        product:              Application\Sonata\ProductBundle\Entity\Product
+        package:              Application\Sonata\ProductBundle\Entity\Package
+        product_category:     Application\Sonata\ProductBundle\Entity\ProductCategory
+        product_collection:   Application\Sonata\ProductBundle\Entity\ProductCollection
+        category:             Application\Sonata\ClassificationBundle\Entity\Category
+        collection:           Application\Sonata\ClassificationBundle\Entity\Collection
+        delivery:             Application\Sonata\ProductBundle\Entity\Delivery
+        gallery:              Application\Sonata\MediaBundle\Entity\Gallery

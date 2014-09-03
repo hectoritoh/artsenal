@@ -15,7 +15,7 @@
 </head>
 <body>
 	
-	<div id="main"  class="container" >
+	<div id="main"  class="container-fluid" >
 
 
 		{% block topbar %}				
@@ -55,17 +55,20 @@
 
 
 
+		<div id="bot_content" class="container" >
 
-		{% block anuncios %}		
-		{% include 'SelnetTiendaOnlineBundle:Blocks:anuncios.html.twig' %}
-		{%  endblock %}
+			{% block anuncios %}		
+			{% include 'SelnetTiendaOnlineBundle:Blocks:anuncios.html.twig' %}
+			{%  endblock %}
+
+				{% block footer %}
+			{% include 'SelnetTiendaOnlineBundle:Blocks:footer.html.twig' %}
+			{% endblock %}
+		</div>
 
 
-
-
-
-		{% block footer %}
-		{% include 'SelnetTiendaOnlineBundle:Blocks:footer.html.twig' %}
+		{% block login_facebook %}
+		    
 		{% endblock %}
 
 
@@ -79,6 +82,9 @@
 		<script type="text/javascript" src="{{ asset_url }}"></script>
 		{% endjavascripts %}
 		{%  endblock %}
+		<!-- Go to www.addthis.com/dashboard to customize your tools -->
+		<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-509db8b030e9560b"></script>
+
 
 
 	</div>

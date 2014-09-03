@@ -1,0 +1,188 @@
+
+
+
+{% extends "AppShopThemeBundle::template.artsenal.html.twig" %}
+
+
+
+
+
+
+
+
+{% block contenido %}
+
+<div class="barra_spacer_3"></div>
+
+<div class="row">
+	<div class="col-md-10 col-md-offset-1">
+		<div class="page-header pagina_header">
+			<h2>Bienvenidos a nuestra comunidad de vendedores!</h2>
+		</div>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-md-10 col-md-offset-1">
+		<div class="page-header pagina_header" style="color:green;" >
+
+			{% for flashMessage in app.session.flashbag.get('message') %}
+
+			<h2  style="color:green;" >  {{ flashMessage }}!</h2>
+
+
+			{% endfor %}
+
+			
+		</div>
+	</div>
+</div>
+
+
+
+<div class="row">
+	<div class="col-md-10 col-md-offset-1">
+		<div class="panel panel-default artsenal-panel "  style="margin-bottom: 0px; border-bottom-width: 0px;" >
+			<div class="panel-body"></div>
+			<div class="container-fluid">
+				<div class="row">
+
+					<div  class="col-md-12" >
+						{% include 'AppShopThemeBundle:Tienda:tienda.menu.html.twig' with {  existe: tienda_existe , tiene_productos: numero_productos  } %}
+					</div>
+				</div>
+			</div>
+
+
+		</div>
+	</div>
+</div>
+
+
+<div class="row">
+	<div class="col-md-10 col-md-offset-1">
+		<div class="panel panel-default artsenal-panel "style="border-top-width: 0px;" >
+			<div class="panel-body">
+
+				<div class="container-fluid">
+
+
+					<div  class="col-md-11" >
+						
+
+
+
+
+						<div id="contenido2" class="row contenido_tabs"    >
+
+
+
+							<div id="contenido4" class="row contenido_tabs"  >
+
+								<div class="barra_spacer_10"></div>
+								<div class="page-header pagina_header">
+									<h3  style="text-align: center;" >Felicidades, ya eres parte de la comunidad de vendedores Artsenal</h3>
+								</div>
+
+
+
+								{% if tipo_cuenta == 4 %}
+								<div id="platino" class="platino cuentas"   >
+
+									<div class="barra_spacer_3"></div>
+									<div class="page-header pagina_header">
+										<h3  style="text-align: center;" >Tu tienda esta en proceso de verificacion una vez recibido el pago mediante paypal podras recibir los beneficios contratados</h3>
+									</div>
+									<div class="barra_spacer_3"></div>
+
+
+
+
+									<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+										<input type="hidden" name="cmd" value="_s-xclick">
+										<input type="hidden" name="encrypted" value="-----BEGIN PKCS7-----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-----END PKCS7-----
+										">
+										<input type="image" src="https://www.paypalobjects.com/es_XC/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal, la forma más segura y rápida de pagar en línea.">
+										<img alt="" border="0" src="https://www.paypalobjects.com/es_XC/i/scr/pixel.gif" width="1" height="1">
+									</form>
+
+								</div>
+								{% endif %}
+
+
+								{% if tipo_cuenta == 3 %}
+
+								<div id="oro" class="cuentas oro"      >	
+
+
+									<div class="barra_spacer_3"></div>
+									<div class="page-header pagina_header">
+										<h3  style="text-align: center;" >Tu tienda esta en proceso de verificacion una vez recibido el pago mediante paypal podras recibir los beneficios contratados</h3>
+									</div>
+									<div class="barra_spacer_3"></div>
+
+
+									<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+										<input type="hidden" name="cmd" value="_s-xclick">
+										<input type="hidden" name="encrypted" value="-----BEGIN PKCS7-----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-----END PKCS7-----
+										">
+										<input type="image" src="https://www.paypalobjects.com/es_XC/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal, la forma más segura y rápida de pagar en línea.">
+										<img alt="" border="0" src="https://www.paypalobjects.com/es_XC/i/scr/pixel.gif" width="1" height="1">
+									</form>
+
+
+								</div>
+								{% endif %}
+								{% if tipo_cuenta == 2 %}
+
+								<div  id="plata" class="cuentas plata"    >	
+
+
+									<div class="barra_spacer_3"></div>
+									<div class="page-header pagina_header">
+										<h3  style="text-align: center;" >Tu tienda esta en proceso de verificacion una vez recibido el pago mediante paypal podras recibir los beneficios contratados</h3>
+									</div>
+									<div class="barra_spacer_3"></div>
+
+
+									<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+										<input type="hidden" name="cmd" value="_s-xclick">
+										<input type="hidden" name="encrypted" value="-----BEGIN PKCS7-----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-----END PKCS7-----
+										">
+										<input type="image" src="https://www.paypalobjects.com/es_XC/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal, la forma más segura y rápida de pagar en línea.">
+										<img alt="" border="0" src="https://www.paypalobjects.com/es_XC/i/scr/pixel.gif" width="1" height="1">
+									</form>
+
+
+
+								</div>
+								{% endif %}
+
+
+
+
+
+
+								<div class="barra_spacer_10"></div>
+							</div>
+
+
+						</div>
+					</div>
+
+
+
+				</div>
+			</div>
+		</div>
+
+	</div>
+
+
+
+
+
+	{% endblock %}
+
+
+

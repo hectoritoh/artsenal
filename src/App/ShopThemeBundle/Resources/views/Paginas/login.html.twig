@@ -1,0 +1,178 @@
+{% extends "AppShopThemeBundle::template.artsenal.html.twig" %}
+
+
+
+{% block login_facebook %}
+<div id="fb-root"></div>
+<script>
+	window.fbAsyncInit = function() {
+            // init the FB JS SDK
+            FB.init({
+                appId      : '265342143608130',                        // App ID from the app dashboard
+                channelUrl : '//desa.artsenal.com/channel.html',      // Channel file for x-domain comms
+                status     : true,                                 // Check Facebook Login status
+                xfbml      : true                                  // Look for social plugins on the page
+            });
+        };
+
+        // Load the SDK asynchronously
+        (function(d, s, id){
+        	var js, fjs = d.getElementsByTagName(s)[0];
+        	if (d.getElementById(id)) {return;}
+        	js = d.createElement(s); js.id = id;
+        	js.src = "//connect.facebook.net/en_US/all.js";
+        	fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+
+        function fb_login() {
+        	FB.getLoginStatus(function(response) {
+        		if (response.status === 'connected') {
+                    // connected
+                    alert('Already connected, redirect to login page to create token.');
+                    document.location = "{{ url("hwi_oauth_service_redirect", {service: "facebook"}) }}";
+                } else {
+                    // not_authorized
+                    FB.login(function(response) {
+                    	if (response.authResponse) {
+                    		document.location = "{{ url("hwi_oauth_service_redirect", {service: "facebook"}) }}";
+                    	} else {
+                    		alert('Cancelled.');
+                    	}
+                    }, {scope: 'email'});
+                }
+            });
+        }
+    </script>
+
+    
+
+    
+    <p>
+    	<a href="#" onclick="fb_login();">Facebook Connect Button (Dialog)</a>
+    </p>
+
+    {# Bonus: Show all available login link in HWIOAuthBundle #}
+    {% render(controller('HWIOAuthBundle:Connect:connect')) %}
+    {% endblock %}
+
+
+
+    {% block contenido %}
+
+    
+
+
+
+    <div class="barra_spacer_3"></div>
+
+
+
+
+    <div class="row">
+    	<div class="col-md-8 col-md-offset-2">
+
+
+    		<div class="row">
+
+    			<div class="page-header pagina_header">
+    				<h2>Accede a tu cuenta !</h2>
+    			</div>
+    		</div>
+
+
+    		<div class="row">
+    			<div class="col-md-12">
+    				<div class="panel panel-default artsenal-panel ">
+    					<div class="panel-body">
+
+    						<div class="container-fluid">
+
+    							<div class="page-header pagina_header">
+    								<h2>Ingresar!</h2>
+    							</div>
+    							<div class="barra_border"></div>
+
+
+
+    							<div class="row">
+
+    								<div  class="col-md-5 " >
+    									<form class="form-horizontal" role="form">
+    										{% if error %}
+
+    										<div> <p style="font-family:lato_light ; color:red;font-size:18px;"  >{{  error.message }}</p></div>
+    										{% endif %}
+    									</form>
+    								</div>
+    							</div>
+
+
+
+    							<div class="row">
+
+    								<div  class="col-md-6 " >
+
+
+    									<form  action="{{ path('login_check') }}"  method="post" role="form" >
+
+
+    										<div class="barra_spacer_2"></div>
+
+    										<div class="form-group">
+    											<label for="inputPassword3" class="control-label label_gris">Nombre de Usuario</label>
+    											<div class="">
+    												<input type="text" placeholder="Nombre de Usuario" class="form-control" style="width:70%;" required="required" name="_username" id="form_username">
+    											</div>
+    										</div>
+
+    										<div class="form-group">
+    											<label for="inputEmail3" class="control-label label_gris">Contraseña</label>
+    											<div >
+    												<input type="password" class="form-control" style="width:70%;" required="required" name="_password" id="form_password">
+    											</div>
+    										</div>
+
+
+
+    										<div class="form-group">
+    											<div >
+    												<button type="submit" class="btn btn-default btn_aquamarino  ">Ingresar</button>
+    											</div>
+    										</div>
+
+    									</form>
+
+    									<div class="barra_spacer_2"></div>
+
+    									<p   style="font-weight:bold;" >
+    										<a class="texto_aquamarina" href="{{ path('fos_user_resetting_request') }}" >
+    											Olvidaste tu contraseña?
+    										</a>
+    									</p>
+                                        <p  style="font-weight:bold;" >
+                                            <a class="texto_aquamarina" href="">
+                                                {# Olvidaste tu nombre de usuario o correo electronico? #}
+                                            </a>
+                                        </p>
+    									<p  style="font-weight:bold;" >
+
+{% render(controller('HWIOAuthBundle:Connect:connect')) %}
+    									</p>
+
+
+
+    								</div>
+    							</div>
+
+    						</div>
+    					</div>
+    				</div>
+
+    			</div>
+    		</div>
+
+    	</div>
+    </div>
+
+
+    {% endblock %}

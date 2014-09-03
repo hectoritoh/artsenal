@@ -18,9 +18,19 @@ Selnet\TiendaOnlineBundle\Entity\Contenido:
             length: 150
             fixed: false
             nullable: true
-        contenido:
+
+
+        rawContent:
             type: text
             nullable: false
+        contentFormatter:
+            type: text
+            nullable: false
+        contenido:
+            type: text
+            nullable: true
+
+
         publicado:
             type: integer
             length: 1
@@ -29,9 +39,15 @@ Selnet\TiendaOnlineBundle\Entity\Contenido:
         created_at:
             type: datetime
             nullable: false
+            gedmo:
+              timestampable:
+                on: create
         updated_at:
             type: datetime
             nullable: false
+            gedmo:
+              timestampable:
+                on: update
     lifecycleCallbacks:
         prePersist: [preInsert]
         preUpdate: [preUpdate]

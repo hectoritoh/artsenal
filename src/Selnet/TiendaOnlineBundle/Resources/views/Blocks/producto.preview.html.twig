@@ -1,7 +1,8 @@
 
 {% if producto is not null  %}
 <div class="producto"  onclick="mostrar_producto(  '{{  path('artsenal_producto_modal' ,{id_producto: producto.id}) }}' )" >	
-	<div  class="producto_imagen"  style="background-image:url({{ asset( 'uploads/imagenes/' ~ producto.imagenes[0].url  ) }})" >				
+	<div  class="producto_imagen"   >						
+		<img  class="img-responsive" src="{{ asset('/uploads/imagenes/productos/'  ~ producto.imagenes[0].url)   | apply_filter('thumbnail') }}" />
 	</div>
 	<div class="producto_descripcion">		
 		<p class="texto_aquamarina titulo_producto"   >			
@@ -14,6 +15,6 @@
 </div>
 
 {% else %}
-    
+
 
 {% endif %}

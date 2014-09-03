@@ -1,0 +1,93 @@
+{% extends "AppShopThemeBundle::template.html.twig" %}
+
+
+{% block titulo_contenido %}
+
+<div class="row">
+	<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+		<h3 style="margin-top: 0px;" class="latto">{{ categoria.nombre }}</h3>    	
+	</div>
+		
+	<div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
+
+
+		<select class="pull-right filtro_producto"  name="ciudad" id="ciudad" onchange="getProductosBy()" >
+			<option value="-1">Ciudad</option>
+			<option value="-1">Guayaquil</option>
+			<option value="-1">Quito</option>
+			<option value="-1">Cuenca</option>
+		</select>
+
+
+		<select class="pull-right filtro_producto"  name="precios" id="precio"  onchange="getProductosBy()" >
+			<option value="-1">Precios</option>
+			<option value="1">$10.00 - $25.00</option>
+			<option value="2">$26.00 - $50.00</option>
+			<option value="3">$10.00 - $75.00</option>
+			<option value="4">$10.00 - $100.00</option>
+			<option value="5">$100.00 en adelante</option>
+		</select>
+
+
+
+		<select class="pull-right filtro_producto"  name="subcategoria" id="subcategoria"  onchange="getProductosBy()" >
+		<!-- <option value="-1">Categorias</option>     -->
+		{% for subcategoria in subcategorias %}
+		<option value="{{subcategoria.id}}">{{subcategoria.nombre}}</option>    
+		{% endfor %}
+		</select>
+
+	</div>
+</div>
+
+{% endblock %}
+
+
+
+{% block banners %}
+
+{% endblock %}
+
+
+
+
+
+{% block productos %}
+
+<div  id="productos" >
+	
+       
+</div>
+{% endblock %}
+
+
+
+{% block js %}
+    
+	{{  parent() }}
+
+
+	<script  type="text/javascript" >
+
+
+	var categoria = "{{  categoria.id }}"; 
+
+	$(document).ready(  function(){
+		getProductosBy();
+	} ); 
+
+	</script>
+
+{% endblock %}
+
+{% block modal %}
+
+<div id="modalProducto" class="modal fade">
+
+
+	
+
+</div><!-- /.modal -->
+
+
+{% endblock %}

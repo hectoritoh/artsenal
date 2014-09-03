@@ -1,0 +1,52 @@
+Selnet\TiendaOnlineBundle\Entity\Publicidad:
+    type: entity
+    table: publicidad
+    fields:
+        id:
+            id: true
+            type: integer
+            unsigned: false
+            nullable: false
+            generator:
+                strategy: IDENTITY
+        nombre:
+            type: string
+            length: 45
+            fixed: false
+            nullable: true
+        url:
+            type: string
+            length: 150
+            fixed: false
+            nullable: true
+        borrado:
+            type: integer
+            length: 1
+            fixed: true
+            nullable: true
+        tipo:
+            type: integer
+            length: 1
+            fixed: true
+            nullable: true
+
+        created_at:
+            type: datetime
+            nullable: false
+            gedmo:
+              timestampable:
+                on: create
+        updated_at:
+            type: datetime
+            nullable: false
+            gedmo:
+              timestampable:
+                on: update
+    manyToOne:
+        image:
+            targetEntity: Application\Sonata\MediaBundle\Entity\Media
+            cascade: ["persist"]
+
+    lifecycleCallbacks:
+        prePersist: [preInsert]
+        preUpdate: [preUpdate]

@@ -25,9 +25,59 @@ class Tienda
     private $descripcion;
 
     /**
+     * @var string
+     */
+    private $titulo;
+
+    /**
+     * @var string
+     */
+    private $mensaje;
+
+    /**
+     * @var string
+     */
+    private $anuncio;
+
+    /**
+     * @var string
+     */
+    private $mensajeBienvenida;
+
+    /**
+     * @var string
+     */
+    private $politicaPagos;
+
+    /**
+     * @var string
+     */
+    private $politicaReembolso;
+
+    /**
+     * @var string
+     */
+    private $informacionAdicional;
+
+    /**
+     * @var string
+     */
+    private $informacionVendedor;
+
+    /**
+     * @var string
+     */
+    private $imagenCabecera;
+
+    /**
      * @var integer
      */
     private $borrado;
+
+    /**
+     * @var string
+     */
+    private $estado;
 
     /**
      * @var \DateTime
@@ -40,7 +90,7 @@ class Tienda
     private $updated_at;
 
     /**
-     * @var \Selnet\TiendaOnlineBundle\Entity\Usuario
+     * @var string
      */
     private $usuario;
 
@@ -64,7 +114,7 @@ class Tienda
     public function setNombre($nombre)
     {
         $this->nombre = $nombre;
-
+    
         return $this;
     }
 
@@ -87,7 +137,7 @@ class Tienda
     public function setDescripcion($descripcion)
     {
         $this->descripcion = $descripcion;
-
+    
         return $this;
     }
 
@@ -102,170 +152,6 @@ class Tienda
     }
 
     /**
-     * Set borrado
-     *
-     * @param integer $borrado
-     * @return Tienda
-     */
-    public function setBorrado($borrado)
-    {
-        $this->borrado = $borrado;
-
-        return $this;
-    }
-
-    /**
-     * Get borrado
-     *
-     * @return integer 
-     */
-    public function getBorrado()
-    {
-        return $this->borrado;
-    }
-
-    /**
-     * Set created_at
-     *
-     * @param \DateTime $createdAt
-     * @return Tienda
-     */
-    public function setCreatedAt($createdAt)
-    {
-        $this->created_at = $createdAt;
-
-        return $this;
-    }
-
-    /**
-     * Get created_at
-     *
-     * @return \DateTime 
-     */
-    public function getCreatedAt()
-    {
-        return $this->created_at;
-    }
-
-    /**
-     * Set updated_at
-     *
-     * @param \DateTime $updatedAt
-     * @return Tienda
-     */
-    public function setUpdatedAt($updatedAt)
-    {
-        $this->updated_at = $updatedAt;
-
-        return $this;
-    }
-
-    /**
-     * Get updated_at
-     *
-     * @return \DateTime 
-     */
-    public function getUpdatedAt()
-    {
-        return $this->updated_at;
-    }
-
-    /**
-     * Set usuario
-     *
-     * @param \Selnet\TiendaOnlineBundle\Entity\Usuario $usuario
-     * @return Tienda
-     */
-    public function setUsuario(\Selnet\TiendaOnlineBundle\Entity\Usuario $usuario = null)
-    {
-        $this->usuario = $usuario;
-
-        return $this;
-    }
-
-    /**
-     * Get usuario
-     *
-     * @return \Selnet\TiendaOnlineBundle\Entity\Usuario 
-     */
-    public function getUsuario()
-    {
-        return $this->usuario;
-    }
-    /**
-     * @ORM\PrePersist
-     */
-    public function preInsert()
-    {
-        // Add your code here
-        //      $this->setBorrado(0);
-        $this->setCreatedAt(  new \DateTime() );
-        $this->setUpdatedAt(  new \DateTime() );
-    }
-
-    /**
-     * @ORM\PreUpdate
-     */
-    public function preUpdate()
-    {
-        // Add your code here
-        $this->setUpdatedAt(  new \DateTime() );
-    }
-
-
-    
-
-
-    /**
-     * @var string
-     */
-    private $estado;
-
-
-    /**
-     * Set estado
-     *
-     * @param string $estado
-     * @return Tienda
-     */
-    public function setEstado($estado)
-    {
-        $this->estado = $estado;
-
-        return $this;
-    }
-
-    /**
-     * Get estado
-     *
-     * @return string 
-     */
-    public function getEstado()
-    {
-        return $this->estado;
-    }
-    /**
-     * @var string
-     */
-    private $titulo;
-
-    /**
-     * @var string
-     */
-    private $mensaje;
-
-    /**
-     * @var string
-     */
-    private $anuncio;
-
-    /**
-     * @var string
-     */
-    private $imagenCabecera;
-
-
-    /**
      * Set titulo
      *
      * @param string $titulo
@@ -274,7 +160,7 @@ class Tienda
     public function setTitulo($titulo)
     {
         $this->titulo = $titulo;
-
+    
         return $this;
     }
 
@@ -297,7 +183,7 @@ class Tienda
     public function setMensaje($mensaje)
     {
         $this->mensaje = $mensaje;
-
+    
         return $this;
     }
 
@@ -320,7 +206,7 @@ class Tienda
     public function setAnuncio($anuncio)
     {
         $this->anuncio = $anuncio;
-
+    
         return $this;
     }
 
@@ -335,6 +221,121 @@ class Tienda
     }
 
     /**
+     * Set mensajeBienvenida
+     *
+     * @param string $mensajeBienvenida
+     * @return Tienda
+     */
+    public function setMensajeBienvenida($mensajeBienvenida)
+    {
+        $this->mensajeBienvenida = $mensajeBienvenida;
+    
+        return $this;
+    }
+
+    /**
+     * Get mensajeBienvenida
+     *
+     * @return string 
+     */
+    public function getMensajeBienvenida()
+    {
+        return $this->mensajeBienvenida;
+    }
+
+    /**
+     * Set politicaPagos
+     *
+     * @param string $politicaPagos
+     * @return Tienda
+     */
+    public function setPoliticaPagos($politicaPagos)
+    {
+        $this->politicaPagos = $politicaPagos;
+    
+        return $this;
+    }
+
+    /**
+     * Get politicaPagos
+     *
+     * @return string 
+     */
+    public function getPoliticaPagos()
+    {
+        return $this->politicaPagos;
+    }
+
+    /**
+     * Set politicaReembolso
+     *
+     * @param string $politicaReembolso
+     * @return Tienda
+     */
+    public function setPoliticaReembolso($politicaReembolso)
+    {
+        $this->politicaReembolso = $politicaReembolso;
+    
+        return $this;
+    }
+
+    /**
+     * Get politicaReembolso
+     *
+     * @return string 
+     */
+    public function getPoliticaReembolso()
+    {
+        return $this->politicaReembolso;
+    }
+
+    /**
+     * Set informacionAdicional
+     *
+     * @param string $informacionAdicional
+     * @return Tienda
+     */
+    public function setInformacionAdicional($informacionAdicional)
+    {
+        $this->informacionAdicional = $informacionAdicional;
+    
+        return $this;
+    }
+
+    /**
+     * Get informacionAdicional
+     *
+     * @return string 
+     */
+    public function getInformacionAdicional()
+    {
+        return $this->informacionAdicional;
+    }
+
+    /**
+     * Set informacionVendedor
+     *
+     * @param string $informacionVendedor
+     * @return Tienda
+     */
+    public function setInformacionVendedor($informacionVendedor)
+    {
+        $this->informacionVendedor = $informacionVendedor;
+    
+        return $this;
+    }
+
+    /**
+     * Get informacionVendedor
+     *
+     * @return string 
+     */
+    public function getInformacionVendedor()
+    {
+        return $this->informacionVendedor;
+    }
+
+    /**
      * Set imagenCabecera
      *
      * @param string $imagenCabecera
@@ -343,7 +344,7 @@ class Tienda
     public function setImagenCabecera($imagenCabecera)
     {
         $this->imagenCabecera = $imagenCabecera;
-
+    
         return $this;
     }
 
@@ -356,6 +357,200 @@ class Tienda
     {
         return $this->imagenCabecera;
     }
+
+    /**
+     * Set borrado
+     *
+     * @param integer $borrado
+     * @return Tienda
+     */
+    public function setBorrado($borrado)
+    {
+        $this->borrado = $borrado;
+    
+        return $this;
+    }
+
+    /**
+     * Get borrado
+     *
+     * @return integer 
+     */
+    public function getBorrado()
+    {
+        return $this->borrado;
+    }
+
+    /**
+     * Set estado
+     *
+     * @param string $estado
+     * @return Tienda
+     */
+    public function setEstado($estado)
+    {
+        $this->estado = $estado;
+    
+        return $this;
+    }
+
+    /**
+     * Get estado
+     *
+     * @return string 
+     */
+    public function getEstado()
+    {
+        return $this->estado;
+    }
+
+    /**
+     * Set created_at
+     *
+     * @param \DateTime $createdAt
+     * @return Tienda
+     */
+    public function setCreatedAt($createdAt)
+    {
+        $this->created_at = $createdAt;
+    
+        return $this;
+    }
+
+    /**
+     * Get created_at
+     *
+     * @return \DateTime 
+     */
+    public function getCreatedAt()
+    {
+        return $this->created_at;
+    }
+
+    /**
+     * Set updated_at
+     *
+     * @param \DateTime $updatedAt
+     * @return Tienda
+     */
+    public function setUpdatedAt($updatedAt)
+    {
+        $this->updated_at = $updatedAt;
+    
+        return $this;
+    }
+
+    /**
+     * Get updated_at
+     *
+     * @return \DateTime 
+     */
+    public function getUpdatedAt()
+    {
+        return $this->updated_at;
+    }
+
+    /**
+     * Set usuario
+     *
+     * @param string $usuario
+     * @return Tienda
+     */
+    public function setUsuario($usuario)
+    {
+        $this->usuario = $usuario;
+    
+        return $this;
+    }
+
+    /**
+     * Get usuario
+     *
+     * @return string 
+     */
+    public function getUsuario()
+    {
+        return $this->usuario;
+    }
+    /**
+     * @ORM\PrePersist
+     */
+    public function preInsert()
+    {
+        // Add your code here
+    }
+
+    /**
+     * @ORM\PreUpdate
+     */
+    public function preUpdate()
+    {
+        // Add your code here
+    }
+    /**
+     * @var integer
+     */
+    private $verificado;
+
+    /**
+     * @var integer
+     */
+    private $tipo_cuenta;
+
+
+    /**
+     * Set verificado
+     *
+     * @param integer $verificado
+     * @return Tienda
+     */
+    public function setVerificado($verificado)
+    {
+        $this->verificado = $verificado;
+    
+        return $this;
+    }
+
+    /**
+     * Get verificado
+     *
+     * @return integer 
+     */
+    public function getVerificado()
+    {
+        return $this->verificado;
+    }
+
+    /**
+     * Set tipo_cuenta
+     *
+     * @param integer $tipoCuenta
+     * @return Tienda
+     */
+    public function setTipoCuenta($tipoCuenta)
+    {
+        $this->tipo_cuenta = $tipoCuenta;
+    
+        return $this;
+    }
+
+    /**
+     * Get tipo_cuenta
+     *
+     * @return integer 
+     */
+    public function getTipoCuenta()
+    {
+        return $this->tipo_cuenta;
+    }
+
+
+
+
+
+
+
+
 
 
 
@@ -386,6 +581,8 @@ class Tienda
     }
 
 
+    public $path;
+
     public function getAbsolutePath()
     {
         return null === $this->path
@@ -404,20 +601,27 @@ class Tienda
     {
         // the absolute directory path where uploaded
         // documents should be saved
-        return __DIR__.'/../../../../web/'.$this->getUploadDir();
+        // return __DIR__.'/../../../../web/'.$this->getUploadDir();
+        return $this->get('kernel')->getRootDir().'/../web/' .$this->getUploadDir();
     }
 
     protected function getUploadDir()
     {
         // get rid of the __DIR__ so it doesn't screw up
         // when displaying uploaded doc/image in the view.
-        return 'uploads/imagen_tienda';
+        return 'uploads/imagenes/tienda';
     }
 
 
 
-    public function upload()
+    public function upload(    )
     {
+
+        $upload_dir = $this->getUploadDir();
+        if (!isset($upload_dir)) {
+            $upload_dir = $this->getUploadRootDir(); 
+        }
+
     // the file property can be empty if the field is not required
         if (null === $this->getFile()) {
             return;
@@ -429,12 +633,12 @@ class Tienda
     // move takes the target directory and then the
     // target filename to move to
         $this->getFile()->move(
-            $this->getUploadRootDir(),
+            $upload_dir ,
             $this->getFile()->getClientOriginalName()
             );
 
     // set the path property to the filename where you've saved the file
-        $this->imagenCabecera = $this->getFile()->getClientOriginalName();
+        $this->url = $this->getFile()->getClientOriginalName();
 
     // clean up the file property as you won't need it anymore
         $this->file = null;
@@ -443,148 +647,7 @@ class Tienda
 
 
 
- 
 
 
 
-    /**
-     * @var string
-     */
-    private $mensajeBienvenida;
-
-    /**
-     * @var string
-     */
-    private $politicaPagos;
-
-    /**
-     * @var string
-     */
-    private $politicaReembolso;
-
-    /**
-     * @var string
-     */
-    private $informacionAdicional;
-
-    /**
-     * @var string
-     */
-    private $informacionVendedor;
-
-
-    /**
-     * Set mensajeBienvenida
-     *
-     * @param string $mensajeBienvenida
-     * @return Tienda
-     */
-    public function setMensajeBienvenida($mensajeBienvenida)
-    {
-        $this->mensajeBienvenida = $mensajeBienvenida;
-
-        return $this;
-    }
-
-    /**
-     * Get mensajeBienvenida
-     *
-     * @return string 
-     */
-    public function getMensajeBienvenida()
-    {
-        return $this->mensajeBienvenida;
-    }
-
-    /**
-     * Set politicaPagos
-     *
-     * @param string $politicaPagos
-     * @return Tienda
-     */
-    public function setPoliticaPagos($politicaPagos)
-    {
-        $this->politicaPagos = $politicaPagos;
-
-        return $this;
-    }
-
-    /**
-     * Get politicaPagos
-     *
-     * @return string 
-     */
-    public function getPoliticaPagos()
-    {
-        return $this->politicaPagos;
-    }
-
-    /**
-     * Set politicaReembolso
-     *
-     * @param string $politicaReembolso
-     * @return Tienda
-     */
-    public function setPoliticaReembolso($politicaReembolso)
-    {
-        $this->politicaReembolso = $politicaReembolso;
-
-        return $this;
-    }
-
-    /**
-     * Get politicaReembolso
-     *
-     * @return string 
-     */
-    public function getPoliticaReembolso()
-    {
-        return $this->politicaReembolso;
-    }
-
-    /**
-     * Set informacionAdicional
-     *
-     * @param string $informacionAdicional
-     * @return Tienda
-     */
-    public function setInformacionAdicional($informacionAdicional)
-    {
-        $this->informacionAdicional = $informacionAdicional;
-
-        return $this;
-    }
-
-    /**
-     * Get informacionAdicional
-     *
-     * @return string 
-     */
-    public function getInformacionAdicional()
-    {
-        return $this->informacionAdicional;
-    }
-
-    /**
-     * Set informacionVendedor
-     *
-     * @param string $informacionVendedor
-     * @return Tienda
-     */
-    public function setInformacionVendedor($informacionVendedor)
-    {
-        $this->informacionVendedor = $informacionVendedor;
-
-        return $this;
-    }
-
-    /**
-     * Get informacionVendedor
-     *
-     * @return string 
-     */
-    public function getInformacionVendedor()
-    {
-        return $this->informacionVendedor;
-    }
 }
