@@ -37,6 +37,10 @@ ver_compras_usuario:
 # tienda
 
 
+ver_tiendas_artsenal:
+    path:      /tiendas
+    defaults:  { _controller: AppShopThemeBundle:Default:tiendas }
+
 tienda_artsenal:
     path:      /ver/tienda
     defaults:  { _controller: AppShopThemeBundle:Default:tienda }

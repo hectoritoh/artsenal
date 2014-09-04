@@ -52,6 +52,7 @@ class PagoController extends Controller
             $detalleVenta->setPrecio( $cartItem->getPrecio() );
             $producto = $em->getRepository('SelnetTiendaOnlineBundle:Producto')->find(  $cartItem->getProductoId() );
             $detalleVenta->setProducto( $producto  );
+            $detalleVenta->setVenta( $venta  );
             $venta->getDetalles()->add(  $detalleVenta );
         }
 

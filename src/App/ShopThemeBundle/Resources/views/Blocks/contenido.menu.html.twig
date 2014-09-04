@@ -1,24 +1,33 @@
 
 
 {% set currentPath = path(app.request.attributes.get('_route'),
-                           app.request.attributes.get('_route_params')) %}
+app.request.attributes.get('_route_params')) %}
 
 
- <p class="lead latto">Submenu</p>
- <div   id="categoria_block" class="list-group">        
+<p class="lead latto">Submenu</p>
+<div   id="categoria_block" class="list-group">        
+	<a href="{{  path('contenido_page' , {  contenido: 'nosotros' }) }}"
+	class="list-group-item   {% if   currentPath in   path('contenido_page' , {  contenido: 'nosotros' })   %} active {% endif %} ">Quienes somos
+</a>    
 
- 	<a href="{{  path('contenido_page' , {  contenido: 'nosotros' }) }}"
- 	class="list-group-item   {% if   currentPath in   path('contenido_page' , {  contenido: 'nosotros' })   %} active {% endif %} ">Quienes somos
- </a>    
-
- <a href="{{  path('contenido_page' , {  contenido: 'preguntas' }) }}" 
- class="list-group-item  {% if   currentPath in   path('contenido_page' , {  contenido: 'preguntas' })   %} active {% endif %}  " >
- Preguntas
+<a href="{{  path('contenido_page' , {  contenido: 'preguntas' }) }}" 
+class="list-group-item  {% if   currentPath in   path('contenido_page' , {  contenido: 'preguntas' })   %} active {% endif %}  " >
+Preguntas
 </a>    
 
 <a href="{{  path('contenido_page' , {  contenido: 'politicas' }) }}" 
 class="list-group-item  {% if   currentPath in   path('contenido_page' , {  contenido: 'politicas' })   %} active {% endif %}  ">
 Politicas
+</a>    
+
+<a href="{{  path('contenido_page' , {  contenido: 'comprar' }) }}" 
+class="list-group-item  {% if   currentPath in   path('contenido_page' , {  contenido: 'comprar' })   %} active {% endif %}  ">
+Compras
+</a>    
+
+<a href="{{  path('contenido_page' , {  contenido: 'vender' }) }}" 
+class="list-group-item  {% if   currentPath in   path('contenido_page' , {  contenido: 'vender' })   %} active {% endif %}  ">
+Ventas
 </a>    
 
 

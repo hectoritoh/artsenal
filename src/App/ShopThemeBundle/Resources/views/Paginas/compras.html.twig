@@ -36,30 +36,34 @@
               <div class="row lista_compra">
 
 
-               
 
-                <div  class="col-md-4 " >                  
-                  <p  class="text_lista_compras" >{{  venta.detalles | length  }}</p>
-                </div>    
 
-                <div  class="col-md-4 " >
-                  <p class="titulo_lista_compras" >Fecha</p>
-                  <p  class="text_lista_compras" >{{  venta.createdAt | date('Y:m:d H:i:s')  }}</p>
+
+                <div  class="col-md-3 " >           
+                {% set image_path = asset('/uploads/imagenes/productos/'  ~ venta.detalles[0].producto.imagenes[0].url ) %}
+                <img style="border: 1px solid gray;" class="img-responsive" src="{{  image_path  | apply_filter('thumbnail') }}" />
+
+                  
                 </div>
- 
-                <div  class="col-md-4 " >
+
+                <div  class="col-md-3 " >
+                  <p class="titulo_lista_compras" >Fecha compra</p>
+                  <p  class="text_lista_compras aquamarina" >{{  venta.createdAt | date('Y:m:d H:i:s')  }}</p>
+                </div>
+
+                <div  class="col-md-3 " >
                   <p  class="titulo_lista_compras" >Total</p>
-                  <p  class="text_lista_compras" >${{  venta.total  }}</p>
+                  <p  class="text_lista_compras rosa" >${{  venta.total  }}</p>
                 </div>
- 
 
-                <div  class="col-md-4 " >
-                  <p class="titulo_lista_compras" >Estado</p>
+
+                <div  class="col-md-3 " >
+                  <p class="titulo_lista_compras" >Status</p>
                   {% if venta.estado == 0  %}
-                  <p class="text_lista_compras" >Requiere pago</p>
+                  <p class="text_lista_compras rosa" >Requiere pago</p>
                   {% endif %}
                   {% if venta.estado == 1  %}
-                  <p class="text_lista_compras" >En Proceso</p>
+                  <p class="text_lista_compras rosa" >En Proceso</p>
                   {% endif %}
 
 
@@ -70,7 +74,7 @@
 
               </div>
 
-  <hr>
+              <hr>
 
               {% endfor %}
 

@@ -581,7 +581,7 @@ class Tienda
     }
 
 
-    public $path;
+    private $path;
 
     public function getAbsolutePath()
     {

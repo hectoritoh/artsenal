@@ -14,6 +14,19 @@ class DefaultController extends Controller
 
 
 
+
+public function tiendasAction()
+{
+
+	$em = $this->getDoctrine()->getManager();
+	$tiendas = $em->getRepository('SelnetTiendaOnlineBundle:Tienda')->findAll();
+
+    return $this->render('AppShopThemeBundle:Tienda:tiendas.html.twig' , array("tiendas" => $tiendas ));
+}
+
+
+
+
 	public function comprasAction()
 	{
 
@@ -21,7 +34,8 @@ class DefaultController extends Controller
 		$usuario = $this->get('security.context')->getToken()->getUser();
 		$ventas = $em->getRepository('SelnetTiendaOnlineBundle:Venta')->findBy(  array("usuario"=> $usuario->getUsername()  ) );
 
-	    return $this->render('AppShopThemeBundle:Paginas:compras.html.twig' , array("ventas"=> $ventas )  );
+		return $this->render('AppShopThemeBundle:Paginas:compras.html.twig' , array("ventas"=> $ventas )  );
+
 	}
 
 
@@ -215,11 +229,10 @@ class DefaultController extends Controller
 
 		$banner = $em->getRepository('SelnetTiendaOnlineBundle:Banner')->findAll();
 
-		return $this->render('AppShopThemeBundle:Default:index.html.twig' , array(
-			'categorias' => $categorias , 
+		return $this->render('AppShopThemeBundle:Default:index.html.twig' , array(			
 			'productos' => $productos , 
-			'tiendas' => $tiendas , 
-			'banners' => $banner)
+			'tiendas' => $tiendas 
+			)
 		);
 	}
 

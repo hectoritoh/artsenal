@@ -1,6 +1,6 @@
 
- <!-- Navigation -->
- <nav class="navbar navbar-artsenal navbar-fixed-top" role="navigation">
+<!-- Navigation -->
+<nav class="navbar navbar-artsenal navbar-fixed-top" role="navigation">
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
@@ -14,43 +14,54 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="main-navbar">
       <ul class="nav navbar-nav">
-         <li>
-          <a href="{{  path('contenido_page' , {  contenido: 'comprar' }) }}" >Comprar</a>
-        </li>
-        <li>
-          <a href="{{  path('contenido_page' , {  contenido: 'vender' }) }}" >Vender</a>
-        </li>
-        <li>
-          <a href="{{    path('sonata_news_home')  }}">Blog</a>
-        </li>
-      </ul>
+       <li>
+        <a href="{{  path('contenido_page' , {  contenido: 'comprar' }) }}" >Comprar</a>
+      </li>
+      <li>
+        <a href="{{  path('contenido_page' , {  contenido: 'vender' }) }}" >Vender</a>
+      </li>
+      <li>
+        <a href="{{    path('sonata_news_home')  }}">Blog</a>
+      </li>
+    </ul>
 
 
-      <ul class="nav navbar-nav pull-right">
-        
-        <li>
-          <a href="#">Hola , {{  app.user.username }}</a>
-        </li>
-        <li>
-          <a href="#">Tu Tienda</a>
-        </li>
-    <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Tu Cuenta </a>
-              <ul class="dropdown-menu" role="menu">
-                <li><a href="{{  path('ver_compras_usuario') }}">Compras</a></li>
-                <li><a href="{{  path('perfil_usuario') }}">Perfil</a></li>
-                <li><a href="#">Configuracion</a></li>
-                <li><a href="{{  path('salir') }}">Salir</a></li>                
-              </ul>
-            </li>
+    <ul class="nav navbar-nav pull-right">
 
-      </ul>
+      <li>
+        <a href="#">Hola , {{  app.user.username }}</a>
+      </li>
+      
 
 
-    </div>                                   
-    <!-- /.navbar-collapse -->
-  </div>
-  <!-- /.container -->
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Tu Tienda </a>
+        <ul class="dropdown-menu" role="menu">
+          <li><a href="{{  path('preview_tienda_artsenal') }}">Preview</a></li>
+          <li><a href="{{  path('politicas_tienda_artsenal') }}">Politicas</a></li>
+          <li><a href="{{  path('presonaliza_tienda_artsenal') }}">Personalizar</a></li>                    
+          <li><a href="{{  path('creacion_tienda_artsenal') }}">Configuracion</a></li>                    
+        </ul>
+      </li>
+
+
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Tu Cuenta </a>
+        <ul class="dropdown-menu" role="menu">
+          <li><a href="{{  path('ver_compras_usuario') }}">Compras</a></li>
+          <li><a href="{{  path('perfil_usuario') }}">Perfil</a></li>
+          <!-- <li><a href="#">Configuracion</a></li> -->
+          <li><a href="{{  path('salir') }}">Salir</a></li>                
+        </ul>
+      </li>
+
+    </ul>
+
+
+  </div>                                   
+  <!-- /.navbar-collapse -->
+</div>
+<!-- /.container -->
 </nav>
 
 
@@ -84,49 +95,49 @@
     <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2   ">
 
       <div class="row">
-        
 
 
-    <div class="col-sm-4 col-lg-4 col-md-4  vertical-center submenu-item " >
-      <a href="{{  path('login_artsenal') }}">
-         {% image '@AppShopThemeBundle/Resources/public/images/mensaje.png'%}
-          <img    class="  icon-submenu " src="{{ asset_url }}" alt="mensaje"/>
-         {% endimage %}
-      </a>
-    </div>
 
-    <div class="col-sm-4 col-lg-4 col-md-4  vertical-center submenu-item " >
+        <div class="col-sm-4 col-lg-4 col-md-4  vertical-center submenu-item " >
+          <a href="{{  path('login_artsenal') }}">
+           {% image '@AppShopThemeBundle/Resources/public/images/mensaje.png'%}
+           <img    class="  icon-submenu " src="{{ asset_url }}" alt="mensaje"/>
+           {% endimage %}
+         </a>
+       </div>
+
+       <div class="col-sm-4 col-lg-4 col-md-4  vertical-center submenu-item " >
         <a href="">
          {% image '@AppShopThemeBundle/Resources/public/images/corazon.png'%}
-          <img    class="  icon-submenu " src="{{ asset_url }}" alt="like"/>
+         <img    class="  icon-submenu " src="{{ asset_url }}" alt="like"/>
          {% endimage %}
-         </a>
-    </div>
-    <div class="col-sm-4 col-lg-4 col-md-4  vertical-center submenu-item " >
-        <a href="{{  path('tienda_artsenal') }}">
-         {% image '@AppShopThemeBundle/Resources/public/images/tienda.png'%}
-          <img    class="  icon-submenu " src="{{ asset_url }}" alt="tienda"/>
-         {% endimage %}
-         </a>
-    </div>
+       </a>
+     </div>
+     <div class="col-sm-4 col-lg-4 col-md-4  vertical-center submenu-item " >
+      <a href="{{  path('tienda_artsenal') }}">
+       {% image '@AppShopThemeBundle/Resources/public/images/tienda.png'%}
+       <img    class="  icon-submenu " src="{{ asset_url }}" alt="tienda"/>
+       {% endimage %}
+     </a>
+   </div>
 
 
 
 
-      </div>
-
-      
-    </div>
+ </div>
 
 
-    <div class="col-sm-2 col-lg-2 col-md-2  vertical-center submenu-item submenu-cesta " >
-      <a href="{{ path('ver_cesta_artsenal') }}">Mi cesta</a>
-      {% image '@AppShopThemeBundle/Resources/public/images/icon_cesta.png'%}
-        <img  style="display: inline; margin-top: -12px;"  class="img-responsive" src="{{ asset_url }}" alt="artsenal"/>
-      {% endimage %}
-    </div>
+</div>
 
-  </div>
+
+<div class="col-sm-2 col-lg-2 col-md-2  vertical-center submenu-item submenu-cesta " >
+  <a href="{{ path('ver_cesta_artsenal') }}">Mi cesta</a>
+  {% image '@AppShopThemeBundle/Resources/public/images/icon_cesta.png'%}
+  <img  style="display: inline; margin-top: -12px;"  class="img-responsive" src="{{ asset_url }}" alt="artsenal"/>
+  {% endimage %}
+</div>
+
+</div>
 
 </div>
 <!-- /.container -->

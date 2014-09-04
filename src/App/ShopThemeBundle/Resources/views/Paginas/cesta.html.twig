@@ -24,14 +24,14 @@
   <div class="col-md-10 col-md-offset-1">
     <div class="panel panel-default artsenal-panel ">
       <div class="panel-body">
-        
+
         <div class="container-fluid">
-          
-          
+
+
           <div class="row">
-            
+
             <div  class="col-md-9 " >
-              
+
               <div class="page-header pagina_header">
                 <h2>
                   ( {{  detalles | length }}  ) Producto(s)
@@ -45,8 +45,8 @@
               {% for detalle in venta.detalles %}
               
               <div class="row">
-                
-                
+
+
                 <div class="col-md-3">
                   <img  class="img-responsive" src="{{ asset('/uploads/imagenes/productos/'  ~ detalle.producto.imagenes[0].url)   | apply_filter('thumbnail') }}" />
                 </div>
@@ -81,29 +81,29 @@
               
               <div class="row">
 
-	 			<div class="col-md-3  col-md-offset-8 ">
-                  <a  class="pull-right link_aquamarine" href="{{ path('app_shop_theme_homepage')  }}">  Seguir comprando </a>
-                </div>
-
-              	
+               <div class="col-md-3  col-md-offset-8 ">
+                <a  class="pull-right link_aquamarine" href="{{ path('app_shop_theme_homepage')  }}">  Seguir comprando </a>
               </div>
-              
-              
+
+
             </div>
-            <div  id="detalle_cesta" class="col-md-3 " >
+
+
+          </div>
+          <div  id="detalle_cesta" class="col-md-3 " >
             <br>
-              <p>
-                Enviar a
-              </p>
-              
-              <select name="pais_envio" id="pais_envio">
-                <option value="ecuador">
-                  Ecuador
-                </option>                
-              </select>
+            <p>
+              Enviar a
+            </p>
+
+            <select name="pais_envio" id="pais_envio">
+              <option value="ecuador">
+                Ecuador
+              </option>                
+            </select>
 
 
-              <p>
+        <!--       <p>
               Forma de pago
               </p>
               
@@ -111,59 +111,73 @@
                 <option value="ecuador">
                   Ecuador
                 </option>                
-              </select>
+              </select> -->
 
-				<br>
-				<br>
-				
-				<div class="row">					
-					<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-						<p  style="font-weight:normal;" >Precio</p>
-					</div>
-					<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-						<p  style="font-weight:normal;"  class="pull-right" >${{  venta.total   }}</p>
-					</div>
-				</div>
-		
-				<div class="row">					
-					<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-						<p  style="font-weight: normal; margin-bottom: 0px;" >Envio</p>
-					</div>
-					<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-						<p  style="font-weight: normal; margin-bottom: 0px;"  class="pull-right" >$5</p>
-					</div>
-				</div>
-				
-				<hr>
+              <br>
+              <br>
 
-				<div class="row">					
-					<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-						<p   >Total</p>
-					</div>
-					<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-						<p  class="pull-right" >$ {{   venta.total + 5 }}</p>
-					</div>
-				</div>
-				<div class="row">					
-					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-						<button class="btn btn-newsletter" style="color:white;font-weight:normal;" >
-		                   Continuar con la compra
-		                 </button>
-					</div>
-					 
-				</div>
-
-
-              
+              <div class="row">					
+               <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                <p  style="font-weight:normal;" >Precio</p>
+              </div>
+              <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                <p  style="font-weight:normal;"  class="pull-right" >${{  venta.total   }}</p>
+              </div>
             </div>
-            
+
+            <div class="row">					
+             <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+              <p  style="font-weight: normal; margin-bottom: 0px;" >Envio</p>
+            </div>
+            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+              <p  style="font-weight: normal; margin-bottom: 0px;"  class="pull-right" >$5</p>
+            </div>
           </div>
-          
+
+          <hr>
+
+          <div class="row">					
+           <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+            <p   >Total</p>
+          </div>
+          <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+            <p  class="pull-right" >$ {{   venta.total + 5 }}</p>
+          </div>
         </div>
-      </div>
-    </div>
-    
-  </div>
+        <div class="row">					
+         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+
+
+
+          {% if venta.total == 0  %}
+          <button class="btn btn-newsletter" style="color:white;font-weight:normal;" disabled="disabled" >
+           Continuar con la compra
+         </button>
+
+         {% else %}
+         <button class="btn btn-newsletter" style="color:white;font-weight:normal;"  
+         onclick="window.location = '{{  path('descripcion_pago_artsenal') }}'" >
+           Continuar con la compra
+         </button>
+
+         {% endif %}
+
+
+       </div>
+
+     </div>
+
+
+
+   </div>
+
+ </div>
+
+</div>
+</div>
+</div>
+
+</div>
 </div>
 
 
