@@ -20,9 +20,24 @@ class Venta
     private $total;
 
     /**
+     * @var string
+     */
+    private $usuario;
+
+    /**
      * @var integer
      */
     private $verificada;
+
+    /**
+     * @var integer
+     */
+    private $envio;
+
+    /**
+     * @var integer
+     */
+    private $pago;
 
     /**
      * @var integer
@@ -45,23 +60,13 @@ class Venta
     private $detalles;
 
     /**
-     * @var \Selnet\TiendaOnlineBundle\Entity\Usuario
-     */
-    private $usuario;
-
-    /**
-     * @var \Selnet\TiendaOnlineBundle\Entity\Tienda
-     */
-    private $tienda;
-
-    /**
      * Constructor
      */
     public function __construct()
     {
         $this->detalles = new \Doctrine\Common\Collections\ArrayCollection();
     }
-
+    
     /**
      * Get id
      *
@@ -81,7 +86,7 @@ class Venta
     public function setTotal($total)
     {
         $this->total = $total;
-
+    
         return $this;
     }
 
@@ -96,6 +101,29 @@ class Venta
     }
 
     /**
+     * Set usuario
+     *
+     * @param string $usuario
+     * @return Venta
+     */
+    public function setUsuario($usuario)
+    {
+        $this->usuario = $usuario;
+    
+        return $this;
+    }
+
+    /**
+     * Get usuario
+     *
+     * @return string 
+     */
+    public function getUsuario()
+    {
+        return $this->usuario;
+    }
+
+    /**
      * Set verificada
      *
      * @param integer $verificada
@@ -104,7 +132,7 @@ class Venta
     public function setVerificada($verificada)
     {
         $this->verificada = $verificada;
-
+    
         return $this;
     }
 
@@ -119,6 +147,52 @@ class Venta
     }
 
     /**
+     * Set envio
+     *
+     * @param integer $envio
+     * @return Venta
+     */
+    public function setEnvio($envio)
+    {
+        $this->envio = $envio;
+    
+        return $this;
+    }
+
+    /**
+     * Get envio
+     *
+     * @return integer 
+     */
+    public function getEnvio()
+    {
+        return $this->envio;
+    }
+
+    /**
+     * Set pago
+     *
+     * @param integer $pago
+     * @return Venta
+     */
+    public function setPago($pago)
+    {
+        $this->pago = $pago;
+    
+        return $this;
+    }
+
+    /**
+     * Get pago
+     *
+     * @return integer 
+     */
+    public function getPago()
+    {
+        return $this->pago;
+    }
+
+    /**
      * Set estado
      *
      * @param integer $estado
@@ -127,7 +201,7 @@ class Venta
     public function setEstado($estado)
     {
         $this->estado = $estado;
-
+    
         return $this;
     }
 
@@ -150,7 +224,7 @@ class Venta
     public function setCreatedAt($createdAt)
     {
         $this->created_at = $createdAt;
-
+    
         return $this;
     }
 
@@ -173,7 +247,7 @@ class Venta
     public function setUpdatedAt($updatedAt)
     {
         $this->updated_at = $updatedAt;
-
+    
         return $this;
     }
 
@@ -196,7 +270,7 @@ class Venta
     public function addDetalle(\Selnet\TiendaOnlineBundle\Entity\DetalleVenta $detalles)
     {
         $this->detalles[] = $detalles;
-
+    
         return $this;
     }
 
@@ -219,61 +293,12 @@ class Venta
     {
         return $this->detalles;
     }
-
     /**
-     * Set usuario
-     *
-     * @param \Selnet\TiendaOnlineBundle\Entity\Usuario $usuario
-     * @return Venta
+     * @ORM\PrePersist
      */
-    public function setUsuario(\Selnet\TiendaOnlineBundle\Entity\Usuario $usuario = null)
+    public function preInsert()
     {
-        $this->usuario = $usuario;
-
-        return $this;
-    }
-
-    /**
-     * Get usuario
-     *
-     * @return \Selnet\TiendaOnlineBundle\Entity\Usuario 
-     */
-    public function getUsuario()
-    {
-        return $this->usuario;
-    }
-
-    /**
-     * Set tienda
-     *
-     * @param \Selnet\TiendaOnlineBundle\Entity\Tienda $tienda
-     * @return Venta
-     */
-    public function setTienda(\Selnet\TiendaOnlineBundle\Entity\Tienda $tienda = null)
-    {
-        $this->tienda = $tienda;
-
-        return $this;
-    }
-
-    /**
-     * Get tienda
-     *
-     * @return \Selnet\TiendaOnlineBundle\Entity\Tienda 
-     */
-    public function getTienda()
-    {
-        return $this->tienda;
-    }
-
-
-
-
-        public function preInsert()
-    {
-        
-        $this->setCreatedAt(  new \DateTime() );
-        $this->setUpdatedAt(  new \DateTime() );
+        // Add your code here
     }
 
     /**
@@ -281,9 +306,6 @@ class Venta
      */
     public function preUpdate()
     {
-        $this->setUpdatedAt(  new \DateTime() );
+        // Add your code here
     }
-
-
-   
 }

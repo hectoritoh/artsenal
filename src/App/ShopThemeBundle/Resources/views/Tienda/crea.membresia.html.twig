@@ -37,20 +37,20 @@
 
 
 
+
 <div class="row">
 	<div class="col-md-10 col-md-offset-1">
-		<div class="panel panel-default artsenal-panel "  style="margin-bottom: 0px; border-bottom-width: 0px;" >
-			<div class="panel-body"></div>
+		<div class="panel panel-default artsenal-panel artsenal-panel-tab"  style="margin-bottom: 0px; border-bottom-width: 0px;" >
 			<div class="container-fluid">
 				<div class="row">
 
 					<div  class="col-md-12" >
-						{% include 'AppShopThemeBundle:Tienda:tienda.menu.html.twig' with {  existe: tienda_existe , tiene_productos: numero_productos  } %}
+						
+					{% include 'AppShopThemeBundle:Tienda:tienda.menu.html.twig' with {  existe: tienda_existe , tiene_productos: numero_productos  } %}
+
 					</div>
 				</div>
 			</div>
-
-
 		</div>
 	</div>
 </div>

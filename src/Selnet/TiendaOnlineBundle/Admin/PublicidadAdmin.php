@@ -58,6 +58,7 @@ class PublicidadAdmin extends Admin
             // ->add('id')
         ->add('nombre')
         ->add('url')
+        ->add('descripcion')
 
         ->add('borrado', 'choice', array(
             'choices' => array(

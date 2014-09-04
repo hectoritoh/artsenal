@@ -27,8 +27,7 @@
         function fb_login() {
         	FB.getLoginStatus(function(response) {
         		if (response.status === 'connected') {
-                    // connected
-                    alert('Already connected, redirect to login page to create token.');
+
                     document.location = "{{ url("hwi_oauth_service_redirect", {service: "facebook"}) }}";
                 } else {
                     // not_authorized
@@ -45,14 +44,7 @@
     </script>
 
     
-
-    
-    <p>
-    	<a href="#" onclick="fb_login();">Facebook Connect Button (Dialog)</a>
-    </p>
-
-    {# Bonus: Show all available login link in HWIOAuthBundle #}
-    {% render(controller('HWIOAuthBundle:Connect:connect')) %}
+ 
     {% endblock %}
 
 
@@ -65,11 +57,10 @@
 
     <div class="barra_spacer_3"></div>
 
-
-
+ 
 
     <div class="row">
-    	<div class="col-md-8 col-md-offset-2">
+    	<div class="col-md-10 col-md-offset-1">
 
 
     		<div class="row">
@@ -80,18 +71,44 @@
     		</div>
 
 
+
+    <div class="row">
+        <div class="col-md-12 ">
+            <div class="panel panel-default artsenal-panel " style="margin-bottom: 0px;" >
+                <div class="panel-body">
+                    <div class="container-fluid">
+                        <div class="page-header pagina_header">
+                                <h2>Ingresar!</h2>
+                        </div>
+                        <div class="barra_border"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <div class="row">
+        <div class="col-md-12 ">
+            
+            <div class="facebook-register-box"  >                       
+                <button onclick="fb_login();" class="btn  btn_facebook" > </button>
+                <p style="display:inline;" class="text_registro" > Es Rápido y facil. Nosotros nunca publicaremos una entrada sin tu permiso </p>
+            </div>
+        </div>
+    </div>
+
+
+
     		<div class="row">
     			<div class="col-md-12">
     				<div class="panel panel-default artsenal-panel ">
     					<div class="panel-body">
 
     						<div class="container-fluid">
-
-    							<div class="page-header pagina_header">
-    								<h2>Ingresar!</h2>
-    							</div>
-    							<div class="barra_border"></div>
-
+ 
 
 
     							<div class="row">
@@ -154,10 +171,7 @@
                                                 {# Olvidaste tu nombre de usuario o correo electronico? #}
                                             </a>
                                         </p>
-    									<p  style="font-weight:bold;" >
 
-{% render(controller('HWIOAuthBundle:Connect:connect')) %}
-    									</p>
 
 
 

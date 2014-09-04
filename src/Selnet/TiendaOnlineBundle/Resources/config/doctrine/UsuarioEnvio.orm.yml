@@ -1,0 +1,67 @@
+Selnet\TiendaOnlineBundle\Entity\UsuarioEnvio:
+    type:  entity
+    table: usuario_envio
+    fields:
+        id:
+            id: true
+            type: integer
+            unsigned: false
+            nullable: false
+            generator:
+                strategy: IDENTITY
+        nombre:
+            type: string
+            nullable: false 
+
+        calle:
+            type: string
+            nullable: false
+
+        departamento:
+            type: string
+            nullable: false
+
+        ciudad:
+            type: string
+            nullable: false
+
+        estado:
+            type: string
+            nullable: false
+
+
+        region:
+            type: string
+            nullable: false
+
+
+        codigoPostal:
+            type: string
+            nullable: false
+
+        usuario:
+            type: string
+            nullable: false
+
+
+        estado:
+            type: string
+            length: 10
+            nullable: false
+        created_at:
+            type: datetime
+            nullable: false
+            gedmo:
+              timestampable:
+                on: create
+        updated_at:
+            type: datetime
+            nullable: false
+            gedmo:
+              timestampable:
+                on: update
+        usuario:
+            type: string
+            nullable: false
+
+

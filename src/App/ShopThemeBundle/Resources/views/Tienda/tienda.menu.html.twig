@@ -1,19 +1,35 @@
 <div class="row  tab-holder">
-	<div  class="col-md-3  " >
+	<div  class="col-md-3   pago-tabs  " >
 		<a href="{{  path('creacion_tienda_artsenal') }}" 
-		class="tabs_tienda  {% if app.request.get('_route') == 'creacion_tienda_artsenal' %} tabs_tienda_selected {% endif %} "   >Nombre de la tienda</a>
+		class="tabs_tienda tabs_pago {% if app.request.get('_route') == 'creacion_tienda_artsenal' %} tabs_tienda_selected {% endif %} "   >Nombre de la tienda</a>
+
+		{% image '@AppShopThemeBundle/Resources/public/images/flecha_separador.png'%}
+		<img   class="img-responsive tab-separador pull-right" src="{{ asset_url }}" alt="artsenal"/>
+		{% endimage %}
 	</div>
-	<div  class="col-md-2  " >
-		<a href="{{  path('creacion_tienda_producto_artsenal') }}" class="tabs_tienda  {% if app.request.get('_route') == 'creacion_tienda_producto_artsenal' %} tabs_tienda_selected {% endif %} "    >Articulos ( {{  tiene_productos }} )</a>
+
+	<div  class="col-md-3   pago-tabs " >
+		<a href="{{  path('creacion_tienda_producto_artsenal') }}" class="tabs_tienda tabs_pago {% if app.request.get('_route') == 'creacion_tienda_producto_artsenal' %} tabs_tienda_selected {% endif %} "    >Articulos ( {{  tiene_productos }} )</a>
+		
+		{% image '@AppShopThemeBundle/Resources/public/images/flecha_separador.png'%}
+		<img   class="img-responsive tab-separador pull-right" src="{{ asset_url }}" alt="artsenal"/>
+		{% endimage %}
+
 	</div>
-	<div  class="col-md-2  " >
+	
+	<div  class="col-md-3   pago-tabs " >
 		{% if tiene_productos == 0  %}
-			<a href="#" class="tabs_tienda"  onclick="alert( 'favor ingresa al menos un producto para continuar' )" >Membresias</a>
-			{% else %}
-			<a href="{{  path('creacion_tienda_membresia_artsenal') }}" class="tabs_tienda   {% if app.request.get('_route') == 'creacion_tienda_membresia_artsenal' %} tabs_tienda_selected {% endif %} "  >Membresias</a>
+		<a href="#" class="tabs_tienda"  onclick="alert( 'favor ingresa al menos un producto para continuar' )" >Membresias</a>
+		{% else %}
+		<a href="{{  path('creacion_tienda_membresia_artsenal') }}" class="tabs_tienda tabs_pago  {% if app.request.get('_route') == 'creacion_tienda_membresia_artsenal' %} tabs_tienda_selected {% endif %} "  >Membresias</a>
 		{% endif %}
+		{% image '@AppShopThemeBundle/Resources/public/images/flecha_separador.png'%}
+		<img   class="img-responsive tab-separador pull-right" src="{{ asset_url }}" alt="artsenal"/>
+		{% endimage %}
 	</div>
-	<div  class="col-md-2  " >
-		<a href="#" class="tabs_tienda"    >Abre tu tienda</a>
+
+	<div  class="col-md-3   pago-tabs " >
+		<a href="#" class="tabs_tienda tabs_pago"    >Abre tu tienda</a>
 	</div>
+	
 </div>

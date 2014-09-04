@@ -1,0 +1,29 @@
+
+
+{% set currentPath = path(app.request.attributes.get('_route'),
+app.request.attributes.get('_route_params')) %}
+
+<div class="row  tab-holder"> 
+	<div  class="col-md-4   pago-tabs  " >
+		<a href="{{  path('descripcion_pago_artsenal') }}" 
+		class="tabs_tienda tabs_pago {% if app.request.get('_route') == 'descripcion_pago_artsenal' %} tabs_tienda_selected {% endif %} "   >Descripción</a>
+
+		{% image '@AppShopThemeBundle/Resources/public/images/flecha_separador.png'%}
+		<img   class="img-responsive tab-separador pull-right" src="{{ asset_url }}" alt="artsenal"/>
+		{% endimage %}
+
+	</div>
+
+	<div  class="col-md-4   pago-tabs  " >
+		<a href="#" class="tabs_tienda tabs_pago {% if 'pago/datos' in currentPath %} tabs_tienda_selected {% endif %} "  >Pago</a>
+
+		{% image '@AppShopThemeBundle/Resources/public/images/flecha_separador.png'%}
+		<img   class="img-responsive tab-separador pull-right" src="{{ asset_url }}" alt="artsenal"/>
+		{% endimage %}
+	</div>
+
+	<div  class="col-md-4   pago-tabs  " >
+		<a href="#" class="tabs_tienda tabs_pago {% if app.request.get('_route') == 'pago_realizado_artsenal' %} tabs_tienda_selected {% endif %} "    >Listo</a>
+	</div>
+
+</div>

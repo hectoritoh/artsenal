@@ -1,155 +1,134 @@
-{% extends "AppShopThemeBundle::template.artsenal.html.twig" %}
+{% extends "AppShopThemeBundle::template.html.twig" %}
 
 
 
 {% block contenido %}
 
-<div class="container">
+
+
+<div class="col-sm-2 col-lg-2 col-md-2"  >
+
+	<p class="lead latto">Secciones de Tienda</p>
+	<div   id="categoria_block" class="list-group">
+		{% for seccion , cantidad in secciones %}
+		<a href="#" class="list-group-item">  {{ seccion }} <span  class="texto_gris_oscuro" >({{ cantidad }})</span>
+		</a> 
+		{% endfor %}
+	</div>
+
+	<hr>
+
+	<div class="barra_spacer_2"></div>
+	<p class="lead latto">Dueño de la tienda</p>
+	<div class="barra_border"></div>
+	
+	<div   id="categoria_block" class="list-group">
+		<a href="#" class="list-group-item"> {{ app.user.username }}</a> 
+	</div>
+
+	<hr>
+
+	<!-- <ul  class="lista_secciones" >
+		<li  class="texto_aquamarina" > 
+			<a class="texto_aquamarina" href="">
+				Agrega ubicacion
+			</a> 
+		</li>
+	</ul> -->
+
+
+
+
+	<div class="barra_spacer_2"></div>
+	<p class="lead latto">Información de la tienda</p>
+	
+	<div class="barra_border"></div>
+
+
+	<div   id="categoria_block" class="list-group">
+		<a href="#" class="list-group-item"> {{tienda.nombre}}</a> 
+		<p class="texto_gris_oscuro" >Desde {{  tienda.createdAt | date('Y/m/d') }}</p>
+	</div>
+
+	<div   id="categoria_block" class="list-group">
+		<a href="#" class="list-group-item">Politicas</a> 
+	</div>
+
+	
+
+</div>
+
+
+
+
+
+
+
+<div id="content" class="  col-md-10">
 	<div class="row">
 
-		<div  id="left_content" class="same-col-1 col-md-2">
+		<div class="col-md-11 ">
 
+			<div class="barra_spacer_3"></div>
 			<div class="barra_spacer_2"></div>
-			<div class="page-header pagina_header">
-				<h2>Secciones de Tienda</h2>
+
+
+			<div class="panel panel-default panel-imagen-cabecera">
+				<div class="panel-inner-border">
+
+					<div class="panel-body panel-imagen-container" 
+					style="background-image:url({%  path tienda.imagenCabecera , 'banner' %})" >
+					<p  style="text-align:center;" >
+					</p>
+				</div>
 			</div>
-			<div class="barra_border"></div>
-
-			<ul  class="lista_secciones" >
-				
-				{% for seccion , cantidad in secciones %}
-
-				<li  class="texto_aquamarina" > 
-					<a class="texto_aquamarina" href="">
-						{{ seccion }} <span  class="texto_gris_oscuro" >({{ cantidad }})</span>
-					</a> 
-				</li>
-
-				{% endfor %}
-			</ul>
-
-			<div class="barra_spacer_2"></div>
-			<div class="page-header pagina_header">
-				<h2>Dueno de la tienda</h2>
-			</div>
-			<div class="barra_border"></div>
-			<div>
-				{{ app.user.username }}
-			</div>
+		</div>
 
 
-			<ul  class="lista_secciones" >
-				<li  class="texto_aquamarina" > 
-					<a class="texto_aquamarina" href="">
-						Agrega ubicacion
-					</a> 
-				</li>
-			</ul>
+		<div class="panel panel-default panel-nombre-tienda">
 
+			<div class="panel-body ">
+				<p  class="texto_aquamarina" style="margin-bottom: 0px;" >
+					{{tienda.nombre}}
+				</p>
+				<p  class="texto_gris_oscuro" >
+					1 Visitas - 1 favorito 
+				</p>
+			</div>						
+		</div>
+		<div class="panel panel-default panel-anuncio-tienda">
 
+			<div class="panel-body ">
+				<p  class="texto_gris_oscuro" style="font-weight:bold;margin-bottom: 0px;color:7c7c7c;" >
+					{{tienda.anuncio}}
+				</p>
 
-
-			<div class="barra_spacer_2"></div>
-			<div class="page-header pagina_header">
-				<h2>informacion de la tienda</h2>
-			</div>
-			<div class="barra_border"></div>
-
-
-			<ul  class="lista_secciones" >
-				<li  class="texto_aquamarina" > 
-					<a class="texto_aquamarina" href="">
-						{{tienda.nombre}}
-					</a> 
-					<p class="texto_gris_oscuro" >Desde {{  tienda.createdAt | date('Y/m/d') }}</p>
-				</li>
-				<li  class="texto_aquamarina" > 
-					<a class="texto_aquamarina" href="">
-						Politicas
-					</a> 
-				</li>
-
-
-
-			</ul>
-
+			</div>						
 		</div>
 
 
 
-		<div id="content" class=" same-col-1 col-md-10">
-			<div class="row">
-				
-				<div class="col-md-9 col-md-offset-1">
-					
-					<div class="barra_spacer_3"></div>
-					<div class="barra_spacer_2"></div>
 
-					<div class="panel panel-default panel-imagen-cabecera">
-						<div class="panel-inner-border">
-
-							<div class="panel-body panel-imagen-container" 
-							style="background-image:url({%  path tienda.imagenCabecera , 'banner' %})" >
-							<p  style="text-align:center;" >
-							</p>
-						</div>
-					</div>
-				</div>
-				<div class="panel panel-default panel-nombre-tienda">
-
-					<div class="panel-body ">
-						<p  class="texto_aquamarina" style="margin-bottom: 0px;" >
-							{{tienda.nombre}}
-						</p>
-						<p  class="texto_gris_oscuro" >
-							1 Visitas - 1 favorito 
-						</p>
-					</div>						
-				</div>
-				<div class="panel panel-default panel-anuncio-tienda">
-
-					<div class="panel-body ">
-						<p  class="texto_gris_oscuro" style="font-weight:bold;margin-bottom: 0px;color:7c7c7c;" >
-							{{tienda.anuncio}}
-						</p>
-
-					</div>						
-				</div>
-
-
-
-
-				<div class="barra_spacer_2"></div>
-				<div class="page-header pagina_header">
-					<h2>Articulos de {{  tienda.nombre }}</h2>
-				</div>
-
-				<div id="productos" class="productos">
-
-					{% for row in productos| batch(4) %}
-
-					<div class="row" style="padding-top:20px;">
-
-						{% for producto in row %}
-
-						<div class="col-md-3"   style="padding-left: 5px; padding-right: 5px;" >
-							{% include 'SelnetTiendaOnlineBundle:Blocks:producto.preview.html.twig' with {'producto':  producto  } %}
-						</div>
-
-						{% endfor %}
-
-					</div>
-
-					{% endfor %}
-
-				</div>
-
-			</div>
-
-
-
-
+		<div class="barra_spacer_2"></div>
+		<div class="pagina_header">
+			<p class="lead latto">Articulos de {{  tienda.nombre }}</p>
 		</div>
+
+
+
+		<div class="row">
+
+
+			
+
+			{% for producto in productos %}
+			{% include 'AppShopThemeBundle:Blocks:producto.html.twig' with {'producto': producto }   %}
+			{% endfor %}
+
+			
+		</div>
+
+		
 
 	</div>
 
@@ -157,8 +136,101 @@
 
 
 </div>
+
 </div>
 
 
 
+
+
+
+
 {% endblock %}
+
+
+
+
+
+
+{% block test %}
+
+
+
+
+
+
+<div class="col-sm-2 col-lg-2 col-md-2"  >
+
+	{{ render(controller('AppShopThemeBundle:Default:getCategorias')) }}
+
+
+	{{ render(controller('AppShopThemeBundle:Default:getPublicidadBlock')) }}
+
+
+
+
+</div>
+
+
+
+
+<div class="col-md-10" style=" border-left: 1px solid  #eeeeee;padding-left:45px;"  >
+
+
+	{% block banners %}
+
+	{{ render(controller('AppShopThemeBundle:Default:getBanners')) }}
+
+	{% endblock %}
+
+
+
+
+
+
+	<div class="row">
+		<div class="col-sm-12 col-lg-12 col-md-12  ">
+
+			{% block titulo_contenido %}
+			<h3 class="latto">Ultimas Artesanias</h3>    
+			{% endblock %}
+
+		</div>
+	</div>
+
+	<div class="row">
+
+
+		{% block productos %}
+
+		{% for producto in productos %}
+		{% include 'AppShopThemeBundle:Blocks:producto.html.twig' with {'producto': producto }   %}
+		{% endfor %}
+
+		{% endblock %}
+
+	</div>
+
+
+
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+
+
+</div>
+
+
+{% endblock %}
+
+
+
+
+
+
+
+
+

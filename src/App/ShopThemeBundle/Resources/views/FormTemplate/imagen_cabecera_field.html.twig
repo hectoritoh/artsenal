@@ -1,37 +1,37 @@
 {% block sonata_media_type_widget %}
+
+
+
+
+
+
+<div class="span12 ">
+    {% if value is not empty and value.providerReference %}
     
 
 
+    <div class="form-group">
+        <div class="col-sm-12  "  >
+            <div class="panel panel-default panel-imagen-cabecera">
+                <div class="panel-inner-border">
+
+                    <div class="panel-body panel-imagen-container" 
+                    style="background-image:url({%  path value , 'banner' %})" >
+                    <p  style="text-align:center;" >
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>  
+</div>
+{% endif %}
+</div>
 
 
 
-    <div class="span12 ">
-        {% if value is not empty and value.providerReference %}
-            
 
-
-              <div class="form-group">
-                                <div class="col-sm-12  "  >
-                                        <div class="panel panel-default panel-imagen-cabecera">
-                                            <div class="panel-inner-border">
-
-                                                <div class="panel-body panel-imagen-container" 
-                                                style="background-image:url({%  path value , 'banner' %})" >
-                                                <p  style="text-align:center;" >
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>  
-                            </div>
-        {% endif %}
-    </div>
-
-
-      
-
-    <div class="span3 ">
-        
-        {{ block('form_widget') }}
-    </div>
+<div class="span3 ">
+    
+    {{ block('form_widget') }}
+</div>
 {% endblock sonata_media_type_widget %}

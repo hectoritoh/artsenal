@@ -141,7 +141,7 @@ input{
 
 	.tab-holder{
 		height: 60px;
-		border-bottom: 2px solid #BF3B97;
+		border-bottom: 1px solid #BF3B97;
 	}
 
 	.tabs_tienda{
@@ -393,14 +393,14 @@ input{
 
 
  .producto{
- 	border:1px solid #cccccc ;
+ 	/*border:1px solid #cccccc ;*/
  	background-color: white;
- 	-webkit-box-shadow: 0px 2px 5px 0px #cccccc;
+ 	/*-webkit-box-shadow: 0px 2px 5px 0px #cccccc;
  	-moz-box-shadow:    0px 2px 5px 0px #cccccc;
- 	box-shadow:         0px 2px 5px 0px #cccccc;
+ 	box-shadow:         0px 2px 5px 0px #cccccc;*/
  	cursor: pointer;
  }
-
+/*
  .producto:hover{
 
  	-webkit-box-shadow: 0px 2px 10px 2px #cccccc;
@@ -408,7 +408,7 @@ input{
  	box-shadow:         0px 2px 10px 2px #cccccc;
  	
  }
-
+*/
 
 
  .producto_imagen{
@@ -568,7 +568,33 @@ input{
 
 
 
+.facebook-register-box{
+	background-color: #fffde6;
+	padding-top: 15px; padding-bottom: 15px;
+	border-left:  1px solid #eeecd5;
+	border-right:  1px solid #eeecd5;
+	padding-left: 30px;
+	box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+}
 
+.btn_facebook{
+	background-image: url('../images/facebook_login.png');
+	height: 27px;
+	width: 205px;
 
+}
 
+.text_registro{
+	 font-family: lato_light;
+	 padding-left: 20px;
+}
+
+.terminos_condiciones_link{
+	color: rgb(19, 140, 140);
+	font-weight: bold;
+}
+
+.subnavbar-artsenal{
+	margin-bottom: 2px;
+}
 

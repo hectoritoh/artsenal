@@ -65,7 +65,8 @@ body{
 	box-shadow:         0px 1px 1px 0px rgba(81, 81, 81, 0.75);
 	border-bottom-width: 0px;
 	border-radius: 0px;
-	margin-bottom: 45px;
+	/*margin-bottom: 45px;*/
+	margin-bottom: 2px;
 }
 
 ul.nav.navbar-nav li a{
@@ -434,3 +435,51 @@ a.list-group-item.active{
 }
 
 
+.banner-lateral{
+	padding-left: 15px;
+	padding-right: 15px;
+}
+
+.titulo-publicidad{
+	font-family: 	lato_light; 
+	color: 	#138c8c;
+}
+
+.pago_label{
+	padding-left: 20px; 
+}
+
+.envio_texto{
+	color: #666666;
+    font-family: lato_light;
+    font-size: 14px;
+    margin-bottom: 1px;
+    padding-left: 10px; padding-right: 10px;
+}
+
+.btn-envio-producto{
+	margin-bottom: 15px;
+	color: #666666;
+}
+
+
+.pago-tabs{
+	text-align: center;
+}
+
+.tab-separador{
+	display: inline-block;
+	padding-top: 5px;
+}
+
+
+.tabs_pago{
+	padding-top: 13px;
+	display: inline-block;
+}
+.artsenal-panel-tab{
+
+}
+
+
+ 

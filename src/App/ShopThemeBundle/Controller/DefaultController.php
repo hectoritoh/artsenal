@@ -39,6 +39,13 @@ class DefaultController extends Controller
 		return $this->render('AppShopThemeBundle:Blocks:publicidad.html.twig' , array(  "publicidad" => $publicidad ));
 	}
 
+	public function getPublicidadBlockAction()
+	{
+		$em = $this->getDoctrine()->getManager();
+		$publicidad = $em->getRepository('SelnetTiendaOnlineBundle:Publicidad')->findBy(  array("tipo"=> 1 ));
+		return $this->render('AppShopThemeBundle:Blocks:publicidad.bloque.html.twig' , array(  "publicidades" => $publicidad ));
+	}
+
 	
 
 

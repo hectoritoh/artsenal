@@ -87,7 +87,7 @@ public function registerAction(Request $request)
             return $this->redirect($this->generateUrl('usuario_ingresa'));
 
         }else{
-            print_r($form->getErrors());
+            // print_r($form->getErrors());
         }
     }
 

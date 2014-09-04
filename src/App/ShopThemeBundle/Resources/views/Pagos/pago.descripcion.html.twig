@@ -1,0 +1,225 @@
+{% extends "AppShopThemeBundle::template.artsenal.html.twig" %}
+
+
+
+
+
+
+
+
+{% block contenido %}
+
+
+
+
+<div class="row">
+	<div class="col-md-8 col-md-offset-2">
+		<div class="page-header pagina_header">
+			<h2  style="color:red;" >
+			{% for flashMessage in app.session.flashbag.get('mensaje') %}
+        		{{ flashMessage }}    
+			{% endfor %}
+			</h2>
+		</div>
+	</div>
+</div>
+
+
+<div class="barra_spacer_3"></div>
+
+<div class="row">
+	<div class="col-md-10 col-md-offset-1">
+		<div class="page-header pagina_header">
+			<h2>Detalles de pago</h2>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+<div class="row">
+	<div class="col-md-10 col-md-offset-1">
+		<div class="panel panel-default artsenal-panel artsenal-panel-tab "  style="margin-bottom: 0px; border-bottom-width: 0px;" >			
+			<div class="container-fluid">
+				<div class="row">
+					<div  class="col-md-12" >						
+						{% include 'AppShopThemeBundle:Pagos:pago.menu.html.twig' %}
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+<div class="row">
+	<div class="col-md-10 col-md-offset-1">
+		<div class="panel panel-default artsenal-panel "style="border-top-width: 0px;" >
+			<div class="panel-body">
+
+				<div class="container-fluid">
+
+
+					<div  class="col-md-9" style="border-right:1px solid #eeeeee; padding-right:45px;"  >
+						
+
+						<div  class="row contenido_tabs" >
+
+							<div class="page-header pagina_header">
+								<h2>Formulario</h2>
+							</div>
+							<div class="barra_border"></div>
+							<div class="barra_spacer_2"></div>
+
+							<div class="barra_spacer_3"></div>
+							
+							{% form_theme formulario 'AppShopThemeBundle:FormTemplate:Artsenal.fields.html.twig' %}
+
+
+							<form  action="{{ path('descripcion_pago_artsenal') }}"  class="form-horizontal" method="post" role="form"  {{ form_enctype(formulario) }} >
+								
+
+
+								<div class="form-group">
+									{{ form_label(   formulario.nombre ,null ,  {'label_attr': {'class': ' col-sm-3  pago_label control-label label_gris ' }}  ) }}
+									
+									<div class="col-sm-5">
+										{{ form_widget(formulario.nombre, {'attr': {'class': 'form-control '}}) }}
+									</div>
+								</div>
+								
+
+
+								<div class="form-group">
+									{{ form_label(   formulario.calle ,null ,  {'label_attr': {'class': ' col-sm-3  pago_label control-label label_gris ' }}  ) }}
+									
+									<div class="col-sm-5">
+										{{ form_widget(formulario.calle, {'attr': {'class': 'form-control '}}) }}
+									</div>
+								</div>
+								
+
+
+								<div class="form-group">
+									{{ form_label(   formulario.departamento ,null ,  {'label_attr': {'class': ' col-sm-3  pago_label control-label label_gris ' }}  ) }}
+									
+									<div class="col-sm-5">
+										{{ form_widget(formulario.departamento, {'attr': {'class': 'form-control '}}) }}
+									</div>
+								</div>
+								
+
+
+								<div class="form-group">
+									{{ form_label(   formulario.ciudad ,null ,  {'label_attr': {'class': ' col-sm-3  pago_label control-label label_gris ' }}  ) }}
+									
+									<div class="col-sm-5">
+										{{ form_widget(formulario.ciudad, {'attr': {'class': 'form-control '}}) }}
+									</div>
+								</div>
+
+
+
+								<div class="form-group">
+									{{ form_label(   formulario.estado ,null ,  {'label_attr': {'class': ' col-sm-3  pago_label control-label label_gris ' }}  ) }}
+									
+									<div class="col-sm-5">
+										{{ form_widget(formulario.estado, {'attr': {'class': 'form-control '}}) }}
+									</div>
+								</div>
+
+
+
+								<div class="form-group">
+									{{ form_label(   formulario.region ,null ,  {'label_attr': {'class': ' col-sm-3  pago_label control-label label_gris ' }}  ) }}
+									
+									<div class="col-sm-5">
+										{{ form_widget(formulario.region, {'attr': {'class': 'form-control '}}) }}
+									</div>
+								</div>
+
+
+								<div class="form-group">
+									{{ form_label(   formulario.codigoPostal ,null ,  {'label_attr': {'class': ' col-sm-3  pago_label control-label label_gris ' }}  ) }}
+									
+									<div class="col-sm-5" >
+										{{ form_widget(formulario.codigoPostal, {'attr': {'class': 'form-control '}}) }}
+									</div>
+								</div>
+
+
+
+
+								<div class="form-group">
+									<div class="col-sm-offset-1 col-sm-7">
+										<button type="submit" style="margin-left: 20px;" class="btn btn-default pull-right btn_aquamarino">Guardar</button>
+									</div>
+								</div>
+								{{ form_row(formulario._token) }} 
+								<br>
+								<br>
+								<br>
+								<br>
+								<br>
+							</form>
+
+
+						</div>
+
+					</div>
+
+
+
+					<div  class="col-md-3 "   >
+
+
+						<br>
+						<br>
+						{% for envio in lugarEnvios %}
+
+						<dir class="row">
+
+							<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+							
+							{% set urlPago = path('datos_pago_artsenal' , { 'envio' : envio.id })  %}
+
+							<button   onclick="window.location='{{  urlPago }} '  " class="btn btn-envio-producto" > Enviar a esta direccion </button>
+								<p   class="envio_texto"  style="font-weight:bold;color:black;" >{{  envio.nombre }}</p>
+								<p   class="envio_texto" >{{  envio.calle }}</p>
+								<p   class="envio_texto" >{{  envio.departamento }}</p>
+								<p   class="envio_texto" >{{  envio.ciudad }}</p>
+
+							</div>
+							<hr>
+
+						</dir>
+
+						<br>
+						<br>
+
+
+						{% endfor %}
+					</div>
+
+
+
+				</div>
+
+
+
+			</div>
+		</div>
+	</div>
+
+</div>
+
+
+
+
+
+{% endblock %}

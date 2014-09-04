@@ -1,0 +1,193 @@
+{% extends "AppShopThemeBundle::template.artsenal.html.twig" %}
+ 
+ 
+{% block contenido %}
+
+<div class="barra_spacer_3"></div>
+
+<div class="row">
+	<div class="col-md-10 col-md-offset-1">
+		<div class="page-header pagina_header">
+			<h2>Detalles de pago</h2>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+<div class="row">
+	<div class="col-md-10 col-md-offset-1">
+		<div class="panel panel-default artsenal-panel artsenal-panel-tab "  style="margin-bottom: 0px; border-bottom-width: 0px;" >
+			<div class="container-fluid">
+				<div class="row">
+					<div  class="col-md-12" >						
+						{% include 'AppShopThemeBundle:Pagos:pago.menu.html.twig' %}
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+<div class="row">
+	<div class="col-md-10 col-md-offset-1">
+		<div class="panel panel-default artsenal-panel "style="border-top-width: 0px;" >
+			<div class="panel-body">
+
+				<div class="container-fluid">
+
+
+					<div  class="col-md-9" style="border-right:1px solid #eeeeee; padding-right:45px;"  >
+						
+
+						<div  class="row contenido_tabs" >
+
+							<div class="page-header pagina_header">
+								<h2>Formulario</h2>
+							</div>
+							<div class="barra_border"></div>
+							<div class="barra_spacer_2"></div>
+
+							<div class="barra_spacer_3"></div>
+							
+							{% form_theme formulario 'AppShopThemeBundle:FormTemplate:Artsenal.fields.html.twig' %}
+
+
+							<form  action="{{ path('datos_pago_artsenal'  , { envio : envio} ) }}"  class="form-horizontal" method="post" role="form"  {{ form_enctype(formulario) }} >
+								
+
+
+								<div class="form-group">
+									{{ form_label(   formulario.nombre ,null ,  {'label_attr': {'class': ' col-sm-3  pago_label control-label label_gris ' }}  ) }}
+									
+									<div class="col-sm-5">
+										{{ form_widget(formulario.nombre, {'attr': {'class': 'form-control '}}) }}
+									</div>
+								</div>
+								
+
+
+								<div class="form-group">
+									{{ form_label(   formulario.ccv ,null ,  {'label_attr': {'class': ' col-sm-3  pago_label control-label label_gris ' }}  ) }}
+									
+									<div class="col-sm-5">
+										{{ form_widget(formulario.ccv, {'attr': {'class': 'form-control '}}) }}
+									</div>
+								</div>
+								
+
+
+								<div class="form-group">
+									{{ form_label(   formulario.mesVencimiento ,null ,  {'label_attr': {'class': ' col-sm-3  pago_label control-label label_gris ' }}  ) }}
+									
+									<div class="col-sm-5">
+										{{ form_widget(formulario.mesVencimiento, {'attr': {'class': 'form-control '}}) }}
+									</div>
+								</div>
+								
+
+
+								<div class="form-group">
+									{{ form_label(   formulario.anioVencimiento ,null ,  {'label_attr': {'class': ' col-sm-3  pago_label control-label label_gris ' }}  ) }}
+									
+									<div class="col-sm-5">
+										{{ form_widget(formulario.anioVencimiento, {'attr': {'class': 'form-control '}}) }}
+									</div>
+								</div>
+
+
+
+								<div class="form-group">
+									{{ form_label(   formulario.nombreTarjeta ,null ,  {'label_attr': {'class': ' col-sm-3  pago_label control-label label_gris ' }}  ) }}
+									
+									<div class="col-sm-5">
+										{{ form_widget(formulario.nombreTarjeta, {'attr': {'class': 'form-control '}}) }}
+									</div>
+								</div>
+
+
+
+
+
+								<div class="form-group">
+									<div class="col-sm-offset-1 col-sm-7">
+										<button type="submit" style="margin-left: 20px;" class="btn btn-default pull-right btn_aquamarino">Siguiente</button>
+									</div>
+								</div>
+								{{ form_row(formulario._token) }} 
+								<br>
+								<br>
+								<br>
+								<br>
+								<br>
+							</form>
+
+
+						</div>
+
+					</div>
+
+
+
+					<div  class="col-md-3 "   >
+						
+						<div class="page-header pagina_header">
+							<br>
+							<p style="font-weight:bold;" >Detalles de pedido</p>
+							<br>
+						</div>
+
+						<div class="row">					
+							<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+								<p  style="font-weight:normal;" >Precio</p>
+							</div>
+							<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+								<p  style="font-weight:normal;"  class="pull-right" >${{  venta.total   }}</p>
+							</div>
+						</div>
+
+						<div class="row">					
+							<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+								<p  style="font-weight: normal; margin-bottom: 0px;" >Envio</p>
+							</div>
+							<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+								<p  style="font-weight: normal; margin-bottom: 0px;"  class="pull-right" >$5</p>
+							</div>
+						</div>
+						<hr>
+
+						<div class="row">					
+							<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+								<p  style="font-weight:bold;" >Total</p>
+							</div>
+							<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+								<p  style="font-weight:bold;"  class="pull-right" >$ {{   venta.total + 5 }}</p>
+							</div>
+						</div>
+
+
+					</div>
+
+
+
+				</div>
+
+
+
+			</div>
+		</div>
+	</div>
+
+</div>
+
+
+
+
+
+{% endblock %}

@@ -55,21 +55,7 @@ $(document).ready(function(){
 
 
 
-
-	$('#productoForm').ajaxForm(function(response) { 
-		alert("Articulo ingresado correctamente");
-		$("#contenido2").html(   response ); 
-
-		
-		initProductoForm();
-	}); 
-
-
-
-	$(".tabs_tienda").click(function(){
-		$(".tabs_tienda").removeClass("tabs_tienda_selected");
-		$(this).addClass("tabs_tienda_selected");
-	});
+  
 
 });
 

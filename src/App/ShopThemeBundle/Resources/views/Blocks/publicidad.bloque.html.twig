@@ -1,0 +1,19 @@
+
+{% for publicidad in publicidades %}
+
+<hr>
+
+<div class="row"  >
+
+	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 "   >
+	<h4 class="titulo-publicidad "  >  {{  publicidad.nombre }} </h4>
+		{% thumbnail publicidad.image, 'small'  %}
+
+	<p class="texto_gris_oscuro" >{{  publicidad.descripcion }}</p>	
+	</div>
+
+</div>
+
+{% endfor %}
+
+<hr>

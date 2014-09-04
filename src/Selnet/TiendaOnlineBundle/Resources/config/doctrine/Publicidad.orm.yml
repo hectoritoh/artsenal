@@ -14,11 +14,18 @@ Selnet\TiendaOnlineBundle\Entity\Publicidad:
             length: 45
             fixed: false
             nullable: true
+
         url:
             type: string
             length: 150
             fixed: false
             nullable: true
+
+        descripcion:
+            type: text
+            fixed: false
+            nullable: true
+
         borrado:
             type: integer
             length: 1

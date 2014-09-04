@@ -96,6 +96,21 @@ ver_tienda_artsenal:
 
 
 
+# pago    
+
+descripcion_pago_artsenal:
+    path:      /pago/descripcion
+    defaults:  { _controller: AppShopThemeBundle:Pago:descripcion }
+
+
+datos_pago_artsenal:
+    path:      /pago/datos/{envio}
+    defaults:  { _controller: AppShopThemeBundle:Pago:pago }
+
+
+pago_realizado_artsenal:
+    path:      /pago/finalizar
+    defaults:  { _controller: AppShopThemeBundle:Pago:finalizar }
 
 
 

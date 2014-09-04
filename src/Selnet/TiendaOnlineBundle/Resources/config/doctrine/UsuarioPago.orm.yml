@@ -1,0 +1,52 @@
+Selnet\TiendaOnlineBundle\Entity\UsuarioPago:
+    type:  entity
+    table: usuario_pago
+    fields:
+        id:
+            id: true
+            type: integer
+            unsigned: false
+            nullable: false
+            generator:
+                strategy: IDENTITY
+        nombre:
+            type: string
+            nullable: false 
+
+        ccv:
+            type: string
+            nullable: false
+
+        mesVencimiento:
+            type: string
+            nullable: false
+
+        anioVencimiento:
+            type: string
+            nullable: false
+
+        nombreTarjeta:
+            type: string
+            nullable: false
+
+        usuario:
+            type: string
+            nullable: false
+
+        created_at:
+            type: datetime
+            nullable: false
+            gedmo:
+              timestampable:
+                on: create
+        updated_at:
+            type: datetime
+            nullable: false
+            gedmo:
+              timestampable:
+                on: update
+        usuario:
+            type: string
+            nullable: false
+
+

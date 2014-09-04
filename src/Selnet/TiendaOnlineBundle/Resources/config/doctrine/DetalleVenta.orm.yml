@@ -25,9 +25,15 @@ Selnet\TiendaOnlineBundle\Entity\DetalleVenta:
         created_at:
             type: datetime
             nullable: false
+            gedmo:
+              timestampable:
+                on: create
         updated_at:
             type: datetime
             nullable: false
+            gedmo:
+              timestampable:
+                on: update
     manyToOne:
       producto:
         targetEntity: Producto

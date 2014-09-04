@@ -14,33 +14,45 @@ Selnet\TiendaOnlineBundle\Entity\Venta:
             length: 45
             fixed: false
             nullable: false
+        usuario:
+            type: string
+            fixed: false
+            nullable: false
+
         verificada:
             type: integer
             length: 1
             fixed: false
-            nullable: true
+            nullable: false
+        envio:
+            type: integer
+            length: 1
+            fixed: false
+            nullable: false
+        pago:
+            type: integer
+            length: 1
+            fixed: false
+            nullable: false
+
         estado:
             type: integer
             length: 1
             fixed: true
-            nullable: true
+            nullable: false
         created_at:
             type: datetime
             nullable: false
+            gedmo:
+              timestampable:
+                on: create
         updated_at:
             type: datetime
             nullable: false
-    manyToOne:
-      usuario:
-        targetEntity: Usuario
-        joinColumn:
-          name: usuario_id
-          referencedColumnName: id
-      tienda:
-        targetEntity: Tienda
-        joinColumn:
-          name: tienda_id
-          referencedColumnName: id
+            gedmo:
+              timestampable:
+                on: update
+
     oneToMany:
         detalles:
           targetEntity: DetalleVenta

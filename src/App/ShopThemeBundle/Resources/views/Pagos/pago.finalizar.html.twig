@@ -1,0 +1,114 @@
+{% extends "AppShopThemeBundle::template.artsenal.html.twig" %}
+
+
+
+
+
+
+
+
+{% block contenido %}
+
+<div class="barra_spacer_3"></div>
+
+<div class="row">
+	<div class="col-md-10 col-md-offset-1">
+		<div class="page-header pagina_header">
+			<h2>Detalles de pago</h2>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+<div class="row">
+	<div class="col-md-10 col-md-offset-1">
+		<div class="panel panel-default artsenal-panel "  style="margin-bottom: 0px; border-bottom-width: 0px;" >
+			<div class="panel-body"></div>
+			<div class="container-fluid">
+				<div class="row">
+					<div  class="col-md-12" >						
+						{% include 'AppShopThemeBundle:Pagos:pago.menu.html.twig' %}
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+<div class="row">
+	<div class="col-md-10 col-md-offset-1">
+		<div class="panel panel-default artsenal-panel "style="border-top-width: 0px;" >
+			<div class="panel-body">
+
+				<div class="container-fluid">
+
+
+					<div  class="col-md-"    >
+
+
+						<div  class="row contenido_tabs" >
+
+							<div class="page-header pagina_header">
+								<br/>
+								<br/>
+								<br/>
+								<h2  style="text-align:center;" >Gracias por tu compra</h2>
+							</div>
+
+							<div class="page-header pagina_header">
+								<h3  style="text-align: center;" >Una vez recibido tu pago, se gestionara el envio </h3>
+							</div>
+
+							<div class="barra_border"></div>
+
+
+							<div class="page-header pagina_header" style="text-align:center;" >
+								<form name="_xclick" action="https://www.paypal.com/cgi-bin/webscr" method="post">
+									<input type="hidden" name="cmd" value="_xclick">
+									<input type="hidden" name="business" value="danielli@artsenal.com.ec">
+									<input type="hidden" name="currency_code" value="USD">
+									<input type="hidden" name="item_name" value="Pago por compra {{  venta.usuario }}">
+									<input type="hidden" name="amount" value="{{ venta.total }}">
+									<input type="image" src="http://www.paypalobjects.com/en_US/i/btn/btn_buynow_LG.gif" border="0" name="submit" alt="Make payments with PayPal - it's fast, free and secure!">
+								</form>
+
+							</div>
+							
+
+
+							<div class="barra_spacer_2"></div>
+
+							<div class="barra_spacer_3"></div>
+
+						</div>
+
+					</div>
+
+
+
+
+
+
+
+				</div>
+
+
+
+			</div>
+		</div>
+	</div>
+
+</div>
+
+
+
+
+
+{% endblock %}
