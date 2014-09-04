@@ -14,6 +14,17 @@ class DefaultController extends Controller
 
 
 
+	public function comprasAction()
+	{
+
+		$em = $this->getDoctrine()->getManager();
+		$usuario = $this->get('security.context')->getToken()->getUser();
+		$ventas = $em->getRepository('SelnetTiendaOnlineBundle:Venta')->findBy(  array("usuario"=> $usuario->getUsername()  ) );
+
+	    return $this->render('AppShopThemeBundle:Paginas:compras.html.twig' , array("ventas"=> $ventas )  );
+	}
+
+
 
 	public function tiendaAction()
 	{

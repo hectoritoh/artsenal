@@ -84,7 +84,8 @@
            "sonata-project/notification-bundle": "dev-master",
            "sonata-project/seo-bundle": "dev-master",
            "gedmo/doctrine-extensions": "dev-master", 
-           "avalanche123/imagine-bundle": "v2.1"
+           "avalanche123/imagine-bundle": "v2.1",
+        "symfony/intl": "2.6.*@dev"
            
            
            

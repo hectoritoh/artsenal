@@ -23,12 +23,15 @@ productos_filtro:
     options:
         expose: true
 
-
-
 ver_cesta_artsenal:
     path:      /cart
     defaults:  { _controller: AppShopThemeBundle:Cart:show }
 
+
+
+ver_compras_usuario:
+    path:      /compras
+    defaults:  { _controller: AppShopThemeBundle:Default:compras }
 
 
 # tienda

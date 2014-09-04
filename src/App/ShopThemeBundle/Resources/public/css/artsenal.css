@@ -598,3 +598,19 @@ input{
 	margin-bottom: 2px;
 }
 
+
+
+
+p.titulo_lista_compras{
+	color: #666666;
+	font-family: lato_light;
+}
+
+
+.text_lista_compras{
+	font-weight: bold;
+}
+.lista_compra div p {text-align: center;}
+
+ 
+
