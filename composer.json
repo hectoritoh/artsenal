@@ -85,7 +85,8 @@
            "sonata-project/seo-bundle": "dev-master",
            "gedmo/doctrine-extensions": "dev-master", 
            "avalanche123/imagine-bundle": "v2.1",
-        "symfony/intl": "2.6.*@dev"
+        "symfony/intl": "2.6.*@dev",
+        "sonata-project/markitup-bundle": "2.1.*@dev"
            
            
            
