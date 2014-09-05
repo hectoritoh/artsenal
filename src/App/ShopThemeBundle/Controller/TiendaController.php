@@ -385,9 +385,47 @@ class TiendaController extends Controller
 
 
 
+        public function verTiendaAction($id_tienda)
+        {
+
+            $secciones = array();
 
 
+            $usuario = $this->get('security.context')->getToken()->getUser();
+
+            $em     = $this->getDoctrine()->getManager();
+            $tienda = $em->getRepository('SelnetTiendaOnlineBundle:Tienda')->find( $id_tienda);
+
+            if (!$tienda) {
+                throw new \Exception("La tienda que buscas no existe", 1);
+            }
 
 
+            $productos = $em->getRepository('SelnetTiendaOnlineBundle:Producto')->findBy(array(
+                "tienda" => $tienda
+                ));
+
+            foreach ($productos as $producto) {
+                if (!isset($secciones[$producto->getSubcategoria()->getNombre()])) {
+                $secciones[$producto->getSubcategoria()->getNombre()] = 1; # code...
+            } else {
+                $secciones[$producto->getSubcategoria()->getNombre()]++;
+            }
+        }
+        
+        
+        
+        return $this->render('AppShopThemeBundle:Tienda:ver.tienda.html.twig', array(
+            "tienda" => $tienda,
+            "productos" => $productos,
+            "secciones" => $secciones
+            ));
 
     }
+
+
+
+
+
+
+}
