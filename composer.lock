@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "9cb1ddd589331e73a2887b0bfe788275",
+    "hash": "9d45d66f3e310489d4bfbe58b8179595",
     "packages": [
         {
             "name": "ass/xmlsecurity",
@@ -4325,17 +4325,16 @@
         },
         {
             "name": "sonata-project/markitup-bundle",
-            "version": "2.1.0",
-            "target-dir": "Sonata/MarkItUpBundle",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sonata-project/SonataMarkItUpBundle.git",
-                "reference": "869b85ba924aa2333e5464bc0193813c31ea5859"
+                "reference": "e29098d45f2f01242e70bcddd7a48a80868c9cd7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sonata-project/SonataMarkItUpBundle/zipball/869b85ba924aa2333e5464bc0193813c31ea5859",
-                "reference": "869b85ba924aa2333e5464bc0193813c31ea5859",
+                "url": "https://api.github.com/repos/sonata-project/SonataMarkItUpBundle/zipball/e29098d45f2f01242e70bcddd7a48a80868c9cd7",
+                "reference": "e29098d45f2f01242e70bcddd7a48a80868c9cd7",
                 "shasum": ""
             },
             "require": {
@@ -4344,13 +4343,12 @@
             "type": "symfony-bundle",
             "extra": {
                 "branch-alias": {
-                    "dev-2.0": "2.0.x-dev",
                     "dev-master": "2.1.x-dev"
                 }
             },
             "autoload": {
-                "psr-0": {
-                    "Sonata\\MarkItUpBundle": ""
+                "psr-4": {
+                    "Sonata\\MarkItUpBundle\\": ""
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -4386,7 +4384,7 @@
                 "textile",
                 "wiki"
             ],
-            "time": "2013-02-25 13:32:15"
+            "time": "2014-09-01 08:04:27"
         },
         {
             "name": "sonata-project/media-bundle",
@@ -5789,7 +5787,8 @@
         "sonata-project/notification-bundle": 20,
         "sonata-project/seo-bundle": 20,
         "gedmo/doctrine-extensions": 20,
-        "symfony/intl": 20
+        "symfony/intl": 20,
+        "sonata-project/markitup-bundle": 20
     },
     "prefer-stable": false,
     "platform": {

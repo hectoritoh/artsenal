@@ -49,14 +49,14 @@ class AppKernel extends Kernel
 
             // sonata ecomerce
 
-            new Sonata\CustomerBundle\SonataCustomerBundle(),
-            new Sonata\ProductBundle\SonataProductBundle(),
-            new Sonata\BasketBundle\SonataBasketBundle(),
-            new Sonata\OrderBundle\SonataOrderBundle(),
-            new Sonata\InvoiceBundle\SonataInvoiceBundle(),
-            new Sonata\DeliveryBundle\SonataDeliveryBundle(),
-            new Sonata\PaymentBundle\SonataPaymentBundle(),
-            new Sonata\PriceBundle\SonataPriceBundle(),
+            // new Sonata\CustomerBundle\SonataCustomerBundle(),
+            // new Sonata\ProductBundle\SonataProductBundle(),
+            // new Sonata\BasketBundle\SonataBasketBundle(),
+            // new Sonata\OrderBundle\SonataOrderBundle(),
+            // new Sonata\InvoiceBundle\SonataInvoiceBundle(),
+            // new Sonata\DeliveryBundle\SonataDeliveryBundle(),
+            // new Sonata\PaymentBundle\SonataPaymentBundle(),
+            // new Sonata\PriceBundle\SonataPriceBundle(),
             new Sonata\SeoBundle\SonataSeoBundle(),
 
 
@@ -74,13 +74,13 @@ class AppKernel extends Kernel
             new Application\Sonata\ClassificationBundle\ApplicationSonataClassificationBundle(),
 
 
-            new Application\Sonata\CustomerBundle\ApplicationSonataCustomerBundle(),
-            new Application\Sonata\DeliveryBundle\ApplicationSonataDeliveryBundle(),
-            new Application\Sonata\BasketBundle\ApplicationSonataBasketBundle(),
-            new Application\Sonata\InvoiceBundle\ApplicationSonataInvoiceBundle(),
-            new Application\Sonata\OrderBundle\ApplicationSonataOrderBundle(),
-            new Application\Sonata\PaymentBundle\ApplicationSonataPaymentBundle(),
-            new Application\Sonata\ProductBundle\ApplicationSonataProductBundle(),
+            // new Application\Sonata\CustomerBundle\ApplicationSonataCustomerBundle(),
+            // new Application\Sonata\DeliveryBundle\ApplicationSonataDeliveryBundle(),
+            // new Application\Sonata\BasketBundle\ApplicationSonataBasketBundle(),
+            // new Application\Sonata\InvoiceBundle\ApplicationSonataInvoiceBundle(),
+            // new Application\Sonata\OrderBundle\ApplicationSonataOrderBundle(),
+            // new Application\Sonata\PaymentBundle\ApplicationSonataPaymentBundle(),
+            // new Application\Sonata\ProductBundle\ApplicationSonataProductBundle(),
 
             new Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle(),
 

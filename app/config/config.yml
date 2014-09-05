@@ -5,8 +5,8 @@ imports:
     - { resource: sonata_news.yml }
     - { resource: sonata_formatter.yml }
     - { resource: services.yml }
-    - { resource: sonata_user.yml }
-    - { resource: sonata_product.yml }
+    # - { resource: sonata_user.yml }
+    # - { resource: sonata_product.yml }
     - { resource: imagine.yml }
     - { resource: "@SelnetTiendaOnlineBundle/Resources/config/admin.yml" }
 framework:
