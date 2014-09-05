@@ -396,9 +396,7 @@ class TiendaController extends Controller
             $em     = $this->getDoctrine()->getManager();
             $tienda = $em->getRepository('SelnetTiendaOnlineBundle:Tienda')->find( $id_tienda);
 
-            if (!$tienda) {
-                throw new \Exception("La tienda que buscas no existe", 1);
-            }
+          
 
 
             $productos = $em->getRepository('SelnetTiendaOnlineBundle:Producto')->findBy(array(

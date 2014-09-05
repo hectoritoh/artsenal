@@ -69,36 +69,7 @@ hwi_oauth_redirect:
 
 facebook_login:
     pattern: /secured/login_facebook
-
-
-
-
-# sonata front controller
-# sonata_user:
-#     resource: @SonataUserBundle/Resources/config/routing/user.xml
-#     prefix: /shop/user
-
-# sonata_order:
-#     resource: @SonataOrderBundle/Resources/config/routing/order.xml
-#     prefix: /shop/user/invoice
-
-# sonata_product_catalog:
-#     resource: @SonataProductBundle/Resources/config/routing/catalog.xml
-#     prefix: /shop/catalog
-
-# sonata_product:
-#     resource: @SonataProductBundle/Resources/config/routing/product.xml
-#     prefix: /shop/product
-
-# sonata_payment:
-#     resource: @SonataPaymentBundle/Resources/config/routing/payment.xml
-#     prefix: /shop/payment
-
-# sonata_invoice:
-#     resource: @SonataInvoiceBundle/Resources/config/routing/invoice.xml
-#     prefix: /shop/user/invoice
-
-
+ 
 
 fos_js_routing:
     resource: "@FOSJsRoutingBundle/Resources/config/routing/routing.xml"

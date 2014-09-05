@@ -5,8 +5,6 @@ imports:
     - { resource: sonata_news.yml }
     - { resource: sonata_formatter.yml }
     - { resource: services.yml }
-    # - { resource: sonata_user.yml }
-    # - { resource: sonata_product.yml }
     - { resource: imagine.yml }
     - { resource: "@SelnetTiendaOnlineBundle/Resources/config/admin.yml" }
 framework:
@@ -128,6 +126,8 @@ security:
         # Change these rules to adapt them to your needs
         - { path: ^/admin/, role: [ROLE_ADMIN, ROLE_SONATA_ADMIN] }
         - { path: ^/.*, role: IS_AUTHENTICATED_ANONYMOUSLY }
+
+
 
 ivory_ck_editor:
     configs:
