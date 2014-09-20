@@ -45,12 +45,14 @@ public function tiendasAction()
 
 		$em = $this->getDoctrine()->getManager();
 		$usuario = $this->get('security.context')->getToken()->getUser();
-		$tienda = $em->getRepository('SelnetTiendaOnlineBundle:Tienda')->findOneBy( array("usuario"  =>  $usuario->getId()  ) );
+		$tienda = $em->getRepository('SelnetTiendaOnlineBundle:Tienda')->findOneBy( array("usuario"  =>  $usuario->getUsername()  ) );
 
 		if (!$tienda) 
+		
 			return $this->redirect($this->generateUrl('creacion_tienda_artsenal'));
 		else
-			return $this->render('AppShopThemeBundle:Tienda:ver.html.twig' , array("tienda" => $tienda ));
+			
+			return $this->redirect($this->generateUrl('ver_tienda' , array('id_tienda' => $tienda->getId()) ));
 
 	}
 

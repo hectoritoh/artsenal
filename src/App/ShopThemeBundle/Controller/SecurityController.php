@@ -8,13 +8,14 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Session\Session;
 use Selnet\TiendaOnlineBundle\Entity\Usuario;
+use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
 
 
 
 class SecurityController extends Controller
 {
-	public function loginAction()
-	{
+    public function loginAction()
+    {
 
        $request = $this->getRequest();
        $session = $request->getSession();
@@ -64,6 +65,8 @@ public function registerAction(Request $request)
         ))
     ->getForm(); 
 
+
+
     if ($request->isMethod('POST')) {
         $form->bind($request);
 
@@ -77,14 +80,31 @@ public function registerAction(Request $request)
             $encoder = $factory->getEncoder($usuario);
             
             $pass = $encoder->encodePassword($usuario->getPassword(), $usuario->getSalt());
-            $usuario->setPassword(  $pass );
+            
             $usuario->setEnabled(  1 );
 
             $em = $this->getDoctrine()->getManager();
             $em->persist( $usuario );
             $em->flush();
+
+
+            $userManager = $this->get('fos_user.user_manager');
+            $user = $userManager->createUser();
+            $user->setUsername(  $usuario->getUsername() );
+            $user->setEmail($usuario->getEmail());
+            $user->setPassword($usuario->getPassword());
+            $user->setPlainPassword($usuario->getPassword());
+            $user->setEnabled(true);
+
+            $userManager->updateUser($user);
+
+            $token = new UsernamePasswordToken($user, null, 'main', $user->getRoles());
+            $this->get('security.context')->setToken($token);
+            $this->get('session')->set('_security_main',serialize($token));
+
+
             
-            return $this->redirect($this->generateUrl('usuario_ingresa'));
+            return $this->redirect($this->generateUrl('app_shop_theme_homepage'));
 
         }else{
             // print_r($form->getErrors());

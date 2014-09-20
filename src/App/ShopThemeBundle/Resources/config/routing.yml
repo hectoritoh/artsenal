@@ -38,39 +38,42 @@ ver_compras_usuario:
 
 
 ver_tienda:
-    path:      /tienda/{id_tienda}
+    path:      /tienda/ver/{id_tienda}
     defaults:  { _controller: AppShopThemeBundle:Tienda:verTienda }
 
 ver_tiendas_artsenal:
     path:      /tiendas
     defaults:  { _controller: AppShopThemeBundle:Default:tiendas }
 
+
 tienda_artsenal:
     path:      /ver/tienda
     defaults:  { _controller: AppShopThemeBundle:Default:tienda }
 
+
+
 creacion_tienda_artsenal:
-    path:      /tienda/nombre
+    path:      /tienda/creacion/nombre
     defaults:  { _controller: AppShopThemeBundle:Tienda:nombreTienda }
 
 creacion_tienda_producto_artsenal:
-    path:      /tienda/producto
+    path:      /tienda/creacion/producto
     defaults:  { _controller: AppShopThemeBundle:Tienda:productosTienda }
 
 creacion_tienda_membresia_artsenal:
-    path:      /tienda/membresia
+    path:      /tienda/creacion/membresia
     defaults:  { _controller: AppShopThemeBundle:Tienda:membresiaTienda }
 
 creacion_tienda_finalizar_artsenal:
-    path:      /tienda/finalizar/{tipo_cuenta}
+    path:      /tienda/creacion/finalizar/{tipo_cuenta}
     defaults:  { _controller: AppShopThemeBundle:Tienda:finalizarTienda }
 
 politicas_tienda_artsenal:
-    path:      /tienda/politicas
+    path:      /tienda/creacion/politicas
     defaults:  { _controller: AppShopThemeBundle:Tienda:politicas }
 
 presonaliza_tienda_artsenal:
-    path:      /tienda/personalizar
+    path:      /tienda/creacion/personalizar
     defaults:  { _controller: AppShopThemeBundle:Tienda:personalizarTienda }
 
 preview_tienda_artsenal:

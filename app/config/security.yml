@@ -46,6 +46,7 @@ security:
                 resource_owners:
                     facebook:      /secured/login_facebook
                 login_path:        /secured/login
+                # failure_path:      /login_app
                 failure_path:      /secured/login
                 # oauth_user_provider:
                 #     service: hwi_oauth.user.provider.entity
@@ -63,7 +64,7 @@ security:
                 login_path:     /login
                 use_forward:    false
                 check_path:     /login_check
-                failure_path:   null
+                failure_path:   /login_app
             logout:             true
             anonymous:          true
 
