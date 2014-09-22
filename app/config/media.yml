@@ -61,8 +61,8 @@ sonata_media:
 
     cdn:
         server:
-            # path: /artsenal/web/uploads/media 
-            path: /desa/web/uploads/media 
+            path: /artsenal/web/uploads/media 
+            # path: /desa/web/uploads/media 
 
     filesystem:
         local:
