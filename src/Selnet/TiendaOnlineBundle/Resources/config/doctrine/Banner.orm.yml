@@ -27,13 +27,19 @@ Selnet\TiendaOnlineBundle\Entity\Banner:
         created_at:
             type: datetime
             nullable: false
+            gedmo:
+              timestampable:
+                on: create
         updated_at:
             type: datetime
             nullable: false
-    manyToOne:
+            gedmo:
+              timestampable:
+                on: update
+
         image:
-            targetEntity: Application\Sonata\MediaBundle\Entity\Media
-            cascade: ["persist"]
+            type: text
+            nullable: false
 
     lifecycleCallbacks:
         prePersist: [preInsert]

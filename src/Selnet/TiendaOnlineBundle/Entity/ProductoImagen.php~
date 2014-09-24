@@ -213,7 +213,7 @@ class ProductoImagen
     }
 
 
-    public $path;
+    private $path;
 
     public function getAbsolutePath()
     {

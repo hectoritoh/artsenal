@@ -280,6 +280,15 @@ class TiendaController extends Controller
             ));
         
 
+        if (!$tienda) {
+
+           return $this->render('AppShopThemeBundle:Tienda:crear.tienda.html.twig');
+
+       }
+
+       else{
+
+
         $productos = $em->getRepository('SelnetTiendaOnlineBundle:Producto')->findBy(array(
             "tienda" => $tienda
             ));
@@ -299,112 +308,130 @@ class TiendaController extends Controller
             "productos" => $productos,
             "secciones" => $secciones
             ));
+
+
     }
-    
-    
-    public function politicasAction(Request $request)
+
+}
+
+
+public function politicasAction(Request $request)
+{
+    $usuario       = $this->get('security.context')->getToken()->getUser();
+    $tienda_existe = true;
+
+
+
+    $em = $this->getDoctrine()->getManager();
+    $tienda = $em->getRepository('SelnetTiendaOnlineBundle:Tienda')->findOneBy(array(
+        "usuario" => $usuario->getUsername()
+        ));
+
+
+    if (!$tienda) {
+
+           return $this->render('AppShopThemeBundle:Tienda:crear.tienda.html.twig');
+
+       }
+
+
+    $form = $this->createFormBuilder($tienda)->add("mensajeBienvenida", "textarea", array(
+        "label" => "Mensaje de bienvenida:"
+        ))->add("politicaPagos", "textarea", array(
+        "label" => "Politicas de Pago:"
+        ))->add("politicaReembolso", "textarea", array(
+        "label" => "Politicas de Reembolsos:"
+        ))->add("informacionAdicional", "textarea", array(
+        "label" => "Informacion Adicional:"
+        ))->add("informacionVendedor", "textarea", array(
+        "label" => "Informacion de Vendedor:"
+        ))->getForm();
+
+        if ($request->isMethod('POST')) {
+            $form->bind($request);
+
+            if ($form->isValid()) {
+                $em->persist($tienda);
+                $em->flush();
+            } else {
+                print_r($form->getErrors());
+            }
+
+        }
+        return $this->render('AppShopThemeBundle:Tienda:politicas.html.twig', array(
+            "form" => $form->createView()
+            ));
+    }
+
+
+    public function personalizarTiendaAction(Request $request)
     {
         $usuario       = $this->get('security.context')->getToken()->getUser();
         $tienda_existe = true;
-        
-        
 
-        $em = $this->getDoctrine()->getManager();
+        $em     = $this->getDoctrine()->getManager();
         $tienda = $em->getRepository('SelnetTiendaOnlineBundle:Tienda')->findOneBy(array(
             "usuario" => $usuario->getUsername()
             ));
 
-        
-        
-        $form = $this->createFormBuilder($tienda)->add("mensajeBienvenida", "textarea", array(
-            "label" => "Mensaje de bienvenida:"
-            ))->add("politicaPagos", "textarea", array(
-            "label" => "Politicas de Pago:"
-            ))->add("politicaReembolso", "textarea", array(
-            "label" => "Politicas de Reembolsos:"
-            ))->add("informacionAdicional", "textarea", array(
-            "label" => "Informacion Adicional:"
-            ))->add("informacionVendedor", "textarea", array(
-            "label" => "Informacion de Vendedor:"
-            ))->getForm();
 
-            if ($request->isMethod('POST')) {
-                $form->bind($request);
+         if (!$tienda) {
 
-                if ($form->isValid()) {
-                    $em->persist($tienda);
-                    $em->flush();
-                } else {
-                    print_r($form->getErrors());
-                }
+           return $this->render('AppShopThemeBundle:Tienda:crear.tienda.html.twig');
 
-            }
-            return $this->render('AppShopThemeBundle:Tienda:politicas.html.twig', array(
-                "form" => $form->createView()
-                ));
+       }
+
+
+        $form = $this->createFormBuilder($tienda)
+        ->add('imagenCabecera', 'sonata_media_type', array(
+         'provider' => 'sonata.media.provider.image',
+         'context'  => 'tienda_cabecera'
+         ))
+        ->add("titulo", "text")->add("mensaje", "textarea")->add("anuncio", "textarea")->getForm();
+
+        if ($request->isMethod('POST')) {
+            $form->bind($request);
+
+            $tienda->upload();
+            if ($form->isValid()) {
+                $em->persist($tienda);
+                $em->flush();
+            }  
+
         }
 
 
-        public function personalizarTiendaAction(Request $request)
-        {
-            $usuario       = $this->get('security.context')->getToken()->getUser();
-            $tienda_existe = true;
-
-            $em     = $this->getDoctrine()->getManager();
-            $tienda = $em->getRepository('SelnetTiendaOnlineBundle:Tienda')->findOneBy(array(
-                "usuario" => $usuario->getUsername()
-                ));
-
-            $form = $this->createFormBuilder($tienda)
-            ->add('imagenCabecera', 'sonata_media_type', array(
-               'provider' => 'sonata.media.provider.image',
-               'context'  => 'tienda_cabecera'
-               ))
-            ->add("titulo", "text")->add("mensaje", "textarea")->add("anuncio", "textarea")->getForm();
-
-            if ($request->isMethod('POST')) {
-                $form->bind($request);
-
-                $tienda->upload();
-                if ($form->isValid()) {
-                    $em->persist($tienda);
-                    $em->flush();
-                }  
-
-            }
-
-
-            return $this->render('AppShopThemeBundle:Tienda:personaliza.tienda.html.twig', array(
-                "form" => $form->createView(),
-                "tienda" => $tienda,
-                "imagenCabecera" => $tienda->getImagenCabecera()
-                ));
-        }
+        return $this->render('AppShopThemeBundle:Tienda:personaliza.tienda.html.twig', array(
+            "form" => $form->createView(),
+            "tienda" => $tienda,
+            "imagenCabecera" => $tienda->getImagenCabecera()
+            ));
+    }
 
 
 
 
 
-        public function verTiendaAction($id_tienda)
-        {
+    public function verTiendaAction($id_tienda)
+    {
 
-            $secciones = array();
-
-
-            $usuario = $this->get('security.context')->getToken()->getUser();
-
-            $em     = $this->getDoctrine()->getManager();
-            $tienda = $em->getRepository('SelnetTiendaOnlineBundle:Tienda')->find( $id_tienda);
-
-          
+        $secciones = array();
 
 
-            $productos = $em->getRepository('SelnetTiendaOnlineBundle:Producto')->findBy(array(
-                "tienda" => $tienda
-                ));
+        $usuario = $this->get('security.context')->getToken()->getUser();
 
-            foreach ($productos as $producto) {
-                if (!isset($secciones[$producto->getSubcategoria()->getNombre()])) {
+        $em     = $this->getDoctrine()->getManager();
+        $tienda = $em->getRepository('SelnetTiendaOnlineBundle:Tienda')->find( $id_tienda);
+
+
+
+
+        $productos = $em->getRepository('SelnetTiendaOnlineBundle:Producto')->findBy(array(
+            "tienda" => $tienda
+            ));
+
+        foreach ($productos as $producto) {
+            if (!isset($secciones[$producto->getSubcategoria()->getNombre()])) {
                 $secciones[$producto->getSubcategoria()->getNombre()] = 1; # code...
             } else {
                 $secciones[$producto->getSubcategoria()->getNombre()]++;

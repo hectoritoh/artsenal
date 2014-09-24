@@ -480,3 +480,8 @@ a.list-group-item.active{
 .artsenal-panel-tab{
 
 }
+
+
+.form-control-error{
+	color: red;
+}

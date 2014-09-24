@@ -1,0 +1,116 @@
+
+
+
+{% extends "AppShopThemeBundle::template.artsenal.html.twig" %}
+
+
+
+
+
+
+
+
+{% block contenido %}
+
+<div class="barra_spacer_3"></div>
+
+<div class="row">
+	<div class="col-md-10 col-md-offset-1">
+		<div class="page-header pagina_header">
+			<h2>Aviso!</h2>
+		</div>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-md-10 col-md-offset-1">
+		<div class="page-header pagina_header" style="color:green;" >
+
+			{% for flashMessage in app.session.flashbag.get('message') %}
+
+			<h2  style="color:green;" >  {{ flashMessage }}!</h2>
+
+
+			{% endfor %}
+
+			
+		</div>
+	</div>
+</div>
+
+
+
+
+<div class="row">
+	<div class="col-md-10 col-md-offset-1">
+		<div class="panel panel-default artsenal-panel artsenal-panel-tab"  style="margin-bottom: 0px; border-bottom-width: 0px;" >
+			<div class="container-fluid">
+				<div class="row">
+
+					<div  class="col-md-12" >
+						
+					 
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<div class="row">
+	<div class="col-md-10 col-md-offset-1">
+		<div class="panel panel-default artsenal-panel "style="border-top-width: 0px;" >
+			<div class="panel-body">
+
+				<div class="container-fluid">
+
+
+					<div  class="col-md-11" >
+						
+
+
+
+
+						<div id="contenido2" class="row contenido_tabs"    >
+
+
+
+							<div id="contenido4" class="row contenido_tabs"  >
+
+								<div class="barra_spacer_10"></div>
+								<div class="page-header pagina_header">
+									<h3  style="text-align: center;" >Primero debes de crear una tienda</h3>
+								</div>
+								<div class="page-header pagina_header">
+									<h3  style="text-align: center;" >Comienza <a href="{{  path('tienda_artsenal') }}" >aqui</a> </h3>
+								</div>
+
+
+ 
+
+
+								<div class="barra_spacer_10"></div>
+							</div>
+
+
+						</div>
+					</div>
+
+
+
+				</div>
+			</div>
+		</div>
+
+	</div>
+
+
+
+
+
+	{% endblock %}
+
+
+

@@ -3,6 +3,8 @@
 namespace Selnet\TiendaOnlineBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
+
 
 /**
  * Banner
@@ -40,7 +42,7 @@ class Banner
     private $updated_at;
 
     /**
-     * @var \Application\Sonata\MediaBundle\Entity\Media
+     * @var string
      */
     private $image;
 
@@ -64,7 +66,7 @@ class Banner
     public function setNombre($nombre)
     {
         $this->nombre = $nombre;
-    
+
         return $this;
     }
 
@@ -87,7 +89,7 @@ class Banner
     public function setDescripcion($descripcion)
     {
         $this->descripcion = $descripcion;
-    
+
         return $this;
     }
 
@@ -110,7 +112,7 @@ class Banner
     public function setBorrado($borrado)
     {
         $this->borrado = $borrado;
-    
+
         return $this;
     }
 
@@ -133,7 +135,7 @@ class Banner
     public function setCreatedAt($createdAt)
     {
         $this->created_at = $createdAt;
-    
+
         return $this;
     }
 
@@ -156,7 +158,7 @@ class Banner
     public function setUpdatedAt($updatedAt)
     {
         $this->updated_at = $updatedAt;
-    
+
         return $this;
     }
 
@@ -173,20 +175,20 @@ class Banner
     /**
      * Set image
      *
-     * @param \Application\Sonata\MediaBundle\Entity\Media $image
+     * @param string $image
      * @return Banner
      */
-    public function setImage(\Application\Sonata\MediaBundle\Entity\Media $image = null)
+    public function setImage($image)
     {
         $this->image = $image;
-    
+
         return $this;
     }
 
     /**
      * Get image
      *
-     * @return \Application\Sonata\MediaBundle\Entity\Media 
+     * @return string 
      */
     public function getImage()
     {
@@ -207,4 +209,83 @@ class Banner
     {
         // Add your code here
     }
+
+
+
+
+    public function getAbsolutePath()
+    {
+        return null === $this->image
+        ? null
+        : $this->getUploadRootDir().'/'.$this->image;
+    }
+
+    public function getWebPath()
+    {
+        return null === $this->image
+        ? null
+        : $this->getUploadDir().'/'.$this->image;
+    }
+
+    protected function getUploadRootDir()
+    {
+        // the absolute directory path where uploaded
+        // documents should be saved
+        return __DIR__.'/../../../../web/'.$this->getUploadDir();
+    }
+
+    protected function getUploadDir()
+    {
+        // get rid of the __DIR__ so it doesn't screw up
+        // when displaying uploaded doc/image in the view.
+        return 'uploads/banners';
+    }
+
+    private $file;
+
+    /**
+     * Sets file.
+     *
+     * @param UploadedFile $file
+     */
+    public function setFile(UploadedFile $file = null)
+    {
+        $this->file = $file;
+    }
+
+    /**
+     * Get file.
+     *
+     * @return UploadedFile
+     */
+    public function getFile()
+    {
+        return $this->file;
+    }
+
+
+    public function upload()
+    {
+    // the file property can be empty if the field is not required
+        if (null === $this->getFile()) {
+            return;
+        }
+
+    // use the original file name here but you should
+    // sanitize it at least to avoid any security issues
+
+    // move takes the target directory and then the
+    // target filename to move to
+        $this->getFile()->move(
+            $this->getUploadRootDir(),
+            $this->getFile()->getClientOriginalName()
+            );
+
+    // set the path property to the filename where you've saved the file
+        $this->image = $this->getFile()->getClientOriginalName();
+
+    // clean up the file property as you won't need it anymore
+        $this->file = null;
+    }
+
 }
