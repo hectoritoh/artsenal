@@ -1,6 +1,6 @@
 
- <!-- Navigation -->
- <nav class="navbar navbar-artsenal navbar-fixed-top" role="navigation">
+<!-- Navigation -->
+<nav class="navbar navbar-artsenal navbar-fixed-top" role="navigation">
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
@@ -27,13 +27,12 @@
     </div>                                   
     <!-- /.navbar-collapse -->
   </div>
-  <!-- /.container -->
-</nav>
+  
 
 
 
 
-<nav class="navbar subnavbar subnavbar-artsenal" role="navigation">
+<nav class="navbar subnavbar subnavbar-artsenal " role="navigation">
 
  <div class="navbar-header">
   <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-subnavbar">
@@ -55,7 +54,9 @@
     </div>
 
     <div class=" col-md-offset-1 col-sm-offset-1  col-lg-offset-1   col-sm-6 col-lg-6 col-md-6  vertical-center " >
-      <input class="search_txt" type="text"  placeholder="ingrese el producto que desee buscar" />
+      <form method="post" action="{{  path('app_shop_theme_buscar') }}">
+        <input class="search_txt" type="text" name="buscar" placeholder="ingrese el producto que desee buscar" />
+      </form>
     </div>
 
     <div class="col-sm-1 col-lg-1 col-md-1  vertical-center submenu-item " >
@@ -69,7 +70,7 @@
       <a href="{{ path('ver_cesta_artsenal') }}">Mi cesta</a>
       <i></i>
       {% image '@AppShopThemeBundle/Resources/public/images/icon_cesta.png'%}
-        <img  style="display: inline; margin-top: -12px;"  class="img-responsive" src="{{ asset_url }}" alt="artsenal"/>
+      <img  style="display: inline; margin-top: -12px;"  class="img-responsive" src="{{ asset_url }}" alt="artsenal"/>
       {% endimage %}
     </div>
   </div>
@@ -78,3 +79,10 @@
 <!-- /.container -->
 
 </nav>
+
+
+
+</nav>
+
+
+

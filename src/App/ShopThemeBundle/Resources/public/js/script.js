@@ -6,6 +6,7 @@ function getProducto(  id_producto ){
 		url: Routing.generate("producto_detalle_mostrar" , {  id_producto: id_producto }),
 		success: function( response ){
 			$("#modalProducto").html( response  );
+			stButtons.locateElements(); 
 		}
 	});
 }

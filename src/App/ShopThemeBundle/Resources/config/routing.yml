@@ -2,6 +2,13 @@ app_shop_theme_homepage:
     path:     /
     defaults: { _controller: AppShopThemeBundle:Default:index }
 
+
+app_shop_theme_buscar:
+    path:     /productos/buscar
+    defaults: { _controller: AppShopThemeBundle:Default:buscar }
+
+
+
 contenido_page:
     path:      /contenido/{contenido}
     defaults:  { _controller: AppShopThemeBundle:Default:contenido }

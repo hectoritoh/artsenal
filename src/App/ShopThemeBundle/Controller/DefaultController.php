@@ -15,14 +15,14 @@ class DefaultController extends Controller
 
 
 
-public function tiendasAction()
-{
+	public function tiendasAction()
+	{
 
-	$em = $this->getDoctrine()->getManager();
-	$tiendas = $em->getRepository('SelnetTiendaOnlineBundle:Tienda')->findAll();
+		$em = $this->getDoctrine()->getManager();
+		$tiendas = $em->getRepository('SelnetTiendaOnlineBundle:Tienda')->findAll();
 
-    return $this->render('AppShopThemeBundle:Tienda:tiendas.html.twig' , array("tiendas" => $tiendas ));
-}
+		return $this->render('AppShopThemeBundle:Tienda:tiendas.html.twig' , array("tiendas" => $tiendas ));
+	}
 
 
 
@@ -48,7 +48,7 @@ public function tiendasAction()
 		$tienda = $em->getRepository('SelnetTiendaOnlineBundle:Tienda')->findOneBy( array("usuario"  =>  $usuario->getUsername()  ) );
 
 		if (!$tienda) 
-		
+
 			return $this->redirect($this->generateUrl('creacion_tienda_artsenal'));
 		else
 			
@@ -218,6 +218,29 @@ public function tiendasAction()
 
 		return $this->render('AppShopThemeBundle:Modal:producto.detalle.html.twig' , array(   "producto" => $producto ) );
 	}
+
+
+
+
+	public function buscarAction(Request $request )
+	{
+		$em = $this->getDoctrine()->getManager();
+		$termino_buscar =  $request->request->get('buscar');;
+		
+		$tiendas = $em->getRepository('SelnetTiendaOnlineBundle:Tienda')->findBy(array() , array('nombre' => 'ASC'));
+
+		$productos = $em->getRepository("SelnetTiendaOnlineBundle:Producto")->createQueryBuilder('p')
+		   ->where('p.nombre LIKE :nombre')
+		   ->setParameter('nombre', "%$termino_buscar%")
+		   ->getQuery()
+		   ->getResult();
+
+
+		return $this->render('AppShopThemeBundle:Paginas:busqueda.html.twig' , array("productos" => $productos , 
+			"termino_buscar" => $termino_buscar ));
+	}
+
+
 
 
 

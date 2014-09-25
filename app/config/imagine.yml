@@ -8,7 +8,7 @@ avalanche_imagine:
             options: { size: [400, 300], mode: outbound, quality: 100, format: png } 
         producto_slider:
             type:    thumbnail
-            options: { size: [470, 400], mode: outbound, quality: 100, format: png } 
+            options: { size: [550, 400], mode: outbound, quality: 100, format: png } 
         banner:
             type:    thumbnail
             options: { size: [800, 220], mode: outbound, quality: 100, format: png }

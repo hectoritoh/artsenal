@@ -5,141 +5,213 @@
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>                   
+        <span class="sr-only">
+          Toggle navigation
+        </span>
+        <span class="icon-bar">
+        </span>
+        <span class="icon-bar">
+        </span>
+        <span class="icon-bar">
+        </span>
+      </button>
+      
     </div>
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="main-navbar">
       <ul class="nav navbar-nav">
-       <li>
-        <a href="{{  path('contenido_page' , {  contenido: 'comprar' }) }}" >Comprar</a>
-      </li>
-      <li>
-        <a href="{{  path('contenido_page' , {  contenido: 'vender' }) }}" >Vender</a>
-      </li>
-      <li>
-        <a href="{{    path('sonata_news_home')  }}">Blog</a>
-      </li>
-    </ul>
-
-
-    <ul class="nav navbar-nav pull-right">
-
-      <li>
-        <a href="#">Hola , {{  app.user.username }}</a>
+        <li>
+          <a href="{{  path('contenido_page' , {  contenido: 'comprar' }) }}" >
+            Comprar
+          </a>
+        </li>
+        <li>
+          <a href="{{  path('contenido_page' , {  contenido: 'vender' }) }}" >
+            Vender
+          </a>
+        </li>
+        <li>
+          <a href="{{    path('sonata_news_home')  }}">
+            Blog
+          </a>
+        </li>
+      </ul>
+      
+      
+      <ul class="nav navbar-nav pull-right">
+        
+        <li>
+          <a href="#">
+            Hola , {{  app.user.username }}
+          </a>
+        </li>
+        
+        
+        
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+            Tu Tienda 
+          </a>
+          <ul class="dropdown-menu" role="menu">
+            <li>
+              <a href="{{  path('preview_tienda_artsenal') }}">
+                Preview
+              </a>
+            </li>
+            <li>
+              <a href="{{  path('politicas_tienda_artsenal') }}">
+                Politicas
+              </a>
+            </li>
+            <li>
+              <a href="{{  path('presonaliza_tienda_artsenal') }}">
+                Personalizar
+              </a>
+            </li>
+            
+            <li>
+              <a href="{{  path('creacion_tienda_artsenal') }}">
+                Configuracion
+              </a>
+            </li>
+            
+          </ul>
+        </li>
+        
+        
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+            Tu Cuenta 
+          </a>
+          <ul class="dropdown-menu" role="menu">
+            <li>
+              <a href="{{  path('ver_compras_usuario') }}">
+                Compras
+              </a>
+            </li>
+            <li>
+              <a href="{{  path('perfil_usuario') }}">
+                Perfil
+              </a>
+            </li>
+            <!-- 
+<li>
+<a href="#">
+Configuracion
+</a>
+</li>
+-->
+          <li>
+            <a href="{{  path('salir') }}">
+              Salir
+            </a>
+          </li>
+          
+        </ul>
       </li>
       
-
-
-      <li class="dropdown">
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Tu Tienda </a>
-        <ul class="dropdown-menu" role="menu">
-          <li><a href="{{  path('preview_tienda_artsenal') }}">Preview</a></li>
-          <li><a href="{{  path('politicas_tienda_artsenal') }}">Politicas</a></li>
-          <li><a href="{{  path('presonaliza_tienda_artsenal') }}">Personalizar</a></li>                    
-          <li><a href="{{  path('creacion_tienda_artsenal') }}">Configuracion</a></li>                    
-        </ul>
-      </li>
-
-
-      <li class="dropdown">
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Tu Cuenta </a>
-        <ul class="dropdown-menu" role="menu">
-          <li><a href="{{  path('ver_compras_usuario') }}">Compras</a></li>
-          <li><a href="{{  path('perfil_usuario') }}">Perfil</a></li>
-          <!-- <li><a href="#">Configuracion</a></li> -->
-          <li><a href="{{  path('salir') }}">Salir</a></li>                
-        </ul>
-      </li>
-
-    </ul>
-
-
-  </div>                                   
-  <!-- /.navbar-collapse -->
-</div>
-<!-- /.container -->
-</nav>
-
-
-
-
-<nav class="navbar subnavbar subnavbar-artsenal" role="navigation">
-
- <div class="navbar-header">
-  <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-subnavbar">
-    <span class="sr-only">Toggle navigation</span>
-    <span class="icon-bar"></span>
-    <span class="icon-bar"></span>
-    <span class="icon-bar"></span>
-  </button>                   
-</div>
-
-<div  id="main-subnavbar" class="{{  modo_layout }} ">
-  <div class="row"> 
-    <div class="col-sm-2 col-lg-2 col-md-2  vertical-center submenu-item" >
-      {% image '@AppShopThemeBundle/Resources/public/images/logo.png'%}
-      <a href="{{ path('app_shop_theme_homepage') }}">
-        <img   id="logo" class="img-responsive" src="{{ asset_url }}" alt="artsenal"/>
-      </a>
-      {% endimage %}
+      </ul>
+      
+      
     </div>
-
-    <div class=" col-md-offset-1 col-sm-offset-1  col-lg-offset-1   col-sm-5 col-lg-5 col-md-5  vertical-center " >
-      <input class="search_txt" type="text"  placeholder="ingrese el producto que desee buscar" />
+    
+    <!-- /.navbar-collapse -->
+  </div>
+  <!-- /.container -->
+  
+  
+  
+  
+  
+  <nav class="navbar subnavbar subnavbar-artsenal" role="navigation">
+    
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-subnavbar">
+        <span class="sr-only">
+          Toggle navigation
+        </span>
+        <span class="icon-bar">
+        </span>
+        <span class="icon-bar">
+        </span>
+        <span class="icon-bar">
+        </span>
+      </button>
+      
     </div>
-
-    <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2   ">
-
+    
+    <div  id="main-subnavbar" class="{{  modo_layout }} ">
       <div class="row">
-
-
-
-        <div class="col-sm-4 col-lg-4 col-md-4  vertical-center submenu-item " >
-          <a href="{{  path('login_artsenal') }}">
-           {% image '@AppShopThemeBundle/Resources/public/images/mensaje.png'%}
-           <img    class="  icon-submenu " src="{{ asset_url }}" alt="mensaje"/>
-           {% endimage %}
-         </a>
-       </div>
-
-       <div class="col-sm-4 col-lg-4 col-md-4  vertical-center submenu-item " >
-        <a href="">
-         {% image '@AppShopThemeBundle/Resources/public/images/corazon.png'%}
-         <img    class="  icon-submenu " src="{{ asset_url }}" alt="like"/>
-         {% endimage %}
-       </a>
-     </div>
-     <div class="col-sm-4 col-lg-4 col-md-4  vertical-center submenu-item " >
-      <a href="{{  path('tienda_artsenal') }}">
-       {% image '@AppShopThemeBundle/Resources/public/images/tienda.png'%}
-       <img    class="  icon-submenu " src="{{ asset_url }}" alt="tienda"/>
-       {% endimage %}
-     </a>
-   </div>
-
-
-
-
- </div>
-
-
-</div>
-
-
-<div class="col-sm-2 col-lg-2 col-md-2  vertical-center submenu-item submenu-cesta " >
-  <a href="{{ path('ver_cesta_artsenal') }}">Mi cesta</a>
-  {% image '@AppShopThemeBundle/Resources/public/images/icon_cesta.png'%}
-  <img  style="display: inline; margin-top: -12px;"  class="img-responsive" src="{{ asset_url }}" alt="artsenal"/>
-  {% endimage %}
-</div>
-
-</div>
-
-</div>
-<!-- /.container -->
-
+        
+        <div class="col-sm-2 col-lg-2 col-md-2  vertical-center submenu-item" >
+          {% image '@AppShopThemeBundle/Resources/public/images/logo.png'%}
+          <a href="{{ path('app_shop_theme_homepage') }}">
+            <img   id="logo" class="img-responsive" src="{{ asset_url }}" alt="artsenal"/>
+          </a>
+          {% endimage %}
+        </div>
+        
+        <div class=" col-md-offset-1 col-sm-offset-1  col-lg-offset-1   col-sm-5 col-lg-5 col-md-5  vertical-center " >
+          <form  method="post" action="{{  path('app_shop_theme_buscar') }}">
+            <input class="search_txt" type="text" name="buscar" placeholder="ingrese el producto que desee buscar" />
+          </form>
+        </div>
+        
+        <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2   ">
+          
+          <div class="row">
+            
+            
+            
+            <div class="col-sm-4 col-lg-4 col-md-4  vertical-center submenu-item " >
+              <a href="{{  path('login_artsenal') }}">
+                {% image '@AppShopThemeBundle/Resources/public/images/mensaje.png'%}
+                <img    class="  icon-submenu " src="{{ asset_url }}" alt="mensaje"/>
+                {% endimage %}
+              </a>
+            </div>
+            
+            <div class="col-sm-4 col-lg-4 col-md-4  vertical-center submenu-item " >
+              <a href="">
+                {% image '@AppShopThemeBundle/Resources/public/images/corazon.png'%}
+                <img    class="  icon-submenu " src="{{ asset_url }}" alt="like"/>
+                {% endimage %}
+              </a>
+            </div>
+            <div class="col-sm-4 col-lg-4 col-md-4  vertical-center submenu-item " >
+              <a href="{{  path('tienda_artsenal') }}">
+                {% image '@AppShopThemeBundle/Resources/public/images/tienda.png'%}
+                <img    class="  icon-submenu " src="{{ asset_url }}" alt="tienda"/>
+                {% endimage %}
+              </a>
+            </div>
+            
+            
+            
+            
+          </div>
+          
+          
+        </div>
+        
+        
+        <div class="col-sm-2 col-lg-2 col-md-2  vertical-center submenu-item submenu-cesta " >
+          <a href="{{ path('ver_cesta_artsenal') }}">
+            Mi cesta
+          </a>
+          {% image '@AppShopThemeBundle/Resources/public/images/icon_cesta.png'%}
+          <img  style="display: inline; margin-top: -12px;"  class="img-responsive" src="{{ asset_url }}" alt="artsenal"/>
+          {% endimage %}
+        </div>
+        
+      </div>
+      
+    </div>
+    <!-- /.container -->
+    
+  </nav>
+  
+  
+  
 </nav>
+
