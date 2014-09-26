@@ -54,7 +54,8 @@
 
 						<div class="row">
 							<dic class="col-md-4">
-								<p  class="texto_aquamarina" style="font-weight:bold;margin-bottom: 0px;" >{{  producto.tienda.nombre }}</p>
+								<p  class="texto_aquamarina" style="font-weight:bold;margin-bottom: 0px;" > 
+								<a href="{{   path('ver_tienda' , { id_tienda : producto.tienda.id }) }}">{{  producto.tienda.nombre }}</a> </p>
 								<p  class="texto_gris_oscuro" > {{  producto.visitas }}  visitas - {{  producto.favoritos }} favoritos </p>
 							</dic>	
 							<dic class="col-md-3 col-md-offset-3">

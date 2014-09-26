@@ -60,7 +60,8 @@
 				<div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
 					<br>
 					<br>
-					<p  style="font-weight:bold;" class="aquamarina"  >{{  tienda.titulo }}</p>
+					<p  style="font-weight:bold;" class="aquamarina"  > <a href="{{   path('ver_tienda' , { id_tienda : tienda.id }) }}"> {{  tienda.titulo }}
+					</a></p>
 
 					<p  style="font-weight:normal;color:#666666;"   >{{  tienda.mensaje }}</p>
 				</div>
