@@ -1,0 +1,65 @@
+Selnet\TiendaOnlineBundle\Entity\Mensaje:
+    type: entity
+    table: mensaje
+
+    fields:
+        id:
+            id: true
+            type: integer
+            unsigned: false
+            nullable: false
+            generator:
+                strategy: IDENTITY
+
+        tipo_notificacion:
+            type: string
+            length: 45
+            nullable: false
+
+        titulo:
+            type: string
+            length: 45
+            nullable: false
+
+        usuario_recibe:
+            type: string
+            length: 45
+            nullable: false
+
+        usuario_envia:
+            type: string
+            length: 45
+            nullable: false
+
+
+        estado:
+            type: integer
+            comment: '1 Leida  0 no leida'
+            length: 1
+            nullable: false
+
+        contenido:
+            type: text
+            nullable: false
+
+
+
+        created_at:
+            type: datetime
+            nullable: false
+            gedmo:
+              timestampable:
+                on: create
+        updated_at:
+            type: datetime
+            nullable: false
+            gedmo:
+              timestampable:
+                on: update
+
+
+
+
+    lifecycleCallbacks:
+        prePersist: [preInsert]
+        preUpdate: [preUpdate]

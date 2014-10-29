@@ -1,5 +1,6 @@
 parameters:
 #    selnet_tienda_online.example.class: Selnet\TiendaOnlineBundle\Example
+    app_notificaciones.notificacion.class: Selnet\TiendaOnlineBundle\Servicio\NotificacionService
 
  
 
@@ -9,3 +10,9 @@ services:
         arguments: [%fos_user.model.user.class%]
         tags:
             - { name: form.type, alias: selnet_tiendaonlinebundle_usuariotype }
+
+
+
+    app_notificaciones.notificacion.manager:
+        class: %app_notificaciones.notificacion.class%
+        arguments: [@doctrine.orm.entity_manager   ]

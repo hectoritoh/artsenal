@@ -67,11 +67,7 @@ Selnet\TiendaOnlineBundle\Entity\Tienda:
             fixed: true
             nullable: true
 
-        tipo_cuenta:
-            type: integer
-            length: 1
-            fixed: true
-            nullable: true
+
 
         estado:
             type: string
@@ -92,6 +88,19 @@ Selnet\TiendaOnlineBundle\Entity\Tienda:
         usuario:
             type: string
             nullable: false
+
+        tipoCuenta:
+            type: string
+            nullable: false
+
+        fechaSuscripcion:
+            type: datetime
+            nullable: false
+
+        fechaActSuscripcion:
+            type: datetime
+            nullable: false
+
 
 
     manyToOne:

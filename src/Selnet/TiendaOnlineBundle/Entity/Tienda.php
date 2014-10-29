@@ -4,6 +4,7 @@ namespace Selnet\TiendaOnlineBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
+
 /**
  * Tienda
  */
@@ -65,14 +66,14 @@ class Tienda
     private $informacionVendedor;
 
     /**
-     * @var string
+     * @var integer
      */
-    private $imagenCabecera;
+    private $borrado;
 
     /**
      * @var integer
      */
-    private $borrado;
+    private $verificado;
 
     /**
      * @var string
@@ -93,6 +94,26 @@ class Tienda
      * @var string
      */
     private $usuario;
+
+    /**
+     * @var string
+     */
+    private $tipoCuenta;
+
+    /**
+     * @var \DateTime
+     */
+    private $fechaSuscripcion;
+
+    /**
+     * @var \DateTime
+     */
+    private $fechaActSuscripcion;
+
+    /**
+     * @var \Application\Sonata\MediaBundle\Entity\Media
+     */
+    private $imagenCabecera;
 
 
     /**
@@ -336,29 +357,6 @@ class Tienda
     }
 
     /**
-     * Set imagenCabecera
-     *
-     * @param string $imagenCabecera
-     * @return Tienda
-     */
-    public function setImagenCabecera($imagenCabecera)
-    {
-        $this->imagenCabecera = $imagenCabecera;
-    
-        return $this;
-    }
-
-    /**
-     * Get imagenCabecera
-     *
-     * @return string 
-     */
-    public function getImagenCabecera()
-    {
-        return $this->imagenCabecera;
-    }
-
-    /**
      * Set borrado
      *
      * @param integer $borrado
@@ -379,6 +377,29 @@ class Tienda
     public function getBorrado()
     {
         return $this->borrado;
+    }
+
+    /**
+     * Set verificado
+     *
+     * @param integer $verificado
+     * @return Tienda
+     */
+    public function setVerificado($verificado)
+    {
+        $this->verificado = $verificado;
+    
+        return $this;
+    }
+
+    /**
+     * Get verificado
+     *
+     * @return integer 
+     */
+    public function getVerificado()
+    {
+        return $this->verificado;
     }
 
     /**
@@ -472,6 +493,98 @@ class Tienda
     {
         return $this->usuario;
     }
+
+    /**
+     * Set tipoCuenta
+     *
+     * @param string $tipoCuenta
+     * @return Tienda
+     */
+    public function setTipoCuenta($tipoCuenta)
+    {
+        $this->tipoCuenta = $tipoCuenta;
+    
+        return $this;
+    }
+
+    /**
+     * Get tipoCuenta
+     *
+     * @return string 
+     */
+    public function getTipoCuenta()
+    {
+        return $this->tipoCuenta;
+    }
+
+    /**
+     * Set fechaSuscripcion
+     *
+     * @param \DateTime $fechaSuscripcion
+     * @return Tienda
+     */
+    public function setFechaSuscripcion($fechaSuscripcion)
+    {
+        $this->fechaSuscripcion = $fechaSuscripcion;
+    
+        return $this;
+    }
+
+    /**
+     * Get fechaSuscripcion
+     *
+     * @return \DateTime 
+     */
+    public function getFechaSuscripcion()
+    {
+        return $this->fechaSuscripcion;
+    }
+
+    /**
+     * Set fechaActSuscripcion
+     *
+     * @param \DateTime $fechaActSuscripcion
+     * @return Tienda
+     */
+    public function setFechaActSuscripcion($fechaActSuscripcion)
+    {
+        $this->fechaActSuscripcion = $fechaActSuscripcion;
+    
+        return $this;
+    }
+
+    /**
+     * Get fechaActSuscripcion
+     *
+     * @return \DateTime 
+     */
+    public function getFechaActSuscripcion()
+    {
+        return $this->fechaActSuscripcion;
+    }
+
+    /**
+     * Set imagenCabecera
+     *
+     * @param \Application\Sonata\MediaBundle\Entity\Media $imagenCabecera
+     * @return Tienda
+     */
+    public function setImagenCabecera(\Application\Sonata\MediaBundle\Entity\Media $imagenCabecera = null)
+    {
+        $this->imagenCabecera = $imagenCabecera;
+    
+        return $this;
+    }
+
+    /**
+     * Get imagenCabecera
+     *
+     * @return \Application\Sonata\MediaBundle\Entity\Media 
+     */
+    public function getImagenCabecera()
+    {
+        return $this->imagenCabecera;
+    }
     /**
      * @ORM\PrePersist
      */
@@ -487,62 +600,6 @@ class Tienda
     {
         // Add your code here
     }
-    /**
-     * @var integer
-     */
-    private $verificado;
-
-    /**
-     * @var integer
-     */
-    private $tipo_cuenta;
-
-
-    /**
-     * Set verificado
-     *
-     * @param integer $verificado
-     * @return Tienda
-     */
-    public function setVerificado($verificado)
-    {
-        $this->verificado = $verificado;
-    
-        return $this;
-    }
-
-    /**
-     * Get verificado
-     *
-     * @return integer 
-     */
-    public function getVerificado()
-    {
-        return $this->verificado;
-    }
-
-    /**
-     * Set tipo_cuenta
-     *
-     * @param integer $tipoCuenta
-     * @return Tienda
-     */
-    public function setTipoCuenta($tipoCuenta)
-    {
-        $this->tipo_cuenta = $tipoCuenta;
-    
-        return $this;
-    }
-
-    /**
-     * Get tipo_cuenta
-     *
-     * @return integer 
-     */
-    public function getTipoCuenta()
-    {
-        return $this->tipo_cuenta;
-    }
 
 
 
@@ -550,15 +607,7 @@ class Tienda
 
 
 
-
-
-
-
-
-
-
-
-   private $file;
+    private $file;
 
     /**
      * Sets file.
@@ -586,15 +635,15 @@ class Tienda
     public function getAbsolutePath()
     {
         return null === $this->path
-        ? null
-        : $this->getUploadRootDir().'/'.$this->path;
+            ? null
+            : $this->getUploadRootDir().'/'.$this->path;
     }
 
     public function getWebPath()
     {
         return null === $this->path
-        ? null
-        : $this->getUploadDir().'/'.$this->path;
+            ? null
+            : $this->getUploadDir().'/'.$this->path;
     }
 
     protected function getUploadRootDir()
@@ -619,31 +668,30 @@ class Tienda
 
         $upload_dir = $this->getUploadDir();
         if (!isset($upload_dir)) {
-            $upload_dir = $this->getUploadRootDir(); 
+            $upload_dir = $this->getUploadRootDir();
         }
 
-    // the file property can be empty if the field is not required
+        // the file property can be empty if the field is not required
         if (null === $this->getFile()) {
             return;
         }
 
-    // use the original file name here but you should
-    // sanitize it at least to avoid any security issues
+        // use the original file name here but you should
+        // sanitize it at least to avoid any security issues
 
-    // move takes the target directory and then the
-    // target filename to move to
+        // move takes the target directory and then the
+        // target filename to move to
         $this->getFile()->move(
             $upload_dir ,
             $this->getFile()->getClientOriginalName()
-            );
+        );
 
-    // set the path property to the filename where you've saved the file
+        // set the path property to the filename where you've saved the file
         $this->url = $this->getFile()->getClientOriginalName();
 
-    // clean up the file property as you won't need it anymore
+        // clean up the file property as you won't need it anymore
         $this->file = null;
     }
-
 
 
 

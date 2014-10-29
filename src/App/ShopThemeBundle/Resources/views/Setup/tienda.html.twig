@@ -1,0 +1,316 @@
+{% extends "AppShopThemeBundle::template.html.twig" %}
+
+
+{% block js %}
+    {{ parent() }}
+
+
+    <script type="text/javascript">
+
+
+        $(document).ready(  function(){
+
+            $.fn.editable.defaults.mode = 'inline' ;
+
+            $('#tiendaMensaje').editable({
+                url: '/post',
+                title: 'Enter username'
+            });
+
+        });
+
+    </script>
+
+{% endblock %}
+
+
+
+
+{% block contenido %}
+
+
+
+    <div class="col-sm-2 col-lg-2 col-md-2"  >
+
+        <p class="lead latto">Secciones de Tienda</p>
+        <div   id="categoria_block" class="list-group">
+            {% for seccion , cantidad in secciones %}
+                <a href="#" class="list-group-item">  {{ seccion }} <span  class="texto_gris_oscuro" >({{ cantidad }})</span>
+                </a>
+            {% endfor %}
+        </div>
+
+        <hr>
+
+        <div class="barra_spacer_2"></div>
+        <p class="lead latto">Dueño de la tienda</p>
+        <div class="barra_border"></div>
+
+        <div   id="categoria_block" class="list-group">
+            <a href="#" class="list-group-item"> {{ tienda.usuario }}</a>
+        </div>
+
+        <hr>
+
+        <!-- <ul  class="lista_secciones" >
+            <li  class="texto_aquamarina" >
+                <a class="texto_aquamarina" href="">
+                    Agrega ubicacion
+                </a>
+            </li>
+        </ul> -->
+
+
+
+
+        <div class="barra_spacer_2"></div>
+        <p class="lead latto">Información de la tienda</p>
+
+        <div class="barra_border"></div>
+
+
+        <div   id="categoria_block" class="list-group">
+            <a href="#" class="list-group-item"> {{tienda.nombre}}</a>
+            <p class="texto_gris_oscuro" >Desde {{  tienda.createdAt | date('Y/m/d') }}</p>
+        </div>
+
+        <div   id="categoria_block" class="list-group">
+            <a href="{{ path('politicas_setup') }}" class="list-group-item"> Editar Politicas</a>
+        </div>
+
+
+
+    </div>
+
+
+
+
+
+
+
+    <div id="content" class="  col-md-10">
+        <div class="row">
+
+            <div class="col-md-11 ">
+
+                <div class="barra_spacer_3"></div>
+                <div class="barra_spacer_2"></div>
+
+
+                <div class="panel panel-default panel-imagen-cabecera">
+                    <div class="panel-inner-border">
+
+                        <div class="panel-body panel-imagen-container"
+                             style="background-image:url({%  path tienda.imagenCabecera , 'banner' %})" >
+                            <p  style="text-align:center;" >
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="panel panel-default panel-nombre-tienda">
+
+                    <div class="panel-body ">
+                        <p  class="texto_aquamarina" style="margin-bottom: 0px;" >
+                            {{tienda.nombre}}
+                        </p>
+                        <p  class="texto_gris_oscuro" >
+                            1 Visitas - 1 favorito
+                        </p>
+                    </div>
+                </div>
+                <div class="panel panel-default panel-anuncio-tienda">
+
+                    <div class="panel-body ">
+                        <p  class="texto_gris_oscuro" style="font-weight:bold;margin-bottom: 0px;color:7c7c7c;" >
+
+
+
+                            {{ tienda.anuncio }}
+
+                    </div>
+                </div>
+
+
+
+
+                <div class="barra_spacer_2"></div>
+                <div class="pagina_header">
+                    <p class="lead latto">Articulos de {{  tienda.nombre }}</p>
+                </div>
+
+
+
+                <div class="row">
+
+                    {% for producto in productos %}
+                        {% include 'AppShopThemeBundle:Blocks:producto.html.twig' with {'producto': producto }   %}
+                    {% endfor %}
+
+                    {{ tienda.tipoCuenta }}
+                    {% set url_producto =  'window.location ="'~ path('tienda_producto_setup')  ~ '"' %}
+
+                    {% if tienda.tipoCuenta == 'bronce'  and productos| length > 3  %}
+                        {% set url_producto = '$("#modalCuentas").modal()' %}
+                    {% endif %}
+
+                    {% if tienda.tipoCuenta == 'plata' and productos| length > 5 %}
+                        {% set url_producto = '$("#modalCuentas").modal()' %}
+                    {% endif %}
+
+                    {% if tienda.tipoCuenta == 'oro'  and productos| length > 10 %}
+
+                        {% set url_producto = '$("#modalCuentas").modal()' %}
+                    {% endif %}
+
+                    {% if tienda.tipoCuenta == 'platino' %}
+                        plata
+                        {% set url_producto = path('tienda_producto_setup')  %}
+                    {% endif %}
+
+
+
+                    <div class="col-sm-3 col-lg-3 col-md-3  producto"   onclick=" {{ url_producto }} "   data-toggle="modal" data-target="#modalProducto" >
+                        <div class="thumbnail">
+                            {% image '@AppShopThemeBundle/Resources/public/images/agregar_imagen.jpg' %}
+                            <img src="{{ asset_url  }}" alt="Agregar Imagen" />
+                            {% endimage %}
+                             <div class="caption">
+
+                                <h4>
+                                    <a href="#">Nombre de Producto</a>
+                                </h4>
+                                <h4 class="pull-right" >Precio</h4>
+
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+
+
+
+            </div>
+
+
+
+
+        </div>
+
+    </div>
+
+
+
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="modalCuentas" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                    <h3 class="latto">Publica mas productos</h3>
+                </div>
+                <div class="modal-body">
+                    Tu Cuenta solo te permite tener 3 productos creado, mejora tu cuenta
+                        <a href="{{ path('cuenta_setup') }}">aqui</a>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+
+{% endblock %}
+
+
+
+
+
+
+{% block test %}
+
+
+
+
+
+
+    <div class="col-sm-2 col-lg-2 col-md-2"  >
+
+        {{ render(controller('AppShopThemeBundle:Default:getCategorias')) }}
+
+
+        {{ render(controller('AppShopThemeBundle:Default:getPublicidadBlock')) }}
+
+
+
+
+    </div>
+
+
+
+
+    <div class="col-md-10" style=" border-left: 1px solid  #eeeeee;padding-left:45px;"  >
+
+
+        {% block banners %}
+
+            {{ render(controller('AppShopThemeBundle:Default:getBanners')) }}
+
+        {% endblock %}
+
+
+
+
+
+
+        <div class="row">
+            <div class="col-sm-12 col-lg-12 col-md-12  ">
+
+                {% block titulo_contenido %}
+                    <h3 class="latto">Ultimas Artesanias</h3>
+                {% endblock %}
+
+            </div>
+        </div>
+
+        <div class="row">
+
+
+            {% block productos %}
+
+                {% for producto in productos %}
+                    {% include 'AppShopThemeBundle:Blocks:producto.html.twig' with {'producto': producto }   %}
+                {% endfor %}
+
+            {% endblock %}
+
+        </div>
+
+
+
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+
+
+    </div>
+
+
+{% endblock %}
+
+
+
+
+
+
+
+
+

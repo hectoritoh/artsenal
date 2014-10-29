@@ -16,7 +16,35 @@ use Selnet\TiendaOnlineBundle\Entity\DetalleVenta;
 class CartController extends Controller
 {
 	
-    
+    public function nuevoCartAction(){
+
+        $em = $this->getDoctrine()->getManager();
+
+        $session = $this->get("session");
+        $cart = CartHelper::getCurrentCart(  $session  );
+
+
+        $venta = new Venta();
+        $venta->setTotal(   $cart->getTotal() );
+
+        foreach ($cart->getItems() as $cartItem) {
+            $detalleVenta = new DetalleVenta();
+            $detalleVenta->setCantidad(   $cartItem->getCantidad() );
+            $detalleVenta->setPrecio( $cartItem->getPrecio() );
+            $producto = $em->getRepository('SelnetTiendaOnlineBundle:Producto')->find(  $cartItem->getProductoId() );
+            $detalleVenta->setProducto( $producto  );
+            $venta->getDetalles()->add(  $detalleVenta );
+
+        }
+
+
+        return $this->render('AppShopThemeBundle:Pagos:cesta.nueva.html.twig' ,
+            array(
+                "venta" => $venta , "detalles" => $cart->getItems() ));
+
+
+    }
+
 
 
     public function showAction()

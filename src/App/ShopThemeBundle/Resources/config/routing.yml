@@ -41,12 +41,75 @@ ver_compras_usuario:
     defaults:  { _controller: AppShopThemeBundle:Default:compras }
 
 
+
+
+
+
+ver_cesta:
+    path:      /cesta
+    defaults:  { _controller: AppShopThemeBundle:Cart:nuevoCart}
+
+
+
+#mensajes
+
+mis_mensajes:
+    path:      /mensajes
+    defaults:  { _controller: AppShopThemeBundle:Mensaje:index}
+
+mis_mensajes_enviados:
+    path:      /mensajes/enviados
+    defaults:  { _controller: AppShopThemeBundle:Mensaje:enviados}
+
+
+crear_mensaje:
+    path:      /crear/mensaje/{destinatario}/{asunto}/{mensaje}
+    defaults:  { _controller: AppShopThemeBundle:Mensaje:crearMensaje}
+    options:
+        expose: true
+
+
+
 # tienda
+
+#setup
+tienda_setup:
+    path:      /tienda/setup
+    defaults:  { _controller: AppShopThemeBundle:Tienda:setUp }
+
+#producto
+tienda_producto_setup:
+    path:      /producto/setup
+    defaults:  { _controller: AppShopThemeBundle:Tienda:productoSetUp }
+
+
+politicas_setup:
+    path:      /politicas/setup
+    defaults:  { _controller: AppShopThemeBundle:Tienda:politicasSetUp }
+
+
+cuenta_setup:
+    path:      /cuenta/setup
+    defaults:  { _controller: AppShopThemeBundle:Tienda:cuentaSetUp }
+
+personaliza_setup:
+    path:      /personaliza/setup
+    defaults:  { _controller: AppShopThemeBundle:Tienda:personalizaSetUp }
+
+
+pago_setup:
+    path:      /cuenta/setup/{tipo_cuenta}
+    defaults:  { _controller: AppShopThemeBundle:Tienda:pagoSetup }
+
+
+
 
 
 ver_tienda:
     path:      /tienda/ver/{id_tienda}
     defaults:  { _controller: AppShopThemeBundle:Tienda:verTienda }
+
+
 
 ver_tiendas_artsenal:
     path:      /tiendas

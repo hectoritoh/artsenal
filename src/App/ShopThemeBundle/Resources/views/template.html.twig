@@ -16,10 +16,13 @@
 
 	{% stylesheets 
 	'bundles/appshoptheme/css/bootstrap.min.css' 
-  'bundles/appshoptheme/css/shop-homepage.css' 
-  'bundles/appshoptheme/css/estilo.css' 
-  'bundles/appshoptheme/css/artsenal.css' 
-  filter='cssrewrite' %}
+    'bundles/appshoptheme/css/shop-homepage.css'
+    'bundles/appshoptheme/css/estilo.css'
+    'bundles/appshoptheme/css/artsenal.css'
+    'bundles/appshoptheme/js/bootstrap3-editable/css/bootstrap-editable.css'
+
+
+    filter='cssrewrite' %}
   <link rel="stylesheet" href="{{ asset_url }}" />
   {% endstylesheets %}
 
@@ -182,7 +185,8 @@
 {% javascripts 
  '@AppShopThemeBundle/Resources/public/js/jquery-1.11.0.js' 
  '@AppShopThemeBundle/Resources/public/js/bootstrap.min.js' 
- '@AppShopThemeBundle/Resources/public/js/script.js' 
+ '@AppShopThemeBundle/Resources/public/js/bootstrap3-editable/js/bootstrap-editable.js'
+ '@AppShopThemeBundle/Resources/public/js/script.js'
  %}
  <script type="text/javascript" src="{{ asset_url }}"></script>
  {% endjavascripts %}

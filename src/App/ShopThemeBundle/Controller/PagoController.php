@@ -22,6 +22,12 @@ class PagoController extends Controller
 
 
 
+    public function nuevaCestaAction(){
+
+
+
+    }
+
     public function finalizarAction(   )
     {
 

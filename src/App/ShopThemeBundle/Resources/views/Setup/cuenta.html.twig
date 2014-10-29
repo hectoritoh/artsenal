@@ -1,0 +1,197 @@
+{% extends "AppShopThemeBundle::template.artsenal.html.twig" %}
+
+
+
+
+
+
+
+
+{% block contenido %}
+
+    <div class="barra_spacer_3"></div>
+
+    <div class="row">
+        <div class="col-md-10 col-md-offset-1">
+            <div class="page-header pagina_header">
+                <h2>Actualmente posees la cuenta {{ tienda.tipoCuenta }}!</h2>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-10 col-md-offset-1">
+            <div class="page-header pagina_header" style="color:green;" >
+
+                {% for flashMessage in app.session.flashbag.get('message') %}
+
+                    <h2  style="color:green;" >  {{ flashMessage }}!</h2>
+
+
+                {% endfor %}
+
+
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <div class="row">
+        <div class="col-md-10 col-md-offset-1">
+            <div class="panel panel-default artsenal-panel artsenal-panel-tab"  style="margin-bottom: 0px; border-bottom-width: 0px;" >
+                <div class="container-fluid">
+                    <div class="row">
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="row">
+    <div class="col-md-10 col-md-offset-1">
+        <div class="panel panel-default artsenal-panel "style="border-top-width: 0px;" >
+            <div class="panel-body">
+
+                <div class="container-fluid">
+
+
+                    <div  class="col-md-11" >
+
+
+
+
+
+                        <div id="contenido2" class="row contenido_tabs"    >
+
+
+                            <p style="margin:10px;" class="form_parrafo" >Selecciona un tipo de Membresia para tu cuenta. verifica los beneficios que te brinda cada una de ellas </p>
+
+                            <div class="row">
+
+                                <div class="col-md-5">
+                                    <table class="table">
+                                        <thead>
+                                        <tr>
+                                            <th>Beneficios</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+
+                                        <tr>
+                                            <td>Descuento en feria</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Destacar en pagina principal</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Post/reportaje en blog y redes sociales</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Beneficios con Partners</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Numero de Productos a postear  </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Inversion en Membresia</td>
+                                        </tr>
+
+                                        </tbody>
+                                    </table>
+
+                                </div>
+                                <div class="col-md-7">
+                                    <table class="table tabla-centrada">
+                                        <thead>
+                                        <tr>
+                                            <th  style="text-align: center;" >Bronce</th>
+                                            <th  style="text-align: center;" >Plata</th>
+                                            <th  style="text-align: center;" >Oro</th>
+                                            <th  style="text-align: center;" >Platino</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+
+                                        <tr>
+                                            <td>0%</td>
+                                            <td>0%</td>
+                                            <td>5%</td>
+                                            <td>10%</td>
+
+                                        </tr>
+
+                                        <tr>
+                                            <td><span style="color:red;" class="glyphicon  glyphicon-remove"></span></td>
+                                            <td><span style="color:red;" class="glyphicon  glyphicon-remove"></span></td>
+                                            <td><span style="color:green;" class="glyphicon  glyphicon-ok"></span></td>
+                                            <td><span style="color:green;" class="glyphicon  glyphicon-ok"></span></td>
+
+                                        </tr>
+
+                                        <tr>
+                                            <td><span style="color:red;" class="glyphicon  glyphicon-remove"></span></td>
+                                            <td><span style="color:red;" class="glyphicon  glyphicon-remove"></span></td>
+
+                                            <td><span style="color:green;" class="glyphicon  glyphicon-ok"></span></td>
+                                            <td><span style="color:green;" class="glyphicon  glyphicon-ok"></span></td>
+
+                                        </tr>
+
+                                        <tr>
+                                            <td><span style="color:red;" class="glyphicon  glyphicon-remove"></span></td>
+                                            <td><span style="color:red;" class="glyphicon  glyphicon-remove"></span></td>
+
+                                            <td><span style="color:red;" class="glyphicon  glyphicon-remove"></span></td>
+                                            <td><span style="color:green;" class="glyphicon  glyphicon-ok"></span></td>
+
+                                        </tr>
+
+                                        <tr>
+                                            <td>3</td>
+                                            <td>5</td>
+                                            <td>10</td>
+                                            <td>Ilimitado</td>
+                                        </tr>
+
+                                        <tr>
+                                            <td>
+                                                <button type="button" class="btn btn-success"
+                                                        data-toggle="button" onclick=" window.location=' {{  path('creacion_tienda_finalizar_artsenal'  , { tipo_cuenta: 1 }) }} '  " >Gratis</button>
+                                            </td>
+                                            <td><button type="button" class="btn btn-success" data-toggle="button"  onclick=" window.location=' {{  path('pago_setup'  , { tipo_cuenta: 2 }) }} '  "  >$25</button></td>
+                                            <td><button type="button" class="btn btn-success" data-toggle="button" onclick=" window.location=' {{  path('pago_setup'  , { tipo_cuenta: 3 }) }} '  " >$50</button></td>
+                                            <td><button type="button" class="btn btn-success" data-toggle="button" onclick=" window.location=' {{  path('pago_setup'  , { tipo_cuenta: 4 }) }} '  " >$75</button></td>
+
+                                        </tr>
+
+
+
+                                        </tbody>
+                                    </table>
+
+                                </div>
+
+                            </div>
+
+
+                        </div>
+                    </div>
+
+
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+
+
+
+{% endblock %}
