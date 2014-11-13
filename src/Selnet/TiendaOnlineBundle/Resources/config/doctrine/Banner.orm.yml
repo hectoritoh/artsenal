@@ -19,6 +19,10 @@ Selnet\TiendaOnlineBundle\Entity\Banner:
             length: 150
             fixed: false
             nullable: true
+        link:
+            type: text
+            nullable: true
+
         borrado:
             type: integer
             length: 1

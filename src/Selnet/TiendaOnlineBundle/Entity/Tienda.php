@@ -3,7 +3,6 @@
 namespace Selnet\TiendaOnlineBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 /**
  * Tienda
@@ -78,6 +77,11 @@ class Tienda
     /**
      * @var string
      */
+    private $slug;
+
+    /**
+     * @var string
+     */
     private $estado;
 
     /**
@@ -111,7 +115,7 @@ class Tienda
     private $fechaActSuscripcion;
 
     /**
-     * @var \Application\Sonata\MediaBundle\Entity\Media
+     * @var string
      */
     private $imagenCabecera;
 
@@ -403,6 +407,29 @@ class Tienda
     }
 
     /**
+     * Set slug
+     *
+     * @param string $slug
+     * @return Tienda
+     */
+    public function setSlug($slug)
+    {
+        $this->slug = $slug;
+    
+        return $this;
+    }
+
+    /**
+     * Get slug
+     *
+     * @return string 
+     */
+    public function getSlug()
+    {
+        return $this->slug;
+    }
+
+    /**
      * Set estado
      *
      * @param string $estado
@@ -566,10 +593,10 @@ class Tienda
     /**
      * Set imagenCabecera
      *
-     * @param \Application\Sonata\MediaBundle\Entity\Media $imagenCabecera
+     * @param string $imagenCabecera
      * @return Tienda
      */
-    public function setImagenCabecera(\Application\Sonata\MediaBundle\Entity\Media $imagenCabecera = null)
+    public function setImagenCabecera($imagenCabecera)
     {
         $this->imagenCabecera = $imagenCabecera;
     
@@ -579,7 +606,7 @@ class Tienda
     /**
      * Get imagenCabecera
      *
-     * @return \Application\Sonata\MediaBundle\Entity\Media 
+     * @return string 
      */
     public function getImagenCabecera()
     {
@@ -600,102 +627,4 @@ class Tienda
     {
         // Add your code here
     }
-
-
-
-
-
-
-
-    private $file;
-
-    /**
-     * Sets file.
-     *
-     * @param UploadedFile $file
-     */
-    public function setFile(UploadedFile $file = null)
-    {
-        $this->file = $file;
-    }
-
-    /**
-     * Get file.
-     *
-     * @return UploadedFile
-     */
-    public function getFile()
-    {
-        return $this->file;
-    }
-
-
-    private $path;
-
-    public function getAbsolutePath()
-    {
-        return null === $this->path
-            ? null
-            : $this->getUploadRootDir().'/'.$this->path;
-    }
-
-    public function getWebPath()
-    {
-        return null === $this->path
-            ? null
-            : $this->getUploadDir().'/'.$this->path;
-    }
-
-    protected function getUploadRootDir()
-    {
-        // the absolute directory path where uploaded
-        // documents should be saved
-        // return __DIR__.'/../../../../web/'.$this->getUploadDir();
-        return $this->get('kernel')->getRootDir().'/../web/' .$this->getUploadDir();
-    }
-
-    protected function getUploadDir()
-    {
-        // get rid of the __DIR__ so it doesn't screw up
-        // when displaying uploaded doc/image in the view.
-        return 'uploads/imagenes/tienda';
-    }
-
-
-
-    public function upload(    )
-    {
-
-        $upload_dir = $this->getUploadDir();
-        if (!isset($upload_dir)) {
-            $upload_dir = $this->getUploadRootDir();
-        }
-
-        // the file property can be empty if the field is not required
-        if (null === $this->getFile()) {
-            return;
-        }
-
-        // use the original file name here but you should
-        // sanitize it at least to avoid any security issues
-
-        // move takes the target directory and then the
-        // target filename to move to
-        $this->getFile()->move(
-            $upload_dir ,
-            $this->getFile()->getClientOriginalName()
-        );
-
-        // set the path property to the filename where you've saved the file
-        $this->url = $this->getFile()->getClientOriginalName();
-
-        // clean up the file property as you won't need it anymore
-        $this->file = null;
-    }
-
-
-
-
-
-
 }

@@ -83,6 +83,7 @@ class BannerAdmin extends Admin
             // ->add('id')
             ->add('nombre')
             ->add('descripcion')
+            ->add('link')
             ->add('borrado', 'choice', array(
             'choices' => array(
                 '0' => 'No',

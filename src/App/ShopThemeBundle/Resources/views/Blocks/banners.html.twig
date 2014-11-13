@@ -18,8 +18,14 @@
 
     {% set imagen  %}{% path banner.image , 'banner' %}{% endset  %}
 
+    {% if banner.link is not empty %}
+    <div class="item  {% if loop.first %} active {% endif %}  "  style="cursor:pointer;"   onclick="window.location='{{  banner.link }}'" >
+    {% else %}
     <div class="item  {% if loop.first %} active {% endif %}  ">
+  
+    {% endif %}
 
+    
       <img class="slide-image banner-img" src="{{  asset('../../uploads/banners/' ~  banner.image )   | apply_filter('banner') }}" alt="" />                                        
     </div>
 

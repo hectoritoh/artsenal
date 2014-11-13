@@ -3,6 +3,20 @@ app_shop_theme_homepage:
     defaults: { _controller: AppShopThemeBundle:Default:index }
 
 
+get_productos_paginacion:
+    path:     /productos/get/home/{indice}
+    defaults: { _controller: AppShopThemeBundle:Default:getProductosPaginacion }
+    options:
+        expose: true
+
+
+
+producto_share_link:
+    path:      /share/producto/{tienda}/{producto}
+    defaults:  { _controller: AppShopThemeBundle:Default:productoShare }
+
+
+
 app_shop_theme_buscar:
     path:     /productos/buscar
     defaults: { _controller: AppShopThemeBundle:Default:buscar }
@@ -71,6 +85,23 @@ crear_mensaje:
 
 
 # tienda
+# 
+
+
+
+upload_imagen_tienda:
+    path:      /upload/imagen
+    defaults:  { _controller: AppShopThemeBundle:Tienda:upload }
+    options:
+        expose: true
+
+
+upload_imagen_crop_tienda:
+    path:      /upload/imagenCrop/{id_tienda}
+    defaults:  { _controller: AppShopThemeBundle:Tienda:createImage }
+    options:
+        expose: true
+
 
 #setup
 tienda_setup:

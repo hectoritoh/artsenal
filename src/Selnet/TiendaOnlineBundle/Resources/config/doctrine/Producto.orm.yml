@@ -41,6 +41,21 @@ Selnet\TiendaOnlineBundle\Entity\Producto:
             fixed: true
             nullable: true
 
+
+        slug:
+            type: string
+            length: 128
+            gedmo:
+              slug:
+                separator: _
+                style: default
+                fields:
+                  - id
+                  - nombre
+
+
+
+
         created_at:
             type: datetime
             nullable: false

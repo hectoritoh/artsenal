@@ -1,0 +1,279 @@
+{% extends "AppShopThemeBundle::template.html.twig" %}
+
+
+
+{% block modal %}
+
+
+<div id="modalProducto" class="modal fade">
+
+
+
+</div>
+
+
+{% endblock %}
+
+
+
+{% block contenido %}
+
+
+
+<div class="col-sm-2 col-lg-2 col-md-2"  >
+
+	<p class="lead latto">Secciones de Tienda</p>
+	<div   id="categoria_block" class="list-group">
+		{% for seccion , cantidad in secciones %}
+		<a href="#" class="list-group-item">  {{ seccion }} <span  class="texto_gris_oscuro" >({{ cantidad }})</span>
+		</a> 
+		{% endfor %}
+	</div>
+
+	<hr>
+
+	<div class="barra_spacer_2"></div>
+	<p class="lead latto">Dueño de la tienda</p>
+	<div class="barra_border"></div>
+	
+	<div   id="categoria_block" class="list-group">
+		<a href="#" class="list-group-item"> {{ tienda.usuario }}</a> 
+	</div>
+
+	<hr>
+
+	<!-- <ul  class="lista_secciones" >
+		<li  class="texto_aquamarina" > 
+			<a class="texto_aquamarina" href="">
+				Agrega ubicacion
+			</a> 
+		</li>
+	</ul> -->
+
+
+
+
+	<div class="barra_spacer_2"></div>
+	<p class="lead latto">Información de la tienda</p>
+	
+	<div class="barra_border"></div>
+
+
+	<div   id="categoria_block" class="list-group">
+		<a href="#" class="list-group-item"> {{tienda.nombre}}</a> 
+		<p class="texto_gris_oscuro" >Desde {{  tienda.createdAt | date('Y/m/d') }}</p>
+	</div>
+
+	<div   id="categoria_block" class="list-group">
+		<a href="#" class="list-group-item">Politicas</a> 
+	</div>
+
+	
+
+</div>
+
+
+
+
+
+
+
+<div id="content" class="  col-md-9   col-md-offset-1">
+	<div class="row">
+
+		<div class="col-md-11 ">
+
+			<div class="barra_spacer_2"></div>
+
+
+			<div class="panel panel-default panel-imagen-cabecera">
+				<div class="panel-inner-border">
+
+					<div class="panel-body panel-imagen-container" 
+					style="background-image:url({%  path tienda.imagenCabecera , 'banner' %})" >
+					<p  style="text-align:center;" >
+					</p>
+				</div>
+			</div>
+		</div>
+
+
+		<div class="panel panel-default panel-nombre-tienda">
+
+			<div class="panel-body ">
+
+				<div class="row">
+
+				<div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+						<p  class="texto_aquamarina" style="margin-bottom: 0px;" >
+							{{tienda.nombre}}
+						</p>
+					</div>
+
+					<div class="col-sm-2">
+
+						<iframe src="//www.facebook.com/plugins/share_button.php?href={{  url('ver_tienda' , {id_tienda: tienda.id }) }}&amp;width&amp;layout=button_count&amp;appId=265342143608130" scrolling="no" frameborder="0" style="border:none; overflow:hidden;height:30px;" allowTransparency="true"></iframe>
+
+						<div style="clear:both;" ></div>
+
+					</div>	
+
+
+					<div class="col-sm-2">
+
+						<span class='st_twitter_hcount' displayText='Tweet'>
+							<a href="https://twitter.com/share" class="twitter-share-button" data-url="{{  url('ver_tienda' , {id_tienda: tienda.id }) }}" data-size="small">Tweet</a>
+							<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+						</span>
+
+					</div>	
+
+
+				</div>
+				
+				
+			</div>						
+		</div>
+		<div class="panel panel-default panel-anuncio-tienda">
+
+			<div class="panel-body ">
+				<p  class="texto_gris_oscuro" style="font-weight:bold;margin-bottom: 0px;color:7c7c7c;" >
+					{{tienda.anuncio}}
+				</p>
+
+			</div>						
+		</div>
+
+
+
+
+		<div class="barra_spacer_2"></div>
+		<div class="pagina_header">
+			<p class="lead latto">Articulos de {{  tienda.nombre }}</p>
+		</div>
+
+
+
+		<div class="row">
+
+
+			
+
+			{% for producto in productos %}
+			{% include 'AppShopThemeBundle:Blocks:producto.html.twig' with {'producto': producto }   %}
+			{% endfor %}
+
+			
+		</div>
+
+		
+
+	</div>
+
+
+
+
+</div>
+
+</div>
+
+
+
+
+
+
+
+{% endblock %}
+
+
+
+
+
+
+{% block test %}
+
+
+
+
+
+
+<div class="col-sm-2 col-lg-2 col-md-2"  >
+
+	{{ render(controller('AppShopThemeBundle:Default:getCategorias')) }}
+
+	{{ render(controller('AppShopThemeBundle:Default:getPublicidadBlock')) }}
+
+</div>
+
+
+
+
+<div class="col-md-10" style=" border-left: 1px solid  #eeeeee;padding-left:45px;"  >
+
+
+	{% block banners %}
+
+	{{ render(controller('AppShopThemeBundle:Default:getBanners')) }}
+
+	{% endblock %}
+
+
+
+
+
+
+	<div class="row">
+		<div class="col-sm-12 col-lg-12 col-md-12  ">
+
+			{% block titulo_contenido %}
+			<h3 class="latto">Ultimas Artesanias</h3>    
+			{% endblock %}
+
+		</div>
+	</div>
+
+	<div class="row">
+
+
+		{% block productos %}
+
+		{% for producto in productos %}
+		{% include 'AppShopThemeBundle:Blocks:producto.html.twig' with {'producto': producto }   %}
+		{% endfor %}
+
+		{% endblock %}
+
+	</div>
+
+
+
+	<br>
+	<br>
+	<br>
+	<br>
+
+
+</div>
+
+
+{% endblock %}
+
+
+{% block js %}
+{{ parent() }}
+
+<script type="text/javascript" >
+
+	getProducto(  {{  producto_selected.id }} ); 
+	$("#modalProducto").modal(); 
+
+</script>
+{% endblock %}
+
+
+
+
+
+
+
+

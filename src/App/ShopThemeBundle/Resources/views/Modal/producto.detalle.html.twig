@@ -49,48 +49,61 @@
 
 			<div >
 
-			<div class="panel panel-detalle-producto">
+				<div class="panel panel-detalle-producto">
 					<div class="panel-body">
 
 						<div class="row">
 							<dic class="col-md-4">
 								<p  class="texto_aquamarina" style="font-weight:bold;margin-bottom: 0px;" > 
-								<a href="{{   path('ver_tienda' , { id_tienda : producto.tienda.id }) }}">{{  producto.tienda.nombre }}</a> </p>
-								<p  class="texto_gris_oscuro" > {{  producto.visitas }}  visitas - {{  producto.favoritos }} favoritos </p>
-							</dic>	
-							<dic class="col-md-3 col-md-offset-3">
-								<p  class="texto_gris_oscuro" >{{  producto.cantidad }} disponibles</p>
-							</dic>	
-							<dic class="col-md-2">
-								<p style="color:black;font-size:25px;font-weigth:bolder;margin-top:-6px;" >${{  producto.precio }}</p>
-							</dic>	
+									<a href="{{   path('ver_tienda' , { id_tienda : producto.tienda.id }) }}">{{  producto.tienda.nombre }}</a> 
+									</p>
+									{# <p  class="texto_gris_oscuro" > {{  producto.visitas }}  visitas - {{  producto.favoritos }} favoritos </p> #}
+								</dic>	
+								<dic class="col-md-3 col-md-offset-3">
+									<p  class="texto_gris_oscuro" >{{  producto.cantidad }} disponibles</p>
+								</dic>	
+								<dic class="col-md-2">
+									<p style="color:black;font-size:25px;font-weigth:bolder;margin-top:-6px;" >${{  producto.precio }}</p>
+								</dic>	
+							</div>
+
+
+
+							<div class="row">
+
+
+								<div class="col-sm-3">
+									
+									<iframe src="//www.facebook.com/plugins/share_button.php?href={{  url('producto_share_link' , {tienda: producto.tienda.slug , producto : producto.slug }) }}&amp;width&amp;layout=button_count&amp;appId=265342143608130" scrolling="no" frameborder="0" style="border:none; overflow:hidden;height:40px;" allowTransparency="true"></iframe>
+
+									<div style="clear:both;" ></div>
+
+								</div>	
+
+
+								<div class="col-sm-2">
+									
+									<span class='st_twitter_hcount' displayText='Tweet'>
+										<a href="https://twitter.com/share" class="twitter-share-button" data-url="{{  url('producto_share_link' , {tienda: producto.tienda.slug , producto : producto.slug }) }}" data-size="small">Tweet</a>
+										<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+									</span>
+
+								</div>	
+
+
+
+								<div class="col-sm-7">
+									<button type="submit" class="  btn btn-default pull-right btn_aquamarino"  
+									onclick="addtoCart('{{  path('agregar_producto_cart' , {'id_producto': producto.id , 'cantidad': 1 , 'precio':producto.precio}) }}')" >Agregar en mi cesta</button>
+								</div>	
+							</div>
+
+
 						</div>
-
-
-		
-						<div class="row">
-	
-							<div class="col-sm-6">
-								<span class='st_facebook_hcount' displayText='Facebook'></span>
-								<span class='st_twitter_hcount' displayText='Tweet'></span>
-								<span class='st__hcount' displayText=''></span>
-							</div>	
-
-							<div class="col-sm-6">
-								<button type="submit" class="  btn btn-default pull-right btn_aquamarino"  
-								onclick="addtoCart('{{  path('agregar_producto_cart' , {'id_producto': producto.id , 'cantidad': 1 , 'precio':producto.precio}) }}')" >Agregar en mi cesta</button>
-							</div>	
-						</div>
-
-
 					</div>
 				</div>
-			</div>
-		</div><!-- /.modal-content -->
-	</div><!-- /.modal-dialog -->
+			</div><!-- /.modal-content -->
+		</div><!-- /.modal-dialog -->
 
 
-<script type="text/javacript" >
-	
 
-</script>

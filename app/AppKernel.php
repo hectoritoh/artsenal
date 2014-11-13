@@ -65,6 +65,9 @@ class AppKernel extends Kernel
             new Avalanche\Bundle\ImagineBundle\AvalancheImagineBundle(),
             new App\ShopThemeBundle\AppShopThemeBundle(),
             new FOS\JsRoutingBundle\FOSJsRoutingBundle(),
+            
+            new JMS\TranslationBundle\JMSTranslationBundle(),
+            new Comur\ImageBundle\ComurImageBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

@@ -1,12 +1,16 @@
 
 
+
+
+
+
 function getProducto(  id_producto ){
 
 	$.ajax({
 		url: Routing.generate("producto_detalle_mostrar" , {  id_producto: id_producto }),
 		success: function( response ){
 			$("#modalProducto").html( response  );
-			stButtons.locateElements(); 
+			// stButtons.locateElements(); 
 		}
 	});
 }
@@ -31,12 +35,46 @@ function getProductosBy(){
 }
 
 
+var indice_paginacion = 0 ;
+var cargandoProductos = false ;
+
+
+function cargarMasProductos(   ){
+
+
+	$("#btn_paginador").html("Cargando"); 
+
+	if (!cargandoProductos) {
+
+		cargandoProductos = true ;
+		indice_paginacion++;
+		$.ajax({
+			url: Routing.generate('get_productos_paginacion', {indice: indice_paginacion}),
+			success: function( response ){
+				var contenido = $(response).hide();
+				$('#listaProductos').append( contenido  );
+				contenido.slideDown('slow');
+				cargandoProductos = false ; 
+				$("#btn_paginador").html("Cargar Mas"); 
+
+			}, error: function(){
+				alert("Favor intente en unos momentos");
+				cargandoProductos = false ; 
+				$("#btn_paginador").html("Cargar Mas"); 
+			}
+
+		});
+	};
+
+}
+
+
 
 
 $(document).ready(function(){
 
 
-	
+	$("#btn_paginador").click(cargarMasProductos); 
 	// $("#left_content").height($("#content").height());
 
 	/*
@@ -56,7 +94,7 @@ $(document).ready(function(){
 
 
 
-  
+
 
 });
 

@@ -14,6 +14,45 @@ class DefaultController extends Controller
 
 
 
+	public function productoShareAction($tienda , $producto )
+	{
+
+		$em = $this->getDoctrine()->getManager();
+		$tienda = $em->getRepository('SelnetTiendaOnlineBundle:Tienda')->findOneBy(array("slug" => $tienda  ));
+		$producto_seleccionado = $em->getRepository('SelnetTiendaOnlineBundle:Producto')->findOneBy(array("slug" => $producto  ));
+
+
+ 		$secciones = array();
+        
+        
+        
+        $productos = $em->getRepository('SelnetTiendaOnlineBundle:Producto')->findBy(array(
+            "tienda" => $tienda
+        ));
+        
+        foreach ($productos as $prod) {
+            if (!isset($secciones[$prod->getSubcategoria()->getNombre()])) {
+                $secciones[$prod->getSubcategoria()->getNombre()] = 1; # code...
+            } else {
+                $secciones[$prod->getSubcategoria()->getNombre()]++;
+            }
+        }
+        
+        
+        
+        return $this->render('AppShopThemeBundle:Tienda:ver.producto.tienda.html.twig', array(
+            "tienda" => $tienda,
+            "productos" => $productos,
+            "producto_selected" => $producto_seleccionado,
+            "secciones" => $secciones
+        ));
+        
+
+
+
+		
+	}
+
 
 	public function tiendasAction()
 	{
@@ -22,6 +61,29 @@ class DefaultController extends Controller
 		$tiendas = $em->getRepository('SelnetTiendaOnlineBundle:Tienda')->findAll();
 
 		return $this->render('AppShopThemeBundle:Tienda:tiendas.html.twig' , array("tiendas" => $tiendas ));
+	}
+
+
+
+
+
+	public function getProductosPaginacionAction( $indice )
+	{
+
+		$offset = (  $indice * 8  ) + 4 ;
+
+		$repository = $this->getDoctrine()
+		->getRepository('SelnetTiendaOnlineBundle:Producto');
+
+		$query = $repository->createQueryBuilder('p')
+		->setFirstResult( $offset )
+		->setMaxResults( 8 )
+		->getQuery();
+
+		$productos = $query->getResult();
+
+		return $this->render('AppShopThemeBundle:Blocks:producto.paginacion.html.twig' , array("productos"=> $productos )  );
+
 	}
 
 
@@ -163,6 +225,21 @@ class DefaultController extends Controller
 	{
 
 
+
+
+		$em = $this->getDoctrine()->getManager();
+		$productos = $em->getRepository('SelnetTiendaOnlineBundle:Tienda')->findAll();
+
+
+		foreach ($productos as $producto) {
+			$producto->setSlug(null); 
+		}
+
+		$em->flush(); 
+		die(); 
+
+
+
 		$sql  = 'SELECT p
 		FROM SelnetTiendaOnlineBundle:Producto p '; 
 
@@ -230,10 +307,10 @@ class DefaultController extends Controller
 		$tiendas = $em->getRepository('SelnetTiendaOnlineBundle:Tienda')->findBy(array() , array('nombre' => 'ASC'));
 
 		$productos = $em->getRepository("SelnetTiendaOnlineBundle:Producto")->createQueryBuilder('p')
-		   ->where('p.nombre LIKE :nombre')
-		   ->setParameter('nombre', "%$termino_buscar%")
-		   ->getQuery()
-		   ->getResult();
+		->where('p.nombre LIKE :nombre')
+		->setParameter('nombre', "%$termino_buscar%")
+		->getQuery()
+		->getResult();
 
 
 		return $this->render('AppShopThemeBundle:Paginas:busqueda.html.twig' , array("productos" => $productos , 
@@ -249,7 +326,23 @@ class DefaultController extends Controller
 
 		$em = $this->getDoctrine()->getManager();
 		$categorias = $em->getRepository('SelnetTiendaOnlineBundle:Categoria')->findAll();
-		$productos = $em->getRepository('SelnetTiendaOnlineBundle:Producto')->findAll();
+
+//		$productos = $em->getRepository('SelnetTiendaOnlineBundle:Producto')->findAll();
+
+
+
+
+		$repository = $this->getDoctrine()
+		->getRepository('SelnetTiendaOnlineBundle:Producto');
+
+		$query = $repository->createQueryBuilder('p')
+		->setMaxResults( 12 )
+		->getQuery();
+
+		$productos = $query->getResult();
+
+
+
 		$tiendas = $em->getRepository('SelnetTiendaOnlineBundle:Tienda')->findBy(array() , array('nombre' => 'ASC'));
 
 		$banner = $em->getRepository('SelnetTiendaOnlineBundle:Banner')->findAll();

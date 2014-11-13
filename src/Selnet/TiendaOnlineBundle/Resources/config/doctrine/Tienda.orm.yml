@@ -68,6 +68,16 @@ Selnet\TiendaOnlineBundle\Entity\Tienda:
             nullable: true
 
 
+        slug:
+            type: string
+            length: 128
+            gedmo:
+              slug:
+                separator: _
+                style: default
+                fields:
+                  - id
+                  - nombre
 
         estado:
             type: string
@@ -101,13 +111,9 @@ Selnet\TiendaOnlineBundle\Entity\Tienda:
             type: datetime
             nullable: false
 
-
-
-    manyToOne:
         imagenCabecera:
-            targetEntity: Application\Sonata\MediaBundle\Entity\Media
-            cascade: ["persist"]
-
+            type: string
+            nullable: false
 
 
 

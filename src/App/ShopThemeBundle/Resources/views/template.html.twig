@@ -30,9 +30,6 @@
 
 
 
-<script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
-<script type="text/javascript">stLight.options({publisher: "72ba2cfa-41b2-4d7a-8019-f2136543c4fc", doNotHash: false, doNotCopy: false, hashAddressBar: false});</script>
-</head>
 
 
 
@@ -118,7 +115,7 @@
           </div>
         </div>
 
-        <div class="row">
+        <div id="listaProductos" class="row">
 
 
           {% block productos %}
@@ -132,9 +129,12 @@
         </div>
 
 
+          <div class="row text-center" >
+              <button id="btn_paginador" type="button"  class="btn btn-default">Cargar Mas</button>
+          </div>
 
-        <br>
-        <br>
+
+
         <br>
         <br>
         <br>
