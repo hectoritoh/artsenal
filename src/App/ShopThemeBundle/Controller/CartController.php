@@ -25,9 +25,9 @@ class CartController extends Controller
 
 
         $venta = new Venta();
-        $venta->setTotal(   $cart->getTotal() );
+        $venta->setTotal(   0 );
 
-        foreach ($cart->getItems() as $cartItem) {
+        foreach ($cart as $cartItem) {
             $detalleVenta = new DetalleVenta();
             $detalleVenta->setCantidad(   $cartItem->getCantidad() );
             $detalleVenta->setPrecio( $cartItem->getPrecio() );
@@ -40,7 +40,7 @@ class CartController extends Controller
 
         return $this->render('AppShopThemeBundle:Pagos:cesta.nueva.html.twig' ,
             array(
-                "venta" => $venta , "detalles" => $cart->getItems() ));
+                "venta" => $venta , "detalles" => $cart ));
 
 
     }

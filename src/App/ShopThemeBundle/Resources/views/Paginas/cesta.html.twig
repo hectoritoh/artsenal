@@ -7,100 +7,100 @@
 
 
 
-<div class="barra_spacer_3">
-</div>
+  <div class="barra_spacer_3">
+  </div>
 
-<div class="row">
-  <div class="col-md-10 col-md-offset-1">
-    <div class="page-header pagina_header">
-      <h2>
-        Mi cesta
-      </h2>
+  <div class="row">
+    <div class="col-md-10 col-md-offset-1">
+      <div class="page-header pagina_header">
+        <h2>
+          Mi cesta
+        </h2>
+      </div>
     </div>
   </div>
-</div>
 
-<div class="row">
-  <div class="col-md-10 col-md-offset-1">
-    <div class="panel panel-default artsenal-panel ">
-      <div class="panel-body">
+  <div class="row">
+    <div class="col-md-10 col-md-offset-1">
+      <div class="panel panel-default artsenal-panel ">
+        <div class="panel-body">
 
-        <div class="container-fluid">
-
-
-          <div class="row">
-
-            <div  class="col-md-9 " >
-
-              <div class="page-header pagina_header">
-                <h2>
-                  ( {{  detalles | length }}  ) Producto(s)
-                </h2>
-              </div>
-              <div class="barra_border">
-              </div>
-              
-              
-              
-              {% for detalle in venta.detalles %}
-              
-              <div class="row">
+          <div class="container-fluid">
 
 
-                <div class="col-md-3">
-                  <img  class="img-responsive" src="{{ asset('/uploads/imagenes/productos/'  ~ detalle.producto.imagenes[0].url)   | apply_filter('thumbnail') }}" />
+            <div class="row">
+
+              <div  class="col-md-9 " >
+
+                <div class="page-header pagina_header">
+                  <h2>
+                    ( {{  detalles | length }}  ) Producto(s)
+                  </h2>
                 </div>
-                <div class="col-md-5">
-                  <p class="detalle_titulo" >
-                    {{ detalle.producto.nombre }}
-                  </p>
+                <div class="barra_border">
                 </div>
-                <div class="col-md-2">
-                  <p  class="detalle_bold" >
-                    Cantidad
-                  </p>
-                  <input type="text" style="width:50px;" value="{{   detalle.cantidad  }}" />
-                </div>
-                
-                <div class="col-md-2">
-                  <p  class="detalle_bold" >
-                    Precio
-                  </p>
-                  <p>
-                    {{  detalle.precio }}
-                  </p>
-                </div>
-                
-                
-              </div>
-              
-              
-              <hr>
-              {% endfor %}
-              
-              
-              <div class="row">
 
-               <div class="col-md-3  col-md-offset-8 ">
-                <a  class="pull-right link_aquamarine" href="{{ path('app_shop_theme_homepage')  }}">  Seguir comprando </a>
+
+
+                {% for detalle in venta.detalles %}
+
+                  <div class="row">
+
+
+                    <div class="col-md-3">
+                      <img  class="img-responsive" src="{{ asset('/uploads/imagenes/productos/'  ~ detalle.producto.imagenes[0].url)   | apply_filter('thumbnail') }}" />
+                    </div>
+                    <div class="col-md-5">
+                      <p class="detalle_titulo" >
+                        {{ detalle.producto.nombre }}
+                      </p>
+                    </div>
+                    <div class="col-md-2">
+                      <p  class="detalle_bold detalle_cantidad" >
+                        Cantidad
+                      </p>
+                      <input type="text"  class="detalle_cantidad_valor" style="width:50px;" value="{{   detalle.cantidad  }}" />
+                    </div>
+
+                    <div class="col-md-2">
+                      <p  class="detalle_bold  " >
+                        Precio
+                      </p>
+                      <p  class="detalle_precio_valor" >
+                        {{  detalle.precio }}
+                      </p>
+                    </div>
+
+
+                  </div>
+
+
+                  <hr>
+                {% endfor %}
+
+
+                <div class="row">
+
+                 <div class="col-md-3  col-md-offset-8 ">
+                  <a  class="pull-right link_aquamarine" href="{{ path('app_shop_theme_homepage')  }}">  Seguir comprando </a>
+                </div>
+
+
               </div>
 
 
             </div>
+            <div  id="detalle_cesta" class="col-md-3 " >
+              <br>
+              <p>
+                Enviar a
+              </p>
 
-
-          </div>
-          <div  id="detalle_cesta" class="col-md-3 " >
-            <br>
-            <p>
-              Enviar a
-            </p>
-
-            <select name="pais_envio" id="pais_envio">
-              <option value="ecuador">
-                Ecuador
-              </option>                
-            </select>
+              <select name="pais_envio" id="pais_envio">
+                <option value="ecuador">
+                  Ecuador
+                </option>                
+              </select>
 
 
         <!--       <p>
@@ -150,28 +150,28 @@
 
 
           {% if venta.total == 0  %}
-          <button class="btn btn-newsletter" style="color:white;font-weight:normal;" disabled="disabled" >
+            <button class="btn btn-newsletter" style="color:white;font-weight:normal;" disabled="disabled" >
+             Continuar con la compra
+           </button>
+
+           {% else %}
+           <button class="btn btn-newsletter" style="color:white;font-weight:normal;"  
+           onclick="window.location = '{{  path('descripcion_pago_artsenal') }}'" >
            Continuar con la compra
          </button>
 
-         {% else %}
-         <button class="btn btn-newsletter" style="color:white;font-weight:normal;"  
-         onclick="window.location = '{{  path('descripcion_pago_artsenal') }}'" >
-           Continuar con la compra
-         </button>
+       {% endif %}
 
-         {% endif %}
-
-
-       </div>
 
      </div>
 
-
-
    </div>
 
+
+
  </div>
+
+</div>
 
 </div>
 </div>

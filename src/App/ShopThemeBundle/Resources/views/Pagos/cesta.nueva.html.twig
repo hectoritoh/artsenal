@@ -54,23 +54,23 @@
                                         <div class="col-md-2">
                                             <img  class="img-responsive" src="{{ asset('/uploads/imagenes/productos/'  ~ detalle.producto.imagenes[0].url)   | apply_filter('thumbnail') }}" />
                                         </div>
-                                        <div class="col-md-3">
+                                        <div class="col-md-3 nombre">
                                             <p class="detalle_titulo" >
                                                 {{ detalle.producto.nombre }}
                                             </p>
                                         </div>
-                                        <div class="col-md-2">
+                                        <div class="col-md-2  cantidad">
                                             <p  class="detalle_bold" >
                                                 Cantidad
                                             </p>
-                                            <input type="text" style="width:50px;" value="{{   detalle.cantidad  }}" />
+                                            <input type="text"  class="detalle_cantidad_valor" style="width:50px;" value="{{   detalle.cantidad  }}" />
                                         </div>
 
-                                        <div class="col-md-1">
+                                        <div class="col-md-1 precio ">
                                             <p  class="detalle_bold" >
                                                 Precio
                                             </p>
-                                            <p>
+                                            <p  class="detalle_precio_valor" >
                                                 ${{  detalle.precio }}
                                             </p>
                                         </div>
@@ -78,14 +78,14 @@
                                         <div class="col-md-2">
                                             <p  class="detalle_bold" >
 
-                                            <form name="_xclick" action="https://www.paypal.com/cgi-bin/webscr" method="post">
-                                                <input type="hidden" name="cmd" value="_xclick">
-                                                <input type="hidden" name="business" value="danielli@artsenal.com.ec">
-                                                <input type="hidden" name="currency_code" value="USD">
-                                                <input type="hidden" name="item_name" value="Pago por compra {{  venta.usuario }}">
-                                                <input type="hidden" name="amount" value="{{ detalle.precio }}">
-                                                <input type="image" src="http://www.paypalobjects.com/en_US/i/btn/btn_buynow_LG.gif" border="0" name="submit" alt="Make payments with PayPal - it's fast, free and secure!">
-                                            </form>
+                                                <form name="_xclick" action="https://www.paypal.com/cgi-bin/webscr" method="post">
+                                                    <input type="hidden" name="cmd" value="_xclick">
+                                                    <input type="hidden" name="business" value="danielli@artsenal.com.ec">
+                                                    <input type="hidden" name="currency_code" value="USD">
+                                                    <input type="hidden" name="item_name" value="Pago por compra {{  venta.usuario }}">
+                                                    <input type="hidden" name="amount" value="{{ detalle.precio }}">
+                                                    <input type="image" src="http://www.paypalobjects.com/en_US/i/btn/btn_buynow_LG.gif" border="0" name="submit" alt="Make payments with PayPal - it's fast, free and secure!">
+                                                </form>
 
                                             </p>
                                         </div>
@@ -93,9 +93,9 @@
                                         <div class="col-md-2">
 
                                             <p  class="detalle_bold" >
-                                            <button type="button" class="btn btn-primary "  onclick="mostrarMensajeModal( '{{ detalle.producto.nombre }}' , '{{ detalle.producto.tienda.usuario }}' )" >
-                                                <span class="glyphicon glyphicon-edit"></span> Contactar Artista
-                                            </button>
+                                                <button type="button" class="btn btn-primary "  onclick="mostrarMensajeModal( '{{ detalle.producto.nombre }}' , '{{ detalle.producto.tienda.usuario }}' , '{{  detalle.producto.id  }}' , this  )" >
+                                                    <span class="glyphicon glyphicon-edit"></span> Contactar Artista
+                                                </button>
                                             </p>
 
                                         </div>
@@ -146,7 +146,7 @@
                     <form id="enviarMensaje" role="form">
                         <div class="form-group">
                             <label for="asunto">Asunto</label>
-                            <input type="text" class="form-control" id="asunto"  name="asunto" placeholder="Asunto de mensaje">
+                            <input type="text" class="form-control" id="asunto" readonly="readonly" name="asunto" placeholder="Asunto de mensaje">
                         </div>
                         <div class="form-group">
                             <label for="asunto">Mensaje</label>
@@ -178,10 +178,22 @@
 
 
         var _destinatario = "";
+        var _producto     = "";
 
-        function mostrarMensajeModal(   nombre_producto   , usuario   ){
+
+        function mostrarMensajeModal(   nombre_producto   , usuario  , producto ,   elemento  ){
+
+            var nombre_producto   = $(elemento).parent().parent().parent().find('.detalle_titulo').text().trim() ; 
+            var cantidad_producto = $(elemento).parent().parent().parent().find('.detalle_cantidad_valor').val(); 
+            var precio_producto   = $(elemento).parent().parent().parent().find('.detalle_precio_valor').text().trim(); 
+
+            _producto = producto ; 
+
+            $("#asunto").val("Compra de ("+  cantidad_producto +") " + nombre_producto)  ; 
+
             _destinatario = usuario ;
             $("#modalMensaje").modal();
+            
         }
 
 
@@ -192,23 +204,24 @@
             var _asunto  = $("#asunto").val();
             var _mensaje = $("#contenido").val();
 
-            var url_request = Routing.generate('crear_mensaje', { destinatario: _destinatario , asunto : _asunto , mensaje: _mensaje });
+            var url_request = Routing.generate('crear_mensaje', { destinatario: _destinatario , asunto : _asunto , mensaje: _mensaje , producto : _producto  });
 
             $.post(
                 url_request
-                 , function( respuesta ){
+                , function( respuesta ){
 
-                        if(respuesta.success){
-                            alert("mensaje enviando correctamente");
-                            document.forms.enviarMensaje.reset();
-                            $("#modalMensaje").modal('hide');
+                    if(respuesta.success){
+                        alert("mensaje enviando correctamente");
+                        document.forms.enviarMensaje.reset();
+                        $("#modalMensaje").modal('hide');
+                        location.reload(); 
 
-                        }
-                        else{
-                            alert("error en el envio del mensaje , favor intentarlo de nuevo en unos momentos")
-                        }
+                    }
+                    else{
+                        alert("error en el envio del mensaje , favor intentarlo de nuevo en unos momentos")
+                    }
                 }
-            )
+                )
 
 
 

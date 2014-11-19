@@ -77,7 +77,7 @@ mis_mensajes_enviados:
 
 
 crear_mensaje:
-    path:      /crear/mensaje/{destinatario}/{asunto}/{mensaje}
+    path:      /crear/mensaje/{destinatario}/{asunto}/{mensaje}/{producto}
     defaults:  { _controller: AppShopThemeBundle:Mensaje:crearMensaje}
     options:
         expose: true

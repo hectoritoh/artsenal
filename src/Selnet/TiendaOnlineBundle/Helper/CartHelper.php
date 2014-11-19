@@ -120,23 +120,24 @@ class CartHelper {
         $cart = $session->get("cart");
 
 
+        
         if ($cart == null) {
             $cart = array();
         }
 
+        
         $cart_tmp = array(); 
 
-        foreach ($cart as $item ) {
+        foreach ($cart->getItems() as $item ) {
 
-            if( $item["id"] ===  $producto->getId()  ){
-
+        
+            if( $item->getProductoId() ===  $producto->getProductoId()  ){
             }else{
                 $cart_tmp[] = $item ; 
             }
 
 
         }
-
         $session->set("cart", $cart_tmp);
         
         return $cart_tmp; 

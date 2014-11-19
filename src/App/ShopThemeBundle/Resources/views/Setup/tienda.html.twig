@@ -5,32 +5,32 @@
 
 
 {% block css %}
-{{ parent() }}
+    {{ parent() }}
 
-{% stylesheets 
- 'bundles/appshoptheme/js/cropper/cropper.css' 
+    {% stylesheets 
+    'bundles/appshoptheme/js/cropper/cropper.css' 
 
- filter='cssrewrite' %}
- <link rel="stylesheet" href="{{ asset_url }}" />
- {% endstylesheets %}
+    filter='cssrewrite' %}
+    <link rel="stylesheet" href="{{ asset_url }}" />
+    {% endstylesheets %}
 
- {% endblock %}
-
-
+{% endblock %}
 
 
 
- {% block contenido %}
+
+
+{% block contenido %}
 
 
 
- <div class="col-sm-2 col-lg-2 col-md-2"  >
+   <div class="col-sm-2 col-lg-2 col-md-2"  >
 
     <p class="lead latto">Secciones de Tienda</p>
     <div   id="categoria_block" class="list-group">
         {% for seccion , cantidad in secciones %}
-        <a href="#" class="list-group-item">  {{ seccion }} <span  class="texto_gris_oscuro" >({{ cantidad }})</span>
-        </a>
+            <a href="#" class="list-group-item">  {{ seccion }} <span  class="texto_gris_oscuro" >({{ cantidad }})</span>
+            </a>
         {% endfor %}
     </div>
 
@@ -77,10 +77,10 @@
 <div id="content" class="  col-md-10">
     <div class="row">
 
-        <div class="col-md-11 ">
+        
 
-            <div class="barra_spacer_3"></div>
-            <div class="barra_spacer_2"></div>
+        <div class="col-md-11 ">
+           
 
 
             <div class="panel panel-default panel-imagen-cabecera">
@@ -154,179 +154,179 @@
                 <div class="row">
 
                     {% for producto in productos %}
-                    {% include 'AppShopThemeBundle:Blocks:producto.html.twig' with {'producto': producto }   %}
+                        {% include 'AppShopThemeBundle:Blocks:producto.html.twig' with {'producto': producto }   %}
                     {% endfor %}
 
                     {{ tienda.tipoCuenta }}
                     {% set url_producto =  'window.location ="'~ path('tienda_producto_setup')  ~ '"' %}
 
-                    {% if tienda.tipoCuenta == 'bronce'  and productos| length > 3  %}
-                    {% set url_producto = '$("#modalCuentas").modal()' %}
-                    {% endif %}
+                        {% if tienda.tipoCuenta == 'bronce'  and productos| length > 3  %}
+                            {% set url_producto = '$("#modalCuentas").modal()' %}
+                            {% endif %}
 
-                    {% if tienda.tipoCuenta == 'plata' and productos| length > 5 %}
-                    {% set url_producto = '$("#modalCuentas").modal()' %}
-                    {% endif %}
+                            {% if tienda.tipoCuenta == 'plata' and productos| length > 5 %}
+                                {% set url_producto = '$("#modalCuentas").modal()' %}
+                                {% endif %}
 
-                    {% if tienda.tipoCuenta == 'oro'  and productos| length > 10 %}
+                                {% if tienda.tipoCuenta == 'oro'  and productos| length > 10 %}
 
-                    {% set url_producto = '$("#modalCuentas").modal()' %}
-                    {% endif %}
+                                    {% set url_producto = '$("#modalCuentas").modal()' %}
+                                    {% endif %}
 
-                    {% if tienda.tipoCuenta == 'platino' %}
-                    plata
-                    {% set url_producto = path('tienda_producto_setup')  %}
-                    {% endif %}
+                                    {% if tienda.tipoCuenta == 'platino' %}
+                                        plata
+                                        {% set url_producto = path('tienda_producto_setup')  %}
+                                        {% endif %}
 
 
 
-                    <div class="col-sm-3 col-lg-3 col-md-3  producto"   onclick=" {{ url_producto }} "   data-toggle="modal" data-target="#modalProducto" >
-                        <div class="thumbnail">
-                            {% image '@AppShopThemeBundle/Resources/public/images/agregar_imagen.jpg' %}
-                            <img src="{{ asset_url  }}" alt="Agregar Imagen" />
-                            {% endimage %}
-                            <div class="caption">
+                                        <div class="col-sm-3 col-lg-3 col-md-3  producto"   onclick=" {{ url_producto }} "   data-toggle="modal" data-target="#modalProducto" >
+                                            <div class="thumbnail">
+                                                {% image '@AppShopThemeBundle/Resources/public/images/agregar_imagen.jpg' %}
+                                                <img src="{{ asset_url  }}" alt="Agregar Imagen" />
+                                                {% endimage %}
+                                                <div class="caption">
 
-                                <h4>
-                                    <a href="#">Nombre de Producto</a>
-                                </h4>
-                                <h4 class="pull-right" >Precio</h4>
+                                                    <h4>
+                                                        <a href="#">Nombre de Producto</a>
+                                                    </h4>
+                                                    <h4 class="pull-right" >Precio</h4>
+
+                                                </div>
+
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+
+
+                                </div>
+
+
+
 
                             </div>
 
                         </div>
-                    </div>
-
-                </div>
-
-
-
-            </div>
-
-
-
-
-        </div>
-
-    </div>
 
 
 
 
 
-    <!-- Modal -->
-    <div class="modal fade" id="modalCuentas" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                    <h3 class="latto">Publica mas productos</h3>
-                </div>
-                <div class="modal-body">
-                    Tu Cuenta solo te permite tener 3 productos creado, mejora tu cuenta
-                    <a href="{{ path('cuenta_setup') }}">aqui</a>
+                        <!-- Modal -->
+                        <div class="modal fade" id="modalCuentas" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                                        <h3 class="latto">Publica mas productos</h3>
+                                    </div>
+                                    <div class="modal-body">
+                                        Tu Cuenta solo te permite tener 3 productos creado, mejora tu cuenta
+                                        <a href="{{ path('cuenta_setup') }}">aqui</a>
 
-                </div>
+                                    </div>
 
-            </div>
-        </div>
-    </div>
-
-
-
-    <div class="modal fade" id="modalImagen" style="display: none;" aria-hidden="true">
+                                </div>
+                            </div>
+                        </div>
 
 
 
-        <div class="modal-dialog  modal-imagen-crop">
-            <div class="modal-content">
-                <div class="modal-header"   style="padding-bottom:0px;" >
-                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                    <h4  id="modal_nombre_producto" class="modal-title">Seleccione la imagen de la tienda</h4>
-                </div>
+                        <div class="modal fade" id="modalImagen" style="display: none;" aria-hidden="true">
 
 
-                <div class="modal-body">
 
-                    <div id="controles" >
+                            <div class="modal-dialog  modal-imagen-crop">
+                                <div class="modal-content">
+                                    <div class="modal-header"   style="padding-bottom:0px;" >
+                                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                                        <h4  id="modal_nombre_producto" class="modal-title">Seleccione la imagen de la tienda</h4>
+                                    </div>
 
 
-                        <button type="button" class="btn btn-default "  onclick="$cropObj.cropper('zoom', 0.1)" >
-                          <span class="glyphicon glyphicon-zoom-in" aria-hidden="true"></span> 
-                      </button>
+                                    <div class="modal-body">
 
-                      <button type="button" class="btn btn-default "   onclick="$cropObj.cropper('zoom', -0.1)" >
-                          <span class="glyphicon glyphicon-zoom-out" aria-hidden="true"></span> 
-                      </button>
+                                        <div id="controles" >
+
+
+                                            <button type="button" class="btn btn-default "  onclick="$cropObj.cropper('zoom', 0.1)" >
+                                              <span class="glyphicon glyphicon-zoom-in" aria-hidden="true"></span> 
+                                          </button>
+
+                                          <button type="button" class="btn btn-default "   onclick="$cropObj.cropper('zoom', -0.1)" >
+                                              <span class="glyphicon glyphicon-zoom-out" aria-hidden="true"></span> 
+                                          </button>
+
+
+                                      </div>
+                                      <br>
+
+                                      <div class="img-container" >
+                                        <img id="imageCrop" src="" alt=""  style="display:none;max-width:1024px; max-height:768px;" >
+                                    </div>
+
+
+
+
+                                    <form  id="upload" enctype="multipart/form-data" action="{{ path('upload_imagen_tienda') }}" method="POST">
+
+                                        {{  form_widget(  form.image ) }}
+
+
+                                        <input type="submit" value="upload" />
+
+
+                                        <button type="button" class="btn btn-default "   onclick="cropAndSave();" >
+                                          <span class="glyphicon glyphicon-zoom-out" aria-hidden="true"></span> Actualizar
+                                      </button>
+
+                                  </form>
+
+
+                              </div>
+                              <div class="modal-footer">
+
+                              </div>
+
+
+
+
+                          </div><!-- /.modal-content -->
+                      </div><!-- /.modal-dialog -->
 
 
                   </div>
-                  <br>
-
-                  <div class="img-container" >
-                    <img id="imageCrop" src="" alt=""  style="display:none;max-width:1024px; max-height:768px;" >
-                </div>
 
 
-
-
-                <form  id="upload" enctype="multipart/form-data" action="{{ path('upload_imagen_tienda') }}" method="POST">
-
-                    {{  form_widget(  form.image ) }}
-
-
-                    <input type="submit" value="upload" />
-
-
-                    <button type="button" class="btn btn-default "   onclick="cropAndSave();" >
-                      <span class="glyphicon glyphicon-zoom-out" aria-hidden="true"></span> Actualizar
-                  </button>
-
-              </form>
-
-
-          </div>
-          <div class="modal-footer">
-
-          </div>
-
-
-
-
-      </div><!-- /.modal-content -->
-  </div><!-- /.modal-dialog -->
-
-
-</div>
-
-
-{% endblock %}
+              {% endblock %}
 
 
 
 
 
-{% block js %}
-{{ parent() }}
+              {% block js %}
+                {{ parent() }}
 
 
-{% javascripts 
- '@AppShopThemeBundle/Resources/public/js/cropper/cropper.js' 
- '@AppShopThemeBundle/Resources/public/js/scriptUpload.js' 
- %}
- <script type="text/javascript" src="{{ asset_url }}"></script>
- {% endjavascripts %}
+                {% javascripts 
+                '@AppShopThemeBundle/Resources/public/js/cropper/cropper.js' 
+                '@AppShopThemeBundle/Resources/public/js/scriptUpload.js' 
+                %}
+                <script type="text/javascript" src="{{ asset_url }}"></script>
+                {% endjavascripts %}
 
- <script type="text/javascript" >
+                <script type="text/javascript" >
 
-    var image_path = '{{ asset('uploads/tmp/') }}';
-    var image_tienda_path = '{{ asset('uploads/imagen_tienda/') }}';
-    var _tienda_id = '{{  tienda.id }}'; 
+                    var image_path = '{{ asset('uploads/tmp/') }}';
+                    var image_tienda_path = '{{ asset('uploads/imagen_tienda/') }}';
+                    var _tienda_id = '{{  tienda.id }}'; 
 
-</script>
+                </script>
 
 
-{% endblock %}
+            {% endblock %}
 
 
 

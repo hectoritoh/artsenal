@@ -7,7 +7,8 @@ use Symfony\Component\Security\Core\SecurityContext;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Session\Session;
-
+use Selnet\TiendaOnlineBundle\Helper\CartHelper; 
+use Selnet\TiendaOnlineBundle\Helper\TiendaCartItem;
 
 class MensajeController extends Controller
 {
@@ -35,20 +36,33 @@ class MensajeController extends Controller
 
 
 
-public function crearMensajeAction(  $destinatario , $asunto , $mensaje ){
+    public function crearMensajeAction(  $destinatario , $asunto , $mensaje , $producto ){
 
-    $usuario = $this->get('security.context')->getToken()->getUser();
+        $usuario = $this->get('security.context')->getToken()->getUser();
 
-    $notificacion = $this->get("app_notificaciones.notificacion.manager");
+        $notificacion = $this->get("app_notificaciones.notificacion.manager");
+        $mensaje  = $notificacion->crearNotificacion( $usuario->getUsername()  , $destinatario  ,  $mensaje, 1 , $asunto);
 
-    $mensaje  = $notificacion->crearNotificacion( $usuario->getUsername()  , $destinatario  ,  $mensaje, 1 , $asunto);
+        
+        $this->removeProducto( $producto ); 
+
+        $response = new \Symfony\Component\HttpFoundation\Response(json_encode($mensaje));
+        $response->headers->set('Content-Type', 'application/json');
+        return $response;
+
+    }
 
 
-    $response = new \Symfony\Component\HttpFoundation\Response(json_encode($mensaje));
-    $response->headers->set('Content-Type', 'application/json');
-    return $response;
 
-}
+    public function removeProducto(  $id_producto   )
+    {
+        $producto = new TiendaCartItem();
+        $producto->setProductoId( $id_producto );
+
+        $session = $this->get("session");
+        CartHelper::eliminarItemCart(  $session  , $producto ); 
+        
+    }
 
 
 
