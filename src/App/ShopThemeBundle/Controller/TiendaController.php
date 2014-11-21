@@ -58,6 +58,9 @@ class TiendaController extends Controller
             $tienda->setFechaSuscripcion(new \DateTime());
             $tienda->setTipoCuenta("bronce");
 
+            if ( $tienda->getImagenCabecera() === null  ) {
+                $tienda->setImagenCabecera(""); 
+            }
 
             $tienda->setUsuario( $usuario->getUsername() );
             $em->persist(  $tienda );
