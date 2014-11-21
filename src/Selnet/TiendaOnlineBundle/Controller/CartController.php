@@ -110,16 +110,24 @@ class CartController extends Controller
 	public function agregarProductoAction(  $id_producto , $cantidad , $precio  )
 	{
 
-		$session = $this->get("session");
-		$cart = CartHelper::getCurrentCart(  $session  );
+		// $session = $this->get("session");
+		// $cart = CartHelper::getCurrentCart(  $session  );
 
-		$item = new TiendaCartItem();
-		$item->setProductoId( $id_producto );
-		$item->setCantidad($cantidad);
-		$item->setPrecio($precio);
+		// $item = new TiendaCartItem();
+		// $item->setProductoId( $id_producto );
+		// $item->setCantidad($cantidad);
+		// $item->setPrecio($precio);
 
-		$cart->addItem( $item );
-		CartHelper::setCurrentCart( $session , $cart );
+		// $cart->addItem( $item );
+		// CartHelper::setCurrentCart( $session , $cart );
+		
+
+
+        $em         =  $this->getDoctrine()->getManager();
+        $producto   =  $em->getRepository('SelnetTiendaOnlineBundle:Producto')->find(  $id_producto );
+        $this->container->get('artsenal.cart.manager')->addProducto(  $producto ); 
+
+
 		$response = new Response(json_encode(array('response' => 'ok')));
 		$response->headers->set('Content-Type', 'application/json');
 

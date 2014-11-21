@@ -176,11 +176,25 @@ Configuracion
             
             
             <div class="col-sm-4 col-lg-4 col-md-4  vertical-center submenu-item " >
-              <a href="{{  path('mis_mensajes') }}">
+
+
+
+              <a class=" badge_holder" href="{{  path('mis_mensajes') }}"   data-toggle="tooltip" data-placement="bottom" title="Mis Mensajes"  >
                 {% image '@AppShopThemeBundle/Resources/public/images/mensaje.png'%}
-                <img    class="  icon-submenu " src="{{ asset_url }}" alt="mensaje"/>
+                <div  class="  icon-submenu  " >
+                  <img     src="{{ asset_url }}" alt="mensaje"/>  
+
+                  <span class="badge badge-success pull-right">{{  notificaciones.getUltimasNotificaciones(  app.user.username ) | length }}</span>
+
+                </div>
+                
                 {% endimage %}
+                
               </a>
+
+
+
+              
             </div>
             
             <div class="col-sm-4 col-lg-4 col-md-4  vertical-center submenu-item " >
@@ -193,7 +207,7 @@ Configuracion
             <div class="col-sm-4 col-lg-4 col-md-4  vertical-center submenu-item " >
               <a href="{{  path('tienda_setup') }}">
                 {% image '@AppShopThemeBundle/Resources/public/images/tienda.png'%}
-                <img    class="  icon-submenu " src="{{ asset_url }}" alt="tienda"/>
+                <img   data-toggle="tooltip" data-placement="bottom" title="Mi tienda"  class="  icon-submenu " src="{{ asset_url }}" alt="tienda"/>
                 {% endimage %}
               </a>
             </div>

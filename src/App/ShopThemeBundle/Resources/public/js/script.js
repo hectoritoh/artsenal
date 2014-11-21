@@ -74,6 +74,10 @@ function cargarMasProductos(   ){
 $(document).ready(function(){
 
 
+
+	$('[data-toggle="tooltip"]').tooltip(); 
+
+
 	$("#btn_paginador").click(cargarMasProductos); 
 	// $("#left_content").height($("#content").height());
 

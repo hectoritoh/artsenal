@@ -59,3 +59,22 @@ footer {
     width: 800px;
 }
 
+
+.badge_holder img+span.badge {
+    position: relative;
+    top: 8px;
+    left: 8px;
+    position: absolute;
+    top: 15px; left: 35px;
+}
+
+
+.tooltip{
+        position: fixed;
+
+}
+.badge_holder img{
+    
+}
+ 
+

@@ -1,6 +1,7 @@
 parameters:
 #    selnet_tienda_online.example.class: Selnet\TiendaOnlineBundle\Example
-    app_notificaciones.notificacion.class: Selnet\TiendaOnlineBundle\Servicio\NotificacionService
+    artsenal.notificacion.class: Selnet\TiendaOnlineBundle\Servicio\NotificacionService
+    artsenal.cart.class:         Selnet\TiendaOnlineBundle\Servicio\CartService
 
  
 
@@ -14,5 +15,10 @@ services:
 
 
     app_notificaciones.notificacion.manager:
-        class: %app_notificaciones.notificacion.class%
+        class: %artsenal.notificacion.class%
         arguments: [@doctrine.orm.entity_manager   ]
+
+
+    artsenal.cart.manager:
+        class: %artsenal.cart.class%
+        arguments: [@doctrine.orm.entity_manager , @session  ]

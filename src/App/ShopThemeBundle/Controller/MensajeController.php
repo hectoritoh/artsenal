@@ -44,7 +44,11 @@ class MensajeController extends Controller
         $mensaje  = $notificacion->crearNotificacion( $usuario->getUsername()  , $destinatario  ,  $mensaje, 1 , $asunto);
 
         
-        $this->removeProducto( $producto ); 
+        $em = $this->getDoctrine()->getManager();
+        $obj = $em->getRepository('SelnetTiendaOnlineBundle:Producto')->find(  $producto );
+        $this->container->get('artsenal.cart.manager')->remove(  $obj ); 
+
+        
 
         $response = new \Symfony\Component\HttpFoundation\Response(json_encode($mensaje));
         $response->headers->set('Content-Type', 'application/json');

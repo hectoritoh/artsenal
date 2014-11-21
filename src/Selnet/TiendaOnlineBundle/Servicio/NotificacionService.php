@@ -52,6 +52,7 @@ class NotificacionService extends  Controller
     function getUltimasNotificaciones( $usuario  ){
         return $this->em->getRepository("SelnetTiendaOnlineBundle:Mensaje")->findBy(array("usuario_recibe" =>  $usuario ));
     }
+    
 
 
 

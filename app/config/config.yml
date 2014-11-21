@@ -44,6 +44,7 @@ twig:
 
     globals:
         modo_layout: " container-fluid "
+        notificaciones:    "@app_notificaciones.notificacion.manager"
 
 
 
@@ -189,5 +190,9 @@ stof_doctrine_extensions:
             timestampable: true # not needed: listeners are not enabled by default
             sluggable: true
 
-
+# config.yml
+jms_serializer:
+    handlers:
+        datetime:
+            default_format: "c" # ISO8601
 

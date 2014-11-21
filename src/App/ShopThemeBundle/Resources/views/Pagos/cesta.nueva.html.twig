@@ -36,7 +36,7 @@
 
                                 <div class="page-header pagina_header">
                                     <h2>
-                                        ( {{  detalles | length }}  ) Producto(s)
+                                        ( {{  productos | length }}  ) Producto(s)
                                     </h2>
                                 </div>
                                 <div class="barra_border">
@@ -45,25 +45,24 @@
 
 
 
-
-                                {% for detalle in venta.detalles %}
+                                {% for producto  in productos  %}
 
                                     <div class="row">
 
 
                                         <div class="col-md-2">
-                                            <img  class="img-responsive" src="{{ asset('/uploads/imagenes/productos/'  ~ detalle.producto.imagenes[0].url)   | apply_filter('thumbnail') }}" />
+                                            <img  class="img-responsive" src="{{ asset('/uploads/imagenes/productos/'  ~ producto.imagenes[0].url)   | apply_filter('thumbnail') }}" />
                                         </div>
                                         <div class="col-md-3 nombre">
                                             <p class="detalle_titulo" >
-                                                {{ detalle.producto.nombre }}
+                                                {{ producto.nombre }}
                                             </p>
                                         </div>
                                         <div class="col-md-2  cantidad">
                                             <p  class="detalle_bold" >
                                                 Cantidad
                                             </p>
-                                            <input type="text"  class="detalle_cantidad_valor" style="width:50px;" value="{{   detalle.cantidad  }}" />
+                                            <input type="text"  class="detalle_cantidad_valor" style="width:50px;" value="1" />
                                         </div>
 
                                         <div class="col-md-1 precio ">
@@ -71,29 +70,36 @@
                                                 Precio
                                             </p>
                                             <p  class="detalle_precio_valor" >
-                                                ${{  detalle.precio }}
+                                                ${{  producto.precio }}
                                             </p>
                                         </div>
 
+                                        {% if app.user %}
+                                            <div class="col-md-2">
+                                                <p  class="detalle_bold" >
+
+
+
+
+                                                    <form name="_xclick" action="https://www.paypal.com/cgi-bin/webscr" method="post">
+                                                        <input type="hidden" name="cmd" value="_xclick">
+                                                        <input type="hidden" name="business" value="danielli@artsenal.com.ec">
+                                                        <input type="hidden" name="currency_code" value="USD">
+                                                        <input type="hidden" name="item_name" value="Pago por compra {{  app.user.username }}">
+                                                        <input type="hidden" name="amount" value="{{ producto.precio }}">
+                                                        <input type="image" src="http://www.paypalobjects.com/en_US/i/btn/btn_buynow_LG.gif" border="0" name="submit" alt="Make payments with PayPal - it's fast, free and secure!">
+                                                    </form>
+
+
+
+                                                </p>
+                                            </div>
+                                        {% endif %}
+
                                         <div class="col-md-2">
-                                            <p  class="detalle_bold" >
-
-                                                <form name="_xclick" action="https://www.paypal.com/cgi-bin/webscr" method="post">
-                                                    <input type="hidden" name="cmd" value="_xclick">
-                                                    <input type="hidden" name="business" value="danielli@artsenal.com.ec">
-                                                    <input type="hidden" name="currency_code" value="USD">
-                                                    <input type="hidden" name="item_name" value="Pago por compra {{  venta.usuario }}">
-                                                    <input type="hidden" name="amount" value="{{ detalle.precio }}">
-                                                    <input type="image" src="http://www.paypalobjects.com/en_US/i/btn/btn_buynow_LG.gif" border="0" name="submit" alt="Make payments with PayPal - it's fast, free and secure!">
-                                                </form>
-
-                                            </p>
-                                        </div>
-
-                                        <div class="col-md-2">
 
                                             <p  class="detalle_bold" >
-                                                <button type="button" class="btn btn-primary "  onclick="mostrarMensajeModal( '{{ detalle.producto.nombre }}' , '{{ detalle.producto.tienda.usuario }}' , '{{  detalle.producto.id  }}' , this  )" >
+                                                <button type="button" class="btn btn-primary "  onclick="mostrarMensajeModal( '{{ producto.nombre }}' , '{{ producto.tienda.usuario }}' , '{{  producto.id  }}' , this  )" >
                                                     <span class="glyphicon glyphicon-edit"></span> Contactar Artista
                                                 </button>
                                             </p>

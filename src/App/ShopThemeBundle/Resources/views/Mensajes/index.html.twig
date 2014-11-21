@@ -21,13 +21,8 @@
         <div class="page-header pagina_header" style="color:green;" >
 
             {% for flashMessage in app.session.flashbag.get('message') %}
-
                 <h2  style="color:green;" >  {{ flashMessage }}!</h2>
-
-
             {% endfor %}
-
-
         </div>
     </div>
 </div>
@@ -109,13 +104,12 @@
                                                 <tbody>
 
                                                 {% for mensaje in mensajes  %}
-                                                    <tr>
+                                                    <tr style="cursor:pointer;font-weight:bold;" >
                                                         <td>{{ mensaje.usuarioEnvia }}</td>
                                                         <td >{{ mensaje.titulo }}</td>
                                                         <td>{{ mensaje.createdAt | date('Y-m-d H:m:i') }}</td>
                                                         <td></td>
                                                     </tr>
-
                                                 {% endfor %}
 
                                                 </tbody>
@@ -123,9 +117,6 @@
                                         </div>
                                         </div>
                                     </div>
-
-
-
 
                                 {% endif %}
 

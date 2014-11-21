@@ -18,30 +18,11 @@ class CartController extends Controller
 	
     public function nuevoCartAction(){
 
-        $em = $this->getDoctrine()->getManager();
 
-        $session = $this->get("session");
-        $cart = CartHelper::getCurrentCart(  $session  );
-
-
-        $venta = new Venta();
-        $venta->setTotal(   0 );
-
-        foreach ($cart as $cartItem) {
-            $detalleVenta = new DetalleVenta();
-            $detalleVenta->setCantidad(   $cartItem->getCantidad() );
-            $detalleVenta->setPrecio( $cartItem->getPrecio() );
-            $producto = $em->getRepository('SelnetTiendaOnlineBundle:Producto')->find(  $cartItem->getProductoId() );
-            $detalleVenta->setProducto( $producto  );
-            $venta->getDetalles()->add(  $detalleVenta );
-
-        }
-
+        $productos  =  $this->container->get('artsenal.cart.manager')->getProducts(); 
 
         return $this->render('AppShopThemeBundle:Pagos:cesta.nueva.html.twig' ,
-            array(
-                "venta" => $venta , "detalles" => $cart ));
-
+            array(   "productos" => $productos ));
 
     }
 
@@ -91,16 +72,23 @@ class CartController extends Controller
     public function agregarProductoAction(  $id_producto , $cantidad , $precio  )
     {
 
-        $session = $this->get("session");
-        $cart = CartHelper::getCurrentCart(  $session  );
 
-        $item = new TiendaCartItem();
-        $item->setProductoId( $id_producto );
-        $item->setCantidad($cantidad);
-        $item->setPrecio($precio);
 
-        $cart->addItem( $item );
-        CartHelper::setCurrentCart( $session , $cart );
+        $em         =  $this->getDoctrine()->getManager();
+        $producto   =  $em->getRepository('SelnetTiendaOnlineBundle:Producto')->find(  $id_producto );
+        $this->container->get('artsenal.cart.manager')->add(  $producto ); 
+
+     
+        // $session = $this->get("session");
+        // $cart = CartHelper::getCurrentCart(  $session  );
+
+        // $item = new TiendaCartItem();
+        // $item->setProductoId( $id_producto );
+        // $item->setCantidad($cantidad);
+        // $item->setPrecio($precio);
+
+        // $cart->addItem( $item );
+        // CartHelper::setCurrentCart( $session , $cart );
         $response = new Response(json_encode(array('response' => 'ok')));
         $response->headers->set('Content-Type', 'application/json');
 

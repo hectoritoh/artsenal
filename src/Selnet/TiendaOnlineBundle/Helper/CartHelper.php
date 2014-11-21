@@ -19,6 +19,10 @@ class CartHelper {
 
         return $cart; 
     }
+
+
+
+    
     public static function destroyCart($session) {
 
 
