@@ -1,4 +1,5 @@
 
+
 @font-face {
 	font-family: lato_light;
 	src: url('../css/fonts/Lato-Light.ttf');
@@ -39,7 +40,12 @@ body{
 }
 
 .submenu-cesta{
-	border-right: 1px solid lightgray
+	border-right: 1px solid lightgray;
+    background-image: url(../images/icon_cesta.png);
+    background-repeat: no-repeat;
+    background-position: center right;
+    background-size: 25px 25px;
+
 }
 
 
@@ -235,13 +241,16 @@ ul.nav.footer-list > li > a:hover, ul.nav.footer-list > li > a:focus {
 
 
 .fondo_trama{
-	
+
 	background-image: url(../../../bundles/appshoptheme/images/textura_fondo.jpg);
 }
 
 .col-banner{
 		background-image: url(../../../bundles/appshoptheme/images/textura_fondo.jpg);
 }
+
+
+
 
 .table-container {
 	display: table;
@@ -499,7 +508,7 @@ a.list-group-item.active{
 
 
 .stMainServices{
-	height: 30px !!important;
+	height: 30px !important;
 }
 
 

@@ -13,7 +13,7 @@
     </div>
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="main-navbar">
-      <ul class="nav navbar-nav">
+      <ul class="nav navbar-nav" style="visibility: hidden;" >
         <li>
           <a href="{{  path('contenido_page' , {  contenido: 'comprar' }) }}" >Comprar</a>
         </li>
@@ -68,10 +68,8 @@
     </div>
     <div class="col-sm-1 col-lg-1 col-md-1  vertical-center submenu-item submenu-cesta " >
       <a href="{{ path('ver_cesta') }}">Mi cesta</a>
-      <i></i>
-      {% image '@AppShopThemeBundle/Resources/public/images/icon_cesta.png'%}
-      <img  style="display: inline; margin-top: -12px;"  class="img-responsive" src="{{ asset_url }}" alt="artsenal"/>
-      {% endimage %}
+
+
     </div>
   </div>
 

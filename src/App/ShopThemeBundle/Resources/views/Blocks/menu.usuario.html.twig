@@ -19,7 +19,7 @@
     </div>
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="main-navbar">
-      <ul class="nav navbar-nav">
+        <ul class="nav navbar-nav" style="visibility: hidden;" >
         <li>
           <a href="{{  path('contenido_page' , {  contenido: 'comprar' }) }}" >
             Comprar
@@ -60,7 +60,7 @@
               </a>
             </li>
             <li>
-              <a href="{{  path('presonaliza_tienda_artsenal') }}">
+              <a href="{{  path('tienda_setup') }}">
                 Personalizar
               </a>
             </li>
@@ -68,15 +68,15 @@
           
 
             <li>
-              <a href="{{  path('creacion_tienda_producto_artsenal') }}">
+              <a href="{{  path('tienda_producto_setup') }}">
                 Agregar productos
               </a>
             </li>
-            <li>
-              <a href="{{  path('creacion_tienda_artsenal') }}">
-                Nombre de tienda
-              </a>
-            </li>
+            {#<li>#}
+              {#<a href="{{  path('creacion_tienda_artsenal') }}">#}
+                {#Nombre de tienda#}
+              {#</a>#}
+            {#</li>#}
 
             
           </ul>
@@ -225,9 +225,7 @@ Configuracion
           <a href="{{ path('ver_cesta') }}">
             Mi cesta
           </a>
-          {% image '@AppShopThemeBundle/Resources/public/images/icon_cesta.png'%}
-          <img  style="display: inline; margin-top: -12px;"  class="img-responsive" src="{{ asset_url }}" alt="artsenal"/>
-          {% endimage %}
+
         </div>
         
       </div>

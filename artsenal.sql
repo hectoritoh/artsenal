@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 05-09-2014 a las 00:16:12
+-- Tiempo de generación: 13-02-2015 a las 22:48:13
 -- Versión del servidor: 5.6.16
 -- Versión de PHP: 5.5.11
 
@@ -23,573 +23,6 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `art_cart`
---
-
-CREATE TABLE IF NOT EXISTS `art_cart` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `total` double NOT NULL,
-  `descricion` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `usuario_id` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `art_cart_item`
---
-
-CREATE TABLE IF NOT EXISTS `art_cart_item` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `cart_id` int(11) DEFAULT NULL,
-  `producto_id` int(11) DEFAULT NULL,
-  `precio` double NOT NULL,
-  `cantidad` int(11) NOT NULL,
-  `descripcion` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `total` double NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `IDX_473970F1AD5CDBF` (`cart_id`),
-  KEY `IDX_473970F7645698E` (`producto_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `art_categoria`
---
-
-CREATE TABLE IF NOT EXISTS `art_categoria` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `nombre` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `borrado` varchar(1) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `fecha_creacion` datetime DEFAULT NULL,
-  `descripcion` varchar(150) COLLATE utf8_unicode_ci DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=5 ;
-
---
--- Volcado de datos para la tabla `art_categoria`
---
-
-INSERT INTO `art_categoria` (`id`, `nombre`, `borrado`, `fecha_creacion`, `descripcion`) VALUES
-(1, 'Ocasion', NULL, NULL, NULL),
-(2, 'Hogar', NULL, NULL, NULL),
-(3, 'Bisuteria', NULL, NULL, NULL),
-(4, 'Varios', NULL, NULL, NULL);
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `art_mensaje`
---
-
-CREATE TABLE IF NOT EXISTS `art_mensaje` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `id_carpeta` int(11) DEFAULT NULL,
-  `destinatario` int(11) DEFAULT NULL,
-  `remitente` int(11) DEFAULT NULL,
-  `contenido` varchar(300) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `titulo` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `leido` varchar(1) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `fecha_leido` datetime DEFAULT NULL,
-  `borrado` varchar(1) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `created` datetime NOT NULL,
-  `updated` datetime NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `IDX_2F271C7DEDD00B4D` (`id_carpeta`),
-  KEY `IDX_2F271C7DA7399187` (`destinatario`),
-  KEY `IDX_2F271C7D51A5ACA4` (`remitente`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `art_mensaje_carpeta`
---
-
-CREATE TABLE IF NOT EXISTS `art_mensaje_carpeta` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `nombre` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `fecha_creacion` datetime DEFAULT NULL,
-  `borrado` varchar(1) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `art_mensaje_carpetacol` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `art_perfil`
---
-
-CREATE TABLE IF NOT EXISTS `art_perfil` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `nombre` varchar(200) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `imagen_perfil` varchar(200) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `ciudad` varchar(200) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `about` varchar(400) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `fecha_creacion` datetime DEFAULT NULL,
-  `nacimiento` datetime DEFAULT NULL,
-  `borrado` varchar(1) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `sexo` varchar(1) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `id_usuario` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=4 ;
-
---
--- Volcado de datos para la tabla `art_perfil`
---
-
-INSERT INTO `art_perfil` (`id`, `nombre`, `imagen_perfil`, `ciudad`, `about`, `fecha_creacion`, `nacimiento`, `borrado`, `sexo`, `id_usuario`) VALUES
-(1, 'Hector', '977782_532891926746727_1628587983_o.jpg', 'Ciudad de la furia', 'La vida es un codigo compilandose', '2013-06-29 21:03:07', '1988-01-24 00:00:00', 'N', 'h', 1),
-(2, 'usuario nuevo', 'images.jpg', 'mi ciuadad', 'programar es un arte', '2013-07-01 08:35:46', '2013-01-01 00:00:00', 'N', 'h', 2),
-(3, 'Hector Alvarado Basantes', 'IMG-Noticias.jpg', 'Guayaquil', 'Caminando lento pero sin detenerse', '2013-11-13 18:52:04', '1988-01-24 00:00:00', 'N', 'h', 11);
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `art_producto`
---
-
-CREATE TABLE IF NOT EXISTS `art_producto` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `id_tienda` int(11) DEFAULT NULL,
-  `id_subcategoria` int(11) DEFAULT NULL,
-  `titulo` varchar(90) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `descripcion` varchar(300) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `cantidad` double DEFAULT NULL,
-  `precio` double DEFAULT NULL,
-  `tipo_elaboracion` datetime DEFAULT NULL,
-  `pais_origen` int(11) DEFAULT NULL,
-  `created` datetime NOT NULL,
-  `updated` datetime NOT NULL,
-  `estado` varchar(1) COLLATE utf8_unicode_ci NOT NULL,
-  `visitas` int(11) NOT NULL,
-  `favorito` int(11) NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `IDX_FEBC7F03E6F150D3` (`id_tienda`),
-  KEY `IDX_FEBC7F03F9BECC66` (`id_subcategoria`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=18 ;
-
---
--- Volcado de datos para la tabla `art_producto`
---
-
-INSERT INTO `art_producto` (`id`, `id_tienda`, `id_subcategoria`, `titulo`, `descripcion`, `cantidad`, `precio`, `tipo_elaboracion`, `pais_origen`, `created`, `updated`, `estado`, `visitas`, `favorito`) VALUES
-(4, 2, 1, 'asdasd', 'asdasda', 12, 12, NULL, NULL, '0000-00-00 00:00:00', '2014-01-06 22:28:12', 'P', 25, 0),
-(5, 2, 1, 'titulo producto', 'asdasda', 12, 12, NULL, NULL, '2013-06-30 07:13:35', '2014-01-06 22:28:46', 'P', 5, 0),
-(6, 2, 1, 'producto 2', 'descripciond del producto indico algunas cosas aca', 10, 123, NULL, NULL, '2013-06-30 07:20:20', '2014-01-06 22:25:14', 'P', 5, 0),
-(7, 2, 1, 'titulo', 'descripocino', 34, 21, NULL, NULL, '2013-06-30 07:23:46', '2014-01-06 21:42:32', 'P', 1, 0),
-(8, 2, 1, 'producto', 'descripcion', 12, 43, NULL, NULL, '2013-06-30 07:30:04', '2014-01-06 21:42:39', 'P', 1, 0),
-(9, 2, 1, 'sombreros', 'descripcion', 32, 124, NULL, NULL, '2013-06-30 07:36:15', '2014-01-04 04:33:47', 'P', 1, 0),
-(10, 2, 1, 'collares', 'descripcion', 233, 12, NULL, NULL, '2013-06-30 07:36:39', '2014-01-04 04:34:01', 'P', 1, 0),
-(11, 3, 1, 'ipod', 'descripcion de mi producto', 29, 323, NULL, NULL, '2013-07-01 08:26:34', '2013-07-01 08:32:46', 'P', 0, 0),
-(12, 3, 1, 'teleeofono', 'descpoeion', 290, 40, NULL, NULL, '2013-07-01 08:42:49', '2013-07-01 08:42:49', 'P', 0, 0),
-(13, 3, 1, 'prodcuto2', 'desciropcin', 28, 394, NULL, NULL, '2013-07-01 08:48:35', '2013-07-01 08:48:35', 'P', 0, 0),
-(14, 5, 1, 'mi producto vender', 'descripcion del rpoduc', 30, 30, NULL, NULL, '2013-11-13 19:09:29', '2013-11-13 20:28:57', 'P', 0, 0),
-(15, 5, 1, 'asdasd', 'asdad', 12, 12, NULL, NULL, '2013-11-13 23:28:34', '2013-11-13 23:39:09', 'P', 0, 0),
-(16, 5, 1, 'asda', 'sdad', 12, 12, NULL, NULL, '2013-11-13 23:32:40', '2013-11-13 23:39:09', 'P', 0, 0),
-(17, 5, 1, 'asdasd', 'asdad', 12, 12, NULL, NULL, '2013-11-18 17:01:38', '2013-11-18 17:02:07', 'P', 0, 0);
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `art_producto_foto`
---
-
-CREATE TABLE IF NOT EXISTS `art_producto_foto` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `id_producto` int(11) DEFAULT NULL,
-  `url` varchar(200) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `descripcion` varchar(200) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `borrado` varchar(1) COLLATE utf8_unicode_ci DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `IDX_857E4AA3F760EA80` (`id_producto`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=63 ;
-
---
--- Volcado de datos para la tabla `art_producto_foto`
---
-
-INSERT INTO `art_producto_foto` (`id`, `id_producto`, `url`, `descripcion`, `borrado`) VALUES
-(16, 4, 'DSC05237.JPG', NULL, NULL),
-(17, 4, '737083_532893140079939_1870015127_o.jpg', NULL, NULL),
-(18, 4, '474968_532892330080020_1816644920_o.jpg', NULL, NULL),
-(20, 4, 'DSC05237.JPG', NULL, NULL),
-(21, 4, '468623_532892196746700_154266138_o.jpg', NULL, NULL),
-(22, 5, '737083_532893140079939_1870015127_o.jpg', NULL, NULL),
-(23, 6, '468623_532892196746700_154266138_o.jpg', NULL, NULL),
-(24, 7, '474968_532892330080020_1816644920_o.jpg', NULL, NULL),
-(25, 8, 'product-red-ipod-mock2.gif', NULL, NULL),
-(26, 9, 'sombreros.jpg', NULL, NULL),
-(27, 10, 'collares.jpg', NULL, NULL),
-(28, 11, 'product-red-ipod-mock2.gif', NULL, NULL),
-(29, 11, 'sombreros.jpg', NULL, NULL),
-(30, 11, 'foto_producto.jpg', NULL, NULL),
-(31, 11, 'foto_producto.jpg', NULL, NULL),
-(32, 11, 'foto_producto.jpg', NULL, NULL),
-(33, 12, 'Samsung_Galaxy_Ace_2_analisis_20.jpg', NULL, NULL),
-(34, 12, 'foto_producto.jpg', NULL, NULL),
-(35, 12, 'foto_producto.jpg', NULL, NULL),
-(36, 12, 'foto_producto.jpg', NULL, NULL),
-(37, 12, 'foto_producto.jpg', NULL, NULL),
-(38, 13, 'GalaxyAce2_04_Press-580-100.jpg', NULL, NULL),
-(39, 13, 'foto_producto.jpg', NULL, NULL),
-(40, 13, 'foto_producto.jpg', NULL, NULL),
-(41, 13, 'foto_producto.jpg', NULL, NULL),
-(42, 13, 'foto_producto.jpg', NULL, NULL),
-(43, 14, 'mimi.jpg', NULL, NULL),
-(44, 14, '545980_623203854387905_766145558_n.jpg', NULL, NULL),
-(45, 14, 'foto_producto.jpg', NULL, NULL),
-(46, 14, 'foto_producto.jpg', NULL, NULL),
-(47, 14, 'foto_producto.jpg', NULL, NULL),
-(48, 15, '543415_658272824185372_2008044437_n.jpg', NULL, NULL),
-(49, 15, 'foto_producto.jpg', NULL, NULL),
-(50, 15, 'foto_producto.jpg', NULL, NULL),
-(51, 15, 'foto_producto.jpg', NULL, NULL),
-(52, 15, 'foto_producto.jpg', NULL, NULL),
-(53, 16, '36532_646019755432901_1622118349_n.jpg', NULL, NULL),
-(54, 16, '25cffdb77162344_1440x900.jpg', NULL, NULL),
-(55, 16, '1005471_566575056735830_406840952_n.jpg', NULL, NULL),
-(56, 16, 'foto_producto.jpg', NULL, NULL),
-(57, 16, '556557_577319242328025_1456749565_n.jpg', NULL, NULL),
-(58, 17, 'foto_producto.jpg', NULL, NULL),
-(59, 17, '1236208_588209084553520_205048065_n.jpg', NULL, NULL),
-(60, 17, 'foto_producto.jpg', NULL, NULL),
-(61, 17, 'foto_producto.jpg', NULL, NULL),
-(62, 17, 'foto_producto.jpg', NULL, NULL);
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `art_producto_like`
---
-
-CREATE TABLE IF NOT EXISTS `art_producto_like` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `id_producto` int(11) DEFAULT NULL,
-  `id_usuario` int(11) DEFAULT NULL,
-  `fecha_creacion` datetime DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `IDX_C3C131F5F760EA80` (`id_producto`),
-  KEY `IDX_C3C131F5FCF8192D` (`id_usuario`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `art_producto_tag`
---
-
-CREATE TABLE IF NOT EXISTS `art_producto_tag` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `id_producto` int(11) DEFAULT NULL,
-  `id_tag` int(11) DEFAULT NULL,
-  `fecha_creacion` datetime DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `IDX_118F1055F760EA80` (`id_producto`),
-  KEY `IDX_118F10559D2D5FD9` (`id_tag`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `art_rol`
---
-
-CREATE TABLE IF NOT EXISTS `art_rol` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `nombre` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `art_subcategoria`
---
-
-CREATE TABLE IF NOT EXISTS `art_subcategoria` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `id_categoria` int(11) DEFAULT NULL,
-  `nombre` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `fecha_creacion` datetime DEFAULT NULL,
-  `borrado` varchar(1) COLLATE utf8_unicode_ci DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `IDX_A9DB9D1FCE25AE0A` (`id_categoria`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=4 ;
-
---
--- Volcado de datos para la tabla `art_subcategoria`
---
-
-INSERT INTO `art_subcategoria` (`id`, `id_categoria`, `nombre`, `fecha_creacion`, `borrado`) VALUES
-(1, 1, 'subcategoria', NULL, NULL),
-(2, 2, 'subcategoria 2', NULL, NULL),
-(3, 1, 'prueba', NULL, NULL);
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `art_suscripciones`
---
-
-CREATE TABLE IF NOT EXISTS `art_suscripciones` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `nombre` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `cantidadProductos` int(11) NOT NULL,
-  `descuentoFeria` int(11) NOT NULL,
-  `destacarEnPgina` int(11) NOT NULL,
-  `beneficioPartners` int(11) NOT NULL,
-  `postBlogs` int(11) NOT NULL,
-  `codigoHtml` longtext COLLATE utf8_unicode_ci NOT NULL,
-  `estado` int(11) NOT NULL,
-  `costo` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `descripcion` longtext COLLATE utf8_unicode_ci NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=3 ;
-
---
--- Volcado de datos para la tabla `art_suscripciones`
---
-
-INSERT INTO `art_suscripciones` (`id`, `nombre`, `cantidadProductos`, `descuentoFeria`, `destacarEnPgina`, `beneficioPartners`, `postBlogs`, `codigoHtml`, `estado`, `costo`, `descripcion`) VALUES
-(1, 'Bronce', 3, 0, 0, 0, 0, '', 1, '0', ''),
-(2, 'Plata', 5, 1, 1, 0, 0, '<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">\n<input type="hidden" name="cmd" value="_s-xclick">\n<input type="hidden" name="hosted_button_id" value="SYSBTDANSH4F8">\n<input type="image" src="https://www.paypalobjects.com/es_XC/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal, la forma más segura y rápida de pagar en línea.">\n<img alt="" border="0" src="https://www.paypalobjects.com/es_XC/i/scr/pixel.gif" width="1" height="1">\n</form>\n', 1, '25', '');
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `art_tags`
---
-
-CREATE TABLE IF NOT EXISTS `art_tags` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `nombre` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `fecha_creacion` datetime DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `art_tienda`
---
-
-CREATE TABLE IF NOT EXISTS `art_tienda` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `nombre` varchar(80) COLLATE utf8_unicode_ci NOT NULL,
-  `imagen_cabecera` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
-  `titulo` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
-  `mensaje_cliente` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
-  `anuncio` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
-  `id_usuario` int(11) NOT NULL,
-  `estado` varchar(1) COLLATE utf8_unicode_ci NOT NULL,
-  `created` datetime NOT NULL,
-  `updated` datetime NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=6 ;
-
---
--- Volcado de datos para la tabla `art_tienda`
---
-
-INSERT INTO `art_tienda` (`id`, `nombre`, `imagen_cabecera`, `titulo`, `mensaje_cliente`, `anuncio`, `id_usuario`, `estado`, `created`, `updated`) VALUES
-(2, 'mi tienda', 'DSC05237.JPG', 'dadadasd', 'adasd', 'Este es un anuncio de prueba , lo ingrese desde el administrador', 1, 'P', '2013-06-29 00:00:00', '2013-10-11 00:52:00'),
-(3, 'nombre mi tienda', 'ace2jb.jpg', 'titulo de la toiend a', 'mensjae al cliente', 'anuunciona', 2, 'P', '2013-07-01 08:04:42', '2013-07-01 08:41:26'),
-(4, 'mi tienda', 'default.png', '', '', '', 3, 'P', '2013-11-06 16:38:42', '2013-11-06 16:53:58'),
-(5, 'mi tienda nueva', 'tumblr_mvxh5gdl4Z1r8hg1ho1_500.jpg', 'novedades', 'mensaje de cliente', 'anuncio mostrar', 11, 'P', '2013-11-13 19:07:15', '2013-11-13 20:30:48');
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `art_tienda_dir_facturacion`
---
-
-CREATE TABLE IF NOT EXISTS `art_tienda_dir_facturacion` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `pais` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
-  `calle` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
-  `direccion_info` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
-  `ciudad` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
-  `estado` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
-  `zip` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
-  `id_tienda` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `art_tienda_like`
---
-
-CREATE TABLE IF NOT EXISTS `art_tienda_like` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `id_tienda` int(11) DEFAULT NULL,
-  `id_usuario` int(11) DEFAULT NULL,
-  `fecha_creacion` datetime DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `IDX_281C327EE6F150D3` (`id_tienda`),
-  KEY `IDX_281C327EFCF8192D` (`id_usuario`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `art_tienda_politica`
---
-
-CREATE TABLE IF NOT EXISTS `art_tienda_politica` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `id_tienda` int(11) DEFAULT NULL,
-  `mensaje_bienvenidad` longtext COLLATE utf8_unicode_ci,
-  `pagos` longtext COLLATE utf8_unicode_ci,
-  `envio` longtext COLLATE utf8_unicode_ci,
-  `reembolso` longtext COLLATE utf8_unicode_ci,
-  `informacion_adicional` longtext COLLATE utf8_unicode_ci NOT NULL,
-  `vendedor` longtext COLLATE utf8_unicode_ci,
-  PRIMARY KEY (`id`),
-  KEY `IDX_1986AEC3E6F150D3` (`id_tienda`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=3 ;
-
---
--- Volcado de datos para la tabla `art_tienda_politica`
---
-
-INSERT INTO `art_tienda_politica` (`id`, `id_tienda`, `mensaje_bienvenidad`, `pagos`, `envio`, `reembolso`, `informacion_adicional`, `vendedor`) VALUES
-(1, 2, 'mensaje de bienvenida', 'la formas de pagos', 'se envia de esta forma', '100% garantizado', 'informacion adicional', 'vendedores aceptados'),
-(2, 5, 'lorem ipsum', 'lorem ipsum', 'lorem ipsum', 'lorem ipsum', 'lorem ipsum', 'lorem ipsum');
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `art_tienda_tarjeta_credito`
---
-
-CREATE TABLE IF NOT EXISTS `art_tienda_tarjeta_credito` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `tarjeta` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
-  `numero_tarjeta` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
-  `mes_expira` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
-  `anio_expira` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
-  `ccv` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
-  `titular` varchar(40) COLLATE utf8_unicode_ci NOT NULL,
-  `telefono` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
-  `id_tienda` int(11) NOT NULL,
-  `pais` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
-  `calle` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
-  `direccion_info` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
-  `ciudad` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
-  `estado` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
-  `zip` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=3 ;
-
---
--- Volcado de datos para la tabla `art_tienda_tarjeta_credito`
---
-
-INSERT INTO `art_tienda_tarjeta_credito` (`id`, `tarjeta`, `numero_tarjeta`, `mes_expira`, `anio_expira`, `ccv`, `titular`, `telefono`, `id_tienda`, `pais`, `calle`, `direccion_info`, `ciudad`, `estado`, `zip`) VALUES
-(1, 'master', '98765', '0', '0', '123123', 'Hector', '45645', 2, 'EC', 'calle 13', 'Direccion', 'ciudad e la furia', 'EC', '1231'),
-(2, 'visa', '456789', '0', '0', '45678', 'hector', '908234', 3, 'Ecuadpr', 'calle 17', 'infrom de mi direccion', 'gye', 'Ec', '09334');
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `art_usuario`
---
-
-CREATE TABLE IF NOT EXISTS `art_usuario` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `email` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `password` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `fecha_creacion` datetime DEFAULT NULL,
-  `borrado` varchar(1) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `ultimo_login` datetime DEFAULT NULL,
-  `tienda_id` int(11) DEFAULT NULL,
-  `configuracionCompleta` int(11) DEFAULT NULL,
-  `suscripcion_id` int(11) DEFAULT NULL,
-  `username` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `username_canonical` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `email_canonical` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `enabled` tinyint(1) NOT NULL,
-  `salt` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `last_login` datetime DEFAULT NULL,
-  `locked` tinyint(1) NOT NULL,
-  `expired` tinyint(1) NOT NULL,
-  `expires_at` datetime DEFAULT NULL,
-  `confirmation_token` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `password_requested_at` datetime DEFAULT NULL,
-  `roles` longtext COLLATE utf8_unicode_ci NOT NULL COMMENT '(DC2Type:array)',
-  `credentials_expired` tinyint(1) NOT NULL,
-  `credentials_expire_at` datetime DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `UNIQ_9621B12192FC23A8` (`username_canonical`),
-  UNIQUE KEY `UNIQ_9621B121A0D96FBF` (`email_canonical`),
-  UNIQUE KEY `UNIQ_9621B12119BA6D46` (`tienda_id`),
-  KEY `IDX_9621B121189E045D` (`suscripcion_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=12 ;
-
---
--- Volcado de datos para la tabla `art_usuario`
---
-
-INSERT INTO `art_usuario` (`id`, `email`, `password`, `fecha_creacion`, `borrado`, `ultimo_login`, `tienda_id`, `configuracionCompleta`, `suscripcion_id`, `username`, `username_canonical`, `email_canonical`, `enabled`, `salt`, `last_login`, `locked`, `expired`, `expires_at`, `confirmation_token`, `password_requested_at`, `roles`, `credentials_expired`, `credentials_expire_at`) VALUES
-(11, 'misticalelf9@gmail.com', 'xDq8YAcwg0wTJGQgCrO1shILxH/U2LlrL+mdt3weRW9+rinrsVB098jWyHvys7e5K2Cm1p0komBy7GBN5tonuw==', NULL, NULL, NULL, NULL, NULL, NULL, 'hectoritoh', 'hectoritoh', 'misticalelf9@gmail.com', 1, 'lzm28yncm8g8s4gkkokg8gos40ks4k4', '2013-12-06 11:16:57', 0, 0, NULL, NULL, NULL, 'a:0:{}', 0, NULL);
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `art_usuario_rol`
---
-
-CREATE TABLE IF NOT EXISTS `art_usuario_rol` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `id_rol` int(11) DEFAULT NULL,
-  `id_usuario` int(11) DEFAULT NULL,
-  `fecha_creacion` datetime DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `IDX_ADF592390F1D76D` (`id_rol`),
-  KEY `IDX_ADF5923FCF8192D` (`id_usuario`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `art_usuario_seguir`
---
-
-CREATE TABLE IF NOT EXISTS `art_usuario_seguir` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `id_tienda` int(11) DEFAULT NULL,
-  `id_usuario` int(11) DEFAULT NULL,
-  `fecha_creacion` datetime DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `IDX_B6BC2EB9E6F150D3` (`id_tienda`),
-  KEY `IDX_B6BC2EB9FCF8192D` (`id_usuario`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `art_usuario_tienda`
---
-
-CREATE TABLE IF NOT EXISTS `art_usuario_tienda` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `id_tienda` int(11) DEFAULT NULL,
-  `id_usuario` int(11) DEFAULT NULL,
-  `fecha_registro` datetime DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `IDX_E5234889E6F150D3` (`id_tienda`),
-  KEY `IDX_E5234889FCF8192D` (`id_usuario`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
-
--- --------------------------------------------------------
-
---
 -- Estructura de tabla para la tabla `banner`
 --
 
@@ -600,18 +33,18 @@ CREATE TABLE IF NOT EXISTS `banner` (
   `borrado` int(11) DEFAULT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
-  `image_id` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `IDX_6F9DB8E73DA5256D` (`image_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=4 ;
+  `image` longtext COLLATE utf8_unicode_ci NOT NULL,
+  `link` longtext COLLATE utf8_unicode_ci,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=6 ;
 
 --
 -- Volcado de datos para la tabla `banner`
 --
 
-INSERT INTO `banner` (`id`, `nombre`, `descripcion`, `borrado`, `created_at`, `updated_at`, `image_id`) VALUES
-(2, 'banner uno', 'descripcion', -7, '2009-01-01 00:00:00', '2009-01-01 00:00:00', 4),
-(3, 'banner 2', 'descipcion', 0, '2009-01-01 00:00:00', '2009-01-01 00:00:00', 6);
+INSERT INTO `banner` (`id`, `nombre`, `descripcion`, `borrado`, `created_at`, `updated_at`, `image`, `link`) VALUES
+(4, 'Nombre de banner', 'descripcion de banner', 0, '2014-09-24 20:04:43', '2014-11-10 16:22:19', '1538740_757949354264488_7263411672096802959_n.jpg', 'https://www.google.com.ec'),
+(5, 'nombre de banner', 'descripcion de otro', 0, '2014-09-25 17:21:40', '2014-09-25 17:21:40', 'artesanias-banner.jpg', NULL);
 
 -- --------------------------------------------------------
 
@@ -905,7 +338,7 @@ CREATE TABLE IF NOT EXISTS `detalle_venta` (
   PRIMARY KEY (`id`),
   KEY `IDX_5191A4017645698E` (`producto_id`),
   KEY `IDX_5191A401F2A5805D` (`venta_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=16 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=20 ;
 
 --
 -- Volcado de datos para la tabla `detalle_venta`
@@ -914,7 +347,11 @@ CREATE TABLE IF NOT EXISTS `detalle_venta` (
 INSERT INTO `detalle_venta` (`id`, `producto_id`, `venta_id`, `cantidad`, `precio`, `borrado`, `created_at`, `updated_at`) VALUES
 (13, 27, 17, 1, 12, 0, '2014-09-04 21:32:33', '2014-09-04 21:32:33'),
 (14, 28, 18, 1, 12, 0, '2014-09-04 21:38:27', '2014-09-04 21:38:27'),
-(15, 29, 18, 1, 223, 0, '2014-09-04 21:38:27', '2014-09-04 21:38:27');
+(15, 29, 18, 1, 223, 0, '2014-09-04 21:38:27', '2014-09-04 21:38:27'),
+(16, 26, 19, 1, 123, 0, '2014-09-24 21:41:16', '2014-09-24 21:41:16'),
+(17, 26, 20, 1, 123, 0, '2014-09-25 19:40:03', '2014-09-25 19:40:03'),
+(18, 29, 21, 2, 223, 0, '2014-09-25 19:45:03', '2014-09-25 19:45:03'),
+(19, 27, 22, 1, 12, 0, '2014-10-29 18:25:50', '2014-10-29 18:25:50');
 
 -- --------------------------------------------------------
 
@@ -928,7 +365,7 @@ CREATE TABLE IF NOT EXISTS `fos_user` (
   `apellidos` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `sexo` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=5 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=22 ;
 
 --
 -- Volcado de datos para la tabla `fos_user`
@@ -936,7 +373,24 @@ CREATE TABLE IF NOT EXISTS `fos_user` (
 
 INSERT INTO `fos_user` (`id`, `nombres`, `apellidos`, `sexo`) VALUES
 (1, '', '', 0),
-(4, 'Hector Manuel', 'Alvarado Basantes', 1);
+(4, 'Hector Manuel', 'Alvarado Basantes', 1),
+(5, 'Hectot', 'Aladads', 1),
+(6, 'Hectot', 'asdadas', 1),
+(7, 'Hectot', 'Aladads', 1),
+(8, 'usuario_n', 'usuario_n', 1),
+(9, 'usuario_n', 'usuario_n', 1),
+(10, 'usuario_n', 'usuario_n', 1),
+(11, 'usuario_n', 'usuario_n', 1),
+(12, 'usuario_n', 'usuario_n', 1),
+(13, 'test', 'test', 1),
+(14, 'gabriel', 'gomez', 1),
+(15, 'nombre de usuario', 'apellido', 1),
+(16, 'Hector', 'Alvarado', 1),
+(17, 'Hector', 'Alvarado', 1),
+(18, 'demo', 'demo', 1),
+(19, 'demo', 'demo', 1),
+(20, 'app', 'app', 1),
+(21, 'nombre', 'apellido', 1);
 
 -- --------------------------------------------------------
 
@@ -1001,16 +455,26 @@ CREATE TABLE IF NOT EXISTS `fos_user_user` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `UNIQ_C560D76192FC23A8` (`username_canonical`),
   UNIQUE KEY `UNIQ_C560D761A0D96FBF` (`email_canonical`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=20 ;
 
 --
 -- Volcado de datos para la tabla `fos_user_user`
 --
 
 INSERT INTO `fos_user_user` (`id`, `username`, `username_canonical`, `email`, `email_canonical`, `enabled`, `salt`, `password`, `last_login`, `locked`, `expired`, `expires_at`, `confirmation_token`, `password_requested_at`, `roles`, `credentials_expired`, `credentials_expire_at`, `created_at`, `updated_at`, `date_of_birth`, `firstname`, `lastname`, `website`, `biography`, `gender`, `locale`, `timezone`, `phone`, `facebook_uid`, `facebook_name`, `facebook_data`, `twitter_uid`, `twitter_name`, `twitter_data`, `gplus_uid`, `gplus_name`, `gplus_data`, `token`, `two_step_code`) VALUES
-(1, 'administrador', 'administrador', 'admin@gmail.com', 'admin@gmail.com', 1, 'n4cniu17wq8sk0o08g08k40o8ko80s', 'hCKqQCD5inuzETs94guCdOxeFYIQxX4hAXIe5rPEcQLdQSJLg+alOoVzJlLtrDrHecrbBJmOj+SSXoFUmOC3rw==', '2014-09-03 18:59:55', 0, 0, NULL, NULL, NULL, 'a:1:{i:0;s:16:"ROLE_SUPER_ADMIN";}', 0, NULL, '2014-07-25 11:04:43', '2014-09-04 18:38:54', '1988-01-24 00:00:00', 'Hector Alvarado', 'Guayaquil', NULL, 'wingardium leviosa', 'm', NULL, NULL, NULL, NULL, NULL, 'null', NULL, NULL, 'null', NULL, NULL, 'null', NULL, NULL),
+(1, 'administrador', 'administrador', 'admin@gmail.com', 'admin@gmail.com', 1, 'n4cniu17wq8sk0o08g08k40o8ko80s', 'hCKqQCD5inuzETs94guCdOxeFYIQxX4hAXIe5rPEcQLdQSJLg+alOoVzJlLtrDrHecrbBJmOj+SSXoFUmOC3rw==', '2014-11-11 19:19:45', 0, 0, NULL, NULL, NULL, 'a:1:{i:0;s:16:"ROLE_SUPER_ADMIN";}', 0, NULL, '2014-07-25 11:04:43', '2014-11-11 19:19:45', '1988-01-24 00:00:00', 'Hector Alvarado', 'Guayaquil', NULL, 'wingardium leviosa', 'm', NULL, NULL, NULL, NULL, NULL, 'null', NULL, NULL, 'null', NULL, NULL, 'null', NULL, NULL),
 (2, 'prueba', 'prueba', 'prueba@gamilc.om', 'prueba@gamilc.om', 1, 'lxn513dgr7kw4s0wg844k80c88c04k0', 'VDq5y81xtNLpAaucFo8AwlWs6lko6pM0Nc2QrJREanfGnpZKa03DoN5wiDDX6gUxe5NanWxQwFRY2xy5SMCgzA==', NULL, 0, 0, NULL, NULL, NULL, 'a:0:{}', 0, NULL, '2014-07-26 07:44:17', '2014-07-26 08:38:56', NULL, NULL, NULL, NULL, NULL, 'u', NULL, NULL, NULL, NULL, NULL, 'null', NULL, NULL, 'null', NULL, NULL, 'null', NULL, NULL),
-(3, '1005973391', '1005973391', '1005973391', '1005973391', 1, 'tgnmnsqjoc0swwg8ccgcokwwg4gwwg4', '1005973391', '2014-09-04 23:12:05', 0, 0, NULL, NULL, NULL, 'a:0:{}', 0, NULL, '2014-07-26 20:47:47', '2014-09-04 23:12:05', '1988-01-24 00:00:00', 'Hector Alvarado Basantes', 'Guayaquil', NULL, 'me gusta programar mucho', 'm', NULL, NULL, NULL, '1005973391', NULL, 'null', NULL, NULL, 'null', NULL, NULL, 'null', 'CAADxU8g2tUIBAFEgbp6hHZCd057PZBe1F9Lh8esUTANVlO8PLrb2Jdki0EzXw2ZBrlZAICyyNrbASZCa7kvFaXwLdlYPbfrZAcS3CmMJ6KJPfZBSwTHKVUxMmejuy3CqTYPKqZBIMGWOpH4sdKTmKkwIsJSGmHAZBKI5k7FQFjf7Dd4cHaZBeKO1vQVbZCYUnjCgVIN2JrK62fgi9cDyjjPzWJe', NULL);
+(3, '1005973391', '1005973391', '1005973391', '1005973391', 1, 'tgnmnsqjoc0swwg8ccgcokwwg4gwwg4', '1005973391', '2015-02-06 21:38:26', 0, 0, NULL, NULL, NULL, 'a:0:{}', 0, NULL, '2014-07-26 20:47:47', '2015-02-06 21:38:26', '1988-01-24 00:00:00', 'Hector Alvarado Basantes', 'Guayaquil', NULL, 'me gusta programar mucho', 'm', NULL, NULL, NULL, '1005973391', NULL, 'null', NULL, NULL, 'null', NULL, NULL, 'null', 'CAADxU8g2tUIBAKKf5WpUaZAbhSG26Xmr4zI4XJZBV2eJjR4NYA08vfkZC6k2I0EFj1ivPWTaUpEwKxENaT5IIFVgrBtjKYQERGsIyVSrTWHCiwlMx0ZBuJzbB8j4eIIAnNwIW6HZBZCEQ9GqE1do1CxX15XlOLzddXFL8XWPmFH9cnNOgWqtCZCkaxPokuQZBWFMKr4z8TDZB0bWIAZCJxr0kx', NULL),
+(6, 'gabriel', 'gabriel', 'gigc85@gmail.com', 'gigc85@gmail.com', 1, 'kki6kkwulmo084w0swc8008o8080og0', 'KkboHRcvr/Ijg83814Iua7xhWx0nVEhpNyo998GG+F1GZKxvGdT3HJDNxqjtz/OJP3W6z7BHzadBDhJwy3Ng8w==', '2014-09-12 00:40:16', 0, 0, NULL, NULL, NULL, 'a:0:{}', 0, NULL, '2014-09-12 00:38:58', '2014-09-12 00:40:16', NULL, NULL, NULL, NULL, NULL, 'u', NULL, NULL, NULL, NULL, NULL, 'null', NULL, NULL, 'null', NULL, NULL, 'null', NULL, NULL),
+(7, 'hectoritoh', 'hectoritoh', 'halvarado@celmedia.com', 'halvarado@celmedia.com', 1, 'odfqmwa017484ccc84g4s88ss4k8s4c', 'i+gqyyfv8St9YOPq5paCtuKtzYa6uLfX7y2z7JRGvxmt6Qt5lcG2QLNIHv85ixJ16vvC1FLLGJABdWPZ1EMVNg==', NULL, 0, 0, NULL, NULL, NULL, 'a:0:{}', 0, NULL, '2014-09-20 00:00:09', '2014-09-20 00:00:09', NULL, NULL, NULL, NULL, NULL, 'u', NULL, NULL, NULL, NULL, NULL, 'null', NULL, NULL, 'null', NULL, NULL, 'null', NULL, NULL),
+(8, 'demo', 'demo', 'demo@demo.com', 'demo@demo.com', 1, '6s6b90k4ozggcs8ogocc80k0wckg4co', '4cYVmYcaysOfK6uXwFY5jLKDHsgodqu0NLgTEhfHFGPfh5z7yBqQh7Oo33fHaPTfHzHxYwsYxpZa3Y/07Cd69w==', NULL, 0, 0, NULL, NULL, NULL, 'a:0:{}', 0, NULL, '2014-09-20 01:23:47', '2014-09-20 01:23:47', NULL, NULL, NULL, NULL, NULL, 'u', NULL, NULL, NULL, NULL, NULL, 'null', NULL, NULL, 'null', NULL, NULL, 'null', NULL, NULL),
+(10, 'app', 'app', 'app@demo.com', 'app@demo.com', 1, 'ibxyqfbe3bscgwkw008gko8wso084ck', 'Mr/RoN8PuDZCHRjNv96ApTwpYu9Mh4Nx4CMaiwTVimkvTT2YpBV14KoK4uevihTZB5ty8N+8OKWr5EWn3IkHdA==', NULL, 0, 0, NULL, NULL, NULL, 'a:0:{}', 0, NULL, '2014-09-20 01:24:57', '2014-09-20 01:24:57', NULL, NULL, NULL, NULL, NULL, 'u', NULL, NULL, NULL, NULL, NULL, 'null', NULL, NULL, 'null', NULL, NULL, 'null', NULL, NULL),
+(14, 'admin2', 'admin2', 'halvarado2@celmedia.com', 'halvarado2@celmedia.com', 1, 'sf8ze3h7e4gwkccooos044cgw0cggso', 'ixrUgJWmAQa+bgej8o0BJHm/92Eaaq1/uc+Ter9Ict2I5H+1nEQZ2bNea2tOUx7nwAmpK8SNovccWFT7TvYvUg==', NULL, 0, 0, NULL, NULL, NULL, 'a:0:{}', 0, NULL, '2014-09-24 21:15:56', '2014-09-24 21:36:13', '1894-01-01 00:00:00', 'Hector Alvarado', 'Guayaquil', NULL, 'los santos', 'm', NULL, NULL, NULL, NULL, NULL, 'null', NULL, NULL, 'null', NULL, NULL, 'null', NULL, NULL),
+(15, 'prueba1', 'prueba1', 'correo@admin.com', 'correo@admin.com', 1, 'hpg2d36kvhssg0c0wcskk0kwgc0sgsc', '2fNtqvR8IWXarzR3B7uSM0TMlazc5fjGw7YuNQMQYB3HrAq/xbuHBMMPAT0yt5yDGM+CztDJc/Hf7m+q8wRlKA==', NULL, 0, 0, NULL, NULL, NULL, 'a:0:{}', 0, NULL, '2014-09-26 01:33:06', '2014-09-26 01:33:06', NULL, NULL, NULL, NULL, NULL, 'u', NULL, NULL, NULL, NULL, NULL, 'null', NULL, NULL, 'null', NULL, NULL, 'null', NULL, NULL),
+(16, 'developer', 'developer', 'developer@gmail.com', 'developer@gmail.com', 1, 'bpqrw74h0nwwckow8www040cckw8cgc', '3oPeihlJrrq3BJ9CIqtaCStG1MgjC4dLIp4TYxHtYECsQ87F2CHiUZWKK+7c5W6nOikG+1ZYohB/fxUvGuEz6A==', '2014-10-29 22:28:10', 0, 0, NULL, NULL, NULL, 'a:0:{}', 0, NULL, '2014-10-27 17:26:37', '2014-10-29 22:28:10', NULL, NULL, NULL, NULL, NULL, 'u', NULL, NULL, NULL, NULL, NULL, 'null', NULL, NULL, 'null', NULL, NULL, 'null', NULL, NULL),
+(17, 'uprueba', 'uprueba', 'uprueba@admin.com', 'uprueba@admin.com', 1, '1jl3z2nzekf4kcckkc8004cgc4s4gw4', 'fpahqIxxFe6BYNJ7Z3AjL0rw3Ad8mN7YAJNB7arLIsl8TKMo/l5m03+zypqES0+7fftZPNvaijDDy9OFQpQIHA==', NULL, 0, 0, NULL, NULL, NULL, 'a:0:{}', 0, NULL, '2014-11-21 22:52:03', '2014-11-21 22:52:03', NULL, NULL, NULL, NULL, NULL, 'u', NULL, NULL, NULL, NULL, NULL, 'null', NULL, NULL, 'null', NULL, NULL, 'null', NULL, NULL),
+(18, 'halvarado123321', 'halvarado123321', 'halvarado123@celmedia.com', 'halvarado123@celmedia.com', 1, 'a25k7a956348wk0sss8s4o8wsko40ok', 'o9hlfDV9y6Fq/aiua9PF4gwilwb7J1PKY13Rh/J4WHuYTL/W83WwD/dWck8A1YS6NnByMvZRxTPzuHQXqingIg==', '2015-02-06 23:03:46', 0, 0, NULL, NULL, NULL, 'a:0:{}', 0, NULL, '2015-02-06 22:47:58', '2015-02-06 23:03:46', '1895-01-24 00:00:00', 'hector', 'gye', NULL, 'this', 'm', NULL, NULL, NULL, NULL, NULL, 'null', NULL, NULL, 'null', NULL, NULL, 'null', NULL, NULL),
+(19, 'usuario_desarrollo', 'usuario_desarrollo', 'usuario_desarrollo@gmail.com', 'usuario_desarrollo@gmail.com', 1, 'ixjpo1n3prswgssc00os00g4o00cgg0', '+CD3WL5ctmoXYuXYhT8SpWlyBOKI17LlVnUxl0QvfDNfLf1xV2jbiWdQKB/MJJbiQlrPtMsU3FBpsagoTy4z6g==', NULL, 0, 0, NULL, NULL, NULL, 'a:0:{}', 0, NULL, '2015-02-13 22:17:59', '2015-02-13 22:17:59', NULL, NULL, NULL, NULL, NULL, 'u', NULL, NULL, NULL, NULL, NULL, 'null', NULL, NULL, 'null', NULL, NULL, 'null', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -1161,7 +625,7 @@ CREATE TABLE IF NOT EXISTS `media__media` (
   `updated_at` datetime NOT NULL,
   `created_at` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=30 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=35 ;
 
 --
 -- Volcado de datos para la tabla `media__media`
@@ -1195,7 +659,87 @@ INSERT INTO `media__media` (`id`, `name`, `description`, `enabled`, `provider_na
 (26, '10625042_10152601049331840_303438841770852862_n.jpg', NULL, 0, 'sonata.media.provider.image', 1, 'ae50965c44ca30a75ee18f25bc15aa68984fdbc0.jpeg', '{"filename":"10625042_10152601049331840_303438841770852862_n.jpg"}', 600, 400, NULL, 'image/jpeg', 17324, NULL, NULL, 'tienda_cabecera', NULL, NULL, NULL, '2014-09-02 19:42:05', '2014-09-02 19:42:05'),
 (27, 'little-sunrise.jpg', NULL, 0, 'sonata.media.provider.image', 1, 'c5e17e9a2e9317b947af30aa9c8683f705af68ca.jpeg', '{"filename":"little-sunrise.jpg"}', 2048, 2048, NULL, 'image/jpeg', 2512357, NULL, NULL, 'publicidad', NULL, NULL, NULL, '2014-09-03 08:28:06', '2014-09-03 08:28:06'),
 (28, 'tumblr_n8bwt2Oe1i1qmgqcho1_500.gif', NULL, 0, 'sonata.media.provider.image', 1, '21146c5a66c6e09476e94c0e821fe127c9a9173f.gif', '{"filename":"tumblr_n8bwt2Oe1i1qmgqcho1_500.gif"}', 500, 278, NULL, 'image/gif', 501253, NULL, NULL, 'publicidad', NULL, NULL, NULL, '2014-09-03 08:43:11', '2014-09-03 08:43:11'),
-(29, '12508968534_02d715abf9_k.jpg', NULL, 0, 'sonata.media.provider.image', 1, '446cdeb0439cfd8c1826d6337cedd2083416b89b.jpeg', '{"filename":"12508968534_02d715abf9_k.jpg"}', 2048, 1365, NULL, 'image/jpeg', 1144898, NULL, NULL, 'tienda_cabecera', NULL, NULL, NULL, '2014-09-04 23:13:15', '2014-09-04 23:13:15');
+(29, '12508968534_02d715abf9_k.jpg', NULL, 0, 'sonata.media.provider.image', 1, '446cdeb0439cfd8c1826d6337cedd2083416b89b.jpeg', '{"filename":"12508968534_02d715abf9_k.jpg"}', 2048, 1365, NULL, 'image/jpeg', 1144898, NULL, NULL, 'tienda_cabecera', NULL, NULL, NULL, '2014-09-04 23:13:15', '2014-09-04 23:13:15'),
+(31, '494509-20130305095123.jpg', NULL, 0, 'sonata.media.provider.image', 1, '54a3e52718c8531e9a582f1ed7baaa4145f5c0d3.png', '{"filename":"494509-20130305095123.jpg"}', 1280, 800, NULL, 'image/png', 990248, NULL, NULL, 'tienda_cabecera', NULL, NULL, NULL, '2014-09-24 21:39:18', '2014-09-24 21:39:18'),
+(32, '027333c32caac0f4d8f40cf744ba1ad7092946ed.jpg', NULL, 0, 'sonata.media.provider.image', 1, '198ef33abbb2fb549fd1c8a4986600219cf39c39.jpeg', '{"filename":"82c33e6be7cc9ce0d3a12544ccdbfa595113762e.jpg"}', 1500, 1104, NULL, 'image/jpeg', 376030, NULL, NULL, 'tienda_cabecera', NULL, NULL, NULL, '2014-10-29 15:39:46', '2014-10-29 15:38:11'),
+(33, '82c33e6be7cc9ce0d3a12544ccdbfa595113762e.jpg', NULL, 0, 'sonata.media.provider.image', 1, 'a4c71043eba2a020efc52fd131a02f2fbd912bee.jpeg', '{"filename":"687b7db6b5cf9bad5125e92e22597c21ef129f7a.jpg"}', 1100, 600, NULL, 'image/jpeg', 224424, NULL, NULL, 'tienda_cabecera', NULL, NULL, NULL, '2014-10-29 16:05:19', '2014-10-29 15:39:45'),
+(34, '687b7db6b5cf9bad5125e92e22597c21ef129f7a.jpg', NULL, 0, 'sonata.media.provider.image', 1, '944b7e6dcc837aa913d62870d52d8546b2a89674.jpeg', '{"filename":"687b7db6b5cf9bad5125e92e22597c21ef129f7a.jpg"}', 1100, 600, NULL, 'image/jpeg', 224424, NULL, NULL, 'tienda_cabecera', NULL, NULL, NULL, '2014-10-29 16:05:19', '2014-10-29 16:05:19');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `mensaje`
+--
+
+CREATE TABLE IF NOT EXISTS `mensaje` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `contenido` longtext COLLATE utf8_unicode_ci NOT NULL,
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime NOT NULL,
+  `tipo_notificacion` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
+  `titulo` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
+  `usuario_recibe` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
+  `usuario_envia` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
+  `estado` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=52 ;
+
+--
+-- Volcado de datos para la tabla `mensaje`
+--
+
+INSERT INTO `mensaje` (`id`, `contenido`, `created_at`, `updated_at`, `tipo_notificacion`, `titulo`, `usuario_recibe`, `usuario_envia`, `estado`) VALUES
+(1, 'hola', '2014-10-29 21:29:37', '2014-10-29 21:29:37', '1', 'asunto', 'admin', 'developer', 0),
+(2, 'hola', '2014-10-29 21:31:33', '2014-10-29 21:31:33', '1', 'asunto', 'developer', 'admin', 0),
+(3, 'undefined', '2014-10-29 22:17:40', '2014-10-29 22:17:40', '1', 'asdad', 'developer', '1005973391', 0),
+(4, 'undefined', '2014-10-29 22:18:38', '2014-10-29 22:18:38', '1', 'asunto', 'developer', '1005973391', 0),
+(5, 'undefined', '2014-10-29 22:21:04', '2014-10-29 22:21:04', '1', 'asunto', 'developer', '1005973391', 0),
+(6, 'undefined', '2014-10-29 23:15:47', '2014-10-29 23:15:47', '1', 'quiero comrpar', '1005973391', 'developer', 0),
+(7, 'undefined', '2014-11-14 17:32:08', '2014-11-14 17:32:08', '1', 'titulo ', '1005973391', '1005973391', 0),
+(8, 'undefined', '2014-11-14 19:06:15', '2014-11-14 19:06:15', '1', 'Compra de (3) otro producto nuevo', '1005973391', '1005973391', 0),
+(9, 'undefined', '2014-11-14 19:08:00', '2014-11-14 19:08:00', '1', 'Compra de (3) otro producto nuevo', '1005973391', '1005973391', 0),
+(10, 'undefined', '2014-11-14 19:14:24', '2014-11-14 19:14:24', '1', 'Compra de (3) otro producto nuevo', '1005973391', '1005973391', 0),
+(11, 'undefined', '2014-11-14 19:14:52', '2014-11-14 19:14:52', '1', 'Compra de (3) otro producto nuevo', '1005973391', '1005973391', 0),
+(12, 'undefined', '2014-11-14 19:17:04', '2014-11-14 19:17:04', '1', 'Compra de (1) otro producto nuevo', '1005973391', '1005973391', 0),
+(13, 'undefined', '2014-11-14 19:17:58', '2014-11-14 19:17:58', '1', 'Compra de (1) Nombre de producto nuevo', '1005973391', '1005973391', 0),
+(14, 'undefined', '2014-11-14 19:19:58', '2014-11-14 19:19:58', '1', 'Compra de (1) otro producto nuevo', '1005973391', '1005973391', 0),
+(15, 'undefined', '2014-11-14 19:21:29', '2014-11-14 19:21:29', '1', 'Compra de (2) otro prodcuto', '1005973391', '1005973391', 0),
+(16, 'undefined', '2014-11-14 19:23:13', '2014-11-14 19:23:13', '1', 'Compra de (2) otro prodcuto', '1005973391', '1005973391', 0),
+(17, 'undefined', '2014-11-14 19:24:22', '2014-11-14 19:24:22', '1', 'Compra de (2) otro prodcuto', '1005973391', '1005973391', 0),
+(18, 'undefined', '2014-11-14 19:27:26', '2014-11-14 19:27:26', '1', 'Compra de (2) otro prodcuto', '1005973391', '1005973391', 0),
+(19, 'undefined', '2014-11-14 19:29:41', '2014-11-14 19:29:41', '1', 'Compra de (2) otro prodcuto', '1005973391', '1005973391', 0),
+(20, 'undefined', '2014-11-14 19:30:52', '2014-11-14 19:30:52', '1', 'Compra de (2) otro prodcuto', '1005973391', '1005973391', 0),
+(21, 'undefined', '2014-11-14 21:06:44', '2014-11-14 21:06:44', '1', 'Compra de (2) otro prodcuto', '1005973391', '1005973391', 0),
+(22, 'undefined', '2014-11-14 21:43:40', '2014-11-14 21:43:40', '1', 'Compra de (2) otro prodcuto', '1005973391', '1005973391', 0),
+(23, 'undefined', '2014-11-14 21:44:05', '2014-11-14 21:44:05', '1', 'Compra de (2) otro prodcuto', '1005973391', '1005973391', 0),
+(24, 'undefined', '2014-11-14 21:44:27', '2014-11-14 21:44:27', '1', 'Compra de (2) otro prodcuto', '1005973391', '1005973391', 0),
+(25, 'undefined', '2014-11-14 21:45:02', '2014-11-14 21:45:02', '1', 'Compra de (2) otro prodcuto', '1005973391', '1005973391', 0),
+(26, 'undefined', '2014-11-14 21:45:48', '2014-11-14 21:45:48', '1', 'Compra de (2) otro prodcuto', '1005973391', '1005973391', 0),
+(27, 'undefined', '2014-11-14 21:46:32', '2014-11-14 21:46:32', '1', 'Compra de (2) otro prodcuto', '1005973391', '1005973391', 0),
+(28, 'undefined', '2014-11-14 21:54:28', '2014-11-14 21:54:28', '1', 'Compra de (1) descriopcin de otro proucto', '1005973391', '1005973391', 0),
+(29, 'undefined', '2014-11-15 00:25:28', '2014-11-15 00:25:28', '1', 'Compra de (1) descriopcin de otro proucto', '1005973391', '1005973391', 0),
+(30, 'undefined', '2014-11-15 00:25:30', '2014-11-15 00:25:30', '1', 'Compra de (1) descriopcin de otro proucto', '1005973391', '1005973391', 0),
+(31, 'undefined', '2014-11-19 17:36:15', '2014-11-19 17:36:15', '1', 'Compra de (1) otro prodcuto', '1005973391', '1005973391', 0),
+(32, 'undefined', '2014-11-19 17:45:55', '2014-11-19 17:45:55', '1', 'Compra de (1) otro prodcuto', '1005973391', '1005973391', 0),
+(33, 'undefined', '2014-11-19 17:50:02', '2014-11-19 17:50:02', '1', 'Compra de (1) otro prodcuto', '1005973391', '1005973391', 0),
+(34, 'undefined', '2014-11-19 17:52:10', '2014-11-19 17:52:10', '1', 'Compra de (1) descriopcin de otro proucto', '1005973391', '1005973391', 0),
+(35, 'undefined', '2014-11-19 17:53:07', '2014-11-19 17:53:07', '1', 'Compra de (1) descriopcin de otro proucto', '1005973391', '1005973391', 0),
+(36, 'undefined', '2014-11-19 17:54:00', '2014-11-19 17:54:00', '1', 'Compra de (1) descriopcin de otro proucto', '1005973391', '1005973391', 0),
+(37, 'undefined', '2014-11-19 17:54:27', '2014-11-19 17:54:27', '1', 'Compra de (1) descriopcin de otro proucto', '1005973391', '1005973391', 0),
+(38, 'undefined', '2014-11-19 17:55:24', '2014-11-19 17:55:24', '1', 'Compra de (1) descriopcin de otro proucto', '1005973391', '1005973391', 0),
+(39, 'undefined', '2014-11-19 17:55:53', '2014-11-19 17:55:53', '1', 'Compra de (1) descriopcin de otro proucto', '1005973391', '1005973391', 0),
+(40, 'undefined', '2014-11-19 17:56:13', '2014-11-19 17:56:13', '1', 'Compra de (1) descriopcin de otro proucto', '1005973391', '1005973391', 0),
+(41, 'undefined', '2014-11-19 17:56:41', '2014-11-19 17:56:41', '1', 'Compra de (1) descriopcin de otro proucto', '1005973391', '1005973391', 0),
+(42, 'undefined', '2014-11-19 17:57:07', '2014-11-19 17:57:07', '1', 'Compra de (1) descriopcin de otro proucto', '1005973391', '1005973391', 0),
+(43, 'undefined', '2014-11-19 17:57:23', '2014-11-19 17:57:23', '1', 'Compra de (1) descriopcin de otro proucto', '1005973391', '1005973391', 0),
+(44, 'undefined', '2014-11-19 17:58:05', '2014-11-19 17:58:05', '1', 'Compra de (1) descriopcin de otro proucto', '1005973391', '1005973391', 0),
+(45, 'undefined', '2014-11-20 17:59:30', '2014-11-20 17:59:30', '1', 'Compra de (1) Nombre de producto nuevo', '1005973391', '1005973391', 0),
+(46, 'undefined', '2014-11-20 17:59:41', '2014-11-20 17:59:41', '1', 'Compra de (1) Nombre de producto nuevo', '1005973391', '1005973391', 0),
+(47, 'undefined', '2014-11-20 18:01:52', '2014-11-20 18:01:52', '1', 'Compra de (1) Nombre de producto nuevo', '1005973391', '1005973391', 0),
+(48, 'undefined', '2014-11-20 18:06:31', '2014-11-20 18:06:31', '1', 'Compra de (1) Nombre de producto nuevo', '1005973391', '1005973391', 0),
+(49, 'undefined', '2014-11-20 18:06:53', '2014-11-20 18:06:53', '1', 'Compra de (1) Nombre de producto nuevo', '1005973391', '1005973391', 0),
+(50, 'undefined', '2014-11-20 18:07:28', '2014-11-20 18:07:28', '1', 'Compra de (1) Nombre de producto nuevo', '1005973391', '1005973391', 0),
+(51, 'undefined', '2014-11-20 19:06:22', '2014-11-20 19:06:22', '1', 'Compra de (1) descriopcin de otro proucto', '1005973391', '1005973391', 0);
 
 -- --------------------------------------------------------
 
@@ -1397,30 +941,41 @@ CREATE TABLE IF NOT EXISTS `producto` (
   `precio` double NOT NULL,
   `visitas` int(11) DEFAULT NULL,
   `favoritos` int(11) DEFAULT NULL,
+  `slug` varchar(128) COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`id`),
   KEY `IDX_A7BB06151129C265` (`ocasion_id`),
   KEY `IDX_A7BB0615B564FBC1` (`destinatario_id`),
   KEY `IDX_A7BB061588D3B71A` (`subcategoria_id`),
   KEY `IDX_A7BB061519BA6D46` (`tienda_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=38 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=48 ;
 
 --
 -- Volcado de datos para la tabla `producto`
 --
 
-INSERT INTO `producto` (`id`, `ocasion_id`, `destinatario_id`, `subcategoria_id`, `tienda_id`, `nombre`, `descripcion`, `borrado`, `created_at`, `updated_at`, `cantidad`, `precio`, `visitas`, `favoritos`) VALUES
-(26, 1, 1, 1, 3, 'Nombre de producto nuevo', 'este produncto es bueno para todo tipo de ocasiones', 0, '2014-07-31 02:37:50', '2014-07-31 02:37:50', 12, 123, NULL, NULL),
-(27, 1, 1, 2, 3, 'otro producto nuevo', 'para toda ociaciones es este rprocuto', 0, '2014-07-31 02:38:33', '2014-07-31 02:38:33', 12, 12, NULL, NULL),
-(28, 1, 1, 1, 3, 'otro prodcuto', 'esta es la descripcion neuva de tu producto', 0, '2014-08-01 02:36:37', '2014-08-01 02:36:37', 2, 12, NULL, NULL),
-(29, 1, 1, 1, 3, 'descriopcin de otro proucto', '231231asdasndaoidn asdoasndoasnda', 0, '2014-08-01 02:37:03', '2014-08-01 02:37:03', 1, 223, NULL, NULL),
-(30, 1, 1, 1, 3, 'otro prodcuto', 'esta es la descripcion neuva de tu producto', 0, '2014-08-01 02:37:35', '2014-08-01 02:37:35', 2, 12, NULL, NULL),
-(31, 1, 1, 1, 3, 'producto nuevo', 'descripcion general', 0, '2014-08-01 02:37:59', '2014-08-01 02:37:59', 12, 12, NULL, NULL),
-(32, 1, 1, 4, 4, 'prueba producti', 'descrupcion de mi producto que se mostrara', 0, '2014-09-01 05:02:33', '2014-09-01 05:02:33', 12, 12, NULL, NULL),
-(33, 1, 1, 1, 4, 'produ test', 'desc', 0, '2014-09-02 00:44:45', '2014-09-02 00:44:45', 1, 12, NULL, NULL),
-(34, 1, 1, 1, 4, 'producto nuevo', 'descricpion', 0, '2014-09-02 04:13:16', '2014-09-02 04:13:16', 1, 12, NULL, NULL),
-(35, 1, 1, 1, 4, 'nomrbe de producto', 'descripcion de prodcuto', 0, '2014-09-02 04:15:09', '2014-09-02 04:15:09', 12, 12, NULL, NULL),
-(36, 1, 1, 1, 4, 'nombre nuevo', 'descripcion del producto', 0, '2014-09-02 04:24:09', '2014-09-02 04:24:09', 1, 34, NULL, NULL),
-(37, 1, 1, 3, 4, 'prod', 'asdasdasd', 0, '2014-09-02 04:24:56', '2014-09-02 04:24:56', 1, 12, NULL, NULL);
+INSERT INTO `producto` (`id`, `ocasion_id`, `destinatario_id`, `subcategoria_id`, `tienda_id`, `nombre`, `descripcion`, `borrado`, `created_at`, `updated_at`, `cantidad`, `precio`, `visitas`, `favoritos`, `slug`) VALUES
+(26, 1, 1, 1, 3, 'Nombre de producto nuevo', 'este produncto es bueno para todo tipo de ocasiones', 0, '2014-07-31 02:37:50', '2014-11-10 17:43:00', 12, 123, NULL, NULL, '26_nombre_de_producto_nuevo'),
+(27, 1, 1, 2, 3, 'otro producto nuevo', 'para toda ociaciones es este rprocuto', 0, '2014-07-31 02:38:33', '2014-11-10 17:43:00', 12, 12, NULL, NULL, '27_otro_producto_nuevo'),
+(28, 1, 1, 1, 3, 'otro prodcuto', 'esta es la descripcion neuva de tu producto', 0, '2014-08-01 02:36:37', '2014-11-10 17:43:00', 2, 12, NULL, NULL, '28_otro_prodcuto'),
+(29, 1, 1, 1, 3, 'descriopcin de otro proucto', '231231asdasndaoidn asdoasndoasnda', 0, '2014-08-01 02:37:03', '2014-11-10 17:43:00', 1, 223, NULL, NULL, '29_descriopcin_de_otro_proucto'),
+(30, 1, 1, 1, 3, 'otro prodcuto', 'esta es la descripcion neuva de tu producto', 0, '2014-08-01 02:37:35', '2014-11-10 17:43:00', 2, 12, NULL, NULL, '30_otro_prodcuto'),
+(31, 1, 1, 1, 3, 'producto nuevo', 'descripcion general', 0, '2014-08-01 02:37:59', '2014-11-10 17:43:00', 12, 12, NULL, NULL, '31_producto_nuevo'),
+(32, 1, 1, 4, 4, 'prueba producti', 'descrupcion de mi producto que se mostrara', 0, '2014-09-01 05:02:33', '2014-11-10 17:43:00', 12, 12, NULL, NULL, '32_prueba_producti'),
+(33, 1, 1, 1, 4, 'produ test', 'desc', 0, '2014-09-02 00:44:45', '2014-11-10 17:43:00', 1, 12, NULL, NULL, '33_produ_test'),
+(34, 1, 1, 1, 4, 'producto nuevo', 'descricpion', 0, '2014-09-02 04:13:16', '2014-11-10 17:43:00', 1, 12, NULL, NULL, '34_producto_nuevo'),
+(35, 1, 1, 1, 4, 'nomrbe de producto', 'descripcion de prodcuto', 0, '2014-09-02 04:15:09', '2014-11-10 17:43:00', 12, 12, NULL, NULL, '35_nomrbe_de_producto'),
+(36, 1, 1, 1, 4, 'nombre nuevo', 'descripcion del producto', 0, '2014-09-02 04:24:09', '2014-11-10 17:43:00', 1, 34, NULL, NULL, '36_nombre_nuevo'),
+(37, 1, 1, 3, 4, 'prod', 'asdasdasd', 0, '2014-09-02 04:24:56', '2014-11-10 17:43:00', 1, 12, NULL, NULL, '37_prod'),
+(38, 1, 1, 1, 5, 'ropa de casa', 'esta es la descripcion neuva de tu producto', 0, '2014-09-20 02:52:42', '2014-11-10 17:43:00', 12, 12, NULL, NULL, '38_ropa_de_casa'),
+(39, 1, 1, 1, 6, 'producto y', 'descrito aqui', 0, '2014-09-24 21:37:54', '2014-11-10 17:43:00', 12, 12, NULL, NULL, '39_producto_y'),
+(40, 1, 1, 1, 7, 'mi producto', 'descripcion corta de mi producto', 0, '2014-10-27 20:33:28', '2014-11-10 17:43:00', 12, 122, NULL, NULL, '40_mi_producto'),
+(41, 2, 2, 3, 7, 'nombre12', 'asdasd', 0, '2014-10-27 22:53:07', '2014-11-10 17:43:00', 2, 223, NULL, NULL, '41_nombre12'),
+(42, 1, 1, 2, 7, 'producto', 'descripcion', 0, '2014-10-28 22:48:17', '2014-11-10 17:43:00', 12, 12, NULL, NULL, '42_producto'),
+(43, 1, 1, 1, 7, 'nombre', 'descripcion', 0, '2014-10-28 22:49:03', '2014-11-10 17:43:00', 12, 12, NULL, NULL, '43_nombre'),
+(44, 1, 1, 4, 9, 'nombre prueba', 'desripcion', 0, '2015-02-06 22:53:20', '2015-02-06 22:53:20', 12, 12, NULL, NULL, 'nombre_prueba'),
+(45, 1, 1, 1, 9, 'asdsad', 'asdasdada', 0, '2015-02-06 22:55:09', '2015-02-06 22:55:09', 21, 12, NULL, NULL, 'asdsad'),
+(46, 1, 1, 4, 9, 'asdasda', 'dqwdqwd', 0, '2015-02-06 23:08:55', '2015-02-06 23:08:55', 12, 12, NULL, NULL, 'asdasda'),
+(47, 1, 1, 1, 9, 'asdsad', 'asdasda', 0, '2015-02-06 23:09:33', '2015-02-06 23:09:33', 21, 21, NULL, NULL, 'asdsad_1');
 
 -- --------------------------------------------------------
 
@@ -1461,7 +1016,7 @@ CREATE TABLE IF NOT EXISTS `producto_imagen` (
   `updated_at` datetime NOT NULL,
   PRIMARY KEY (`id`),
   KEY `IDX_2E3E7DFD7645698E` (`producto_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=53 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=68 ;
 
 --
 -- Volcado de datos para la tabla `producto_imagen`
@@ -1487,7 +1042,22 @@ INSERT INTO `producto_imagen` (`id`, `producto_id`, `url`, `borrado`, `created_a
 (49, 35, '10612785_892459274114891_3817666835810897345_n.jpg', 0, '2014-09-02 04:15:09', '2014-09-02 04:15:09'),
 (50, 36, 'Angry Birds iphone wallpapers 960x640 (12).jpg', 0, '2014-09-02 04:24:09', '2014-09-02 04:24:09'),
 (51, 36, 'Ferrari_wallpaper_1024x1024.jpg', 0, '2014-09-02 04:24:09', '2014-09-02 04:24:09'),
-(52, 37, 'forest-path-hd-widescreen-wallpapers-1136x640-jpeg-foto-wallpaper-01_60408fbe727f10b3bbac1be5bd7087f8_raw.jpg', 0, '2014-09-02 04:24:56', '2014-09-02 04:24:56');
+(52, 37, 'forest-path-hd-widescreen-wallpapers-1136x640-jpeg-foto-wallpaper-01_60408fbe727f10b3bbac1be5bd7087f8_raw.jpg', 0, '2014-09-02 04:24:56', '2014-09-02 04:24:56'),
+(53, 38, 'tumblr_naff221dFv1s2lswpo1_500.jpg', 0, '2014-09-20 02:52:42', '2014-09-20 02:52:42'),
+(54, 39, '494509-20130305095123.jpg', 0, '2014-09-24 21:37:54', '2014-09-24 21:37:54'),
+(55, 40, '157dbf7e7b187dfa17911cc7f971ef9b0c9facd8.jpg', 0, '2014-10-27 20:33:28', '2014-10-27 20:33:28'),
+(56, 40, '13929_856960304313994_5029590617103918372_n.png', 0, '2014-10-27 20:33:28', '2014-10-27 20:33:28'),
+(57, 41, '687b7db6b5cf9bad5125e92e22597c21ef129f7a.jpg', 0, '2014-10-27 22:53:07', '2014-10-27 22:53:07'),
+(58, 41, '82c33e6be7cc9ce0d3a12544ccdbfa595113762e.jpg', 0, '2014-10-27 22:53:07', '2014-10-27 22:53:07'),
+(59, 42, '1e40ad617990c661efca3ed4dfcad9a6ab0159cb.jpg', 0, '2014-10-28 22:48:17', '2014-10-28 22:48:17'),
+(60, 43, 'tumblr_n93rxaiKly1r88u00o1_500.jpg', 0, '2014-10-28 22:49:03', '2014-10-28 22:49:03'),
+(61, 44, '10603556_845146032210175_6607477486125432706_n.jpg', 0, '2015-02-06 22:53:20', '2015-02-06 22:53:20'),
+(62, 44, 'tumblr_m961zk3CMg1qfrm2u.jpg', 0, '2015-02-06 22:53:20', '2015-02-06 22:53:20'),
+(63, 45, '10675644_10152983288991840_6391907165983409359_n.jpg', 0, '2015-02-06 22:55:09', '2015-02-06 22:55:09'),
+(64, 45, '10649828_707919569281179_1427030049399254441_n.jpg', 0, '2015-02-06 22:55:09', '2015-02-06 22:55:09'),
+(65, 45, 'bart.jpg', 0, '2015-02-06 22:55:09', '2015-02-06 22:55:09'),
+(66, 46, 'godcloth_seiya2.jpg', 0, '2015-02-06 23:08:55', '2015-02-06 23:08:55'),
+(67, 47, 'large.jpg', 0, '2015-02-06 23:09:33', '2015-02-06 23:09:33');
 
 -- --------------------------------------------------------
 
@@ -1664,7 +1234,6 @@ CREATE TABLE IF NOT EXISTS `publicidad` (
 --
 
 INSERT INTO `publicidad` (`id`, `image_id`, `nombre`, `url`, `borrado`, `tipo`, `created_at`, `updated_at`, `descripcion`) VALUES
-(1, 11, 'nombre', 'www.google.com', 0, 0, '2014-09-01 22:48:52', '2014-09-01 23:40:59', NULL),
 (2, 27, 'playas everywhere', 'www.google.com', 0, 1, '2014-09-03 08:28:06', '2014-09-03 08:28:06', 'contenido del aviso que va a salir'),
 (3, 28, 'titulo de publicidad', 'www.google.com', 0, 1, '2014-09-03 08:43:11', '2014-09-03 08:43:11', 'descripcion nueva de la publicidad que se va a mostrar');
 
@@ -1721,19 +1290,27 @@ CREATE TABLE IF NOT EXISTS `tienda` (
   `informacionVendedor` longtext COLLATE utf8_unicode_ci,
   `usuario` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `verificado` int(11) DEFAULT NULL,
-  `tipo_cuenta` int(11) DEFAULT NULL,
-  `imagenCabecera_id` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `IDX_C0C6E53ECB23602E` (`imagenCabecera_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=5 ;
+  `tipoCuenta` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `fechaSuscripcion` datetime NOT NULL,
+  `fechaActSuscripcion` datetime NOT NULL,
+  `slug` varchar(128) COLLATE utf8_unicode_ci NOT NULL,
+  `imagenCabecera` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=11 ;
 
 --
 -- Volcado de datos para la tabla `tienda`
 --
 
-INSERT INTO `tienda` (`id`, `nombre`, `descripcion`, `borrado`, `created_at`, `updated_at`, `estado`, `titulo`, `mensaje`, `anuncio`, `mensajeBienvenida`, `politicaPagos`, `politicaReembolso`, `informacionAdicional`, `informacionVendedor`, `usuario`, `verificado`, `tipo_cuenta`, `imagenCabecera_id`) VALUES
-(3, 'Tienda H', '', 0, '2014-07-31 00:54:53', '2014-09-04 23:13:15', 'creacion', 'Nombre de mi tienda', 'mensaje para el publcio', 'anuncion de mi tiend a', NULL, NULL, NULL, NULL, NULL, '1005973391', NULL, NULL, 29),
-(4, 'mi tienda', '', 0, '2014-09-01 02:00:09', '2014-09-04 22:03:37', 'creacion', 'titulo de tienda', 'mensaje para los clientes', 'este es el anuncio que se va a mostrar', 'asdada', 'asdas', 'dasdas', 'dasdas', 'asdadasd', 'administrador', 0, 1, 26);
+INSERT INTO `tienda` (`id`, `nombre`, `descripcion`, `borrado`, `created_at`, `updated_at`, `estado`, `titulo`, `mensaje`, `anuncio`, `mensajeBienvenida`, `politicaPagos`, `politicaReembolso`, `informacionAdicional`, `informacionVendedor`, `usuario`, `verificado`, `tipoCuenta`, `fechaSuscripcion`, `fechaActSuscripcion`, `slug`, `imagenCabecera`) VALUES
+(3, 'Tienda H', '', 0, '2014-07-31 00:54:53', '2014-11-15 00:24:49', 'creacion', 'Nombre de mi tienda', 'mensaje para el publcio', 'anuncion de mi tiend a', 'Mensaje de bienvenida', 'Politica de pago', 'Politica de reembolso', 'Informacion adocional', 'Informacion de vendedor', '1005973391', NULL, 'bronce', '2014-10-28 22:49:03', '2014-10-28 22:49:03', '3_tienda_h', '54668f417540c.png'),
+(4, 'mi tienda', '', 0, '2014-09-01 02:00:09', '2014-11-13 23:38:27', 'creacion', 'titulo de tienda', 'mensaje para los clientes', 'este es el anuncio que se va a mostrar', 'asdada', 'asdas', 'dasdas', 'dasdas', 'asdadasd', 'administrador', 0, 'bronce', '1899-11-30 00:00:00', '2014-10-28 22:49:03', '4_mi_tienda', '546532e3a1158.png'),
+(5, 'mi tienda desarrollo', '', 0, '2014-09-20 02:11:05', '2014-11-10 17:45:42', 'creacion', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'app', 0, 'bronce', '2014-10-28 22:49:03', '2014-10-28 22:49:03', '5_mi_tienda_desarrollo', ''),
+(6, 'mi tienda another', '', 0, '2014-09-24 21:36:39', '2014-11-10 17:45:42', 'creacion', 'mi tienda nueva', 'mensaje de mi tienda', 'anuncio para mi tienda', NULL, NULL, NULL, NULL, NULL, 'admin2', 0, 'bronce', '2014-10-28 22:49:03', '2014-10-28 22:49:03', '6_mi_tienda_another', ''),
+(7, '', NULL, NULL, '2014-10-27 20:16:34', '2014-11-10 17:45:42', 'i', 'Titulo de mi tienda', 'mensaje', 'anunciando', 'mensaje de bienvenida', 'politicas de pago', 'politicas de reembolso', 'mi infromacion adicional', 'informacion del vendedor', 'developer', 0, 'bronce', '2014-10-28 22:49:03', '2014-10-28 22:49:03', '7', ''),
+(8, '', NULL, NULL, '2014-11-21 22:53:47', '2014-11-21 22:54:02', 'inactivo', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'uprueba', NULL, 'bronce', '2014-11-21 22:53:47', '2014-11-21 22:53:47', '_1', '546fb47aab71c.png'),
+(9, '', NULL, NULL, '2015-02-06 22:48:17', '2015-02-06 22:51:29', 'inactivo', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'halvarado123321', NULL, 'bronce', '2015-02-06 22:48:17', '2015-02-06 22:48:17', '_2', '54d53761c37d0.png'),
+(10, '', NULL, NULL, '2015-02-13 22:18:17', '2015-02-13 22:46:56', 'inactivo', NULL, NULL, NULL, 'asdasd', 'asdasd', 'asdas', 'asdas', 'dasdads', 'usuario_desarrollo', NULL, 'bronce', '2015-02-13 22:18:17', '2015-02-13 22:18:17', '_3', '54de6a38c6e68.png');
 
 -- --------------------------------------------------------
 
@@ -1754,7 +1331,7 @@ CREATE TABLE IF NOT EXISTS `usuario_envio` (
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=11 ;
 
 --
 -- Volcado de datos para la tabla `usuario_envio`
@@ -1763,7 +1340,14 @@ CREATE TABLE IF NOT EXISTS `usuario_envio` (
 INSERT INTO `usuario_envio` (`id`, `nombre`, `calle`, `departamento`, `ciudad`, `estado`, `region`, `codigoPostal`, `usuario`, `created_at`, `updated_at`) VALUES
 (1, 'Nombre', 'la calle', 'despartamenteo', 'ciudad', 'estado', 'rgion', '123123', 'administrador', '2014-09-03 10:00:11', '2014-09-03 10:00:11'),
 (2, 'Hector Alvarado', 'suroeste de la ciudad', '523', 'Guayaquil', 'Guayas', 'Costa', '123123', 'administrador', '2014-09-03 10:17:02', '2014-09-03 10:17:02'),
-(3, 'Hector Alvarado Basantes', '38 y Portete', '454', 'Guayaquil', 'Guayas', 'Costa', '123133', 'administrador', '2014-09-03 10:21:19', '2014-09-03 10:21:19');
+(3, 'Hector Alvarado Basantes', '38 y Portete', '454', 'Guayaquil', 'Guayas', 'Costa', '123133', 'administrador', '2014-09-03 10:21:19', '2014-09-03 10:21:19'),
+(4, 'Usuaruio', 'calle 13', 'departaente', 'ciudad', 'estado', 'sur', '00922', 'admin2', '2014-09-24 21:41:03', '2014-09-24 21:41:03'),
+(5, 'nombre', 'calle', 'departament', 'ciudad', 'estado', 'region', '093344', '1005973391', '2014-09-25 19:39:26', '2014-09-25 19:39:26'),
+(6, 'otra', 'calle', 'departament', 'cudad', 'estado', 'regin', '099344', '1005973391', '2014-09-25 19:39:46', '2014-09-25 19:39:46'),
+(7, 'asdasd', 'adasd', 'asdad', 'asdas', 'asd', 'asdasd', '1231', '1005973391', '2014-09-25 19:44:15', '2014-09-25 19:44:15'),
+(8, 'nombre', 'calle', 'departament', 'asdas', 'estado', 'asdasd', '093344', 'prueba1', '2014-09-26 01:34:33', '2014-09-26 01:34:33'),
+(9, 'adsda', 'calle', 'departament', 'asdas', 'asd', 'asdasd', '093344', 'prueba1', '2014-09-26 01:36:44', '2014-09-26 01:36:44'),
+(10, 'Nomb', 'calle', 'dep', 'gye', 'estado', 'suer', '123123123', 'developer', '2014-10-29 18:25:40', '2014-10-29 18:25:40');
 
 -- --------------------------------------------------------
 
@@ -1782,14 +1366,17 @@ CREATE TABLE IF NOT EXISTS `usuario_pago` (
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=5 ;
 
 --
 -- Volcado de datos para la tabla `usuario_pago`
 --
 
 INSERT INTO `usuario_pago` (`id`, `nombre`, `ccv`, `mesVencimiento`, `anioVencimiento`, `nombreTarjeta`, `usuario`, `created_at`, `updated_at`) VALUES
-(1, 'Hector Alvarado', '123123123', '01', '2014', 'Hector Alvarado', 'administrador', '2014-09-03 22:05:04', '2014-09-04 21:38:26');
+(1, 'Hector Alvarado', '123123123', '01', '2014', 'Hector Alvarado', 'administrador', '2014-09-03 22:05:04', '2014-09-04 21:38:26'),
+(2, 'hector', '123', '01', '2014', '12313', 'admin2', '2014-09-24 21:41:15', '2014-09-24 21:41:15'),
+(3, 'adsda', '12313', '01', '2014', '1231331', '1005973391', '2014-09-25 19:40:03', '2014-09-25 19:45:02'),
+(4, 'qweq', '123123', '01', '2014', 'asdadd', 'developer', '2014-10-29 18:25:49', '2014-10-29 18:25:49');
 
 -- --------------------------------------------------------
 
@@ -1808,7 +1395,7 @@ CREATE TABLE IF NOT EXISTS `venta` (
   `envio` int(11) NOT NULL,
   `pago` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=19 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=23 ;
 
 --
 -- Volcado de datos para la tabla `venta`
@@ -1816,106 +1403,15 @@ CREATE TABLE IF NOT EXISTS `venta` (
 
 INSERT INTO `venta` (`id`, `total`, `verificada`, `estado`, `created_at`, `updated_at`, `usuario`, `envio`, `pago`) VALUES
 (17, '12', 0, 0, '2014-09-04 21:32:33', '2014-09-04 21:32:33', 'administrador', 2, 1),
-(18, '235', 0, 0, '2014-09-04 21:38:27', '2014-09-04 21:38:27', 'administrador', 2, 1);
+(18, '235', 0, 0, '2014-09-04 21:38:27', '2014-09-04 21:38:27', 'administrador', 2, 1),
+(19, '123', 0, 0, '2014-09-24 21:41:16', '2014-09-24 21:41:16', 'admin2', 4, 2),
+(20, '123', 0, 0, '2014-09-25 19:40:03', '2014-09-25 19:40:03', '1005973391', 5, 3),
+(21, '446', 0, 0, '2014-09-25 19:45:03', '2014-09-25 19:45:03', '1005973391', 5, 3),
+(22, '12', 0, 0, '2014-10-29 18:25:50', '2014-10-29 18:25:50', 'developer', 10, 4);
 
 --
 -- Restricciones para tablas volcadas
 --
-
---
--- Filtros para la tabla `art_cart_item`
---
-ALTER TABLE `art_cart_item`
-  ADD CONSTRAINT `FK_473970F1AD5CDBF` FOREIGN KEY (`cart_id`) REFERENCES `art_cart` (`id`),
-  ADD CONSTRAINT `FK_473970F7645698E` FOREIGN KEY (`producto_id`) REFERENCES `art_producto` (`id`);
-
---
--- Filtros para la tabla `art_mensaje`
---
-ALTER TABLE `art_mensaje`
-  ADD CONSTRAINT `FK_2F271C7D51A5ACA4` FOREIGN KEY (`remitente`) REFERENCES `art_usuario` (`id`),
-  ADD CONSTRAINT `FK_2F271C7DA7399187` FOREIGN KEY (`destinatario`) REFERENCES `art_usuario` (`id`),
-  ADD CONSTRAINT `FK_2F271C7DEDD00B4D` FOREIGN KEY (`id_carpeta`) REFERENCES `art_mensaje_carpeta` (`id`);
-
---
--- Filtros para la tabla `art_producto`
---
-ALTER TABLE `art_producto`
-  ADD CONSTRAINT `FK_FEBC7F03E6F150D3` FOREIGN KEY (`id_tienda`) REFERENCES `art_tienda` (`id`),
-  ADD CONSTRAINT `FK_FEBC7F03F9BECC66` FOREIGN KEY (`id_subcategoria`) REFERENCES `art_subcategoria` (`id`);
-
---
--- Filtros para la tabla `art_producto_foto`
---
-ALTER TABLE `art_producto_foto`
-  ADD CONSTRAINT `FK_857E4AA3F760EA80` FOREIGN KEY (`id_producto`) REFERENCES `art_producto` (`id`);
-
---
--- Filtros para la tabla `art_producto_like`
---
-ALTER TABLE `art_producto_like`
-  ADD CONSTRAINT `FK_C3C131F5F760EA80` FOREIGN KEY (`id_producto`) REFERENCES `art_producto` (`id`),
-  ADD CONSTRAINT `FK_C3C131F5FCF8192D` FOREIGN KEY (`id_usuario`) REFERENCES `art_usuario` (`id`);
-
---
--- Filtros para la tabla `art_producto_tag`
---
-ALTER TABLE `art_producto_tag`
-  ADD CONSTRAINT `FK_118F10559D2D5FD9` FOREIGN KEY (`id_tag`) REFERENCES `art_tags` (`id`),
-  ADD CONSTRAINT `FK_118F1055F760EA80` FOREIGN KEY (`id_producto`) REFERENCES `art_producto` (`id`);
-
---
--- Filtros para la tabla `art_subcategoria`
---
-ALTER TABLE `art_subcategoria`
-  ADD CONSTRAINT `FK_A9DB9D1FCE25AE0A` FOREIGN KEY (`id_categoria`) REFERENCES `art_categoria` (`id`);
-
---
--- Filtros para la tabla `art_tienda_like`
---
-ALTER TABLE `art_tienda_like`
-  ADD CONSTRAINT `FK_281C327EE6F150D3` FOREIGN KEY (`id_tienda`) REFERENCES `art_tienda` (`id`),
-  ADD CONSTRAINT `FK_281C327EFCF8192D` FOREIGN KEY (`id_usuario`) REFERENCES `art_perfil` (`id`);
-
---
--- Filtros para la tabla `art_tienda_politica`
---
-ALTER TABLE `art_tienda_politica`
-  ADD CONSTRAINT `FK_1986AEC3E6F150D3` FOREIGN KEY (`id_tienda`) REFERENCES `art_tienda` (`id`);
-
---
--- Filtros para la tabla `art_usuario`
---
-ALTER TABLE `art_usuario`
-  ADD CONSTRAINT `FK_9621B121189E045D` FOREIGN KEY (`suscripcion_id`) REFERENCES `art_suscripciones` (`id`),
-  ADD CONSTRAINT `FK_9621B12119BA6D46` FOREIGN KEY (`tienda_id`) REFERENCES `art_tienda` (`id`);
-
---
--- Filtros para la tabla `art_usuario_rol`
---
-ALTER TABLE `art_usuario_rol`
-  ADD CONSTRAINT `FK_ADF592390F1D76D` FOREIGN KEY (`id_rol`) REFERENCES `art_rol` (`id`),
-  ADD CONSTRAINT `FK_ADF5923FCF8192D` FOREIGN KEY (`id_usuario`) REFERENCES `art_usuario` (`id`);
-
---
--- Filtros para la tabla `art_usuario_seguir`
---
-ALTER TABLE `art_usuario_seguir`
-  ADD CONSTRAINT `FK_B6BC2EB9E6F150D3` FOREIGN KEY (`id_tienda`) REFERENCES `art_tienda` (`id`),
-  ADD CONSTRAINT `FK_B6BC2EB9FCF8192D` FOREIGN KEY (`id_usuario`) REFERENCES `art_perfil` (`id`);
-
---
--- Filtros para la tabla `art_usuario_tienda`
---
-ALTER TABLE `art_usuario_tienda`
-  ADD CONSTRAINT `FK_E5234889E6F150D3` FOREIGN KEY (`id_tienda`) REFERENCES `art_tienda` (`id`),
-  ADD CONSTRAINT `FK_E5234889FCF8192D` FOREIGN KEY (`id_usuario`) REFERENCES `art_perfil` (`id`);
-
---
--- Filtros para la tabla `banner`
---
-ALTER TABLE `banner`
-  ADD CONSTRAINT `FK_6F9DB8E73DA5256D` FOREIGN KEY (`image_id`) REFERENCES `media__media` (`id`);
 
 --
 -- Filtros para la tabla `basket__basket`
@@ -2087,12 +1583,6 @@ ALTER TABLE `publicidad`
 --
 ALTER TABLE `subcategoria`
   ADD CONSTRAINT `FK_DA7FB9143397707A` FOREIGN KEY (`categoria_id`) REFERENCES `categoria` (`id`);
-
---
--- Filtros para la tabla `tienda`
---
-ALTER TABLE `tienda`
-  ADD CONSTRAINT `FK_C0C6E53ECB23602E` FOREIGN KEY (`imagenCabecera_id`) REFERENCES `media__media` (`id`);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

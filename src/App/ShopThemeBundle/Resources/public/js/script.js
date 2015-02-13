@@ -51,6 +51,7 @@ function cargarMasProductos(   ){
 		$.ajax({
 			url: Routing.generate('get_productos_paginacion', {indice: indice_paginacion}),
 			success: function( response ){
+
 				var contenido = $(response).hide();
 				$('#listaProductos').append( contenido  );
 				contenido.slideDown('slow');

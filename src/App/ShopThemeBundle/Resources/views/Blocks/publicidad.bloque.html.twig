@@ -3,11 +3,23 @@
 
 <hr>
 
-<div class="row  bloque_publicidad" style="cursor:pointer;"  onclick="window.location='{{  publicidad.url  }}'" >
+<div class="row  bloque_publicidad" style="cursor:pointer;"   >
 
 	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 "   >
 	<h4 class="titulo-publicidad "  >  {{  publicidad.nombre }} </h4>
-		{% thumbnail publicidad.image, 'small'  %}
+
+        {% if( 'http://' in publicidad.url or 'https://' in publicidad.url   ) %}
+            <a href="{{ publicidad.url }}">
+            {% thumbnail publicidad.image, 'small'  %}
+            </a>
+        {% else %}
+
+            <a href="http://{{ publicidad.url }}">
+                {% thumbnail publicidad.image, 'small'  %}
+            </a>
+
+        {% endif %}
+
 
 	<p class="texto_gris_oscuro" >{{  publicidad.descripcion }}</p>	
 	</div>
