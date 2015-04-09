@@ -849,7 +849,40 @@ class TiendaController extends Controller
         
     }
     
-    
+    public function selectMembresiaAction(Request $request)
+    {
+
+        $usuario = $this->get('security.context')->getToken()->getUser();
+        $em      = $this->getDoctrine()->getManager();
+
+        $cantidad_productos = 0;
+
+
+        $tienda = $em->getRepository('SelnetTiendaOnlineBundle:Tienda')->findOneBy(array(
+            "usuario" => $usuario->getUsername()
+            ));
+
+
+        if (!$tienda) {
+
+            return $this->render('AppShopThemeBundle:Tienda:crear.tienda.html.twig');
+
+        }
+
+
+        $productos = $em->getRepository('SelnetTiendaOnlineBundle:Producto')->findBy(array(
+            "tienda" => $tienda
+            ));
+
+
+
+        // return $this->render('AppShopThemeBundle:Paginas:select.membresia.html.twig', array(
+        //     "tienda_existe" => true,
+        //     "numero_productos" => count($productos)
+        //     ));
+
+        return $this->render('AppShopThemeBundle:Paginas:select.membresia.html.twig');
+    }
     
     
     

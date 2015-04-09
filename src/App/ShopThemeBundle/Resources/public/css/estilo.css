@@ -43,7 +43,7 @@ body{
 	border-right: 1px solid lightgray;
     background-image: url(../images/icon_cesta.png);
     background-repeat: no-repeat;
-    background-position: center right;
+    background-position: 150px 18px;
     background-size: 25px 25px;
 
 }

@@ -61,6 +61,10 @@ public function registerAction(Request $request)
         'choices' => array('1' => 'Hombre', '2' => 'Mujer')))
     ->add("email", "email" ,  array("required"=> true ))    
     ->add("username", "text" , array("required"=> true ))    
+    ->add('terminos', 'checkbox', array(
+        'label'    => 'Términos de Uso y Políticas de Privacidad',
+        'required' => true,
+    ))
     ->add("password", "repeated" , array(
         'type' => 'password',
         'invalid_message' => 'las contrasenias deben coincidir.',
@@ -134,7 +138,9 @@ public function registerAction(Request $request)
                $this->get('session')->set('_security_main',serialize($token));
 
 
-               return $this->redirect($this->generateUrl('app_shop_theme_homepage'));
+               //return $this->redirect($this->generateUrl('app_shop_theme_homepage'));
+               return $this->redirect($this->generateUrl('select_membresia'));
+               
 
            }
 

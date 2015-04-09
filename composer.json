@@ -87,11 +87,7 @@
      "avalanche123/imagine-bundle": "v2.1",
      "symfony/intl": "2.6.*@dev",
      "sonata-project/markitup-bundle": "2.1.*@dev",
-     "comur/image-bundle": "~1.0",
-     
-     
-     
-     
+     "comur/image-bundle": "~1.0"
      },
      "scripts": {
       "post-install-cmd": [

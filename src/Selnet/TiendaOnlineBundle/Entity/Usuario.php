@@ -110,4 +110,32 @@ class Usuario extends BaseUser
     {
         return $this->sexo;
     }
+    /**
+     * @var integer
+     */
+    private $terminos;
+
+
+    /**
+     * Set terminos
+     *
+     * @param integer $terminos
+     * @return Usuario
+     */
+    public function setTerminos($terminos)
+    {
+        $this->terminos = $terminos;
+    
+        return $this;
+    }
+
+    /**
+     * Get terminos
+     *
+     * @return integer 
+     */
+    public function getTerminos()
+    {
+        return $this->terminos;
+    }
 }

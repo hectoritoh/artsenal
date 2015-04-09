@@ -297,3 +297,10 @@ update_producto_cart:
 test:
     path:      /test
     defaults:  { _controller: AppShopThemeBundle:Default:test }
+
+
+# register
+
+select_membresia:
+    path:       /seleccionar/membresia
+    defaults:   {_controller: AppShopThemeBundle:Tienda:selectMembresia}

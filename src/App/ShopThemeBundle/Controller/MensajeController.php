@@ -41,7 +41,7 @@ class MensajeController extends Controller
         $usuario = $this->get('security.context')->getToken()->getUser();
 
         $notificacion = $this->get("app_notificaciones.notificacion.manager");
-        $mensaje  = $notificacion->crearNotificacion( $usuario->getUsername()  , $destinatario  ,  $mensaje, 1 , $asunto);
+        $composicion  = $notificacion->crearNotificacion( $usuario->getUsername()  , $destinatario  ,  $mensaje, 1 , $asunto);
 
         
         $em = $this->getDoctrine()->getManager();
@@ -50,9 +50,56 @@ class MensajeController extends Controller
 
         
 
-        $response = new \Symfony\Component\HttpFoundation\Response(json_encode($mensaje));
-        $response->headers->set('Content-Type', 'application/json');
-        return $response;
+
+            
+            $subject = "Mensaje al artista del producto, desde Web Artsenal"; 
+
+            $body = '<strong>Informaci&oacute;n de Contacto:</strong> <br /><br />               
+            Usuario:  '.$usuario->getUsername().' <br />
+            Email:  '. $usuario->getEmail() .' <br />
+            Asunto:  '. $asunto .'  <br />
+            Mensaje:  '. $mensaje .' ';
+
+
+ 
+            $message = \Swift_Message::newInstance()
+
+            ->setSubject($subject)
+
+            ->setFrom(array('yc@selnet.com.ec' => 'Web Artsenal'))
+
+            ->setTo('ycosquillo@celmedia.com')
+            
+            ->setContentType("text/html")
+
+            ->setBody($body);
+
+
+            $envioMail = $this->get('mailer')->send($message);
+
+
+            if ( $envioMail ) {
+
+                // $response = json_encode(array('codigo' => 1 ));
+
+                // return new Response($response, 200, array(
+                //     'Content-Type' => 'application/json'
+                // ));
+
+                $response = new \Symfony\Component\HttpFoundation\Response(json_encode($composicion));
+                $response->headers->set('Content-Type', 'application/json');
+                return $response;
+
+
+            }else {
+                 return new JsonResponse(array(
+                    'codigo' => 0,
+                    'Mensaje' => "No se ha enviado mensaje"
+                ), 200); //codigo de error diferente
+            }
+
+
+
 
     }
 
